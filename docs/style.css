@@ -1,0 +1,43 @@
+body {
+  margin-top: 5vh;
+  margin-left: 5vh;
+}
+
+html {
+  font: 1.1em "caption", sans-serif;
+}
+
+header {
+  font-size: 2.4em;
+  border-bottom: 2px solid gray;
+  margin-right: 5em;
+}
+
+section {
+  width: 35vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+}
+
+p, a {
+  line-height: 1.5em;
+}
+
+.navigation {
+  float: left;
+  height: 100%;
+}
+
+.navigation a {
+  width: 100%;
+  display: inline-block;
+}
+
+.content:not(:target) {
+  display: None;
+}
+
+.content:target {
+  display: block;
+}
