@@ -21,14 +21,14 @@ export default ({
         {/* Favicon */}
         <link rel='shortcut icon' href={Vars.sitePrefix + favicon} />
         {/* Static CSS */}
-        <link rel='stylesheet' href='/static/css/github.css' />
-        <link rel='stylesheet' href='/static/css/spectre.min.css' />
-        <link rel='stylesheet' href='/static/css/spectre-exp.min.css' />
-        <link rel='stylesheet' href='/static/css/font-awesome.min.css' />
-        <link rel='stylesheet' href='/static/css/animate.css' />
+        <link rel='stylesheet' href={Vars.sitePrefix + '/static/css/github.css'} />
+        <link rel='stylesheet' href={Vars.sitePrefix + '/static/css/spectre.min.css'} />
+        <link rel='stylesheet' href={Vars.sitePrefix + '/static/css/spectre-exp.min.css'} />
+        <link rel='stylesheet' href={Vars.sitePrefix + '/static/css/font-awesome.min.css'} />
+        <link rel='stylesheet' href={Vars.sitePrefix + '/static/css/animate.css'} />
         {/* Shimmy */}
-        <script src='/static/js/es5-shim.min.js' />
-        <script src='/static/js/es6-shim.min.js' />
-        <script src='/static/js/object-shim.js' />
+        <script src={Vars.sitePrefix + '/static/js/es5-shim.min.js'} />
+        <script src={Vars.sitePrefix + '/static/js/es6-shim.min.js'} />
+        <script src={Vars.sitePrefix + '/static/js/object-shim.js'} />
     </Head>
 );

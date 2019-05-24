@@ -108,7 +108,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/github.css",
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/css/github.css',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
@@ -116,7 +116,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/spectre.min.css",
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/css/spectre.min.css',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 25
@@ -124,7 +124,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/spectre-exp.min.css",
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/css/spectre-exp.min.css',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26
@@ -132,7 +132,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/font-awesome.min.css",
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/css/font-awesome.min.css',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 27
@@ -140,28 +140,28 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/animate.css",
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/css/animate.css',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/es5-shim.min.js",
+    src: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/js/es5-shim.min.js',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 30
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/es6-shim.min.js",
+    src: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/js/es6-shim.min.js',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 31
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/object-shim.js",
+    src: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/static/js/object-shim.js',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
