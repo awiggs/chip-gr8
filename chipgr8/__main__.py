@@ -1,3 +1,4 @@
-from .chipgr8 import main
+import chipgr8
+import sys
 
-main()
+chipgr8.cmd(sys.argv)
