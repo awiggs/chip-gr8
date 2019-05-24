@@ -1,6 +1,5 @@
 {
-    layout: '../layouts/Docs',
-    title: 'MyApp',
-    subtitle: 'an app you can use for *things*',
-    version: 'v1.0.0',
+    layout: '../layouts/API',
+    title: 'chip-gr8',
+    subtitle: 'Chip 8 emulation for AI',
 }

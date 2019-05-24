@@ -1,3 +1,3 @@
 export default props => (
-    <p { ...props }>© <a href='https://ejrbuss.net'>ejrbuss</a> 2019</p>  
+    <p { ...props }>Group 1 SENG 499 2019</p>  
 );
