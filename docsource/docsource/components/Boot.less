@@ -1,0 +1,335 @@
+@import '../Vars.less';
+
+//--- Base Styles ------------------------------------------------------------//
+
+body {
+    color: @color-text;
+    font-weight: @font-weight;
+    font-size: @font-size;
+}
+
+body {
+
+#page {
+    min-height: calc(100vh - 141px);
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid @color-divider;
+}
+
+blockquote {
+    border-left: @border;
+}
+
+table {
+    font-size: @font-size-sm;
+}
+
+table thead,
+table tbody,
+table tr,
+table td, 
+table th {
+    width: 100%;
+}
+
+table td, table th,
+.table td, .table th {
+    border: none;
+}
+
+.table.table-striped tbody tr:nth-of-type(even) {
+    background: inherit;
+}
+
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background: @color-off-white;
+}
+
+pre.code code {
+    font-size: @font-size-sm;
+    background: inherit;
+    border: @border;
+}
+
+code {
+    background: inherit;
+    color: @color-accent;
+}
+
+code::before {
+    content: '`';
+}
+
+code::after {
+    content: '`';
+}
+
+.code::before {
+    color: @color-divider;
+}
+
+.content {
+    padding-top: @lg * 6;
+    padding-bottom: @xlg * 2;
+    color: @color-text;
+}
+
+.content h1.title {
+    font-size: @font-size-xlg;
+    margin-bottom: @xsm;
+}
+
+.content h1, 
+.content h2, 
+.content h3, 
+.content h4, 
+.content h5, 
+.content h6 {
+    font-weight: @font-weight + 100;
+}
+
+.ignore {
+    pointer-events: none;
+}
+
+//--- Links ------------------------------------------------------------------//
+
+a {
+    // Default links
+    color: @color-accent;
+    font-size: inherit;
+    box-shadow: none;
+    text-decoration: none;
+
+    &.active,
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+        color: @color-accent;
+        font-size: inherit;
+        box-shadow: none;
+        text-decoration: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: @color-accent;
+        text-decoration: underline;
+    }
+
+    .active {
+        font-weight: @font-weight-bold;
+    }
+
+    // Subtle links
+    &.subtle,
+    &.subtle-accent {
+        color: inherit;
+        text-decoration: underline;
+        transition: all 0.15s ease-in-out 0s;
+    }
+    &.subtle {
+        color: @color-subtext;
+        &:hover {
+            color: @color-text;
+        }
+    }
+    &.subtle-accent:hover {
+        color: @color-accent;
+    }
+
+    // Slide links
+    &.slide {
+        position: relative;
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
+    &.slide:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background-color: @color-accent;
+        visibility: hidden;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: all 0.2s ease-in-out 0s;
+    }
+    
+    &.slide:hover:before {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+
+    // Anchor links
+    &.anchor-point {
+        display: block;
+        position: relative;
+        top: -@xlg * 3;
+        visibility: hidden;
+    }
+    
+    &.anchor {
+        color: inherit;
+        display: inline-block;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
+    &.anchor h1,
+    &.anchor h2 {
+        color: @color-text;
+        display: inline-block;
+        border-bottom: 1px dotted transparent;
+    
+        &:hover {
+            text-decoration: none;
+            color: @color-text;
+            border-bottom: 1px dotted;
+        }
+    }
+}
+
+//--- Utils ------------------------------------------------------------------//
+
+// Color utils
+.clr-off-white { color: @color-off-white; }
+.bkg-off-white { background: @color-off-white; }
+.clr-divider   { color: @color-divider; }
+.bkg-divider   { background: @color-divider; }
+.clr-text      { color: @color-text; }
+.bkg-text      { background: @color-text; }
+.clr-subtext   { color: @color-subtext; }
+.bkg-subtext   { background: @color-subtext; }
+.clr-accent    { color: @color-accent; }
+.bkg-accent    { background: @color-accent; }
+.clr-error     { color: @color-error; }
+.bkg-error     { background: @color-error; }
+
+// Fill utils
+.fill-width { width: 100%; }
+.fill-height { height: 100%; }
+
+// Margin utils
+.m-auto { margin: auto; };
+
+.m-xsm { margin: @xsm; }
+.m-sm  { margin: @sm; }
+.m-md  { margin: @md; }
+.m-lg  { margin: @lg; }
+.m-xlg { margin: @xlg; }
+
+.ml-xsm { margin-left: @xsm; }
+.ml-sm  { margin-left: @sm; }
+.ml-md  { margin-left: @md; }
+.ml-lg  { margin-left: @lg; }
+.ml-xlg { margin-left: @xlg; }
+
+.mr-xsm { margin-right: @xsm; }
+.mr-sm  { margin-right: @sm; }
+.mr-md  { margin-right: @md; }
+.mr-lg  { margin-right: @lg; }
+.mr-xlg { margin-right: @xlg; }
+
+.mt-xsm { margin-top: @xsm; }
+.mt-sm  { margin-top: @sm; }
+.mt-md  { margin-top: @md; }
+.mt-lg  { margin-top: @lg; }
+.mt-xlg { margin-top: @xlg; }
+
+.mb-xsm { margin-bottom: @xsm; }
+.mb-sm  { margin-bottom: @sm; }
+.mb-md  { margin-bottom: @md; }
+.mb-lg  { margin-bottom: @lg; }
+.mb-xlg { margin-bottom: @xlg; }
+
+.m-clr { margin: 0; }
+.ml-clr { margin-left: 0; }
+.mr-clr { margin-right: 0; }
+.mt-clr { margin-top: 0; }
+.mb-clr { margin-bottom: 0; }
+
+// Padding utils
+.p-xsm { padding: @xsm; }
+.p-sm  { padding: @sm; }
+.p-md  { padding: @md; }
+.p-lg  { padding: @lg; }
+.p-xlg { padding: @xlg; }
+
+.pl-xsm { padding-left: @xsm; }
+.pl-sm  { padding-left: @sm; }
+.pl-md  { padding-left: @md; }
+.pl-lg  { padding-left: @lg; }
+.pl-xlg { padding-left: @xlg; }
+
+.pr-xsm { padding-right: @xsm; }
+.pr-sm  { padding-right: @sm; }
+.pr-md  { padding-right: @md; }
+.pr-lg  { padding-right: @lg; }
+.pr-xlg { padding-right: @xlg; }
+
+.pt-xsm { padding-top: @xsm; }
+.pt-sm  { padding-top: @sm; }
+.pt-md  { padding-top: @md; }
+.pt-lg  { padding-top: @lg; }
+.pt-xlg { padding-top: @xlg; }
+
+.pb-xsm { padding-bottom: @xsm; }
+.pb-sm  { padding-bottom: @sm; }
+.pb-md  { padding-bottom: @md; }
+.pb-lg  { padding-bottom: @lg; }
+.pb-xlg { padding-bottom: @xlg; }
+
+.p-clr  { padding: 0; }
+.pl-clr { padding-left: 0; }
+.pr-clr { padding-right: 0; }
+.pt-clr { padding-top: 0; }
+.pb-clr { padding-top: 0; }
+
+// Z utils
+.z-very-front { z-index: @z-very-front; }
+.z-front      { z-index: @z-front; }
+.z-mid        { z-index: @z-mid; }
+.z-back       { z-index: @z-back; }
+.z-very-back  { z-index: @z-very-back; }
+
+// Text utils 
+.subtext {
+    font-size: @font-size-sm;
+    color: @color-subtext;
+}
+
+.text-sm    { font-size: @font-size-sm; }
+.text-lg    { font-size: @font-size-lg; }
+.text-xlg   { font-size: @font-size-xlg; }
+.text-light { font-weight: @font-weight-light; }
+.text-bold  { font-weight: @font-weight-bold; }
+
+//--- Load Components --------------------------------------------------------//
+
+@import './Editor.less';
+@import './Footer.less';
+@import './Logo.less';
+@import './Logos.less';
+@import './Navbar.less';
+@import './ScrollMarker.less';
+@import './SearchResults.less';
+@import './SideNav.less';
+@import './Tani.less';
+
+//--- Load Layouts -----------------------------------------------------------//
+
+@import '../layouts/Docs.less';
+
+}

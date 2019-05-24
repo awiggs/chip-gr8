@@ -1,0 +1,55 @@
+.side-nav {
+    width: calc((100vw - 856px) / 2);
+    overflow-x: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    position: fixed;
+    top: @lg * 5;
+    padding: @lg;
+
+    .nav-item {
+        border-left: 1px solid transparent;
+        pointer-events: auto;
+        margin: 0;
+
+        a, a:focus {
+            font-weight: @font-weight-light;
+            font-size: 14px;
+            color: @color-subtext;
+            transition: color 0.15s ease-in-out 0s;
+        }
+
+        a:hover, a:focus {
+            color: @color-text;
+            transition: color 0.15s ease-in-out 0s;
+        }
+    }
+
+    .nav-item.active {
+        & > a:hover, & > a:focus {
+            color: @color-text;
+            transition: color 0.15s ease-in-out 0s;
+        }
+
+        & > a, & > a:hover {
+            color: @color-text;
+            font-weight: @font-weight-bold;
+        }
+    }
+
+    .nav.outer > .nav-item.active {
+        border-left: 1px solid @color-accent;
+
+        .nav.inner > .nav-item.active {
+            border-left: 1px solid @color-accent;
+        }
+
+        .nav.inner {
+            display: flex;
+        }
+    }
+
+    .nav.inner {
+        display: none;
+    }
+}

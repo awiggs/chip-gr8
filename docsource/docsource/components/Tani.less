@@ -1,0 +1,66 @@
+@keyframes line-animation {
+    from { stroke-dashoffset: -130; }
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes tile-animation {
+    from {
+        fill: transparent; 
+        stroke: transparent;
+    }
+    to { 
+        fill: @color-accent;
+        stroke: @color-accent;
+    }
+}
+
+.tani {
+
+    .debug {
+        background: rgba(0, 250, 250, 0.5) !important;
+    }
+
+    .shadow {
+        z-index: @z-mid;
+        pointer-events: none;
+        position: absolute;
+        width: 80vh;
+        height: 40vh;
+        max-width: 100vw;
+        max-height: 100vw;
+        margin: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        background: radial-gradient(transparent, white); 
+    }
+
+    svg {
+        z-index: @z-very-back;
+        width: 80vh;
+        height: 40vh;
+        max-width: 100vw;
+        max-height: 100vw;
+        display: block;
+        margin: auto;
+
+        .lv, .lh {
+            stroke: @color-divider;
+            stroke-width: 0.2;
+        }
+        
+        .tile {
+            stroke: transparent;
+            fill: transparent;
+            stroke-width: 0.2;
+            animation: tile-animation 2s ease forwards;
+            transform: translate(0, 0);
+            transition: all 0.5s ease 0s;
+
+            &.hover {
+                transform: translate(-2px, -2px);
+            }
+        }
+
+    }
+
+}

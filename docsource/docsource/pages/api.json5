@@ -1,0 +1,4 @@
+{
+    layout: '../layouts/API',
+    title: 'MyApp | API',
+}

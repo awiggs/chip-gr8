@@ -1,0 +1,58 @@
+.search-results.open {
+    height: 100vh;
+    padding-top: @xlg * 3;
+    transition: all 0.5s ease 0s;
+}
+
+.search-results {
+    z-index: @z-front - 1;
+    position: fixed;
+    background: rgba(250, 250, 250, 0.95);
+    overflow-y: auto;
+    padding: 0;
+    height: 0;
+    width: 100%;
+    transition: all 0.5s ease 0s;
+
+    .search-result {
+        box-shadow: @shadow;
+        background: white;
+        margin-left: 0px;
+        margin-top: @xlg;
+        margin-bottom: @xlg;
+        padding: @lg;
+        border: 1px solid white;
+        transition: all 0.1s ease 0s;
+
+        &:hover {
+            margin-left: -10px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-color: @color-divider;
+            transition: all 0.1s ease 0s;
+        }
+
+        .title {
+            width: 100%;
+            font-size: @font-size-lg;
+            border-bottom: @border;
+        }
+
+        .text {
+            color: @color-subtext;
+            margin-top: @lg;
+            font-size: @font-size-sm;
+        }
+    }
+
+    .no-results {
+        padding-top: @xlg * 2;
+        text-align: center;
+        color: @color-subtext;
+
+        h1 {
+            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+            font-size: @font-size-xlg;
+        }
+    }
+}

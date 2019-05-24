@@ -1,0 +1,37 @@
+.logos {
+    padding: @lg;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.example {
+
+    path, svg, img { transition: all 0.5s ease 0s; }
+
+    .type-mark path { fill: black; }
+    .mekpie path.a { fill: black; }
+    .mekpie path.b { fill: @color-subtext; }
+    .mekpie path.c { fill: black; }
+    .ejrbuss path { stroke: black; }
+    .uofa path.a { fill: white; }
+    .uofa path.b { fill: black; }
+    .uofa path.c { fill: white; }
+
+    &:hover {
+
+        svg, img { transform: scale(1.1); }
+
+        .type-mark path { fill: #00a79d; }
+        .mekpie path.a { fill: #5270ff; }
+        .mekpie path.b { fill: #2db1ff; }
+        .mekpie path.c { fill: #ffbc49; }
+        .ejrbuss path { stroke: @color-accent; }
+        .uofa path.a { fill: #f5f3c0; }
+        .uofa path.b { fill: #0f7e44; }
+        .uofa path.c { fill: #f4dd15; }
+    }
+
+}

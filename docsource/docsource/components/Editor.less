@@ -1,0 +1,89 @@
+.editor {
+    color: inherit;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    line-height: 1.5;
+    overflow-x: auto;
+
+    .code::before {
+        color: @color-divider;
+        content: attr(data-lang);
+        font-size: @font-size-sm;
+        position: absolute;
+        right: .4rem;
+        top: .1rem;
+    }
+
+    .code,
+    .output {
+        font-size: @font-size-sm;
+        font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+        padding: 1rem;
+        width: 100%;
+        border: @border;
+
+        pre {
+            margin: 0;
+            overflow-wrap: normal;
+            overflow-x: auto;
+        }
+
+        .gutter {
+            user-select: none;
+            color: @color-divider;
+            display: inline-block;
+            width: @font-size-sm * 3;
+            border-right: @border;
+            text-align: right;
+            padding-right: @font-size-sm;
+
+            .line-number {
+                display: block;
+            }
+        }
+    }
+
+    .text {
+        width: calc(100% - @font-size-sm * 3);
+        padding-left: @font-size-sm;
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    .output {
+        background: @color-off-white;
+        border-top: none;
+
+        a {
+            border-right: @border;
+            display: inline-block;
+            width: @font-size-sm * 3;
+            border-right: @border;
+            text-align: right;
+            padding-right: @font-size-sm;
+        }
+
+        pre {
+            opacity: 1 !important;
+            transition: opacity 0.5s ease 0s;
+        }
+
+        .text.refresh {
+            opacity: 0 !important;
+            transition: opacity 0s;
+        }
+    }
+
+    textarea {
+        white-space: pre;
+        overflow-wrap: normal;
+        overflow-x: auto;
+        padding: 0;
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        margin-bottom: -20px;
+    }
+
+}

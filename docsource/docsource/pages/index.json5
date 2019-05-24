@@ -1,0 +1,6 @@
+{
+    layout: '../layouts/Docs',
+    title: 'MyApp',
+    subtitle: 'an app you can use for *things*',
+    version: 'v1.0.0',
+}
