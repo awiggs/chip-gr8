@@ -3,7 +3,10 @@
 #ifndef CHIP8_H
 #define CHIP8_H
 
+#include <stdio.h>
 #include "pinttypes.h"
+
+#define DEBUG 1
 
 typedef u16 word_t;
 
@@ -12,6 +15,8 @@ typedef u16 word_t;
 #define RAM_SIZE   (0xFFF)
 #define VRAM_SIZE  (64 * 32)
 #define STACK_SIZE (16)
+
+FILE * ROM;
 
 typedef struct Chip8VM_t Chip8VM_t;
 struct Chip8VM_t {
@@ -30,4 +35,29 @@ struct Chip8VM_t {
     u64 cycles;
 };
 
+int helloWorld();
+
+void reset(Chip8VM_t * vm);
+
+void step(Chip8VM_t * vm);
+
+word_t fetch(Chip8VM_t * vm);
+
+void decode(Chip8VM_t * vm, word_t opcode);
+
+void update(Chip8VM_t * vm);
+
+Chip8VM_t pySteps(Chip8VM_t vm, int nSteps);
+
+void debug(char* message);
+
+FILE * openRom(char* file);
+
+int loadRom(char* file);
+
+int unloadRom();
+
+u16 readInstruction();
+
+int closeRom(FILE* rom);
 #endif /* CHIP8_H */
