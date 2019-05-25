@@ -6,7 +6,15 @@ To run the python module (make sure you use some version of python 3, preferably
 python -m chipgr8
 ```
 
-# Build Using Mekpie
+# Requirements
+
+Before building and running, make sure you have pygame.
+
+```
+python -m pip install -U pygame --user
+```
+
+# Build Using mekpie
 
 To build the c code you will need to have mekpie installed
 
