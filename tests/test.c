@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include "chip8.h"
 
-int main(int argv, char* argc)
+int main(int argv, char** argc)
 {
   int success = loadRom("./data/roms/Tron.ch8");
   if (success)
   {
-    printf("The first instruction is %i.", readInstruction());
+    for (int i = 0; i < 10; i++)
+    {
+      printf("The %ith instruction is %02x.\n", i, readInstruction());
+    }
+
     unloadRom();
   }
   else
@@ -14,5 +18,5 @@ int main(int argv, char* argc)
     puts("Failed to load rom.");
   }
 
-  return success;
+  return 0;
 }
