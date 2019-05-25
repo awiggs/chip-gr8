@@ -23,7 +23,7 @@ export default ({ pageName }) => {
                     searchCtx={searchCtx}
                     showScrollMarker
                     showSearch
-                    leftLinks={<Places api />}
+                    leftLinks={<Places {...{ [page.place]: true }} />}
                     rightLinks={<a target='_blank' href={Vars.github} className='p-md subtle-accent'>
                         <i className='fab fa-github fa-lg' />
                     </a>}
