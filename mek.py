@@ -6,7 +6,7 @@ name = 'chip-gr8'
 # the .c file containing `main`
 main = 'chip-gr8.c'
 # the c compiler configuration to use (gcc_clang, avr_gcc, or emscripten)
-cc = gcc_clang(cmd='cc', dbg='gdb')
+cc = gcc_clang(cmd='gcc', dbg='gdb')
 # any libraries to load
 libs = []
 # additional compiler flags
