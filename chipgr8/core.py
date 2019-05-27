@@ -18,7 +18,7 @@ for path in [
         dll = ctypes.CDLL(path)
         break
 else:
-    raise Exception('DLL has not been built!\nRun `mekpie build`!')
+    raise Exception('DLL has not been built!\nRun `mekpie -m dll build`!')
 
 def init():
     raise Exception('Implement Me!')
