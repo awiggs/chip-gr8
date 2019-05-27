@@ -1,22 +1,17 @@
+#define DEBUG
+
 #include <stdio.h>
 #include "chip8.h"
 
-int main(int argv, char** argc)
-{
-  int success = loadRom("./data/roms/Tron.ch8");
-  if (success)
-  {
-    for (int i = 0; i < 10; i++)
-    {
-      printf("The %ith instruction is %02x.\n", i, readInstruction());
+int main(int argv, char** argc) {
+    Chip8VM_t* vm = initVM();
+    if (loadROM(vm, "./data/roms/Tron.ch8")) {
+        for (int i = 0; i < 10; i++) {
+            debugf("The %ith instruction is %02x.\n", i, fetch(vm));
+        }
+        unloadROM(vm);
+    } else {
+        debugs("Failed to load rom.");
     }
-
-    unloadRom();
-  }
-  else
-  {
-    puts("Failed to load rom.");
-  }
-
-  return 0;
+    return 0;
 }
