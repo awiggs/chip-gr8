@@ -1,42 +1,18 @@
+from chipgr8.io import ChipGr8Window
 import sys, pygame, time
 from pygame.locals import *
 
-
-class ChipGr8Window():
-    screen = None
-    scale = 5
-
-    def __init__(self):
-        pygame.init()
-        
-        size = width, height = 64*self.scale , 32*self.scale
-        self.screen = pygame.display.set_mode(size)
-        self.screen.fill((0,0,0))
-
-    def render(self, bitMap):
-        self.screen.fill((0,0,0))
-        for row in range(len(bitMap)):
-            for pixel in range(len(bitMap[row])):
-                if bitMap[row][pixel] == 1:
-                    pygame.draw.rect(self.screen, (255,255,255), (pixel*self.scale,row*self.scale,self.scale,self.scale))
-        pygame.display.flip()
-
-
-
-# TESTS
-# =======================================================================================================================
-
-def test1():
+def demo1():
     w = ChipGr8Window()
     w.render(getTestBitMap())
     input("press enter to quit")
 
-def test2():
+def demo2():
     w = ChipGr8Window()
     w.render(getTestBitMap2())
     input("press enter to quit")
 
-def test3():
+def demo3():
     w = ChipGr8Window()
     while True:
         for event in pygame.event.get():
@@ -79,6 +55,3 @@ def getTestLine():
         else:
             line.append(0)
     return line
-
-
-test3()

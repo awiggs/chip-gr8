@@ -8,10 +8,11 @@ python -m chipgr8
 
 # Requirements
 
-Before building and running, make sure you have pygame.
+Before building and running, make sure you have pygame and pytest.
 
 ```
 python -m pip install -U pygame --user
+pip install pytest
 ```
 
 # Build Using mekpie
