@@ -13,7 +13,7 @@ int main(int argv, char** argc) {
         }
         unloadROM(vm);
     } else {
-        debugs("Failed to load rom.");
+        debugs("Failed to load rom.\n");
     }
     return 0;
 }

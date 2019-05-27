@@ -23,10 +23,10 @@ To build the c code you will need to have mekpie installed
 pip install mekpie
 ```
 
-To build the dll prior to running the python script:
+To build the shared library prior to running the python script:
 
 ```
-mekpie -m dll build
+mekpie build
 ```
 
 To run the c tests run

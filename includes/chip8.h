@@ -3,6 +3,9 @@
 #ifndef CHIP8_H
 #define CHIP8_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "pinttypes.h"
 #include "debug.h"
 

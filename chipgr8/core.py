@@ -15,13 +15,14 @@ for path in [
     DLL_RELEASE_PATH + '.so',
 ]:
     if os.path.isfile(path):
-        dll = ctypes.CDLL(path)
+        lib = ctypes.CDLL(path)
         break
 else:
-    raise Exception('DLL has not been built!\nRun `mekpie -m dll build`!')
+    raise Exception('DLL has not been built!\nRun `mekpie build`!')
 
 def init():
     raise Exception('Implement Me!')
 
 def helloWorld():
-    dll.helloWorld()
+    assert lib.helloSharedLibrary() == 0xAFBFCF
+    print('DLL loaded succesfully')

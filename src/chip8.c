@@ -90,9 +90,9 @@ void update(Chip8VM_t* vm) {
 int loadROM(Chip8VM_t* vm, char* filePath) {
     vm->ROM = fopen(filePath, "r");
     if (vm->ROM == NULL) {
-        debugf("Failed to load rom: %s", filePath);
+        debugf("Failed to load rom: %s\n", filePath);
     }
-    debugs("Succesfully opened ROM file.");
+    debugs("Succesfully opened ROM file.\n");
     return vm->ROM != NULL;
 }
 
@@ -105,9 +105,9 @@ int loadROM(Chip8VM_t* vm, char* filePath) {
 int unloadROM(Chip8VM_t* vm) {
     if (vm->ROM) {
         fclose(vm->ROM);
-        debugs("Succesfully closed ROM file.");
+        debugs("Succesfully closed ROM file.\n");
         return 0;
     }
-    debugs("No ROM file to close!");
+    debugs("No ROM file to close!\n");
     return 1;
 }
