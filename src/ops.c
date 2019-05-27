@@ -1,9 +1,5 @@
-#pragma once
-
-#ifndef OPS_H 
-#define OPS_H
-
 #include "chip8.h"
+#include "ops.h"
 
 /*
  * Instruction: 0nnn
@@ -11,21 +7,30 @@
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opSYS(Chip8VM_t* vm, u16 addr);
+void opSYS(Chip8VM_t* vm, u16 addr) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 00E0
  * Description: Clear the display.
  * @params  vm      The current state of the Virtual Machine
  */
-void opCLS(Chip8VM_t* vm);
+void opCLS(Chip8VM_t* vm) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 00EE
  * Description: Return from a subroutine.
  * @params  vm      The current state of the Virtual Machine
  */
-void opRET(Chip8VM_t* vm);
+void opRET(Chip8VM_t* vm) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 1nnn
@@ -33,7 +38,10 @@ void opRET(Chip8VM_t* vm);
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opJP(Chip8VM_t* vm, u16 addr);
+void opJP(Chip8VM_t* vm, u16 addr) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 2nnn
@@ -41,7 +49,10 @@ void opJP(Chip8VM_t* vm, u16 addr);
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opCALL(Chip8VM_t* vm, u16 addr);
+void opCALL(Chip8VM_t* vm, u16 addr) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 3xkk
@@ -50,7 +61,10 @@ void opCALL(Chip8VM_t* vm, u16 addr);
  *          reg     Number (x) indicating a register Vx
  *          value   The value (kk)
  */
-void opSEValue(Chip8VM_t* vm, u8 reg, u8 value);
+void opSEValue(Chip8VM_t* vm, u8 reg, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 4xkk
@@ -59,7 +73,10 @@ void opSEValue(Chip8VM_t* vm, u8 reg, u8 value);
  *          reg     Number (x) indicating a register Vx
  *          value   The value (kk)
  */
-void opSNEValue(Chip8VM_t* vm, u8 reg, u8 value);
+void opSNEValue(Chip8VM_t* vm, u8 reg, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 5xy0
@@ -69,7 +86,10 @@ void opSNEValue(Chip8VM_t* vm, u8 reg, u8 value);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opSEReg(Chip8VM_t* vm, u8 regX, u8 regY);
+void opSEReg(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 6xkk
@@ -78,7 +98,10 @@ void opSEReg(Chip8VM_t* vm, u8 regX, u8 regY);
  *          reg     Number (x) indicating a register Vx
  *          value   The value (kk)
  */
-void opLDValue(Chip8VM_t* vm, u8 reg, u8 value);
+void opLDValue(Chip8VM_t* vm, u8 reg, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 7xkk
@@ -87,7 +110,10 @@ void opLDValue(Chip8VM_t* vm, u8 reg, u8 value);
  *          reg     Number (x) indicating a register Vx
  *          value   The value (kk)
  */
-void opADDValue(Chip8VM_t* vm, u8 reg, u8 value);
+void opADDValue(Chip8VM_t* vm, u8 reg, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy0
@@ -96,7 +122,10 @@ void opADDValue(Chip8VM_t* vm, u8 reg, u8 value);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opLDReg(Chip8VM_t* vm, u8 regX, u8 regY);
+void opLDReg(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy1
@@ -106,7 +135,10 @@ void opLDReg(Chip8VM_t* vm, u8 regX, u8 regY);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opOR(Chip8VM_t* vm, u8 regX, u8 regY);
+void opOR(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy2
@@ -116,7 +148,10 @@ void opOR(Chip8VM_t* vm, u8 regX, u8 regY);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opAND(Chip8VM_t* vm, u8 regX, u8 regY);
+void opAND(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy3
@@ -126,7 +161,10 @@ void opAND(Chip8VM_t* vm, u8 regX, u8 regY);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opXOR(Chip8VM_t* vm, u8 regX, u8 regY);
+void opXOR(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy4
@@ -136,7 +174,10 @@ void opXOR(Chip8VM_t* vm, u8 regX, u8 regY);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opADDReg(Chip8VM_t* vm, u8 regX, u8 regY);
+void opADDReg(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy5
@@ -146,7 +187,10 @@ void opADDReg(Chip8VM_t* vm, u8 regX, u8 regY);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opSUB(Chip8VM_t* vm, u8 regX, u8 regY);
+void opSUB(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy6
@@ -155,7 +199,10 @@ void opSUB(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHR(Chip8VM_t* vm, u8 reg);
+void opSHR(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xy7
@@ -165,7 +212,10 @@ void opSHR(Chip8VM_t* vm, u8 reg);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY);
+void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 8xyE
@@ -174,7 +224,10 @@ void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHL(Chip8VM_t* vm, u8 reg);
+void opSHL(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: 9xy0
@@ -184,7 +237,10 @@ void opSHL(Chip8VM_t* vm, u8 reg);
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
-void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY);
+void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Annn
@@ -192,7 +248,10 @@ void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          value   The value (nnn)
  */
-void opLDI(Chip8VM_t* vm, u8 value);
+void opLDI(Chip8VM_t* vm, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Bnnn
@@ -200,7 +259,10 @@ void opLDI(Chip8VM_t* vm, u8 value);
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opJPV0(Chip8VM_t* vm, u8 addr);
+void opJPV0(Chip8VM_t* vm, u8 addr) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Cxkk
@@ -210,7 +272,10 @@ void opJPV0(Chip8VM_t* vm, u8 addr);
  *          reg     Number (x) indicating a register Vx
  *          value   The value (kk)
  */
-void opRND(Chip8VM_t* vm, u8 reg, u8 value);
+void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Dxyn
@@ -221,7 +286,10 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value);
  *          regY    Number (y) indicating a register Vy
  *          size    The size of the sprite in bytes (n)
  */
-void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size);
+void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Ex9E
@@ -229,7 +297,10 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSKP(Chip8VM_t* vm, u8 reg);
+void opSKP(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: ExA1
@@ -238,7 +309,10 @@ void opSKP(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSKNP(Chip8VM_t* vm, u8 reg);
+void opSKNP(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx07
@@ -246,7 +320,10 @@ void opSKNP(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDRegDT(Chip8VM_t* vm, u8 reg);
+void opLDRegDT(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx0A
@@ -254,7 +331,10 @@ void opLDRegDT(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDRegKey(Chip8VM_t* vm, u8 reg);
+void opLDRegKey(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx15
@@ -262,7 +342,10 @@ void opLDRegKey(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDDT(Chip8VM_t* vm, u8 reg);
+void opLDDT(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx18
@@ -270,7 +353,10 @@ void opLDDT(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDST(Chip8VM_t* vm, u8 reg);
+void opLDST(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx1E
@@ -279,7 +365,10 @@ void opLDST(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opADDI(Chip8VM_t* vm, u8 reg);
+void opADDI(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx29
@@ -288,7 +377,10 @@ void opADDI(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDSprite(Chip8VM_t* vm, u8 reg);
+void opLDSprite(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx33
@@ -297,7 +389,10 @@ void opLDSprite(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDBCD(Chip8VM_t* vm, u8 reg);
+void opLDBCD(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx55
@@ -306,7 +401,10 @@ void opLDBCD(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDRegs(Chip8VM_t* vm, u8 reg);
+void opLDRegs(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
 
 /*
  * Instruction: Fx65
@@ -315,6 +413,7 @@ void opLDRegs(Chip8VM_t* vm, u8 reg);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opLDMem(Chip8VM_t* vm, u8 reg);
-
-#endif /* OPS_H */
+void opLDMem(Chip8VM_t* vm, u8 reg) {
+    // TODO
+    return;
+}
