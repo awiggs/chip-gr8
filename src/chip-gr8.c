@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "chip8.h"
 
@@ -22,7 +23,7 @@ FILE * openRom(char* file)
 {
   FILE * rom = fopen(file, "r");
 
-  if (!rom)
+  if (rom == NULL)
   {
     debug("Failed to load rom.");
     exit(404);
@@ -35,12 +36,12 @@ int loadRom(char* file)
 {
   ROM = openRom(file);
 
-  if (ROM)
+  if (ROM != NULL)
   {
-    return 0;
+    return true;
   }
 
-  return 1;
+  return false;
 }
 
 int unloadRom()
@@ -48,7 +49,7 @@ int unloadRom()
   return closeRom(ROM);
 }
 
-u16 readInstruction()
+word_t readInstruction()
 {
   return fgetc(ROM);
 }

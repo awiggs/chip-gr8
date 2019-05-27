@@ -14,7 +14,7 @@ Before building and running, make sure you have pygame.
 python -m pip install -U pygame --user
 ```
 
-# Build
+# Build Using mekpie
 
 To build the c code you will need to have mekpie installed
 
@@ -22,10 +22,20 @@ To build the c code you will need to have mekpie installed
 pip install mekpie
 ```
 
-And then run
+To build the dll prior to running the python script:
 
 ```
-mekpie build
+mekpie -m dll build
 ```
 
-Not yet tested on windows, someone please guinea pig!
+To run the c tests run
+
+```
+mekpie test
+```
+
+# Build Using Make
+
+```
+make
+```

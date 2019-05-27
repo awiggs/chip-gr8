@@ -1,8 +1,8 @@
 import ctypes
 import os
 
-DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/chip-gr8'))
-DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/chip-gr8'))
+DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
+DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))
 
 for path in [
     DLL_DEBUG_PATH,
