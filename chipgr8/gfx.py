@@ -4,7 +4,7 @@ from pygame.locals import *
 
 class ChipGr8Window():
     screen = None
-    scale = 5
+    scale = 10
 
     def __init__(self):
         pygame.init()
