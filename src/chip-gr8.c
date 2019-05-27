@@ -49,7 +49,7 @@ int unloadRom()
   return closeRom(ROM);
 }
 
-wint_t readInstruction()
+word_t readInstruction()
 {
   return fgetc(ROM);
 }
