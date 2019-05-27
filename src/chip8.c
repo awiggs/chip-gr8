@@ -44,7 +44,7 @@ void freeVM(Chip8VM_t* vm) {
  * 
  * @params vm the vm
  */
-void step(Chip8VM_t * vm) {
+void step(Chip8VM_t* vm) {
     // #TODO
 }
 
@@ -54,7 +54,7 @@ void step(Chip8VM_t * vm) {
  * @params  vm the vm
  * @returns    the next 
  */
-word_t fetch(Chip8VM_t * vm) {
+word_t fetch(Chip8VM_t* vm) {
     // #TODO
     return fgetc(vm->ROM);    
 }
@@ -66,7 +66,7 @@ word_t fetch(Chip8VM_t * vm) {
  * @params vm     the vm
  *         opcode the instruction opcode
  */
-void decode(Chip8VM_t * vm, word_t opcode) {
+void decode(Chip8VM_t* vm, word_t opcode) {
     // #TODO
 }
 
@@ -76,7 +76,7 @@ void decode(Chip8VM_t * vm, word_t opcode) {
  * 
  * @params vm the vm
  */
-void update(Chip8VM_t * vm) {
+void update(Chip8VM_t* vm) {
     // #TODO
 }
 
@@ -87,7 +87,7 @@ void update(Chip8VM_t * vm) {
  *         filePath the path to the ROM
  * @returns         0 on failure
  */
-int loadROM(Chip8VM_t * vm, char * filePath) {
+int loadROM(Chip8VM_t* vm, char* filePath) {
     vm->ROM = fopen(filePath, "r");
     if (vm->ROM == NULL) {
         debugf("Failed to load rom: %s", filePath);
@@ -102,7 +102,7 @@ int loadROM(Chip8VM_t * vm, char * filePath) {
  * @params vm the vm
  * @returns   0 on failure
  */
-int unloadROM(Chip8VM_t * vm) {
+int unloadROM(Chip8VM_t* vm) {
     if (vm->ROM) {
         fclose(vm->ROM);
         debugs("Succesfully closed ROM file.");

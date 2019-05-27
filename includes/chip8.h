@@ -3,9 +3,6 @@
 #ifndef CHIP8_H
 #define CHIP8_H
 
-// #TODO Defining DEBUG should be part of the build process
-#define DEBUG
-
 #include "pinttypes.h"
 #include "debug.h"
 
@@ -50,7 +47,7 @@ int helloSharedLibrary();
  * 
  * @returns the new VM
  */
-Chip8VM_t * initVM();
+Chip8VM_t* initVM();
 
 /**
  * Deallocates a VM instance. The VM instance should NOT be accessed after
@@ -58,14 +55,14 @@ Chip8VM_t * initVM();
  * 
  * @params vm the vm to deallocate
  */
-void freeVM(Chip8VM_t * vm); 
+void freeVM(Chip8VM_t* vm); 
 
 /**
  * Steps a VM 1 clock cycle. 
  * 
  * @params vm the vm
  */
-void step(Chip8VM_t * vm);
+void step(Chip8VM_t* vm);
 
 /**
  * Fetches the next instruction.
@@ -73,7 +70,7 @@ void step(Chip8VM_t * vm);
  * @params  vm the vm
  * @returns    the next 
  */
-word_t fetch(Chip8VM_t * vm);
+word_t fetch(Chip8VM_t* vm);
 
 /**
  * Decodes and dispatches the next opcode performing the appropraite action and
@@ -82,7 +79,7 @@ word_t fetch(Chip8VM_t * vm);
  * @params vm     the vm
  *         opcode the instruction opcode
  */
-void decode(Chip8VM_t * vm, word_t opcode);
+void decode(Chip8VM_t* vm, word_t opcode);
 
 /**
  * Performs additional changes to the VM that are not covered by instruction
@@ -90,7 +87,7 @@ void decode(Chip8VM_t * vm, word_t opcode);
  * 
  * @params vm the vm
  */
-void update(Chip8VM_t * vm);
+void update(Chip8VM_t* vm);
 
 /**
  * Load a ROM from a file into the vm.
@@ -99,7 +96,7 @@ void update(Chip8VM_t * vm);
  *         filePath the path to the ROM
  * @returns         0 on failure
  */
-int loadROM(Chip8VM_t * vm, char * filePath);
+int loadROM(Chip8VM_t* vm, char* filePath);
 
 /**
  * Unlaod a ROM from a vm.
@@ -107,6 +104,6 @@ int loadROM(Chip8VM_t * vm, char * filePath);
  * @params vm the vm
  * @returns   0 on failure
  */
-int unloadROM(Chip8VM_t * vm);
+int unloadROM(Chip8VM_t* vm);
 
 #endif /* CHIP8_H */

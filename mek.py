@@ -18,4 +18,4 @@ if options.mode == 'dll':
 if options.release:
     flags += ['-O']
 else:
-    flags += ['-g']
+    flags += ['-g', '-DDEBUG']

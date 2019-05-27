@@ -1,4 +1,6 @@
-#define DEBUG
+#ifndef DEBUG
+    #define DEBUG
+#endif
 
 #include <stdio.h>
 #include "chip8.h"
