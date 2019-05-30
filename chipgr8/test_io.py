@@ -21,10 +21,8 @@ def demo3():
                 sys.exit()
         w.render(getTestBitMap())
         time.sleep(0.5)
-        w.render(getTestBitMap2())
+        w.render(getTestBitMap2(), True)
         time.sleep(0.5)
-
-
 
 def getTestBitMap():
     bM = []
