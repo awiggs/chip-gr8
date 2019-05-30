@@ -15,7 +15,7 @@ STACK_SIZE = '16'
 STRUCT_DEFINITION = lambda : [
     # Name     Type                    Description
     ('RAM',    array(u8, RAM_SIZE),    'Main memory'),
-    ('VRAM',   array(u8, RAM_SIZE),    'Video memory'),
+    ('VRAM',   array(u8, VRAM_SIZE),   'Video memory'),
     ('stack',  array(u16, STACK_SIZE), 'Address stack'),
     ('SP',     u8,                     'Stack pointer'),
     ('PC',     u16,                    'Program counter'),

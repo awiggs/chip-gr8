@@ -10,7 +10,7 @@ class Chip8VMStruct(ctypes.Structure):
     _pack_   = 1
     _fields_ = [
         ('RAM', ctypes.c_uint8 * 0x1000), # Main memory
-        ('VRAM', ctypes.c_uint8 * 0x1000), # Video memory
+        ('VRAM', ctypes.c_uint8 * (64 * 32)), # Video memory
         ('stack', ctypes.c_uint16 * 16), # Address stack
         ('SP', ctypes.c_uint8), # Stack pointer
         ('PC', ctypes.c_uint16), # Program counter

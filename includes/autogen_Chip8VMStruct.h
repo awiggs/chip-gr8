@@ -15,7 +15,7 @@
 typedef struct Chip8VM_t Chip8VM_t;
 struct Chip8VM_t {
     u8 RAM[0x1000]; // Main memory
-    u8 VRAM[0x1000]; // Video memory
+    u8 VRAM[(64 * 32)]; // Video memory
     u16 stack[16]; // Address stack
     u8 SP; // Stack pointer
     u16 PC; // Program counter
