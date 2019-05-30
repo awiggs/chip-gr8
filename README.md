@@ -15,6 +15,14 @@ python -m pip install -U pygame --user
 pip install pytest
 ```
 
+# Changing Struct
+
+To update the VM struct used in the C and python code modify `defineChip8VMStruct.py` and then run 
+
+```
+python ./defineChip8VMStruct.py
+```
+
 # Build Using mekpie
 
 To build the c code you will need to have mekpie installed
