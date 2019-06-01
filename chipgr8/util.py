@@ -1,4 +1,4 @@
-def chunk(size, iterable):
+def chunk(size, iterable, pad=[None]):
     '''
     Yields the iterable in chunks of the given size
 
@@ -7,7 +7,10 @@ def chunk(size, iterable):
     @yields          The next chunk
     '''
     for i in range(0, len(iterable), size):
-        yield iterable[i:i + size]
+        chunk = iterable[i:i + size]
+        if len(chunk) < size:
+                chunk += pad * (size - len(chunk))
+        yield chunk
 
 def nibbles(byte):
     '''

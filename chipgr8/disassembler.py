@@ -1,31 +1,17 @@
 from chipgr8.util import chunk, nibbles, hexarg, decarg, read, write
 
-def assemble(src=None, inPath=None, outPath=None):
-    '''
-    Converts a string representation or input file of Chip-8 instructions to a 
-    binary ROM and optionally writes the results to a file. Returns result as a 
-    bytearray. Consider assembly syntax defined here: 
-    https://massung.github.io/CHIP-8/
-
-    @params src     If provided, the string source code
-            inPath  If provided, the input file
-            outPath If provided, the output file
-    @returns        ROM binary
-    '''
-    pass #TODO
-
 CHIP_8_INSTRUCTIONS = [
 #   Instruction Format    Opcode
     ('CLS',               '00E0'),
     ('RET',               '00EE'),
-    ('JP {addr}',         '1nnn'),
-    ('CALL {addr}',       '2nnn'),
+    ('JP {nnn}',          '1nnn'),
+    ('CALL {nnn}',        '2nnn'),
     ('SE V{x} {kk}',      '3xkk'),
     ('SNE V{x} {kk}',     '4xkk'),
     ('SE V{x} V{y}',      '5xy0'),
     ('LD V{x} {kk}',      '6xkk'),
     ('ADD V{x} {kk}',     '7xkk'),
-    ('Ld V{x} V{y}',      '8xy0'),
+    ('LD V{x} V{y}',      '8xy0'),
     ('OR V{x} V{y}',      '8xy1'),
     ('AND V{x} V{y}',     '8xy2'),
     ('XOR V{x} V{y}',     '8xy3'),
@@ -38,9 +24,9 @@ CHIP_8_INSTRUCTIONS = [
     ('SNE V{x} V{y}',     '9xy0'),
     ('JP V0 {nnn}',       'Annn'),
     ('RND V{x} {kk}',     'Cxkk'),
-    ('DRW V{x} V{y} {n}', 'Dxyn'),
+    ('DRW V{x} V{y} {n}', 'Dxyz'),
     ('SKP V{x}',          'Ex9E'),
-    ('SKNO V{x}',         'ExA1'),
+    ('SKNP V{x}',         'ExA1'),
     ('LD V{x} DT',        'Fx07'),
     ('LD V{x} K',         'Fx0A'),
     ('LD DT V{x}',        'Fx15'),
@@ -65,6 +51,24 @@ SUPER_CHIP_48_INSTRUCTIONS = [
     ('LD V{x} R',  'Fx85'),
 ]
 
+def hexdump(buffer=None, inPath=None, outPath=None):
+    '''
+    Converts a byte array or input file into a hex dump, one instruction per-line for easy diff.
+
+    @params buffer  If provided, the instructions to dump
+            inPath  if provided, the input file
+            outPath If provided, the output file
+    @returns        The hex dump
+    '''
+    if inPath: buffer = read(inPath, 'rb')
+
+    dump = '\n'.join(hexarg(*nibbles(high), *nibbles(low))
+        for (high, low) 
+        in chunk(2, buffer, pad=b'\0')
+    )
+    if outPath: write(outPath, dump)
+    return dump
+
 def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True, prefix='  '):
     '''
     Converts a byte array or input file to a string representation of Chip-8
@@ -79,16 +83,17 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
             prefix  Prefix prior to instruction, defaults to two spaces
     @returns        Disassembled source code
     '''
-    # Get buffer from provided path if needed
     if inPath: buffer = read(inPath, 'rb')
 
-    instructions = [disassembleInstruction(high, low, labels, decargs)
+    minaddr = 0x200
+    maxaddr = minaddr + len(buffer)
+    instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr)
         for (high, low) 
-        in chunk(2, buffer)
+        in chunk(2, buffer, pad=b'\0')
     ]
     source = ''
     for (i, instruction) in enumerate(instructions):
-        addr = '0x' + hexarg(0x200 + (i * 2))
+        addr = '0x' + hexarg(minaddr + (i * 2))
         if labels and addr in labels:
             source += labels[addr] + '\n'
         source += prefix + instruction + '\n'
@@ -96,30 +101,36 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
     if outPath: write(outPath, source)
     return source
 
-def disassembleInstruction(high, low, labels, decargs):
+def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr):
     (hh, hl), (lh, ll) = nibbles(high), nibbles(low)
-    parameters = dict(
+    arguments = dict(
         x    = hexarg(hl),
         y    = hexarg(lh),
-        n    = decarg(ll)     if decargs else ('0x' + hexarg(ll)),
+        z    = decarg(ll)     if decargs else ('0x' + hexarg(ll)),
+        n    = decarg(lh)     if decargs else ('0x' + hexarg(lh)),
         kk   = decarg(lh, ll) if decargs else ('0x' + hexarg(lh, ll)),
         nnn  = '0x' + hexarg(hl, lh, ll),
-        addr = '0x' + hexarg(hl, lh, ll),
     )
     for (fmt, opcode) in CHIP_8_INSTRUCTIONS:
         if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
             # Handle labelled addressing
-            if labels is not None and 'addr' in fmt:
-                if parameters['nnn'] not in labels:
-                    labels[parameters['nnn']] = '.label_' + str(len(labels))
-                parameters['addr'] = labels[parameters['nnn']]
-            return fmt.format(**parameters)
+            nnn = int(arguments['nnn'][2:], 16)
+            if (labels is not None 
+                and 'nnn' in fmt 
+                and nnn >= minaddr
+                and nnn <  maxaddr
+                and nnn %  2 == 0
+            ):
+                if arguments['nnn'] not in labels:
+                    labels[arguments['nnn']] = '.label_' + str(len(labels))
+                arguments['nnn'] = labels[arguments['nnn']]
+            return fmt.format(**arguments)
 
     for (fmt, opcode) in SUPER_CHIP_48_INSTRUCTIONS:
-        if opcodeMatch(opcode, hexarg(high, low)):
-            return fmt.format(**parameters)
+        if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
+            return fmt.format(**arguments)
     
-    return 'BYTE 0x' + hexarg(high, low)
+    return 'BYTE 0x' + hexarg(hh, hl, lh, ll)
 
 def opcodeMatch(pattern, instruction):
     return all(p in 'xykn' or p == i for (p, i) in zip(pattern, instruction))
