@@ -24,7 +24,7 @@ CHIP_8_INSTRUCTIONS = [
     ('SNE V{x} V{y}',     '9xy0'),
     ('JP V0 {nnn}',       'Annn'),
     ('RND V{x} {kk}',     'Cxkk'),
-    ('DRW V{x} V{y} {n}', 'Dxyz'),
+    ('DRW V{x} V{y} {z}', 'Dxyz'),
     ('SKP V{x}',          'Ex9E'),
     ('SKNP V{x}',         'ExA1'),
     ('LD V{x} DT',        'Fx07'),
@@ -83,8 +83,10 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
             prefix  Prefix prior to instruction, defaults to two spaces
     @returns        Disassembled source code
     '''
-    if inPath: buffer = read(inPath, 'rb')
-
+    if inPath: 
+        buffer = read(inPath, 'rb')
+    if not isinstance(labels, dict): 
+        labels = None
     minaddr = 0x200
     maxaddr = minaddr + len(buffer)
     instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr)
@@ -133,4 +135,4 @@ def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr):
     return 'BYTE 0x' + hexarg(hh, hl, lh, ll)
 
 def opcodeMatch(pattern, instruction):
-    return all(p in 'xykn' or p == i for (p, i) in zip(pattern, instruction))
+    return all(p in 'xyzkn' or p == i for (p, i) in zip(pattern, instruction))
