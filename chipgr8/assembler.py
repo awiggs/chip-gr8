@@ -111,15 +111,21 @@ def assembleRegister(source, labels, lineno):
         return assembleRegister(labels[source], source, lineno)
     raise Exception('Expected a register {} on line {}!'.format(source, lineno))
 
-def assembleCLS(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00E0'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
+def assembleCommand(hex):
+    def assembleCommandImpl(arguments, labels, lineno):
+        if len(arguments) == 0:
+            return hex
+        raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
+    return assembleCommandImpl 
 
-def assembleRET(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00EE'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))    
+def assembleVRegOp(prefix, postfix):
+    def assembleVRegOpImpl(arguments, labels, lineno):
+        if len(arguments) == 2:
+            Vx = assembleRegister(arguments[0], labels, lineno)
+            Vy = assembleRegister(arguments[1], labels, lineno)
+            return prefix + Vx + Vy + postfix
+        raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
+    return assembleVRegOpImpl
 
 def assembleJP(arguments, labels, lineno):
     if len(arguments) == 1:
@@ -216,55 +222,6 @@ def assembleADD(arguments, labels, lineno):
                 return 'F' + Vx + '1E'
     raise Exception('Unexpected arguments on line {}!'.format(lineno))
 
-def assembleOR(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '1'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleAND(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '2'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleXOR(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '3'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleSUB(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '5'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleSHR(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '6'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleSUBN(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + '7'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleSHL(arguments, labels, lineno):
-    if len(arguments) == 2:
-        Vx = assembleRegister(arguments[0], labels, lineno)
-        Vy = assembleRegister(arguments[1], labels, lineno)
-        return '8' + Vx + Vy + 'E'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
 def assembleRND(arguments, labels, lineno):
     if len(arguments) == 2:
         Vx = assembleRegister(arguments[0], labels, lineno)
@@ -304,31 +261,6 @@ def assembleSCD(arguments, labels, lineno):
         return '00' + n + 'C'
     raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
 
-def assembleSCR(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00FB'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleSCL(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00FC'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleEXIT(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00FD'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleLOW(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00FE'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
-def assembleHIGH(arguments, labels, lineno):
-    if len(arguments) == 0:
-        return '00FF'
-    raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
-
 def assembleBYTE(arguments, labels, lineno):
     if len(arguments) == 1:
         bbbb = assembleValue(arguments[0], labels, lineno, 4)
@@ -336,31 +268,31 @@ def assembleBYTE(arguments, labels, lineno):
     raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
 
 ASSEMBLY_TABLE = {
-    'CLS':  assembleCLS,
-    'RET':  assembleRET,
+    'CLS':  assembleCommand('00E0'),
+    'RET':  assembleCommand('00EE'),
     'JP':   assembleJP,
     'CALL': assembleCALL,
     'SE':   assembleSE,
     'SNE':  assembleSNE,
     'LD':   assembleLD,
     'ADD':  assembleADD,
-    'OR':   assembleOR,
-    'AND':  assembleAND,
-    'XOR':  assembleXOR,
-    'SUB':  assembleSUB,
-    'SHR':  assembleSHR,
-    'SUBN': assembleSUBN,
-    'SHL':  assembleSHL,
+    'OR':   assembleVRegOp('8', '1'),
+    'AND':  assembleVRegOp('8', '2'),
+    'XOR':  assembleVRegOp('8', '3'),
+    'SUB':  assembleVRegOp('8', '5'),
+    'SHR':  assembleVRegOp('8', '6'),
+    'SUBN': assembleVRegOp('8', '7'),
+    'SHL':  assembleVRegOp('8', 'E'),
     'RND':  assembleRND,
     'DRW':  assembleDRW,
     'SKP':  assembleSKP,
     'SKNP': assembleSKNP,
     'SCU':  assembleSCU,
     'SCD':  assembleSCD,
-    'SCR':  assembleSCR,
-    'SCL':  assembleSCL,
-    'EXIT': assembleEXIT,
-    'LOW':  assembleLOW,
-    'HIGH': assembleHIGH,
+    'SCR':  assembleCommand('00FB'),
+    'SCL':  assembleCommand('00FC'),
+    'EXIT': assembleCommand('00FD'),
+    'LOW':  assembleCommand('00FE'),
+    'HIGH': assembleCommand('00FF'),
     'BYTE': assembleBYTE,
 }
