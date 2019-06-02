@@ -188,11 +188,11 @@ void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY);
 
 /*
  * Instruction: Annn
- * Description: Set the value of register I to the value nnn.
+ * Description: Set the value of register I to the address nnn.
  * @params  vm      The current state of the Virtual Machine
- *          value   The value (nnn)
+ *          addr    The address (nnn)
  */
-void opLDI(Chip8VM_t* vm, u8 value);
+void opLDI(Chip8VM_t* vm, u8 addr);
 
 /*
  * Instruction: Bnnn

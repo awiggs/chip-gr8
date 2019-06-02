@@ -68,7 +68,7 @@ void freeVM(Chip8VM_t* vm);
 void step(Chip8VM_t* vm);
 
 /**
- * Fetches the next instruction.
+ * Fetches the next instruction then increments the program counter by 2.
  * 
  * @params  vm the vm
  * @returns    the next 

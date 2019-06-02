@@ -49,14 +49,14 @@ void step(Chip8VM_t* vm) {
 }
 
 /**
- * Fetches the next instruction.
+ * Fetches the next instruction then increments the program counter by 2.
  * 
  * @params  vm the vm
  * @returns    the next 
  */
 word_t fetch(Chip8VM_t* vm) {
     // #TODO
-    return fgetc(vm->ROM);    
+    return fgetc(vm->ROM);  
 }
 
 /**
