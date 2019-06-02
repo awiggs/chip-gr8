@@ -1,6 +1,5 @@
 import chipgr8.core as core
 
-
 def init(
     loadState    = None,
     ROM          = None,
