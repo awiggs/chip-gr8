@@ -9,7 +9,7 @@ int main(int argv, char** argc) {
     Chip8VM_t* vm = initVM();
     if (loadROM(vm, "./data/roms/Tron.ch8")) {
         for (int i = 0; i < 10; i++) {
-            debugf("The %ith instruction is %02x.\n", i, fetch(vm));
+            debugf("The %ith instruction is %04x.\n", i, fetch(vm));
         }
         unloadROM(vm);
     } else {
