@@ -211,7 +211,7 @@ void step(Chip8VM_t* vm) {
 word_t fetch(Chip8VM_t* vm) {
     word_t msb = fgetc(vm->ROM) << 8;    
     word_t lsb = fgetc(vm->ROM);    
-
+    vm->PC += 2;
     return msb + lsb;
 }
 
