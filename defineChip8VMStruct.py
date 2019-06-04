@@ -20,12 +20,13 @@ STRUCT_DEFINITION = lambda : [
     ('SP',     u8,                     'Stack pointer'),
     ('PC',     u16,                    'Program counter'),
     ('I',      u16,                    'Address register'),
-    ('V',      array(u8, RAM_SIZE),    'General purpose registers'),
+    ('V',      array(u8, STACK_SIZE),  'General purpose registers'),
     ('DT',     u8,                     'Delay timer'),
     ('ST',     u8,                     'Sound timer'),
-    ('keys',   array(u8, '16'),        'Key IO registers'),
+    ('keys',   u16,                    'Key IO registers'),
     ('clock',  u64,                    'Time since simulation began'),
     ('ROM',    void_ptr,               'ROM file pointer'),
+    ('seed',   u8,                     'Seed for RNG'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #

@@ -20,12 +20,13 @@ struct Chip8VM_t {
     u8 SP; // Stack pointer
     u16 PC; // Program counter
     u16 I; // Address register
-    u8 V[0x1000]; // General purpose registers
+    u8 V[16]; // General purpose registers
     u8 DT; // Delay timer
     u8 ST; // Sound timer
-    u8 keys[16]; // Key IO registers
+    u16 keys; // Key IO registers
     u64 clock; // Time since simulation began
     void* ROM; // ROM file pointer
+    u8 seed; // Seed for RNG
 } __attribute__((packed));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

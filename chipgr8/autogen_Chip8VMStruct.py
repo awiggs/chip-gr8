@@ -15,10 +15,11 @@ class Chip8VMStruct(ctypes.Structure):
         ('SP', ctypes.c_uint8), # Stack pointer
         ('PC', ctypes.c_uint16), # Program counter
         ('I', ctypes.c_uint16), # Address register
-        ('V', ctypes.c_uint8 * 0x1000), # General purpose registers
+        ('V', ctypes.c_uint8 * 16), # General purpose registers
         ('DT', ctypes.c_uint8), # Delay timer
         ('ST', ctypes.c_uint8), # Sound timer
-        ('keys', ctypes.c_uint8 * 16), # Key IO registers
+        ('keys', ctypes.c_uint16), # Key IO registers
         ('clock', ctypes.c_uint64), # Time since simulation began
         ('ROM', ctypes.c_void_p), # ROM file pointer
+        ('seed', ctypes.c_uint8), # Seed for RNG
     ]
