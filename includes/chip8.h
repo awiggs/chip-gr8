@@ -61,7 +61,7 @@ word_t fetch(Chip8VM_t* vm);
  * @params vm     the vm
  *         opcode the instruction opcode
  */
-Instruction_t decode(Chip8VM_t* vm, word_t opcode);
+Instruction_t decode(word_t opcode);
 
 /**
  * Takes the current instruction and evaluates the opcode to translate it
@@ -99,13 +99,5 @@ u8 getValue8Bit(word_t opcode);
 u8 getValue12Bit(word_t opcode);
 
 u8 getValue4Bit(word_t opcode);
-
-/**
- * Unlaod a ROM from a vm.
- * 
- * @params vm the vm
- * @returns   0 on failure
- */
-int unloadROM(Chip8VM_t* vm);
 
 #endif /* CHIP8_H */

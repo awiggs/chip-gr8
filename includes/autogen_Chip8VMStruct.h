@@ -14,19 +14,23 @@
 /* !!! DO NOT MODIFY !!! */
 typedef struct Chip8VM_t Chip8VM_t;
 struct Chip8VM_t {
-    u8 RAM[0x1000]; // Main memory
-    u8 VRAM[(64 * 32)]; // Video memory
-    u16 stack[16]; // Address stack
-    u8 SP; // Stack pointer
-    u16 PC; // Program counter
-    u16 I; // Address register
-    u8 V[16]; // General purpose registers
-    u8 DT; // Delay timer
-    u8 ST; // Sound timer
-    u16 keys; // Key IO registers
-    u64 clock; // Time since simulation began
-    void* ROM; // ROM file pointer
+    u8* RAM; // Main memory
+    u8* VRAM; // Video memory
+    u16* stack; // Address stack
+    u16 sizeRAM; // Size of main memory
+    u16 sizeVRAM; // Size of video memory
+    u8 sizeStack; // Size of stack
+    u8* SP; // Stack pointer
+    u16* PC; // Program counter
+    u16* I; // Address register
+    u8* V; // General purpose registers
+    u8* DT; // Delay timer
+    u8* ST; // Sound timer
+    u8* W; // Wait register
+    u16* keys; // Key IO registers
     u8 seed; // Seed for RNG
+    u8 wait; // Chip-8 in wait mode
+    u64 clock; // Time since simulation began
 } __attribute__((packed));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

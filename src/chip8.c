@@ -36,7 +36,7 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
             break;
         }
         case LOAD: {
-            opSEValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            opLDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
             break;
         }
         case ADD: {
@@ -139,11 +139,11 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
 }
 
 u8 getRegisterX(word_t opcode) {
-    return opcode & 0x0F00 >> 8;
+    return (opcode & 0x0F00) >> 8;
 }
 
 u8 getRegisterY(word_t opcode) {
-    return opcode & 0x00F0 >> 4;
+    return (opcode & 0x00F0) >> 4;
 }
 
 u8 getValue8Bit(word_t opcode) {
@@ -175,7 +175,37 @@ int helloSharedLibrary() {
 Chip8VM_t* initVM() {
     // #TODO initialize VM state correctly.
     Chip8VM_t* vm = malloc(sizeof(Chip8VM_t));
-    vm->ROM = NULL;
+
+    // Initialize constant fields
+    vm->sizeRAM   = 0x1000;
+    vm->sizeVRAM  = 64 * 32;
+    vm->sizeStack = 0x10;
+    vm->seed = 0;
+    vm->wait = 0;
+    vm->clock = 0;
+
+    // Initialize allocated fields
+    vm->RAM   = malloc(vm->sizeRAM);
+    vm->VRAM  = malloc(vm->sizeVRAM);
+    vm->stack = malloc(vm->sizeStack);
+
+    // Initialize pointers
+    u8* base = vm->RAM + 80;
+    vm->SP   = (void*) (base + 0);
+    vm->PC   = (void*) (base + 1);
+    vm->I    = (void*) (base + 3);
+    vm->V    = (void*) (base + 5);
+    vm->DT   = (void*) (base + 21);
+    vm->ST   = (void*) (base + 22);
+    vm->W    = (void*) (base + 33);
+    vm->keys = (void*) (base + 34);
+
+    *vm->SP = 0;
+    *vm->PC = 0x200;
+    *vm->I  = 0x200;
+    *vm->DT = 0;
+    *vm->ST = 0;
+    *vm->W  = 0;
     return vm;
 }
 
@@ -187,9 +217,9 @@ Chip8VM_t* initVM() {
  */
 void freeVM(Chip8VM_t* vm) {
     // #TODO perform any other necessary cleanup (eg. closing ROM file)
-    if (vm->ROM != NULL) {
+    /* if (vm->ROM != NULL) {
         unloadROM(vm);
-    }
+    }*/
     free(vm);
 }
 
@@ -199,7 +229,25 @@ void freeVM(Chip8VM_t* vm) {
  * @params vm the vm
  */
 void step(Chip8VM_t* vm) {
-    // #TODO
+    // This code is questionable (should probably be factored out)
+    if (vm->wait) {
+        if (*vm->keys) {
+            vm->wait = 0;
+            int keys = *vm->keys;
+            int key  = 0;
+            while (keys != 0) {
+                key = key >> 1;
+                key++;
+            }
+            vm->V[*vm->W] = key;
+        } else {
+            return;
+        }
+    }
+    word_t opcode = fetch(vm);
+    Instruction_t instruction = decode(opcode);
+    evaluate(vm, instruction, opcode);
+    update(vm);
 }
 
 /**
@@ -209,9 +257,9 @@ void step(Chip8VM_t* vm) {
  * @returns    the next 
  */
 word_t fetch(Chip8VM_t* vm) {
-    word_t msb = fgetc(vm->ROM) << 8;    
-    word_t lsb = fgetc(vm->ROM);    
-    vm->PC += 2;
+    word_t msb = vm->RAM[*vm->PC] << 8;    
+    word_t lsb = vm->RAM[*vm->PC + 1];    
+    *vm->PC += 2;
     return msb + lsb;
 }
 
@@ -222,11 +270,10 @@ word_t fetch(Chip8VM_t* vm) {
  * @params vm     the vm
  *         opcode the instruction opcode
  */
-Instruction_t decode(Chip8VM_t* vm, word_t opcode) {
-    word_t msb = opcode >> 7;
-    word_t lsb = opcode & 0xF;
-
-    switch (msb) {
+Instruction_t decode(word_t opcode) {
+    word_t msn = opcode >> 12;
+    word_t lsn = opcode & 0xF;
+    switch (msn) {
         case 0x00: {
             // When the instruction starts with zero
             // there are only three instructions
@@ -265,31 +312,31 @@ Instruction_t decode(Chip8VM_t* vm, word_t opcode) {
             return ADD;
         }
         case 0x08: {
-            if (lsb == 0x0) {
+            if (lsn == 0x0) {
                 return LOADR;
             }
-            else if (lsb == 0x1) {
+            else if (lsn == 0x1) {
                 return OR;
             }
-            else if (lsb == 0x2) {
+            else if (lsn == 0x2) {
                 return AND;
             }
-            else if (lsb == 0x3) {
+            else if (lsn == 0x3) {
                 return XOR;
             }
-            else if (lsb == 0x4) {
+            else if (lsn == 0x4) {
                 return ADDR;
             }
-            else if (lsb == 0x5) {
+            else if (lsn == 0x5) {
                 return SUB;
             }
-            else if (lsb == 0x6) {
+            else if (lsn == 0x6) {
                 return SHIFTREG;
             }
-            else if (lsb == 0x7) {
+            else if (lsn == 0x7) {
                 return SUBN;
             }
-            else if (lsb == 0xE) {
+            else if (lsn == 0xE) {
                 return SHIFTL;
             }
             else {
@@ -313,7 +360,7 @@ Instruction_t decode(Chip8VM_t* vm, word_t opcode) {
             return DRAW;
         }
         case 0x0E: {
-            if (lsb == 0xE) {
+            if (lsn == 0xE) {
                 return SKIP;
             }
             else {
@@ -355,7 +402,7 @@ Instruction_t decode(Chip8VM_t* vm, word_t opcode) {
             }
         }
         default: {
-            debugs("Impossible most signifigant bit");
+            debugf("Impossible most signifigant nibble: %x !", msn);
             return INVALID_INSTRUCTION;
         }
     }
@@ -368,7 +415,9 @@ Instruction_t decode(Chip8VM_t* vm, word_t opcode) {
  * @params vm the vm
  */
 void update(Chip8VM_t* vm) {
-    // #TODO
+    // Decrement DT and ST if positive
+    if (*vm->DT > 0) { *vm->DT -= 1; }
+    if (*vm->ST > 0) { *vm->ST -= 1; }
 }
 
 /**
@@ -379,26 +428,16 @@ void update(Chip8VM_t* vm) {
  * @returns         0 on failure
  */
 int loadROM(Chip8VM_t* vm, char* filePath) {
-    vm->ROM = fopen(filePath, "r");
-    if (vm->ROM == NULL) {
-        debugf("Failed to load rom: %s\n", filePath);
-    }
-    debugs("Succesfully opened ROM file.\n");
-    return vm->ROM != NULL;
-}
-
-/**
- * Unlaod a ROM from a vm.
- * 
- * @params vm the vm
- * @returns   0 on failure
- */
-int unloadROM(Chip8VM_t* vm) {
-    if (vm->ROM) {
-        fclose(vm->ROM);
-        debugs("Succesfully closed ROM file.\n");
+    FILE* file = fopen(filePath, "r");
+    if (file == NULL) {
+        debugf("failed to load ROm %s\n", filePath);
         return 0;
-    }
-    debugs("No ROM file to close!\n");
+    } 
+    fread(vm->RAM + 0x200, vm->sizeRAM - 0x200, 1, file);
+    fclose(file);
+    debugs("Succesfully loaded ROM file.\n");
+    // Reset PC and SP (more? TODO)
+    *vm->PC = 0x200;
+    *vm->SP = 0;
     return 1;
 }

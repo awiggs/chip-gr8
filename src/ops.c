@@ -26,8 +26,8 @@ void opCLS(Chip8VM_t* vm) {
  * @params  vm      The current state of the Virtual Machine
  */
 void opRET(Chip8VM_t* vm) {
-    vm->PC = vm->stack[vm->SP];
-    vm->SP -= 1;
+    *vm->PC = vm->stack[*vm->SP];
+    *vm->SP -= 1;
 }
 
 /*
@@ -37,7 +37,7 @@ void opRET(Chip8VM_t* vm) {
  *          addr    The address (nnn)
  */
 void opJP(Chip8VM_t* vm, u16 addr) {
-    vm->PC = addr;
+    *vm->PC = addr;
 }
 
 /*
@@ -47,9 +47,9 @@ void opJP(Chip8VM_t* vm, u16 addr) {
  *          addr    The address (nnn)
  */
 void opCALL(Chip8VM_t* vm, u16 addr) {
-    vm->SP += 1;
-    vm->stack[vm->SP] = vm->PC;
-    vm->PC = addr;
+    *vm->SP += 1;
+    vm->stack[*vm->SP] = *vm->PC;
+    *vm->PC = addr;
 }
 
 /*
@@ -61,7 +61,7 @@ void opCALL(Chip8VM_t* vm, u16 addr) {
  */
 void opSEValue(Chip8VM_t* vm, u8 reg, u8 value) {
     if (vm->V[reg] == value) {
-        vm->PC += 2;
+        *vm->PC += 2;
     }
 }
 
@@ -74,7 +74,7 @@ void opSEValue(Chip8VM_t* vm, u8 reg, u8 value) {
  */
 void opSNEValue(Chip8VM_t* vm, u8 reg, u8 value) {
     if (vm->V[reg] != value) {
-        vm->PC += 2;
+        *vm->PC += 2;
     }
 }
 
@@ -88,7 +88,7 @@ void opSNEValue(Chip8VM_t* vm, u8 reg, u8 value) {
  */
 void opSEReg(Chip8VM_t* vm, u8 regX, u8 regY) {
     if (vm->V[regX] == vm->V[regY]) {
-        vm->PC += 2;
+        *vm->PC += 2;
     }
 }
 
@@ -237,7 +237,7 @@ void opSHL(Chip8VM_t* vm, u8 reg) {
  */
 void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY) {
     if (vm->V[regX] != vm->V[regY]) {
-        vm->PC += 2;
+        *vm->PC += 2;
     }
 }
 
@@ -248,7 +248,7 @@ void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY) {
  *          addr    The address (nnn)
  */
 void opLDI(Chip8VM_t* vm, u8 addr) {
-    vm->I = addr;
+    *vm->I = addr;
 }
 
 /*
@@ -258,7 +258,7 @@ void opLDI(Chip8VM_t* vm, u8 addr) {
  *          addr    The address (nnn)
  */
 void opJPV0(Chip8VM_t* vm, u8 addr) {
-    vm->PC = addr + vm->V[0];
+    *vm->PC = addr + vm->V[0];
 }
 
 /*
@@ -286,7 +286,7 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
  *          size    The size of the sprite in bytes (n)
  */
 void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
-    u8 i = vm->I;
+    u8 i = *vm->I;
     u8 x = vm->V[regX];
     u8 y = vm->V[regY];
     for (u8 j = 0; j < size; j++) {
@@ -301,8 +301,8 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKP(Chip8VM_t* vm, u8 reg) {
-    if ((vm->keys & reg) != 0) {
-        vm->PC += 2;
+    if ((*vm->keys & reg) != 0) {
+        *vm->PC += 2;
     }
 }
 
@@ -314,8 +314,8 @@ void opSKP(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKNP(Chip8VM_t* vm, u8 reg) {
-    if ((vm->keys & reg) == 0) {
-        vm->PC += 2;
+    if ((*vm->keys & reg) == 0) {
+        *vm->PC += 2;
     }
 }
 
@@ -326,7 +326,7 @@ void opSKNP(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDRegDT(Chip8VM_t* vm, u8 reg) {
-    vm->V[reg] = vm->DT;
+    vm->V[reg] = *vm->DT;
 }
 
 /*
@@ -336,8 +336,7 @@ void opLDRegDT(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDRegKey(Chip8VM_t* vm, u8 reg) {
-    while (vm->keys == 0) {}
-    vm->V[reg] = vm->keys;
+    // TODO need an async approach
 }
 
 /*
@@ -347,7 +346,7 @@ void opLDRegKey(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDDT(Chip8VM_t* vm, u8 reg) {
-    vm->DT = vm->V[reg];
+    *vm->DT = vm->V[reg];
 }
 
 /*
@@ -357,7 +356,7 @@ void opLDDT(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDST(Chip8VM_t* vm, u8 reg) {
-    vm->ST = vm->V[reg];
+    *vm->ST = vm->V[reg];
 }
 
 /*
@@ -368,7 +367,7 @@ void opLDST(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opADDI(Chip8VM_t* vm, u8 reg) {
-    vm->I = vm->I + vm->V[reg];
+    *vm->I += vm->V[reg];
 }
 
 /*
@@ -390,7 +389,7 @@ void opLDSprite(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDBCD(Chip8VM_t* vm, u8 reg) {
-    u16 i = vm->I;
+    u16 i = *vm->I;
     vm->RAM[i] = i / 100;
     vm->RAM[i+1] = (i / 10) % 10;
     vm->RAM[i+2] = i % 10;
@@ -404,7 +403,7 @@ void opLDBCD(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDRegs(Chip8VM_t* vm, u8 reg) {
-    u16 i = vm->I;
+    u16 i = *vm->I;
     for (u8 j = 0; j <= reg; j++) {
         vm->RAM[i + j] = vm->V[j];
     }
@@ -418,7 +417,7 @@ void opLDRegs(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDMem(Chip8VM_t* vm, u8 reg) {
-    u16 i = vm->I;
+    u16 i = *vm->I;
     for (u8 j = 0; j <= reg; j++) {
         vm->V[j] = vm->RAM[i + j];
     }

@@ -8,25 +8,29 @@ STACK_SIZE = '16'
 # a python ctypes wrapper *correctly*. Provide a name, type, and description
 # (comment) to include in the generated files.
 #
-# Currently the available types are u8, u16, u32, u64, u8_ptr, u16_ptr, u32_ptr,
-# u64_ptr, void_ptr. You can also create an array of any type with 
-# array(type, size)
+# Currently the available types are u8, u16, u32, u64, void_ptr. You can also 
+# create an array of any type with array(type, size) and a pointer to any type
+# with ptr(type)
 
 STRUCT_DEFINITION = lambda : [
-    # Name     Type                    Description
-    ('RAM',    array(u8, RAM_SIZE),    'Main memory'),
-    ('VRAM',   array(u8, VRAM_SIZE),   'Video memory'),
-    ('stack',  array(u16, STACK_SIZE), 'Address stack'),
-    ('SP',     u8,                     'Stack pointer'),
-    ('PC',     u16,                    'Program counter'),
-    ('I',      u16,                    'Address register'),
-    ('V',      array(u8, STACK_SIZE),  'General purpose registers'),
-    ('DT',     u8,                     'Delay timer'),
-    ('ST',     u8,                     'Sound timer'),
-    ('keys',   u16,                    'Key IO registers'),
-    ('clock',  u64,                    'Time since simulation began'),
-    ('ROM',    void_ptr,               'ROM file pointer'),
-    ('seed',   u8,                     'Seed for RNG'),
+    # Name        Type      Description
+    ('RAM',       ptr(u8),  'Main memory'),
+    ('VRAM',      ptr(u8),  'Video memory'),
+    ('stack',     ptr(u16), 'Address stack'),
+    ('sizeRAM',   u16,      'Size of main memory'),
+    ('sizeVRAM',  u16,      'Size of video memory'),
+    ('sizeStack', u8,       'Size of stack'),
+    ('SP',        ptr(u8),  'Stack pointer'),
+    ('PC',        ptr(u16), 'Program counter'),
+    ('I',         ptr(u16), 'Address register'),
+    ('V',         ptr(u8),  'General purpose registers'),
+    ('DT',        ptr(u8),  'Delay timer'),
+    ('ST',        ptr(u8),  'Sound timer'),
+    ('W',         ptr(u8),   'Wait register'),
+    ('keys',      ptr(u16), 'Key IO registers'),
+    ('seed',      u8,       'Seed for RNG'),
+    ('wait',      u8,       'Chip-8 in wait mode'),
+    ('clock',     u64,      'Time since simulation began'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #
@@ -37,19 +41,16 @@ PY_PATH = os.path.realpath(os.path.join(__file__, '../chipgr8/autogen_Chip8VMStr
 C_PATH  = os.path.realpath(os.path.join(__file__, '../includes/autogen_Chip8VMStruct.h'))
 
 # Type Definitions
-[u8, u16, u32, u64, u8_ptr, u16_ptr, u32_ptr, u64_ptr, void_ptr] = (
+[u8, u16, u32, u64, void_ptr] = (
 #   python ctype                        C type
     ('ctypes.c_uint8',                  'u8 {}'),
     ('ctypes.c_uint16',                 'u16 {}'),
     ('ctypes.c_uint32',                 'u32 {}'),
     ('ctypes.c_uint64',                 'u64 {}'),
-    ('ctypes.POINTER(ctypes.c_uint8)',  'u8* {}'),
-    ('ctypes.POINTER(ctypes.c_uint16)', 'u16* {}'),
-    ('ctypes.POINTER(ctypes.c_uint32)', 'u32* {}'),
-    ('ctypes.POINTER(ctypes.c_uint64)', 'u64* {}'),
     ('ctypes.c_void_p',                 'void* {}'),
 )
 array  = lambda t, s : ('{} * {}'.format(t[0], s), t[1].format('{}[' + s + ']'))
+ptr    = lambda t : ('ctypes.POINTER({})'.format(t[0]), t[1].format('')[:-1] + '* {}')
 
 def defineVMStruct():
     print('Getting definition...')

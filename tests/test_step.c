@@ -14,7 +14,7 @@ void test_basic() {
     step(vm);
     assert(vm->V[0] == 0x4);
     step(vm);
-    assert(vm->V[0] == 0x3);
+    assert(vm->V[0] == 0x7);
 }
 
 int main() {
