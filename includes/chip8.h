@@ -41,12 +41,12 @@
 
 // To avoid defining very large int literals, interlaces hexsprite int literal with 0s
 // such that 0x11111 becomes 0x1010101010 then stores each byte to arr
-#define STORE_HEXSPRITE(_arr, _ind, _spr)   do{ \
+#define STORE_HEXSPRITE(_arr, _ind, _spr)   SAFE_MACRO( \
                                                 u32 _hex = _spr; \
                                                 for(u8 _i = 0; _i < 5; _i++){ \
-                                                    *(_arr + _i) = ((_hex >> ((4 - _i) * 4) & 0xF) << 4); \
+                                                    *(_arr + (_ind * 5) + _i) = ((_hex >> ((4 - _i) * 4) & 0xF) << 4); \
                                                 } \
-                                            } while(0)
+                                            )
 
 #define REGISTER_BASE_OFFSET        80
 
