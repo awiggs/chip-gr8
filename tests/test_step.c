@@ -2,7 +2,8 @@
 #include "test.h"
 
 void test_basic() {
-    Chip8VM_t* vm = initVM();
+    Chip8VM_t* vm = malloc(sizeof(Chip8VM_t));
+    initVM(vm);
 
     // LD V0 0x4
     vm->RAM[0x200] = 0x60;

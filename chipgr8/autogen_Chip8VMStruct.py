@@ -26,4 +26,5 @@ class Chip8VMStruct(ctypes.Structure):
         ('seed', ctypes.c_uint8), # Seed for RNG
         ('wait', ctypes.c_uint8), # Chip-8 in wait mode
         ('clock', ctypes.c_uint64), # Time since simulation began
+        ('hexes', ctypes.POINTER(ctypes.c_uint8)), # Hexsprite pointer
     ]

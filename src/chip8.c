@@ -167,19 +167,16 @@ int helloSharedLibrary() {
 }
 
 /**
- * Allocates a new VM instance in a valid initial sate. This is the only way a 
+ * Initializes a VM instance to a valid initial sate. This is the only way a 
  * Chip-8 vm should be instantiated.
  * 
- * @returns the new VM
+ * @params vm the vm to intialize
  */
-Chip8VM_t* initVM() {
-    // #TODO initialize VM state correctly.
-    Chip8VM_t* vm = malloc(sizeof(Chip8VM_t));
-
+void initVM(Chip8VM_t* vm) {
     // Initialize constant fields
-    vm->sizeRAM   = 0x1000;
-    vm->sizeVRAM  = 64 * 32;
-    vm->sizeStack = 0x10;
+    vm->sizeRAM   = RAM_SIZE;
+    vm->sizeVRAM  = VRAM_SIZE;
+    vm->sizeStack = LEN_STACK * 2;
     vm->seed = 0;
     vm->wait = 0;
     vm->clock = 0;
@@ -187,26 +184,51 @@ Chip8VM_t* initVM() {
     // Initialize allocated fields
     vm->RAM   = malloc(vm->sizeRAM);
     vm->VRAM  = malloc(vm->sizeVRAM);
-    vm->stack = malloc(vm->sizeStack);
 
     // Initialize pointers
-    u8* base = vm->RAM + 80;
-    vm->SP   = (void*) (base + 0);
-    vm->PC   = (void*) (base + 1);
-    vm->I    = (void*) (base + 3);
-    vm->V    = (void*) (base + 5);
-    vm->DT   = (void*) (base + 21);
-    vm->ST   = (void*) (base + 22);
-    vm->W    = (void*) (base + 33);
-    vm->keys = (void*) (base + 34);
+    vm->SP    = STACK_POINTER(vm->RAM);
+    vm->PC    = PROGRAM_COUNTER(vm->RAM);
+    vm->I     = ADDRESS_REGISTER(vm->RAM);
+    vm->V     = GENERAL_REGISTERS(vm->RAM);
+    vm->DT    = DELAY_TIMER(vm->RAM);
+    vm->ST    = SOUND_TIMER(vm->RAM);
+    vm->keys  = KEY_IO_REGISTERS(vm->RAM);
+    vm->W     = WAIT_REGISTER(vm->RAM);
 
-    *vm->SP = 0;
-    *vm->PC = 0x200;
-    *vm->I  = 0x200;
-    *vm->DT = 0;
-    *vm->ST = 0;
-    *vm->W  = 0;
-    return vm;
+    vm->stack = STACK_START(vm->RAM);
+    vm->hexes = HEXSPRITE_START(vm->RAM);
+
+    *vm->SP   = 0;
+    *vm->PC   = PROGRAM_SPACE_START;
+    *vm->I    = PROGRAM_SPACE_START;
+    *vm->DT   = 0;
+    *vm->ST   = 0;
+    *vm->keys = 0;
+    *vm->W    = 0;
+
+    // Initialize hexsprites
+    // TODO: Condense hexsprites?
+    STORE_HEXSPRITE(vm->hexes, 0, HEXSPRITE_0);
+    STORE_HEXSPRITE(vm->hexes, 1, HEXSPRITE_1);
+    STORE_HEXSPRITE(vm->hexes, 2, HEXSPRITE_2);
+    STORE_HEXSPRITE(vm->hexes, 3, HEXSPRITE_3);
+    STORE_HEXSPRITE(vm->hexes, 4, HEXSPRITE_4);
+    STORE_HEXSPRITE(vm->hexes, 5, HEXSPRITE_5);
+    STORE_HEXSPRITE(vm->hexes, 6, HEXSPRITE_6);
+    STORE_HEXSPRITE(vm->hexes, 7, HEXSPRITE_7);
+    STORE_HEXSPRITE(vm->hexes, 8, HEXSPRITE_8);
+    STORE_HEXSPRITE(vm->hexes, 9, HEXSPRITE_9);
+    STORE_HEXSPRITE(vm->hexes, 10, HEXSPRITE_A);
+    STORE_HEXSPRITE(vm->hexes, 11, HEXSPRITE_B);
+    STORE_HEXSPRITE(vm->hexes, 12, HEXSPRITE_C);
+    STORE_HEXSPRITE(vm->hexes, 13, HEXSPRITE_D);
+    STORE_HEXSPRITE(vm->hexes, 14, HEXSPRITE_E);
+    STORE_HEXSPRITE(vm->hexes, 15, HEXSPRITE_F);
+
+    // Initialize stack
+    for(u8 i = 0; i < LEN_STACK; i++) {
+        vm->stack[i] = 0;
+    }
 }
 
 /**
@@ -220,6 +242,8 @@ void freeVM(Chip8VM_t* vm) {
     /* if (vm->ROM != NULL) {
         unloadROM(vm);
     }*/
+    free(vm->VRAM);
+    free(vm->RAM);
     free(vm);
 }
 

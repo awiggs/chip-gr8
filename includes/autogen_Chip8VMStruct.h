@@ -31,6 +31,7 @@ struct Chip8VM_t {
     u8 seed; // Seed for RNG
     u8 wait; // Chip-8 in wait mode
     u64 clock; // Time since simulation began
+    u8* hexes; // Hexsprite pointer
 } __attribute__((packed));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

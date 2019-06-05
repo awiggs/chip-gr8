@@ -31,6 +31,7 @@ STRUCT_DEFINITION = lambda : [
     ('seed',      u8,       'Seed for RNG'),
     ('wait',      u8,       'Chip-8 in wait mode'),
     ('clock',     u64,      'Time since simulation began'),
+    ('hexes',     ptr(u8),  'Hexsprite pointer'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #
