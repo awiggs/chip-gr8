@@ -148,13 +148,15 @@ class Chip8VM(object):
         '''
         Simulate a single VM clock cycle. Internally calls core.step.
         '''
-        pass #TODO
+        core.step(vm)
 
     def steps(self, n):
         '''
         Simulate a number of clock cycles in a row. Internally calls core.step.
         '''
-        pass #TODO
+        while n > 0:
+            core.step(vm)
+            n -= 1
 
     # Data Fields
 
