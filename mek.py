@@ -11,7 +11,7 @@ cc = gcc_clang(cmd='gcc', dbg='gdb')
 # any libraries to load
 libs = []
 # additional compiler flags
-flags = ['-Wall', '-Werror', '-pedantic']
+flags = ['-Wall', '-Werror', '-pedantic', '-std=c99']
 
 if options.command != command_test:
     linkflags = ['-shared']    
