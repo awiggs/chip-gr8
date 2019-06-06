@@ -1,7 +1,9 @@
 import sys, pygame, time
 from pygame.locals import *
+from pygame import event as evt
 import os
 
+import chipgr8.core
 
 class ChipGr8Window():
     screen = None
@@ -32,4 +34,45 @@ class ChipGr8Window():
                     pygame.draw.rect(self.screen, (255,255,255), (pixel*self.scale,row*self.scale,self.scale,self.scale))
         pygame.display.flip()
 
-    
+    def input(self):
+        core.send_input(self.get_keymask())
+
+    def get_keymask(self):
+        keymask = bin(0)
+        events = evt.get()
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_0:
+                    keymask += 0b1
+                if event.key == pygame.K_1:
+                    keymask += 0b10
+                if event.key == pygame.K_2:
+                    keymask += 0b100
+                if event.key == pygame.K_3:
+                    keymask += 0b1000
+                if event.key == pygame.K_4:
+                    keymask += 0b10000
+                if event.key == pygame.K_5:
+                    keymask += 0b100000
+                if event.key == pygame.K_6:
+                    keymask += 0b1000000
+                if event.key == pygame.K_7:
+                    keymask += 0b10000000
+                if event.key == pygame.K_8:
+                    keymask += 0b100000000
+                if event.key == pygame.K_9:
+                    keymask += 0b1000000000
+                if event.key == pygame.K_a:
+                    keymask += 0b10000000000
+                if event.key == pygame.K_b:
+                    keymask += 0b100000000000
+                if event.key == pygame.K_c:
+                    keymask += 0b1000000000000
+                if event.key == pygame.K_d:
+                    keymask += 0b10000000000000
+                if event.key == pygame.K_e:
+                    keymask += 0b100000000000000
+                if event.key == pygame.K_f:
+                    keymask += 0b1000000000000000
+            return keymask
+
