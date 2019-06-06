@@ -25,11 +25,6 @@
     fprintf(stderr, "\npanic! "); \
     fprintf(stderr, __VA_ARGS__); \
     fprintf(stderr, "\n"); \
-    fprintf(stderr, "  at <%s> %s:%d\n", \
-        __FILE__, \
-        __FUNCTION__, \
-        __LINE__\
-    ); \
     fflush(stderr); \
     exit(1); \
 })
