@@ -2,19 +2,16 @@ import chipgr8
 import argparse
 import sys
 
-def romExists(rom):
-    return True
-
 '''
-#TODO 
-
 Parse command line arguments and provide the appropriate options to init. 
-Possible interface could look like.
 
 usage: chipgr8 
     -v --version The version number
+    -vvv --verbose Print verbose print statements to console during execution
     -h --help    A help message
     -r --rom     The path or name of a rom
+    -a --assemble Assemble a text file into a chip 8 rom file
+    -d --disassemble Disassemble a chip 8 rom file into a text file
 '''
 
 
@@ -33,13 +30,14 @@ if args.version:
     print("---VERSION INFO---")
     sys.exit(0)
 if args.rom:
-    if(not romExists(args.rom)):
-        print(args.rom + " is not a valid ROM")
-    else:
-        print("Starting up Chip Gr8 with ", args.rom)
+    print("Starting up Chip Gr8 with ", args.rom)
 elif args.aInOut:
+    chipgr8.assemble(inPath=args.aInOut[0], outPath=args.aInOut[1])
     print("Assemble with:\n\tinputSrcFile: " + args.aInOut[0] + "\n\toutputRomFile: " + args.aInOut[1])
+    sys.exit(0)
 elif args.dInOut:
+    chipgr8.disassemble(inPath=args.dInOut[0], outPath=args.dInOut[1])
     print("disassemble with:\n\tinputRomFile: " + args.dInOut[0] + "\n\toutputSrcFile: " + args.dInOut[1])
+    sys.exit(0)
 
 chipgr8.init(args.verbosity, args.rom)
