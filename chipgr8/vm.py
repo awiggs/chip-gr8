@@ -1,7 +1,7 @@
 import os
 import pickle as pkl
 import chipgr8.core as core
-import chipgr8.io
+import chipgr8.io as io
 
 class Chip8VM(object):
     '''
@@ -56,7 +56,7 @@ class Chip8VM(object):
         '''
         Unloads a ROM if one is loaded. Internally calls core.unloadROM.
         '''
-        core.unloadROM()
+        core.unloadROM(self.vm)
     
     # State Methods
 
@@ -70,7 +70,7 @@ class Chip8VM(object):
         '''
         #TODO: What are tags
 
-        if not ls.path.isfile(path):
+        if not os.path.isfile(path):
             raise FileNotFoundError("Save state file not found.")
         
         self.vm = pkl.load(open(path, 'rb'))
@@ -112,7 +112,7 @@ class Chip8VM(object):
                 kX      Explicit parameters for each key
         '''
         if not raw == None:
-            core.send_input(raw)
+            core.send_input(self.vm, raw)
             return
         
         if not handler == None:
@@ -137,7 +137,7 @@ class Chip8VM(object):
         if not kE == None: keymask += bin(kE) << 14
         if not kF == None: keymask += bin(kF) << 15
 
-        core.send_input(keymask)
+        core.send_input(self.vm, keymask)
 
 
     def render(self):
@@ -153,14 +153,14 @@ class Chip8VM(object):
         '''
         Simulate a single VM clock cycle. Internally calls core.step.
         '''
-        core.step(vm)
+        core.step(self.vm)
 
     def steps(self, n):
         '''
         Simulate a number of clock cycles in a row. Internally calls core.step.
         '''
         while n > 0:
-            core.step(vm)
+            core.step(self.vm)
             n -= 1
 
     # Data Fields
@@ -173,6 +173,13 @@ class Chip8VM(object):
 
         @returns the bitmap
         '''
-        ptrVRAM = core.getVRAM(vm)
-        print(ptrVRAM)
-        pass #TODO
+        bitmap = []
+        for y in range(32):
+            bitmap.append([0] * 64)
+            for x in range(64):
+                byteOffset = (y * 64 + x) // 8
+                bitOffset  = (y + 64 + x) % 8
+                byte = self.vm.VRAM[byteOffset]
+                bitmap[y][x] = (byte >> bitOffset) & 1
+
+        return bitmap

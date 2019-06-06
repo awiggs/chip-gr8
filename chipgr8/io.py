@@ -15,7 +15,7 @@ class ChipGr8Window():
         size = width, height = 64*self.scale , 32*self.scale
         self.screen = pygame.display.set_mode(size)
         self.screen.fill((0,0,0))
-        pygame.mixer.music.load(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
+        pygame.mixer.music.load(os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3")))
 
     # Takes a bitmap of the screen and renders the screen using pygame.
     # Takes an optional boolean parameter if you want to have sound playing for that frame

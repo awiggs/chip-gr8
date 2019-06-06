@@ -11,7 +11,9 @@ def initVM():
     '''
     Allocates and returns a pointer to a VM.
     '''
-    return Chip8VMStruct()
+    vm = Chip8VMStruct()
+    lib.initVM(vm)
+    return vm
 
 def freeVM(vm):
     '''
@@ -43,12 +45,6 @@ def send_input(vm, keymask):
     '''
     return lib.input(vm, keymask)
 
-def getVRAM(vm):
-    '''
-    Grabs the VRAM and returns it
-    '''
-    return lib.getVRAM(vm)
-
 DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
 DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))
 
@@ -67,6 +63,8 @@ for path in [
         lib = ctypes.CDLL(path)
         
         #TODO Provide ctypes specifications for all of the above functions
+        lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+        lib.initVM.restype = None
 
         break
 else:
