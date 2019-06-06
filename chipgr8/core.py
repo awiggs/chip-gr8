@@ -43,6 +43,12 @@ def send_input(vm, keymask):
     '''
     return lib.input(vm, keymask)
 
+def getVRAM(vm):
+    '''
+    Grabs the VRAM and returns it
+    '''
+    return lib.getVRAM(vm)
+
 DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
 DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))
 

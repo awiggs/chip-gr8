@@ -483,3 +483,12 @@ int loadROM(Chip8VM_t* vm, char* filePath) {
     *vm->SP = 0;
     return 1;
 }
+
+/**
+ * 
+ * 
+ * @ returns    
+ */
+uint16_t* getVRAM(Chip8VM_t* vm) {
+    
+}
