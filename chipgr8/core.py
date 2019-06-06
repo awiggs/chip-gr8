@@ -29,13 +29,19 @@ def loadROM(vm, filePath):
     '''
     Loads a ROM from filePath into the VM.
     '''
-    return lib.loadVM(vm, filePath)
+    return lib.loadROM(vm, filePath)
 
 def unloadROM(vm):
     '''
     Unloades a ROM, if one was loaded previously, from a VM.
     '''
     return lib.unloadROM(vm)
+
+def send_input(vm, keymask):
+    '''
+    Sends the current input to the VM.
+    '''
+    return lib.input(vm, keymask)
 
 DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
 DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))

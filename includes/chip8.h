@@ -155,6 +155,8 @@ void update(Chip8VM_t* vm);
  */
 int loadROM(Chip8VM_t* vm, char* filePath);
 
+void input(Chip8VM_t*, u16);
+
 u8 getRegisterX(word_t opcode);
 
 u8 getRegisterY(word_t opcode);

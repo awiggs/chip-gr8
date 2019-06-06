@@ -5,6 +5,24 @@
 #include "chip8.h"
 #include "ops.h"
 
+/**
+ * Sets the input registers on the VM.
+ * 
+ * @params vm the vm 
+ *         keymask a mask of keys currently down
+ */
+void input(Chip8VM_t* vm, u16 keymask) {
+    *vm->keys = keymask;
+}
+
+/**
+ * Evaluates the opcode and extracts the arguements,
+ * then calls the appropriate system function.
+ * 
+ * @params vm the vm 
+ *         inst the current instruction
+ *         opcode the current opcode
+ */
 void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
     switch (inst) {
         case CLEAR: {
