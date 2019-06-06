@@ -260,7 +260,7 @@ void step(Chip8VM_t* vm) {
             int keys = *vm->keys;
             int key  = 0;
             while (keys != 0) {
-                key = key >> 1;
+                keys = keys >> 1;
                 key++;
             }
             vm->V[*vm->W] = key;

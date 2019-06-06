@@ -17,7 +17,7 @@ void opSYS(Chip8VM_t* vm, u16 addr) {
  * @params  vm      The current state of the Virtual Machine
  */
 void opCLS(Chip8VM_t* vm) {
-    // TODO
+    memset(vm->VRAM, 0, vm->sizeVRAM);
 }
 
 /*
@@ -331,12 +331,13 @@ void opLDRegDT(Chip8VM_t* vm, u8 reg) {
 
 /*
  * Instruction: Fx0A
- * Description: Wait for a key press, store the value of the key in register Vx.
+ * Description: Wait for a key press, store the number of register Vx into the wait register.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
 void opLDRegKey(Chip8VM_t* vm, u8 reg) {
-    // TODO need an async approach
+    vm->wait = 1;
+    *vm->W = reg;
 }
 
 /*
@@ -373,12 +374,12 @@ void opADDI(Chip8VM_t* vm, u8 reg) {
 /*
  * Instruction: Fx29
  * Description: Set the value of register I to the location of the sprite corresponding
- *              to the value of register Vx.
+ *              to the value of register Vx. Each hex sprite is five bytes long.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
 void opLDSprite(Chip8VM_t* vm, u8 reg) {
-    // TODO
+    *vm->I = vm->hexes[vm->V[reg] * 5];
 }
 
 /*
