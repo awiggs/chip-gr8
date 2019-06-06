@@ -168,4 +168,6 @@ class Chip8VM(object):
 
         @returns the bitmap
         '''
+        ptrVRAM = core.getVRAM(vm)
+        print(ptrVRAM)
         pass #TODO
