@@ -25,6 +25,10 @@ void input(Chip8VM_t* vm, u16 keymask) {
  */
 void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
     switch (inst) {
+        case SYS: {
+            // NOP
+            break;
+        }
         case CLEAR: {
             opCLS(vm);
             break;
@@ -59,6 +63,18 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
         }
         case ADD: {
             opADDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case LOADR: {
+            opLDReg(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case OR: {
+            opOR(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case AND: {
+            opAND(vm, getRegisterX(opcode), getRegisterY(opcode));
             break;
         }
         case XOR: {
@@ -150,7 +166,7 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
             break;
         }
         default: {
-            debugs("Invalid instruction or instruction not implemented");
+            debugf("Invalid instruction or instruction not implemented: %d %x\n", inst, opcode);
             break;
         }
     }
@@ -168,7 +184,7 @@ u8 getValue8Bit(word_t opcode) {
     return opcode & 0x00FF;
 }
 
-u8 getValue12Bit(word_t opcode) {
+u16 getValue12Bit(word_t opcode) {
     return opcode & 0x0FFF;
 }
 
@@ -202,6 +218,7 @@ void initVM(Chip8VM_t* vm) {
     // Initialize allocated fields
     vm->RAM   = malloc(vm->sizeRAM);
     vm->VRAM  = malloc(vm->sizeVRAM);
+    memset(vm->VRAM, 0, vm->sizeVRAM);
 
     // Initialize pointers
     vm->SP    = STACK_POINTER(vm->RAM);
@@ -244,7 +261,7 @@ void initVM(Chip8VM_t* vm) {
     STORE_HEXSPRITE(vm->hexes, 15, HEXSPRITE_F);
 
     // Initialize stack
-    for(u8 i = 0; i < LEN_STACK; i++) {
+    for(u8 i = 0; i < LEN_STACK + 1; i++) {
         vm->stack[i] = 0;
     }
 }
@@ -283,10 +300,12 @@ void step(Chip8VM_t* vm) {
             }
             vm->V[*vm->W] = key;
         } else {
-            return;
+            // return;
         }
     }
+    // u16 debugPC = *vm->PC;
     word_t opcode = fetch(vm);
+    // debugf("%u: %u (Hex: %x) %x\n", (debugPC - PROGRAM_SPACE_START) / 2, debugPC, debugPC, opcode);
     Instruction_t instruction = decode(opcode);
     evaluate(vm, instruction, opcode);
     update(vm);
@@ -299,8 +318,8 @@ void step(Chip8VM_t* vm) {
  * @returns    the next 
  */
 word_t fetch(Chip8VM_t* vm) {
-    word_t msb = vm->RAM[*vm->PC] << 8;    
-    word_t lsb = vm->RAM[*vm->PC + 1];    
+    word_t msb = vm->RAM[*vm->PC] << 8;
+    word_t lsb = vm->RAM[*vm->PC + 1];
     *vm->PC += 2;
     return msb + lsb;
 }
@@ -435,7 +454,7 @@ Instruction_t decode(word_t opcode) {
             else if (sub == 0x55) {
                 return LDREGS;
             }
-            else if (sub == 0x66) {
+            else if (sub == 0x65) {
                 return LDMEM;
             }
             else {
@@ -470,16 +489,25 @@ void update(Chip8VM_t* vm) {
  * @returns         0 on failure
  */
 int loadROM(Chip8VM_t* vm, char* filePath) {
-    FILE* file = fopen(filePath, "r");
+    FILE* file = fopen(filePath, "rb");
     if (file == NULL) {
-        debugf("failed to load ROm %s\n", filePath);
+        debugf("Failed to load ROM %s\n", filePath);
         return 0;
     } 
-    fread(vm->RAM + 0x200, vm->sizeRAM - 0x200, 1, file);
+
+    fseek(file, 0, SEEK_END);
+    u32 len = ftell(file);
+    rewind(file);
+    if (len > vm->sizeRAM - PROGRAM_SPACE_START) {
+        len = vm->sizeRAM - PROGRAM_SPACE_START;
+    }
+    debugf("ROM Length: %u\n", len);
+
+    fread(vm->RAM + PROGRAM_SPACE_START, len, 1, file);
     fclose(file);
     debugs("Succesfully loaded ROM file.\n");
     // Reset PC and SP (more? TODO)
-    *vm->PC = 0x200;
+    *vm->PC = PROGRAM_SPACE_START;
     *vm->SP = 0;
     return 1;
 }

@@ -1,6 +1,9 @@
-import chipgr8.core as core
+from chipgr8.vm import Chip8VM
+from time import sleep
+import pygame
 
 def init(
+    verbosity,
     loadState    = None,
     ROM          = None,
     display      = None,
@@ -21,5 +24,25 @@ def init(
             memoryTables A method of specifying ROM specific fields
     @returns             The VM instance or instances
     '''
-    core.helloSharedLibrary()
-    pass #TODO
+    if display:
+        display = True
+    else:
+        display = False
+
+    vm = Chip8VM(display=display)
+    if ROM is not None:
+        vm.loadROM(ROM)
+
+    clk = pygame.time.Clock()
+
+    while(eventProcessor()):
+        clk.tick(240)
+        vm.step()
+        vm.render()
+
+def eventProcessor():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            return False
+    return True
+

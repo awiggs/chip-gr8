@@ -16,7 +16,7 @@
 #define PROGRAM_SPACE_START         0x200
 
 #define RAM_SIZE                    0x1000
-#define VRAM_SIZE                   (64 / 8) * (32 / 8)
+#define VRAM_SIZE                   (64 / 8) * 32
 
 #define LEN_STACK                   16
 
@@ -164,7 +164,7 @@ u8 getRegisterY(word_t opcode);
 
 u8 getValue8Bit(word_t opcode);
 
-u8 getValue12Bit(word_t opcode);
+u16 getValue12Bit(word_t opcode);
 
 u8 getValue4Bit(word_t opcode);
 

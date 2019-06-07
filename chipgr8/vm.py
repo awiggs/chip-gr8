@@ -3,6 +3,8 @@ import pickle as pkl
 import chipgr8.core as core
 import chipgr8.io as io
 
+from chipgr8.util import write
+
 class Chip8VM(object):
     '''
     Wraps the Chip8VMStruct object produced by core.initVM and provides a 
@@ -34,7 +36,7 @@ class Chip8VM(object):
             core.freeVM(self.vm)
 
 
-    # ROM Methhods
+    # ROM Methods
 
     def loadROM(self, nameOrPath):
         '''
@@ -50,12 +52,15 @@ class Chip8VM(object):
         if not os.path.isfile(nameOrPath):
             raise FileNotFoundError("The specified file does not exist.")
 
-        core.loadROM(self.vm, nameOrPath)
+        if core.loadROM(self.vm, nameOrPath.encode('utf-8')) == 0:
+            raise RuntimeError("Library failed to load ROM.")
+
 
     def unloadROM(self):
         '''
         Unloads a ROM if one is loaded. Internally calls core.unloadROM.
         '''
+        # TODO: unloadROM is not implemented in C
         core.unloadROM(self.vm)
     
     # State Methods
@@ -178,8 +183,8 @@ class Chip8VM(object):
             bitmap.append([0] * 64)
             for x in range(64):
                 byteOffset = (y * 64 + x) // 8
-                bitOffset  = (y + 64 + x) % 8
+                bitOffset  = (y * 64 + x) % 8
                 byte = self.vm.VRAM[byteOffset]
-                bitmap[y][x] = (byte >> bitOffset) & 1
+                bitmap[y][x] = (byte >> (7 - bitOffset)) & 1
 
         return bitmap
