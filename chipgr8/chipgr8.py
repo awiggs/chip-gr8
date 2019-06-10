@@ -3,7 +3,7 @@ from time import sleep
 import pygame
 
 def init(
-    verbosity,
+    verbosity    = False,
     loadState    = None,
     ROM          = None,
     display      = None,
