@@ -40,4 +40,4 @@ elif args.dInOut:
     print("disassemble with:\n\tinputRomFile: " + args.dInOut[0] + "\n\toutputSrcFile: " + args.dInOut[1])
     sys.exit(0)
 
-chipgr8.init(args.verbosity, args.rom)
+chipgr8.init(args.verbosity, ROM=args.rom, display=True)

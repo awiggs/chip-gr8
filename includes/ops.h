@@ -192,7 +192,7 @@ void opSNEReg(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opLDI(Chip8VM_t* vm, u8 addr);
+void opLDI(Chip8VM_t* vm, u16 addr);
 
 /*
  * Instruction: Bnnn
@@ -200,7 +200,7 @@ void opLDI(Chip8VM_t* vm, u8 addr);
  * @params  vm      The current state of the Virtual Machine
  *          addr    The address (nnn)
  */
-void opJPV0(Chip8VM_t* vm, u8 addr);
+void opJPV0(Chip8VM_t* vm, u16 addr);
 
 /*
  * Instruction: Cxkk

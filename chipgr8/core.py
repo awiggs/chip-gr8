@@ -19,7 +19,7 @@ def freeVM(vm):
     '''
     Deallocates the provided VM.
     '''
-    del vm
+    lib.freeVM(vm)
 
 def step(vm):
     '''
@@ -62,10 +62,26 @@ for path in [
     if os.path.isfile(path):
         lib = ctypes.CDLL(path)
         
-        #TODO Provide ctypes specifications for all of the above functions
         lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
         lib.initVM.restype = None
 
+        lib.freeVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+        lib.freeVM.restype = None
+
+        lib.step.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+        lib.step.restype = None
+
+        lib.loadROM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_char_p]
+        lib.loadROM.restype = ctypes.c_int
+
+        # TODO unloadROM ctypes specifications
+        # lib.unloadROM.argtypes = []
+        # lib.unloadROM.restype = 
+
+        lib.input.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_ushort]
+        lib.input.restype = None
+
         break
+
 else:
     raise Exception('DLL has not been built!\nRun `mekpie build`!')

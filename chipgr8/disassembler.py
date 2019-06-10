@@ -22,7 +22,7 @@ CHIP_8_INSTRUCTIONS = [
     ('LD I {nnn}',        'Annn'),
     ('SHL V{x} V{y}',     '8xyE'),
     ('SNE V{x} V{y}',     '9xy0'),
-    ('JP V0 {nnn}',       'Annn'),
+    ('JP V0 {nnn}',       'Bnnn'),
     ('RND V{x} {kk}',     'Cxkk'),
     ('DRW V{x} V{y} {z}', 'Dxyz'),
     ('SKP V{x}',          'Ex9E'),

@@ -136,7 +136,7 @@ def assembleJP(arguments, labels, lineno):
         nnn = assembleValue(arguments[1], labels, lineno, 3)
         if V0 != 'V0':
             raise Exception('Unexpected arguments {} on line {}!'.format(V0, lineno))
-        return 'A' + nnn
+        return 'B' + nnn
     raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
 
 def assembleCALL(arguments, labels, lineno):
