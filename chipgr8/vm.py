@@ -25,16 +25,7 @@ class Chip8VM(object):
         self.vm = core.initVM()
 
         if display:
-            self.window = io.ChipGr8Window() 
-
-    def __del__(self):
-        '''
-        Destructor needs to call core.freeVM with the struct allocated in the
-        constructor.
-        '''
-        if not self.vm == None:
-            core.freeVM(self.vm)
-
+            self.window = io.ChipGr8Window()
 
     # ROM Methods
 

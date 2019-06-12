@@ -16,183 +16,6 @@ void input(Chip8VM_t* vm, u16 keymask) {
 }
 
 /**
- * Evaluates the opcode and extracts the arguements,
- * then calls the appropriate system function.
- * 
- * @params vm the vm 
- *         inst the current instruction
- *         opcode the current opcode
- */
-void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
-    switch (inst) {
-        case SYS: {
-            // NOP
-            break;
-        }
-        case CLEAR: {
-            opCLS(vm);
-            break;
-        }
-        case RET: {
-            opRET(vm);
-            break;
-        }
-        case JUMP: {
-            opJP(vm, getValue12Bit(opcode));
-            break;
-        }
-        case CALL: {
-            opCALL(vm, getValue12Bit(opcode));
-            break;
-        }
-        case SKIPE: {
-            opSEValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
-            break;
-        }
-        case SKIPN: {
-            opSNEValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
-            break;
-        }
-        case SKIPR: {
-            opSEReg(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case LOAD: {
-            opLDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
-            break;
-        }
-        case ADD: {
-            opADDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
-            break;
-        }
-        case LOADR: {
-            opLDReg(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case OR: {
-            opOR(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case AND: {
-            opAND(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case XOR: {
-            opXOR(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case ADDR: {
-            opADDReg(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case SUB: {
-            opSUB(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case SHIFTREG: {
-            opSHR(vm, getRegisterX(opcode));
-            break;
-        }
-        case SUBN: {
-            opSUBN(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case SHIFTL: {
-            opSHL(vm, getRegisterX(opcode));
-            break;
-        }
-        case SKIPNR: {
-            opSNEReg(vm, getRegisterX(opcode), getRegisterY(opcode));
-            break;
-        }
-        case LOADADDR: {
-            opLDI(vm, getValue12Bit(opcode));
-            break;
-        }
-        case JUMPADDR: {
-            opJPV0(vm, getValue12Bit(opcode));
-            break;
-        }
-        case RANDOM: {
-            opRND(vm, getRegisterX(opcode), getValue8Bit(opcode));
-            break;
-        }
-        case DRAW: {
-            opDRW(vm, getRegisterX(opcode), getRegisterY(opcode), getValue4Bit(opcode));
-            break;
-        }
-        case SKIP: {
-            opSKP(vm, getRegisterX(opcode));
-            break;
-        }
-        case SKIPNP: {
-            opSKNP(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDRDT: {
-            opLDRegDT(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDRK: {
-            opLDRegKey(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDDT: {
-            opLDDT(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDST: {
-            opLDST(vm, getRegisterX(opcode));
-            break;
-        }
-        case ADDI: {
-            opADDI(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDSPRI: {
-            opLDSprite(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDBCD: {
-            opLDBCD(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDREGS: {
-            opLDRegs(vm, getRegisterX(opcode));
-            break;
-        }
-        case LDMEM: {
-            opLDMem(vm, getRegisterX(opcode));
-            break;
-        }
-        default: {
-            debugf("Invalid instruction or instruction not implemented: %d %x\n", inst, opcode);
-            break;
-        }
-    }
-}
-
-u8 getRegisterX(word_t opcode) {
-    return (opcode & 0x0F00) >> 8;
-}
-
-u8 getRegisterY(word_t opcode) {
-    return (opcode & 0x00F0) >> 4;
-}
-
-u8 getValue8Bit(word_t opcode) {
-    return opcode & 0x00FF;
-}
-
-u16 getValue12Bit(word_t opcode) {
-    return opcode & 0x0FFF;
-}
-
-u8 getValue4Bit(word_t opcode) {
-    return opcode & 0xF;
-}
-
-/**
  * @returns a SHARED_LIBRARY_ID to ensure that the library has been loaded
  *          correctly.
  */
@@ -279,7 +102,6 @@ void freeVM(Chip8VM_t* vm) {
     }*/
     free(vm->VRAM);
     free(vm->RAM);
-    free(vm);
 }
 
 /**
@@ -479,6 +301,183 @@ void update(Chip8VM_t* vm) {
     // Decrement DT and ST if positive
     if (*vm->DT > 0) { *vm->DT -= 1; }
     if (*vm->ST > 0) { *vm->ST -= 1; }
+}
+
+/**
+ * Evaluates the opcode and extracts the arguements,
+ * then calls the appropriate system function.
+ * 
+ * @params vm the vm 
+ *         inst the current instruction
+ *         opcode the current opcode
+ */
+void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
+    switch (inst) {
+        case SYS: {
+            // NOP
+            break;
+        }
+        case CLEAR: {
+            opCLS(vm);
+            break;
+        }
+        case RET: {
+            opRET(vm);
+            break;
+        }
+        case JUMP: {
+            opJP(vm, getValue12Bit(opcode));
+            break;
+        }
+        case CALL: {
+            opCALL(vm, getValue12Bit(opcode));
+            break;
+        }
+        case SKIPE: {
+            opSEValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case SKIPN: {
+            opSNEValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case SKIPR: {
+            opSEReg(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case LOAD: {
+            opLDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case ADD: {
+            opADDValue(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case LOADR: {
+            opLDReg(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case OR: {
+            opOR(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case AND: {
+            opAND(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case XOR: {
+            opXOR(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case ADDR: {
+            opADDReg(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case SUB: {
+            opSUB(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case SHIFTREG: {
+            opSHR(vm, getRegisterX(opcode));
+            break;
+        }
+        case SUBN: {
+            opSUBN(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case SHIFTL: {
+            opSHL(vm, getRegisterX(opcode));
+            break;
+        }
+        case SKIPNR: {
+            opSNEReg(vm, getRegisterX(opcode), getRegisterY(opcode));
+            break;
+        }
+        case LOADADDR: {
+            opLDI(vm, getValue12Bit(opcode));
+            break;
+        }
+        case JUMPADDR: {
+            opJPV0(vm, getValue12Bit(opcode));
+            break;
+        }
+        case RANDOM: {
+            opRND(vm, getRegisterX(opcode), getValue8Bit(opcode));
+            break;
+        }
+        case DRAW: {
+            opDRW(vm, getRegisterX(opcode), getRegisterY(opcode), getValue4Bit(opcode));
+            break;
+        }
+        case SKIP: {
+            opSKP(vm, getRegisterX(opcode));
+            break;
+        }
+        case SKIPNP: {
+            opSKNP(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDRDT: {
+            opLDRegDT(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDRK: {
+            opLDRegKey(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDDT: {
+            opLDDT(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDST: {
+            opLDST(vm, getRegisterX(opcode));
+            break;
+        }
+        case ADDI: {
+            opADDI(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDSPRI: {
+            opLDSprite(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDBCD: {
+            opLDBCD(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDREGS: {
+            opLDRegs(vm, getRegisterX(opcode));
+            break;
+        }
+        case LDMEM: {
+            opLDMem(vm, getRegisterX(opcode));
+            break;
+        }
+        default: {
+            debugf("Invalid instruction or instruction not implemented: %d %x\n", inst, opcode);
+            break;
+        }
+    }
+}
+
+u8 getRegisterX(word_t opcode) {
+    return (opcode & 0x0F00) >> 8;
+}
+
+u8 getRegisterY(word_t opcode) {
+    return (opcode & 0x00F0) >> 4;
+}
+
+u8 getValue8Bit(word_t opcode) {
+    return opcode & 0x00FF;
+}
+
+u16 getValue12Bit(word_t opcode) {
+    return opcode & 0x0FFF;
+}
+
+u8 getValue4Bit(word_t opcode) {
+    return opcode & 0xF;
 }
 
 /**

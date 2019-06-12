@@ -1,5 +1,7 @@
-from chipgr8.vm import Chip8VM
-from time import sleep
+from chipgr8.vm   import Chip8VM
+from chipgr8.core import freeVM
+from time         import sleep
+
 import pygame
 
 def init(
@@ -39,6 +41,10 @@ def init(
         clk.tick(240)
         vm.step()
         vm.render()
+
+    # Cleanup
+    freeVM(vm.vm)
+    print('finished.')
 
 def eventProcessor():
     for event in pygame.event.get():
