@@ -33,6 +33,7 @@ def init(
 
     vm = Chip8VM(display=display)
     if ROM is not None:
+        print('Loading ROM: "{}"...'.format(ROM))
         vm.loadROM(ROM)
 
     clk = pygame.time.Clock()
