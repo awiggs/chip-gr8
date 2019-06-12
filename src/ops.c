@@ -285,34 +285,6 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
  *          regY    Number (y) indicating a register Vy
  *          size    The size of the sprite in bytes (n)
  */
-// void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
-//     u16 i = *vm->I;
-//     u8 x = vm->V[regX];
-//     u8 y = vm->V[regY];
-
-//     u8 erasedPixel = 0;
-//     for (u8 j = 0; j < size; j++) {
-//         u8 spriteByte = vm->RAM[i + j];
-
-//         u8 pixelY = (y + j) % 32;
-//         for (u8 k = 0; k < 8; k++) {
-//             u8 pixelX = (x + k) % 64;
-            
-//             u8* ptr = vm->VRAM + 8 * pixelY + pixelX / 8;
-
-//             u8 byte = *ptr;
-//             *ptr = byte ^ (((spriteByte & (1 << (7 - k))) > 0) << (7 - pixelX % 8));
-            
-//             // If collision vanished any pixel, erasedPixel will be 1
-//             erasedPixel &= (*ptr < byte);
-//         }
-//         vm->VRAM[8 * (y+j) * x] = vm->RAM[i+j];
-//     }
-
-//     vm->V[0xF] = erasedPixel;
-// }
-
-
 void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
     u16 i = *vm->I;
     u8 x = vm->V[regX];
@@ -327,7 +299,7 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
         
         // calculate the intended coordinates
         u8 row = (y + j) % 32;
-        u8 col = x;
+        u8 col = x % 64;
         
         // calculate corresponding location in VRAM
         u16 bit          = ((row * 64) + col);
