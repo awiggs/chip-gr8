@@ -6,6 +6,11 @@ To run the python module (make sure you use some version of python 3, preferably
 python -m chipgr8
 ```
 
+To load a ROM and run it:
+
+```
+python -m chipgr8 ./data/roms/[ROM_Name]
+```
 # Requirements
 
 Before building and running, make sure you have pygame and pytest.
