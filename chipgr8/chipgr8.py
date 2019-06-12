@@ -44,7 +44,7 @@ def init(
 
     # Cleanup
     freeVM(vm.vm)
-    print('finished.')
+    print('Finished.')
 
 def eventProcessor():
     for event in pygame.event.get():

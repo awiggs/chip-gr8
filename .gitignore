@@ -127,3 +127,4 @@ target/
 
 # Added
 .vscode/
+.DS_store
