@@ -285,31 +285,75 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
  *          regY    Number (y) indicating a register Vy
  *          size    The size of the sprite in bytes (n)
  */
+// void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
+//     u16 i = *vm->I;
+//     u8 x = vm->V[regX];
+//     u8 y = vm->V[regY];
+
+//     u8 erasedPixel = 0;
+//     for (u8 j = 0; j < size; j++) {
+//         u8 spriteByte = vm->RAM[i + j];
+
+//         u8 pixelY = (y + j) % 32;
+//         for (u8 k = 0; k < 8; k++) {
+//             u8 pixelX = (x + k) % 64;
+            
+//             u8* ptr = vm->VRAM + 8 * pixelY + pixelX / 8;
+
+//             u8 byte = *ptr;
+//             *ptr = byte ^ (((spriteByte & (1 << (7 - k))) > 0) << (7 - pixelX % 8));
+            
+//             // If collision vanished any pixel, erasedPixel will be 1
+//             erasedPixel &= (*ptr < byte);
+//         }
+//         vm->VRAM[8 * (y+j) * x] = vm->RAM[i+j];
+//     }
+
+//     vm->V[0xF] = erasedPixel;
+// }
+
+
 void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
     u16 i = *vm->I;
     u8 x = vm->V[regX];
     u8 y = vm->V[regY];
-
-    u8 erasedPixel = 0;
-    for (u8 j = 0; j < size; j++) {
+    
+    vm->V[0xF] = 0;
+    
+    // for each row of the sprite
+    for (u8 j = 0; j < size; j ++) {
+        // get the sprite data byte
         u8 spriteByte = vm->RAM[i + j];
-
-        u8 pixelY = (y + j) % 32;
-        for (u8 k = 0; k < 8; k++) {
-            u8 pixelX = (x + k) % 64;
-            
-            u8* ptr = vm->VRAM + 8 * pixelY + pixelX / 8;
-
-            u8 byte = *ptr;
-            *ptr = byte ^ (((spriteByte & (1 << (7 - k))) > 0) << (7 - pixelX % 8));
-            
-            // If collision vanished any pixel, erasedPixel will be 1
-            erasedPixel &= (*ptr < byte);
+        
+        // calculate the intended coordinates
+        u8 row = (y + j) % 32;
+        u8 col = x;
+        
+        // calculate corresponding location in VRAM
+        u16 bit          = ((row * 64) + col);
+        u16 firstByte    = bit / 8;
+        u16 secondByte   = col >= 56 ? (row * 8) : firstByte + 1;
+        u8 bitOffset     = bit % 8;
+        u8 leftoverBits  = 8 - bitOffset;
+        
+        // check bounds for safety
+        if (secondByte > vm->sizeVRAM) {
+            debugs("Tried to draw outside VRAM!");
+            return;
         }
-        vm->VRAM[8 * (y+j) * x] = vm->RAM[i+j];
+        
+        // get the existing VRAM data for the intended location
+        u8 oldVRAMData = (vm->VRAM[firstByte] << bitOffset) | (vm->VRAM[secondByte] >> leftoverBits);
+        
+        // compare to set the collision flag
+        if (oldVRAMData & spriteByte) {
+            vm->V[0xF] = 1;
+        }
+        
+        // set VRAM memory
+        vm->VRAM[firstByte]  ^= (spriteByte >> bitOffset);
+        vm->VRAM[secondByte] ^= (spriteByte << leftoverBits);
     }
-
-    vm->V[0xF] = erasedPixel;
 }
 
 /*
@@ -397,7 +441,7 @@ void opADDI(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opLDSprite(Chip8VM_t* vm, u8 reg) {
-    *vm->I = vm->hexes[vm->V[reg] * 5];
+    *vm->I = HEXSPRITE_BASE_OFFSET + vm->V[reg] * 5;
 }
 
 /*
