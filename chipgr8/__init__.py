@@ -2,5 +2,7 @@
 from .chipgr8      import init
 from .disassembler import disassemble, hexdump
 from .assembler    import assemble
+from .util         import findRom
 
-VERSION = '0.0.1'
+VERSION     = '0.0.1'
+DESCRIPTION = "ChipGr8: The AI focused Chip 8 Emulator"

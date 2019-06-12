@@ -1,4 +1,10 @@
-import sys, pygame, time
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
+
+import sys
+import time
+import pygame
+
 from pygame.locals import *
 from pygame import event as evt
 import os

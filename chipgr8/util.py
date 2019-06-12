@@ -1,3 +1,5 @@
+import os
+
 def chunk(size, iterable, pad=[None]):
     '''
     Yields the iterable in chunks of the given size
@@ -44,3 +46,12 @@ def write(path, buffer, mode='w'):
     with open(path, mode) as fs:
         fs.write(buffer)
     return buffer
+
+def findRom(rom):
+    if os.path.exists(rom):
+        return rom
+    rom      = rom.lower()
+    romsPath = os.path.realpath(os.path.join(__file__, '../../data/roms'))
+    for name in os.listdir(romsPath):
+        if name.lower().startswith(rom):
+            return os.path.join(romsPath, name)
