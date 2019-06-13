@@ -160,8 +160,9 @@ class Chip8VM(object):
                         self.vm.diffY, 
                         self.vm.diffSize,
                     )
-            
-            self.window.sound(self.vm.ST[0] > 0)
+                
+            # Seg fault on windows??
+            # self.window.sound(self.vm.ST[0] > 0)
     
     # State Methods
 

@@ -56,8 +56,8 @@ class ChipGr8Window():
         s = self.scale
         for xOff in range(8):
             for yOff in range(rows):
-                rx = x + xOff
-                ry = y + yOff
+                rx = (x + xOff) % self.width
+                ry = (y + yOff) % self.height
                 pygame.draw.rect(
                     self.screen, 
                     self.shader(self, rx, ry) if ctx[rx, ry] else self.background, 

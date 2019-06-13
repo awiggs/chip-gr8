@@ -53,6 +53,7 @@ def init(
         clk.tick(240)
         vm.step()
         vm.render()
+        # print(clk.get_fps())
 
     # Cleanup
     core.freeVM(vm.vm)
