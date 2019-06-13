@@ -501,7 +501,7 @@ int loadROM(Chip8VM_t* vm, char* filePath) {
     if (len > vm->sizeRAM - PROGRAM_SPACE_START) {
         len = vm->sizeRAM - PROGRAM_SPACE_START;
     }
-    debugf("ROM Length: %lu\n", len);
+    debugf("ROM Length: %u\n", len);
 
     fread(vm->RAM + PROGRAM_SPACE_START, len, 1, file);
     fclose(file);
