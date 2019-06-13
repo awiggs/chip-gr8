@@ -44,10 +44,10 @@ class Chip8VM(object):
             raise RuntimeError("VM not loaded.")
 
         rom = findRom(nameOrPath)
-        
+
         if not rom:
             raise FileNotFoundError("The specified file does not exist.")
-        if not core.loadROM(self.vm, rom):
+        if not core.loadROM(self.vm, rom.encode()):
             raise RuntimeError("Library failed to load ROM.")
 
 

@@ -15,8 +15,8 @@ class ChipGr8Window():
 
     screen     = None
     scale      = 10
-    background = (0, 0,   0)
-    foreground = (0, 255, 0)
+    background = (0,   0,   0)
+    foreground = (255, 255, 255)
     tone       = os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
 
     def __init__(self, width, height):

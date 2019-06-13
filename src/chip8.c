@@ -142,11 +142,11 @@ void freeVM(Chip8VM_t* vm) {
  */
 void step(Chip8VM_t* vm) {
     preStep(vm);
-    if (!vm->wait) {
+    // if (!vm->wait) {
         word_t opcode = fetch(vm);
         Instruction_t instruction = decode(opcode);
         evaluate(vm, instruction, opcode);
-    }
+    // }
     postStep(vm);
 }
 
