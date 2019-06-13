@@ -3,7 +3,7 @@
 
 void test_basic() {
     Chip8VM_t* vm = malloc(sizeof(Chip8VM_t));
-    initVM(vm);
+    initVM(vm, 100);
 
     // LD V0 0x4
     vm->RAM[0x200] = 0x60;

@@ -7,12 +7,12 @@ def helloSharedLibrary():
     assert lib.helloSharedLibrary() == 0xAFBFCF
     print('DLL loaded succesfully')
 
-def initVM():
+def initVM(freq):
     '''
     Allocates and returns a pointer to a VM.
     '''
     vm = Chip8VMStruct()
-    lib.initVM(vm)
+    lib.initVM(vm, freq)
     return vm
 
 def freeVM(vm):
@@ -62,7 +62,7 @@ for path in [
     if os.path.isfile(path):
         lib = ctypes.CDLL(path)
         
-        lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+        lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_uint8]
         lib.initVM.restype = None
 
         lib.freeVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]

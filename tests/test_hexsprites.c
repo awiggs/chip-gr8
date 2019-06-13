@@ -3,7 +3,7 @@
 
 int main() {
     Chip8VM_t* vm = malloc(sizeof(Chip8VM_t));
-    initVM(vm);
+    initVM(vm, 100);
 
     // Hexsprite 0
     assert(vm->hexes[0] == 0xF0);

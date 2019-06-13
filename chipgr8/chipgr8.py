@@ -8,10 +8,10 @@ import chipgr8.shaders as shaders
 def init(
     verbose      = False,
     smooth       = False,
+    display      = False,
+    frequency    = 500,
     loadState    = None,
     ROM          = None,
-    display      = None,
-    timing       = None,
     memoryTables = None,
     instances    = None,
     # Additional options
@@ -28,12 +28,8 @@ def init(
             memoryTables A method of specifying ROM specific fields
     @returns             The VM instance or instances
     '''
-    if display:
-        display = True
-    else:
-        display = False
 
-    vm = Chip8VM(smooth=smooth, display=display)
+    vm = Chip8VM(frequency=frequency, smooth=smooth, display=display)
     
     # vm.window.shader = shaders.rainbow
     # vm.window.background = (255, 255, 255)
@@ -50,10 +46,9 @@ def init(
     clk = pygame.time.Clock()
 
     while(eventProcessor()):
-        clk.tick(240)
+        clk.tick(vm.freq)
         vm.step()
         vm.render()
-        # print(clk.get_fps())
 
     # Cleanup
     core.freeVM(vm.vm)

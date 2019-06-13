@@ -93,9 +93,10 @@ int helloSharedLibrary();
  * Initializes a VM instance to a valid initial sate. This is the only way a 
  * Chip-8 vm should be instantiated.
  * 
- * @params vm the vm to intialize
+ * @params vm   the vm to intialize
+ *         freq the frequency as a factor of 60Hz
  */
-void initVM(Chip8VM_t* vm);
+void initVM(Chip8VM_t* vm, u8 freq);
 
 /**
  * Deallocates a VM instance. The VM instance should NOT be accessed after

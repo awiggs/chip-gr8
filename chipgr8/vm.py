@@ -15,6 +15,7 @@ class Chip8VM(object):
 
     def __init__(
         self,
+        frequency = 600,
         smooth    = False,
         display   = False,
         timing    = False,
@@ -25,8 +26,9 @@ class Chip8VM(object):
         '''
         # TODO adjust for Super Chip-48
         width, height = 64, 32
+        self.freq   = (frequency // 60) * 60
         self.smooth = smooth
-        self.vm     = core.initVM()
+        self.vm     = core.initVM(frequency // 60)
         self.ctx    = VRAMContext(self.vm.VRAM, width, height) 
 
         if display:

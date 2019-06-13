@@ -31,6 +31,7 @@ STRUCT_DEFINITION = lambda : [
     ('seed',      u8,       'Seed for RNG'),
     ('wait',      u8,       'Chip-8 in wait mode'),
     ('clock',     u64,      'Time since simulation began'),
+    ('freq',      u8,       'Frequency as a factor of 60Hz'),
     ('hexes',     ptr(u8),  'Hexsprite pointer'),
     ('diffX',     u8,       'VRAM diff X position'),
     ('diffY',     u8,       'VRAM diff Y position'),

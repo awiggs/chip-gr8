@@ -33,6 +33,7 @@ struct Chip8VM_t {
     u8 seed; // Seed for RNG
     u8 wait; // Chip-8 in wait mode
     u64 clock; // Time since simulation began
+    u8 freq; // Frequency as a factor of 60Hz
     u8* hexes; // Hexsprite pointer
     u8 diffX; // VRAM diff X position
     u8 diffY; // VRAM diff Y position

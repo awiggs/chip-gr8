@@ -26,7 +26,7 @@ int main() {
     miniDRW(60, 20);
     
     Chip8VM_t vm;
-    initVM(&vm);
+    initVM(&vm, 100);
     
     printf("RAM[0]: %x\n", vm.hexes[10]);
     

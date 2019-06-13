@@ -63,7 +63,7 @@ class ChipGr8Window():
                     self.shader(self, rx, ry) if ctx[rx, ry] else self.background, 
                     (rx * s, ry * s, s, s),
                 )
-        pygame.display.flip()
+        pygame.display.update((x * s, y * s, 8 * s, rows * s))
 
     def input(self):
         core.sendInput(self.get_keymask())

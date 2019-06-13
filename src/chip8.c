@@ -14,6 +14,8 @@ void preStep(Chip8VM_t * vm) {
     // Reset diff flags
     vm->diffSize  = 0;
     vm->diffClear = 0;
+    // Increment the clock
+    vm->clock    += 1;
 }
 
 /**
@@ -22,9 +24,12 @@ void preStep(Chip8VM_t * vm) {
  * @params vm the vm
  */
 void postStep(Chip8VM_t* vm) {
-    // Decrement DT and ST if positive
-    if (*vm->DT > 0) { *vm->DT -= 1; }
-    if (*vm->ST > 0) { *vm->ST -= 1; }
+    // Update timers at 60Hz
+    if (vm->clock % vm->freq == 0) {
+        // Decrement DT and ST if positive
+        if (*vm->DT > 0) { *vm->DT -= 1; }
+        if (*vm->ST > 0) { *vm->ST -= 1; }
+    }
 }
 
 /**
@@ -60,14 +65,15 @@ int helloSharedLibrary() {
  * 
  * @params vm the vm to intialize
  */
-void initVM(Chip8VM_t* vm) {
+void initVM(Chip8VM_t* vm, u8 freq) {
     // Initialize constant fields
     vm->sizeRAM   = RAM_SIZE;
     vm->sizeVRAM  = VRAM_SIZE;
     vm->sizeStack = LEN_STACK * 2;
-    vm->seed = 0;
-    vm->wait = 0;
+    vm->seed  = 0;
+    vm->wait  = 0;
     vm->clock = 0;
+    vm->freq  = freq;
 
     // Initialize allocated fields
     vm->RAM   = malloc(vm->sizeRAM);
