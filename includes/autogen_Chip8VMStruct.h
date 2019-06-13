@@ -14,29 +14,29 @@
 /* !!! DO NOT MODIFY !!! */
 typedef struct Chip8VM_t Chip8VM_t;
 struct Chip8VM_t {
-    u8 * RAM; // Main memory
-    u8 * VRAM; // Video memory
-    u16 * stack; // Address stack
-    u16 sizeRAM:16; // Size of main memory
-    u16 sizeVRAM:16; // Size of video memory
-    u8 sizeStack: 8; // Size of stack
-    u8 * SP; // Stack pointer
-    u16 * PC; // Program counter
-    u16 * I; // Address register
-    u8 * V; // General purpose registers
-    u8 * DT; // Delay timer
-    u8 * ST; // Sound timer
-    u8 * W; // Wait register
-    u16 * keys; // Key IO registers
-    u8 seed: 8; // Seed for RNG
-    u8 wait: 8; // Chip-8 in wait mode
-    u64 clock:64; // Time since simulation began
-    u8 * hexes; // Hexsprite pointer
-    u8 diffX: 8; // VRAM diff X position
-    u8 diffY: 8; // VRAM diff Y position
-    u8 diffSize: 8; // VRAM diff size
-    u8 diffClear: 8; // Indicate a CLS instruction
-    u8 diffSkip: 8; // Flag to indicate a skipable DRW instruction
-} __attribute__((packed));
+    u8* RAM; // Main memory
+    u8* VRAM; // Video memory
+    u16* stack; // Address stack
+    u16 sizeRAM; // Size of main memory
+    u16 sizeVRAM; // Size of video memory
+    u8 sizeStack; // Size of stack
+    u8* SP; // Stack pointer
+    u16* PC; // Program counter
+    u16* I; // Address register
+    u8* V; // General purpose registers
+    u8* DT; // Delay timer
+    u8* ST; // Sound timer
+    u8* W; // Wait register
+    u16* keys; // Key IO registers
+    u8 seed; // Seed for RNG
+    u8 wait; // Chip-8 in wait mode
+    u64 clock; // Time since simulation began
+    u8* hexes; // Hexsprite pointer
+    u8 diffX; // VRAM diff X position
+    u8 diffY; // VRAM diff Y position
+    u8 diffSize; // VRAM diff size
+    u8 diffClear; // Indicate a CLS instruction
+    u8 diffSkip; // Flag to indicate a skipable DRW instruction
+} __attribute__((packed, aligned(1)));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

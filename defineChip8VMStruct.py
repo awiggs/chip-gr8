@@ -49,14 +49,14 @@ C_PATH  = os.path.realpath(os.path.join(__file__, '../includes/autogen_Chip8VMSt
 # Type Definitions
 [u8, u16, u32, u64, void_ptr] = (
 #   python ctype                        C type
-    ('ctypes.c_uint8',                  'u8 {}: 8'),
-    ('ctypes.c_uint16',                 'u16 {}:16'),
-    ('ctypes.c_uint32',                 'u32 {}:32'),
-    ('ctypes.c_uint64',                 'u64 {}:64'),
+    ('ctypes.c_uint8',                  'u8 {}'),
+    ('ctypes.c_uint16',                 'u16 {}'),
+    ('ctypes.c_uint32',                 'u32 {}'),
+    ('ctypes.c_uint64',                 'u64 {}'),
     ('ctypes.c_void_p',                 'void* {}'),
 )
 array  = lambda t, s : ('{} * {}'.format(t[0], s), t[1].format('{}[' + s + ']'))
-ptr    = lambda t : ('ctypes.POINTER({})'.format(t[0]), t[1].format('')[:-3] + '* {}')
+ptr    = lambda t : ('ctypes.POINTER({})'.format(t[0]), t[1].format('')[:-1] + '* {}')
 
 def defineVMStruct():
     print('Getting definition...')
@@ -101,7 +101,7 @@ class Chip8VMStruct(ctypes.Structure):
 typedef struct Chip8VM_t Chip8VM_t;
 struct Chip8VM_t {
     <fields>
-} __attribute__((packed));
+} __attribute__((packed, aligned(1)));
 
 #endif /* AUTOGEN_VMSTRUCT_H */
 '''.replace('<fields>', '\n    '.join(['{}; // {}'.format(t1.format(name), comment) 
