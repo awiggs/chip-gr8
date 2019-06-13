@@ -100,8 +100,7 @@ class Chip8VMStruct(ctypes.Structure):
 
 /* !!! DO NOT MODIFY !!! */
 typedef struct Chip8VM_t Chip8VM_t;
-#pragma pack(push)
-#pragma pack(1)
+#pragma pack(push, 1)
 struct Chip8VM_t {
     <fields>
 } __attribute__((packed, aligned(1)));
