@@ -1,8 +1,9 @@
-from chipgr8.vm   import Chip8VM
-from chipgr8.core import freeVM
-from time         import sleep
+from chipgr8.vm      import Chip8VM
+from time            import sleep
 
 import pygame
+import chipgr8.core    as core
+import chipgr8.shaders as shaders
 
 def init(
     verbose      = False,
@@ -33,6 +34,15 @@ def init(
         display = False
 
     vm = Chip8VM(smooth=smooth, display=display)
+    
+    # vm.window.shader = shaders.rainbow
+    # vm.window.background = (255, 255, 255)
+
+    # vm.window.foreground = (0, 0, 0)
+    # vm.window.background = (255, 255, 255)
+
+    vm.window.clear()
+
     if ROM is not None:
         print('Loading ROM: "{}"...'.format(ROM))
         vm.loadROM(ROM)
@@ -45,7 +55,7 @@ def init(
         vm.render()
 
     # Cleanup
-    freeVM(vm.vm)
+    core.freeVM(vm.vm)
     print('Finished.')
 
 def eventProcessor():

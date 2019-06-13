@@ -9,7 +9,8 @@ from pygame.locals import *
 from pygame import event
 import os
 
-import chipgr8.core as core
+import chipgr8.core    as core
+import chipgr8.shaders as shaders
 
 class ChipGr8Window():
 
@@ -26,6 +27,7 @@ class ChipGr8Window():
         self.height = height
         self.screen = pygame.display.set_mode(size)
         self.screen.fill(self.background)
+        self.shader = shaders.default
         pygame.mixer.music.load(self.tone)
 
     def sound(self, play):
@@ -58,7 +60,7 @@ class ChipGr8Window():
                 ry = y + yOff
                 pygame.draw.rect(
                     self.screen, 
-                    self.foreground if ctx[rx, ry] else self.background, 
+                    self.shader(self, rx, ry) if ctx[rx, ry] else self.background, 
                     (rx * s, ry * s, s, s),
                 )
         pygame.display.flip()
@@ -104,4 +106,3 @@ class ChipGr8Window():
                 if event.key == pygame.K_f:
                     keymask += 0b1000000000000000
             return keymask
-
