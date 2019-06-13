@@ -36,6 +36,7 @@ struct Chip8VM_t {
     u8 diffY; // VRAM diff Y position
     u8 diffSize; // VRAM diff size
     u8 diffClear; // Indicate a CLS instruction
+    u8 diffSkip; // Flag to indicate a skipable DRW instruction
 } __attribute__((packed));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

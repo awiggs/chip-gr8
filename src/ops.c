@@ -323,6 +323,8 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
         if (oldVRAMData & spriteByte) {
             vm->V[0xF] = 1;
         }
+        // Set skip flag
+        vm->diffSkip = !(oldVRAMData ^ spriteByte);
         
         // set VRAM memory
         vm->VRAM[firstByte]  ^= (spriteByte >> bitOffset);

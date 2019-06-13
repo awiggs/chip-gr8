@@ -36,6 +36,7 @@ STRUCT_DEFINITION = lambda : [
     ('diffY',     u8,       'VRAM diff Y position'),
     ('diffSize',  u8,       'VRAM diff size'),
     ('diffClear', u8,       'Indicate a CLS instruction'),
+    ('diffSkip',  u8,       'Flag to indicate a skipable DRW instruction'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #

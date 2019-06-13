@@ -31,4 +31,5 @@ class Chip8VMStruct(ctypes.Structure):
         ('diffY', ctypes.c_uint8), # VRAM diff Y position
         ('diffSize', ctypes.c_uint8), # VRAM diff size
         ('diffClear', ctypes.c_uint8), # Indicate a CLS instruction
+        ('diffSkip', ctypes.c_uint8), # Flag to indicate a skipable DRW instruction
     ]

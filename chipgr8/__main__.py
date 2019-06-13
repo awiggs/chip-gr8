@@ -52,6 +52,10 @@ parser.add_argument('-n', '--nolabels',
     action = 'store_true',
     help   = 'do not generate labels in disassembly',
 )
+parser.add_argument('-s', '--smooth',
+    action = 'store_true',
+    help   = 'enable smooth rendering mode',
+)
 
 args = parser.parse_args()
 
@@ -65,4 +69,9 @@ elif args.binary:
     if not args.out:
         print(result)
 else:
-    chipgr8.init(args.verbose, ROM=chipgr8.findRom(args.rom), display=True)
+    chipgr8.init(
+        verbose = args.verbose,
+        smooth  = args.smooth,
+        ROM     = chipgr8.findRom(args.rom), 
+        display = True,
+    )

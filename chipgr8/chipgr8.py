@@ -5,7 +5,8 @@ from time         import sleep
 import pygame
 
 def init(
-    verbosity    = False,
+    verbose      = False,
+    smooth       = False,
     loadState    = None,
     ROM          = None,
     display      = None,
@@ -31,7 +32,7 @@ def init(
     else:
         display = False
 
-    vm = Chip8VM(display=display)
+    vm = Chip8VM(smooth=smooth, display=display)
     if ROM is not None:
         print('Loading ROM: "{}"...'.format(ROM))
         vm.loadROM(ROM)

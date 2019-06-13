@@ -15,6 +15,7 @@ class Chip8VM(object):
 
     def __init__(
         self,
+        smooth    = False,
         display   = False,
         timing    = False,
     ):
@@ -24,8 +25,9 @@ class Chip8VM(object):
         '''
         # TODO adjust for Super Chip-48
         width, height = 64, 32
-        self.vm  = core.initVM()
-        self.ctx = VRAMContext(self.vm.VRAM, width, height) 
+        self.smooth = smooth
+        self.vm     = core.initVM()
+        self.ctx    = VRAMContext(self.vm.VRAM, width, height) 
 
         if display:
             self.window = io.ChipGr8Window(width, height)
@@ -147,13 +149,18 @@ class Chip8VM(object):
         if self.window:
             if self.vm.diffClear:
                 self.window.clear()
-            if self.vm.diffSize:
-                self.window.render(
-                    self.ctx, 
-                    self.vm.diffX, 
-                    self.vm.diffY, 
-                    self.vm.diffSize,
-                )
+            if self.smooth:
+                if self.vm.diffSize and not self.vm.diffSkip:
+                    self.window.fullRender(self.ctx)
+            else:
+                if self.vm.diffSize:
+                    self.window.render(
+                        self.ctx, 
+                        self.vm.diffX, 
+                        self.vm.diffY, 
+                        self.vm.diffSize,
+                    )
+            
             self.window.sound(self.vm.ST[0] > 0)
     
     # State Methods

@@ -37,6 +37,19 @@ class ChipGr8Window():
     def clear(self):
         self.screen.fill(self.background)
 
+    def fullRender(self, ctx):
+        s = self.scale
+        self.clear()
+        for x in range(self.width):
+            for y in range(self.height):
+                if ctx[x, y]:
+                    pygame.draw.rect(
+                        self.screen, 
+                        self.foreground, 
+                        (x * s, y * s, s, s),
+                    )
+        pygame.display.flip()        
+
     def render(self, ctx, x, y, rows):
         s = self.scale
         for xOff in range(8):
