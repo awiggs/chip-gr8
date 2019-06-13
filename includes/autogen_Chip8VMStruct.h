@@ -32,6 +32,10 @@ struct Chip8VM_t {
     u8 wait; // Chip-8 in wait mode
     u64 clock; // Time since simulation began
     u8* hexes; // Hexsprite pointer
+    u8 diffX; // VRAM diff X position
+    u8 diffY; // VRAM diff Y position
+    u8 diffSize; // VRAM diff size
+    u8 diffClear; // Indicate a CLS instruction
 } __attribute__((packed));
 
 #endif /* AUTOGEN_VMSTRUCT_H */

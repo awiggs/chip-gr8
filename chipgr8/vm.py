@@ -1,9 +1,9 @@
 import os
 import pickle as pkl
 import chipgr8.core as core
-import chipgr8.io as io
+import chipgr8.io   as io
 
-from chipgr8.util import write
+from chipgr8.util import write, findRom
 
 class Chip8VM(object):
     '''
@@ -22,10 +22,13 @@ class Chip8VM(object):
         Initializes a new Chip8VM object, calling core.initVM to allocate a new
         C struct.
         '''
-        self.vm = core.initVM()
+        # TODO adjust for Super Chip-48
+        width, height = 64, 32
+        self.vm  = core.initVM()
+        self.ctx = VRAMContext(self.vm.VRAM, width, height) 
 
         if display:
-            self.window = io.ChipGr8Window()
+            self.window = io.ChipGr8Window(width, height)
 
     # ROM Methods
 
@@ -40,10 +43,11 @@ class Chip8VM(object):
         if self.vm == None:
             raise RuntimeError("VM not loaded.")
 
-        if not os.path.isfile(nameOrPath):
+        rom = findRom(nameOrPath)
+        
+        if not rom:
             raise FileNotFoundError("The specified file does not exist.")
-
-        if core.loadROM(self.vm, nameOrPath.encode('utf-8')) == 0:
+        if not core.loadROM(self.vm, rom):
             raise RuntimeError("Library failed to load ROM.")
 
 
@@ -140,8 +144,17 @@ class Chip8VM(object):
         '''
         Force a render to the window (if it is open).
         '''
-        if not self.window == None:
-            self.window.render(self.VRAM(), True) 
+        if self.window:
+            if self.vm.diffClear:
+                self.window.clear()
+            if self.vm.diffSize:
+                self.window.render(
+                    self.ctx, 
+                    self.vm.diffX, 
+                    self.vm.diffY, 
+                    self.vm.diffSize,
+                )
+            self.window.sound(self.vm.ST[0] > 0)
     
     # State Methods
 
@@ -159,23 +172,19 @@ class Chip8VM(object):
             core.step(self.vm)
             n -= 1
 
-    # Data Fields
+class VRAMContext(object):
 
-    def VRAM(self):
-        '''
-        The VM VRAM in a bitmap format (32x64) where the first bitmap[row] 
-        indexes through each row and index[row][col] indexes through each pixel.
-        Each pixel is either 0 or 1 (black or white).
+    def __init__(self, VRAM, width, height):
+        self.VRAM   = VRAM
+        self.width  = width
+        self.height = height
 
-        @returns the bitmap
-        '''
-        bitmap = []
-        for y in range(32):
-            bitmap.append([0] * 64)
-            for x in range(64):
-                byteOffset = (y * 64 + x) // 8
-                bitOffset  = (y * 64 + x) % 8
-                byte = self.vm.VRAM[byteOffset]
-                bitmap[y][x] = (byte >> (7 - bitOffset)) & 1
-
-        return bitmap
+    def __getitem__(self, idx):
+        x, y       = idx
+        x          = x % self.width
+        y          = y % self.height
+        bit        = (y * self.width) + x
+        byteOffset = bit // 8
+        bitOffset  = bit %  8
+        byte       = self.VRAM[byteOffset]
+        return (byte >> (7 - bitOffset)) & 0x1

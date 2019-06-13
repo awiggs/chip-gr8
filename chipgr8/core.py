@@ -39,7 +39,7 @@ def unloadROM(vm):
     '''
     return lib.unloadROM(vm)
 
-def send_input(vm, keymask):
+def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''

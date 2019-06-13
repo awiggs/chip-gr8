@@ -26,12 +26,16 @@ STRUCT_DEFINITION = lambda : [
     ('V',         ptr(u8),  'General purpose registers'),
     ('DT',        ptr(u8),  'Delay timer'),
     ('ST',        ptr(u8),  'Sound timer'),
-    ('W',         ptr(u8),   'Wait register'),
+    ('W',         ptr(u8),  'Wait register'),
     ('keys',      ptr(u16), 'Key IO registers'),
     ('seed',      u8,       'Seed for RNG'),
     ('wait',      u8,       'Chip-8 in wait mode'),
     ('clock',     u64,      'Time since simulation began'),
     ('hexes',     ptr(u8),  'Hexsprite pointer'),
+    ('diffX',     u8,       'VRAM diff X position'),
+    ('diffY',     u8,       'VRAM diff Y position'),
+    ('diffSize',  u8,       'VRAM diff size'),
+    ('diffClear', u8,       'Indicate a CLS instruction'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #

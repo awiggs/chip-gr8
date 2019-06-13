@@ -6,6 +6,28 @@
 #include "ops.h"
 
 /**
+ * Performs additional changes to the VM after an instruction has occured.
+ * 
+ * @params vm the vm
+ */
+void preStep(Chip8VM_t * vm) {
+    // Reset diff flags
+    vm->diffSize  = 0;
+    vm->diffClear = 0;
+}
+
+/**
+ * Performs additional changes to the VM after an instruction has occured.
+ * 
+ * @params vm the vm
+ */
+void postStep(Chip8VM_t* vm) {
+    // Decrement DT and ST if positive
+    if (*vm->DT > 0) { *vm->DT -= 1; }
+    if (*vm->ST > 0) { *vm->ST -= 1; }
+}
+
+/**
  * Sets the input registers on the VM.
  * 
  * @params vm the vm 
@@ -13,6 +35,15 @@
  */
 void input(Chip8VM_t* vm, u16 keymask) {
     *vm->keys = keymask;
+    if (keymask && vm->wait) {
+        u8 decodedKeymask = 0;
+        // Decode keymask, get most significant bit key
+        while (keymask >>= 1) { decodedKeymask++; }
+        // Assign to wait regivster V[W]
+        vm->V[*vm->W] = decodedKeymask;
+        // Stop waiting
+        vm->wait = 0;
+    }
 }
 
 /**
@@ -110,27 +141,13 @@ void freeVM(Chip8VM_t* vm) {
  * @params vm the vm
  */
 void step(Chip8VM_t* vm) {
-    // This code is questionable (should probably be factored out)
-    if (vm->wait) {
-        if (*vm->keys) {
-            vm->wait = 0;
-            int keys = *vm->keys;
-            int key  = 0;
-            while (keys != 0) {
-                keys = keys >> 1;
-                key++;
-            }
-            vm->V[*vm->W] = key;
-        } else {
-            // return;
-        }
+    preStep(vm);
+    if (!vm->wait) {
+        word_t opcode = fetch(vm);
+        Instruction_t instruction = decode(opcode);
+        evaluate(vm, instruction, opcode);
     }
-    // u16 debugPC = *vm->PC;
-    word_t opcode = fetch(vm);
-    // debugf("%u: %u (Hex: %x) %x\n", (debugPC - PROGRAM_SPACE_START) / 2, debugPC, debugPC, opcode);
-    Instruction_t instruction = decode(opcode);
-    evaluate(vm, instruction, opcode);
-    update(vm);
+    postStep(vm);
 }
 
 /**
@@ -289,18 +306,6 @@ Instruction_t decode(word_t opcode) {
             return INVALID_INSTRUCTION;
         }
     }
-}
-
-/**
- * Performs additional changes to the VM that are not covered by instruction
- * decode and dispatch.
- * 
- * @params vm the vm
- */
-void update(Chip8VM_t* vm) {
-    // Decrement DT and ST if positive
-    if (*vm->DT > 0) { *vm->DT -= 1; }
-    if (*vm->ST > 0) { *vm->ST -= 1; }
 }
 
 /**

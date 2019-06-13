@@ -17,6 +17,7 @@ void opSYS(Chip8VM_t* vm, u16 addr) {
  * @params  vm      The current state of the Virtual Machine
  */
 void opCLS(Chip8VM_t* vm) {
+    vm->diffClear = 1;
     memset(vm->VRAM, 0, vm->sizeVRAM);
 }
 
@@ -287,10 +288,11 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
  */
 void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
     u16 i = *vm->I;
-    u8 x = vm->V[regX];
-    u8 y = vm->V[regY];
-    
-    vm->V[0xF] = 0;
+    u8 x = vm->diffX = vm->V[regX];
+    u8 y = vm->diffY = vm->V[regY];
+
+    vm->diffSize = size;
+    vm->V[0xF]   = 0;
     
     // for each row of the sprite
     for (u8 j = 0; j < size; j ++) {

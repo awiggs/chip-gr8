@@ -6,46 +6,56 @@ import time
 import pygame
 
 from pygame.locals import *
-from pygame import event as evt
+from pygame import event
 import os
 
-import chipgr8.core
+import chipgr8.core as core
 
 class ChipGr8Window():
-    screen = None
-    scale = 10
 
-    def __init__(self):
+    screen     = None
+    scale      = 10
+    background = (0, 0,   0)
+    foreground = (0, 255, 0)
+    tone       = os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
+
+    def __init__(self, width, height):
         pygame.init()
-        
-        size = width, height = 64*self.scale , 32*self.scale
+        size        = width * self.scale, height * self.scale
+        self.width  = width
+        self.height = height
         self.screen = pygame.display.set_mode(size)
-        self.screen.fill((0,0,0))
-        pygame.mixer.music.load(os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3")))
+        self.screen.fill(self.background)
+        pygame.mixer.music.load(self.tone)
 
-    # Takes a bitmap of the screen and renders the screen using pygame.
-    # Takes an optional boolean parameter if you want to have sound playing for that frame
-    def render(self, bitMap, soundBool=False):
-        # Handle the pure tone
-        if soundBool:
+    def sound(self, play):
+        if play:
             pygame.mixer.music.play()
-        else:
+        else: 
             pygame.mixer.music.stop()
 
-        # Handle the screen draw
-        self.screen.fill((0,0,0))
-        for row in range(len(bitMap)):
-            for pixel in range(len(bitMap[row])):
-                if bitMap[row][pixel] == 1:
-                    pygame.draw.rect(self.screen, (255,255,255), (pixel*self.scale,row*self.scale,self.scale,self.scale))
+    def clear(self):
+        self.screen.fill(self.background)
+
+    def render(self, ctx, x, y, rows):
+        s = self.scale
+        for xOff in range(8):
+            for yOff in range(rows):
+                rx = x + xOff
+                ry = y + yOff
+                pygame.draw.rect(
+                    self.screen, 
+                    self.foreground if ctx[rx, ry] else self.background, 
+                    (rx * s, ry * s, s, s),
+                )
         pygame.display.flip()
 
     def input(self):
-        core.send_input(self.get_keymask())
+        core.sendInput(self.get_keymask())
 
     def get_keymask(self):
         keymask = bin(0)
-        events = evt.get()
+        events = event.get()
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_0:

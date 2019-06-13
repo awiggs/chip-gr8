@@ -140,14 +140,6 @@ Instruction_t decode(word_t opcode);
 void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode);
 
 /**
- * Performs additional changes to the VM that are not covered by instruction
- * decode and dispatch.
- * 
- * @params vm the vm
- */
-void update(Chip8VM_t* vm);
-
-/**
  * Load a ROM from a file into the vm.
  * 
  * @params vm       the vm
