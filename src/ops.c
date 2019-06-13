@@ -292,6 +292,7 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
     u8 y = vm->diffY = vm->V[regY];
 
     vm->diffSize = size;
+    vm->diffSkip = 1;
     vm->V[0xF]   = 0;
     
     // for each row of the sprite
@@ -324,7 +325,9 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
             vm->V[0xF] = 1;
         }
         // Set skip flag
-        vm->diffSkip = !(oldVRAMData ^ spriteByte);
+        if (oldVRAMData ^ spriteByte) {
+            vm->diffSkip = 0;
+        }
         
         // set VRAM memory
         vm->VRAM[firstByte]  ^= (spriteByte >> bitOffset);
