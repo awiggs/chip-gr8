@@ -72,6 +72,7 @@ void initVM(Chip8VM_t* vm) {
     // Initialize allocated fields
     vm->RAM   = malloc(vm->sizeRAM);
     vm->VRAM  = malloc(vm->sizeVRAM);
+    memset(vm->RAM,  0, vm->sizeRAM);
     memset(vm->VRAM, 0, vm->sizeVRAM);
 
     // Initialize pointers
@@ -113,11 +114,6 @@ void initVM(Chip8VM_t* vm) {
     STORE_HEXSPRITE(vm->hexes, 13, HEXSPRITE_D);
     STORE_HEXSPRITE(vm->hexes, 14, HEXSPRITE_E);
     STORE_HEXSPRITE(vm->hexes, 15, HEXSPRITE_F);
-
-    // Initialize stack
-    for(u8 i = 0; i < LEN_STACK + 1; i++) {
-        vm->stack[i] = 0;
-    }
 }
 
 /**
@@ -142,11 +138,11 @@ void freeVM(Chip8VM_t* vm) {
  */
 void step(Chip8VM_t* vm) {
     preStep(vm);
-    // if (!vm->wait) {
+    if (!vm->wait) {
         word_t opcode = fetch(vm);
         Instruction_t instruction = decode(opcode);
         evaluate(vm, instruction, opcode);
-    // }
+    }
     postStep(vm);
 }
 
