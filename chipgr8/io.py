@@ -47,7 +47,7 @@ class ChipGr8Window():
                 if ctx[x, y]:
                     pygame.draw.rect(
                         self.screen, 
-                        self.foreground, 
+                        self.shader(self, x, y), 
                         (x * s, y * s, s, s),
                     )
         pygame.display.flip()        
