@@ -94,14 +94,18 @@ class Chip8VMStruct(ctypes.Structure):
  * If you need to modify this struct modify the definition in that file.
  */
 
+
 #ifndef AUTOGEN_VMSTRUCT_H
 #define AUTOGEN_VMSTRUCT_H
 
 /* !!! DO NOT MODIFY !!! */
 typedef struct Chip8VM_t Chip8VM_t;
+#pragma pack(push)
+#pragma pack(1)
 struct Chip8VM_t {
     <fields>
 } __attribute__((packed, aligned(1)));
+#pragma pack(pop)
 
 #endif /* AUTOGEN_VMSTRUCT_H */
 '''.replace('<fields>', '\n    '.join(['{}; // {}'.format(t1.format(name), comment) 
