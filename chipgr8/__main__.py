@@ -52,6 +52,10 @@ parser.add_argument('-n', '--nolabels',
     action = 'store_true',
     help   = 'do not generate labels in disassembly',
 )
+parser.add_argument('-x', '--hexdump',
+    action = 'store_true',
+    help   = 'show hex in disassembly',
+)
 parser.add_argument('-s', '--smooth',
     action = 'store_true',
     help   = 'enable smooth rendering mode',
@@ -64,8 +68,12 @@ if args.source:
     if not args.out:
         print(result)
 elif args.binary:
-    labels = None if args.nolabels else {}
-    result = chipgr8.disassemble(inPath=chipgr8.findRom(args.binary), outPath=args.out, labels=labels)
+    result = chipgr8.disassemble(
+        inPath  = chipgr8.findRom(args.binary), 
+        outPath = args.out, 
+        labels  = None if args.nolabels else {},
+        hexdump = args.hexdump,
+    )
     if not args.out:
         print(result)
 else:

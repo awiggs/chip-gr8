@@ -69,7 +69,15 @@ def hexdump(buffer=None, inPath=None, outPath=None):
     if outPath: write(outPath, dump)
     return dump
 
-def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True, prefix='  '):
+def disassemble(
+    buffer  = None, 
+    inPath  = None, 
+    outPath = None, 
+    labels  = {}, 
+    decargs = True, 
+    prefix  = '  ', 
+    hexdump = False
+):
     '''
     Converts a byte array or input file to a string representation of Chip-8
     instructions. Returns the result as a string and optionally writes the 
@@ -81,6 +89,7 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
             labels  If a dictionary generate labels for CALL and JP instructions
             decargs If True express non address values in decimal
             prefix  Prefix prior to instruction, defaults to two spaces
+            hexdump Show hex value of line as a comment
     @returns        Disassembled source code
     '''
     if inPath: 
@@ -89,7 +98,7 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
         labels = None
     minaddr = 0x200
     maxaddr = minaddr + len(buffer)
-    instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr)
+    instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump)
         for (high, low) 
         in chunk(2, buffer, pad=b'\0')
     ]
@@ -103,7 +112,7 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
     if outPath: write(outPath, source)
     return source
 
-def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr):
+def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump):
     (hh, hl), (lh, ll) = nibbles(high), nibbles(low)
     arguments = dict(
         x    = hexarg(hl),
@@ -126,7 +135,7 @@ def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr):
                 if arguments['nnn'] not in labels:
                     labels[arguments['nnn']] = '.label_' + str(len(labels))
                 arguments['nnn'] = labels[arguments['nnn']]
-            return fmt.format(**arguments)
+            return fmt.format(**arguments) + (' ; 0x' + hexarg(hh, hl, lh, ll) if hexdump else '')
 
     for (fmt, opcode) in SUPER_CHIP_48_INSTRUCTIONS:
         if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
