@@ -1,0 +1,138 @@
+  LD VA 0b10
+  LD VB 0b1100
+  LD VC 63
+  LD VD 0b1100
+  LD I .label_0
+  DRW VA VB 6
+  DRW VC VD 6
+  LD VE 0
+  CALL .label_1
+  LD V6 3
+  LD V8 2
+.label_12
+  LD V0 96
+  LD DT V0
+.label_2
+  LD V0 DT
+  SE V0 0
+  JP .label_2
+  RND V7 23
+  ADD V7 8
+  LD V9 255
+  LD I .label_3
+  DRW V6 V7 1
+.label_6
+  LD I .label_0
+  DRW VA VB 6
+  DRW VC VD 6
+  LD V0 1
+  SKNP V0
+  ADD VB 254
+  LD V0 4
+  SKNP V0
+  ADD VB 2
+  LD V0 31
+  AND VB V0
+  DRW VA VB 6
+  LD V0 12
+  SKNP V0
+  ADD VD 254
+  LD V0 13
+  SKNP V0
+  ADD VD 2
+  LD V0 31
+  AND VD V0
+  DRW VC VD 6
+  LD I .label_3
+  DRW V6 V7 1
+  ADD V6 V8
+  ADD V7 V9
+  LD V0 63
+  AND V6 V0
+  LD V1 31
+  AND V7 V1
+  SNE V6 2
+  JP .label_4
+  SNE V6 63
+  JP .label_5
+.label_13
+  SNE V7 31
+  LD V9 255
+  SNE V7 0
+  LD V9 1
+  DRW V6 V7 1
+  JP .label_6
+.label_4
+  LD V8 2
+  LD V3 1
+  LD V0 V7
+  SUB V0 VB
+  JP .label_7
+.label_5
+  LD V8 254
+  LD V3 10
+  LD V0 V7
+  SUB V0 VD
+.label_7
+  SE VF 1
+  JP .label_8
+  LD V1 2
+  SUB V0 V1
+  SE VF 1
+  JP .label_9
+  SUB V0 V1
+  SE VF 1
+  JP .label_10
+  SUB V0 V1
+  SE VF 1
+  JP .label_11
+.label_8
+  LD V0 32
+  LD ST V0
+  CALL .label_1
+  ADD VE V3
+  CALL .label_1
+  LD V6 62
+  SE V3 1
+  LD V6 3
+  LD V8 254
+  SE V3 1
+  LD V8 2
+  JP .label_12
+.label_9
+  ADD V9 255
+  SNE V9 254
+  LD V9 255
+  JP .label_10
+.label_11
+  ADD V9 1
+  SNE V9 2
+  LD V9 1
+.label_10
+  LD V0 4
+  LD ST V0
+  ADD V6 1
+  SNE V6 64
+  ADD V6 254
+  JP .label_13
+.label_1
+  LD I .label_14
+  LD B VE
+  LD V2 [I]
+  LD F V1
+  LD V4 20
+  LD V5 0
+  DRW V4 V5 5
+  ADD V4 21
+  LD F V2
+  DRW V4 V5 5
+  RET
+.label_0
+  LD V0 V8
+  LD V0 V8
+  LD V0 V8
+.label_3
+  LD V0 V0
+.label_14
+  BYTE 0x0000
+  BYTE 0x0000

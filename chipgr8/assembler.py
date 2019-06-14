@@ -82,6 +82,13 @@ def assembleValue(source, labels, lineno, nibbles):
             raise Exception('Invalid size value {} on line {}!'.format(source, lineno))
         padding = nibbles - len(source)
         return '0' * padding + source
+    # bin
+    if re.match(r'0b[01]+$', source):
+        hexSource = hex(int(source[2:], 2))[2:]
+        if len(hexSource) > nibbles:
+            raise Exception('Invalid size value {} on line {}!'.format(source, lineno))
+        padding = nibbles - len(hexSource)
+        return '0' * padding + hexSource
     # decimal
     if re.match(r'\d+$', source):
         hexSource = hex(int(source))[2:]
