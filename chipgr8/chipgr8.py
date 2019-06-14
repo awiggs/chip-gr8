@@ -45,7 +45,7 @@ def init(
 
     clk = pygame.time.Clock()
 
-    while(eventProcessor()):
+    while(eventProcessor(vm)):
         clk.tick(vm.freq)
         vm.step()
         vm.render()
@@ -54,9 +54,15 @@ def init(
     core.freeVM(vm.vm)
     print('Finished.')
 
-def eventProcessor():
+def eventProcessor(vm):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
+        if vm.window: # TODO: Disassembly scrolling speed currently limited by framerate
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 4:
+                    vm.window.scrollDisassemblyUp()
+                elif event.button == 5:
+                    vm.window.scrollDisassemblyDown()
     return True
 

@@ -2,6 +2,7 @@ import os
 import pickle as pkl
 import chipgr8.core as core
 import chipgr8.io   as io
+import chipgr8.disassembler as disassembler
 
 from chipgr8.util import write, findRom
 
@@ -12,6 +13,7 @@ class Chip8VM(object):
     '''
     vm = None
     window = None
+    romDisassembly = None
 
     def __init__(
         self,
@@ -54,6 +56,8 @@ class Chip8VM(object):
         if not core.loadROM(self.vm, rom.encode()):
             raise RuntimeError("Library failed to load ROM.")
 
+        if self.window:
+            self.window.initDisassemblyText(rom.encode())
 
     def unloadROM(self):
         '''
@@ -163,8 +167,10 @@ class Chip8VM(object):
                         self.vm.diffSize,
                     )
                 
+            self.window.renderDisassembly()
+
             # Seg fault on windows??
-            # self.window.sound(self.vm.ST[0] > 0)
+            self.window.sound(self.vm.ST[0] > 0)
     
     # State Methods
 
