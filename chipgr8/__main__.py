@@ -77,9 +77,11 @@ elif args.binary:
     if not args.out:
         print(result)
 else:
+    if not args.rom:
+        args.rom = "404.ch8"
     chipgr8.init(
         verbose = args.verbose,
         smooth  = args.smooth,
-        ROM     = chipgr8.findRom(args.rom), 
+        ROM     = chipgr8.findRom(args.rom) or "404.ch8", 
         display = True,
     )
