@@ -51,6 +51,7 @@ class ChipGr8Window():
         self.disassemblyMenu   = self.screen.subsurface(Rect((self.gameSize[0], 0), (self.disassemblyWidth, self.gameSize[1])))
         self.disassemblyScroll = pygame.surface.Surface((self.disassemblyWidth, self.gameSize[1]))
         self.disassemblyMenu.fill(self.fontBackCol)
+        self.disassemblyScroll.fill(self.fontBackCol)
 
         self.shader = shaders.default
         pygame.mixer.music.load(self.tone)
@@ -92,6 +93,7 @@ class ChipGr8Window():
     # Update the disassembly menu
     def renderDisassembly(self):
         self.disassemblyMenu.blit(self.disassemblyScroll, (10, 10 - self.disScrollY))
+        pygame.display.update(Rect(self.gameSize[0], 0, self.disassemblyWidth, self.gameSize[1]))
 
     def clear(self):
         self.gameScreen.fill(self.background)
