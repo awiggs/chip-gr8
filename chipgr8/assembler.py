@@ -37,6 +37,7 @@ def retrieveLabels(source):
     lines  = []
     for (i, line) in enumerate(source.split('\n')):
         line = line.strip()
+        line = re.sub(r';.*', '', line)
         # Blank
         if len(line) == 0:
             continue
@@ -53,7 +54,7 @@ def retrieveLabels(source):
         # Instruction
         else:
             lines.append((line, i + 1))
-            offset += 2
+            offset += 1 if line.lower().startswith('byte') else 2
     return (lines, labels)
 
 def assembleLine(line, labels):
@@ -270,8 +271,8 @@ def assembleSCD(arguments, labels, lineno):
 
 def assembleBYTE(arguments, labels, lineno):
     if len(arguments) == 1:
-        bbbb = assembleValue(arguments[0], labels, lineno, 4)
-        return bbbb
+        bb = assembleValue(arguments[0], labels, lineno, 2)
+        return bb
     raise Exception('Unexpected number of arguments on line {}!'.format(lineno))
 
 ASSEMBLY_TABLE = {

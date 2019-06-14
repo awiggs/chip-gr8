@@ -1,7 +1,7 @@
-  LD VA 0b10
-  LD VB 0b1100
+  LD VA 2
+  LD VB 12
   LD VC 63
-  LD VD 0b1100
+  LD VD 12
   LD I .label_0
   DRW VA VB 6
   DRW VC VD 6
@@ -134,5 +134,7 @@
 .label_3
   LD V0 V0
 .label_14
-  BYTE 0x0000
-  BYTE 0x0000
+  BYTE 0x00
+  BYTE 0x00
+  BYTE 0x00
+  BYTE 0x00

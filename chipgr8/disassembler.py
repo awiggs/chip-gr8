@@ -98,7 +98,7 @@ def disassemble(buffer=None, inPath=None, outPath=None, labels={}, decargs=True,
         addr = '0x' + hexarg(minaddr + (i * 2))
         if labels and addr in labels:
             source += labels[addr] + '\n'
-        source += prefix + instruction + '\n'
+        source += prefix + instruction.replace('\n', '\n' + prefix) + '\n'
 
     if outPath: write(outPath, source)
     return source
@@ -132,7 +132,7 @@ def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr):
         if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
             return fmt.format(**arguments)
     
-    return 'BYTE 0x' + hexarg(hh, hl, lh, ll)
+    return 'BYTE 0x' + hexarg(hh, hl) + '\nBYTE 0x' + hexarg(lh, ll)
 
 def opcodeMatch(pattern, instruction):
     return all(p in 'xyzkn' or p == i for (p, i) in zip(pattern, instruction))
