@@ -1,5 +1,5 @@
 # Add imports that should be available at the top level of the API
-from .chipgr8      import init
+from .chipgr8      import ChipGr8
 from .disassembler import disassemble, hexdump
 from .assembler    import assemble
 from .util         import findRom

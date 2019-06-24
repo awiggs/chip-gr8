@@ -148,7 +148,7 @@ class Chip8VM(object):
         core.send_input(self.vm, keymask)
 
 
-    def render(self):
+    def render(self, forceDissassemblyRender=False, pcHighlight=False):
         '''
         Force a render to the window (if it is open).
         '''
@@ -167,7 +167,7 @@ class Chip8VM(object):
                         self.vm.diffSize,
                     )
                 
-            self.window.renderDisassembly()
+            self.window.renderDisassembly(override=forceDissassemblyRender, highlight=pcHighlight)
 
             # Seg fault on windows??
             self.window.sound(self.vm.ST[0] > 0)
@@ -187,6 +187,13 @@ class Chip8VM(object):
         while n > 0:
             core.step(self.vm)
             n -= 1
+
+    # Disassembly Methods
+
+    def highlightDisassembly(self):
+        line = (core.getProgramCounter(self.vm) - 512) / 2 + 1 # Offset interpret space and add 1 because 1-indexing
+        self.window.setCurrDisassemblyLine(line)
+        self.window.scrollDissassemblyToCurrLine()
 
 class VRAMContext(object):
 

@@ -27,7 +27,12 @@ class ChipGr8Window():
     fontBackCol = (240, 240, 240)
     disScrollY  = 0
     disLen      = 0
+    currDisassemblyLine = 1
+    disScrollChange  = False
     disassemblyWidth = 300
+    disHighlight = None
+    disHighlightColour = (242, 231, 163)
+    disHighlightAlpha = 128
     tone        = os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
 
     def __init__(self, gameWidth, gameHeight):
@@ -45,13 +50,16 @@ class ChipGr8Window():
         self.gameScreen.fill(self.background)
 
         # Disassembler menu - TODO: Aesthetic fixes, scroll bar, customizeable font size/colour?
-        self.fontSize = 26
+        self.fontSize = 24
         self.lineHeight = 24
         self.font = pygame.font.Font(None, self.fontSize)
         self.disassemblyMenu   = self.screen.subsurface(Rect((self.gameSize[0], 0), (self.disassemblyWidth, self.gameSize[1])))
         self.disassemblyScroll = pygame.surface.Surface((self.disassemblyWidth, self.gameSize[1]))
         self.disassemblyMenu.fill(self.fontBackCol)
         self.disassemblyScroll.fill(self.fontBackCol)
+        self.disHighlight = pygame.Surface((self.disassemblyWidth, self.lineHeight))
+        self.disHighlight.set_alpha(self.disHighlightAlpha)
+        self.disHighlight.fill(self.disHighlightColour)
 
         self.shader = shaders.default
         pygame.mixer.music.load(self.tone)
@@ -75,25 +83,52 @@ class ChipGr8Window():
 
         # Add text to surface
         # For loop needed since newlines don't work in pygame
+        labelCounter = 0
         for i in range(self.disLen):
-            self.disassemblyScroll.blit(self.font.render(str(i + 1), True, self.lineFontCol, self.fontBackCol), (0, i * self.lineHeight))
-            self.disassemblyScroll.blit(self.font.render(disSrc[i], True, self.fontCol, self.fontBackCol), (40, i * self.lineHeight))
+            if len(disSrc[i]) > 0 and disSrc[i][0] is '.':
+                self.disassemblyScroll.blit(self.font.render(disSrc[i], True, self.fontCol, self.fontBackCol), (40, (i - labelCounter) * self.lineHeight))
+                labelCounter += 1
+                continue
+
+            self.disassemblyScroll.blit(self.font.render(str(i - labelCounter + 1), True, self.lineFontCol, self.fontBackCol), (0, (i - labelCounter) * self.lineHeight))
+            self.disassemblyScroll.blit(self.font.render(disSrc[i], True, self.fontCol, self.fontBackCol), (120, (i - labelCounter) * self.lineHeight))
+
+        # Subtract labels from line count
+        self.disLen -= labelCounter
 
     def scrollDisassemblyUp(self):
+        self.disScrollChange = True
         self.disScrollY -= self.lineHeight * 2
         if self.disScrollY < 0:
             self.disScrollY = 0
 
     def scrollDisassemblyDown(self):
+        self.disScrollChange = True
         self.disScrollY += self.lineHeight * 2
         max = (self.disLen - 1) * self.lineHeight
         if self.disScrollY > max:
             self.disScrollY = max
 
+    def setCurrDisassemblyLine(self, lineNum):
+        if lineNum > self.disLen or lineNum < 1:
+            return
+        self.currDisassemblyLine = lineNum
+
+    def scrollDissassemblyToCurrLine(self):
+        self.disScrollChange = True
+        self.disScrollY = self.lineHeight * (self.currDisassemblyLine - self.gameSize[1] // self.lineHeight // 2)
+        if self.disScrollY < 0:
+            self.disScrollY = 0
+
     # Update the disassembly menu
-    def renderDisassembly(self):
-        self.disassemblyMenu.blit(self.disassemblyScroll, (10, 10 - self.disScrollY))
-        pygame.display.update(Rect(self.gameSize[0], 0, self.disassemblyWidth, self.gameSize[1]))
+    def renderDisassembly(self, override=False, highlight=False):
+        if self.disScrollChange or override:
+            self.disassemblyMenu.fill(self.fontBackCol)
+            self.disassemblyMenu.blit(self.disassemblyScroll, (10, 10 - self.disScrollY))
+            if highlight:
+                self.disassemblyMenu.blit(self.disHighlight, (0, 5 + (self.currDisassemblyLine - 1) * self.lineHeight - self.disScrollY))
+            pygame.display.update(Rect(self.gameSize[0], 0, self.disassemblyWidth, self.gameSize[1]))
+            self.disScrollChange = False
 
     def clear(self):
         self.gameScreen.fill(self.background)
