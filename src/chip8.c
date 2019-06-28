@@ -44,7 +44,7 @@ void input(Chip8VM_t* vm, u16 keymask) {
         u8 decodedKeymask = 0;
         // Decode keymask, get most significant bit key
         while (keymask >>= 1) { decodedKeymask++; }
-        // Assign to wait regivster V[W]
+        // Assign to wait register V[W]
         vm->V[*vm->W] = decodedKeymask;
         // Stop waiting
         vm->wait = 0;
@@ -247,7 +247,7 @@ Instruction_t decode(word_t opcode) {
             }
         }
         case 0x09: {
-            return SKIPNP;
+            return SKIPNR;
         }
         case 0x0A: {
             return LOADADDR;
@@ -266,7 +266,7 @@ Instruction_t decode(word_t opcode) {
                 return SKIP;
             }
             else {
-                return SKIPNR;
+                return SKIPNP;
             }
         }
         case 0x0F: {

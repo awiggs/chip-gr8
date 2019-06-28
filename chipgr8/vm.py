@@ -102,7 +102,7 @@ class Chip8VM(object):
 
     # IO Methods
 
-    def io(
+    def input(
         self, 
         raw     = None, 
         handler = None, 
@@ -119,33 +119,33 @@ class Chip8VM(object):
                 handler A function that accepts VM state and returns IO
                 kX      Explicit parameters for each key
         '''
-        if not raw == None:
-            core.send_input(self.vm, raw)
+        if not (raw == None):
+            core.sendInput(self.vm, raw)
             return
         
-        if not handler == None:
+        if not (handler == None):
             raise NotImplementedError("Handler arguement has not been implemented yet.")
 
-        keymask = bin(0)
+        keymask = 0
 
-        if not k0 == None: keymask += bin(k0)
-        if not k1 == None: keymask += bin(k1) << 1
-        if not k2 == None: keymask += bin(k2) << 2
-        if not k3 == None: keymask += bin(k3) << 3
-        if not k4 == None: keymask += bin(k4) << 4
-        if not k5 == None: keymask += bin(k5) << 5
-        if not k6 == None: keymask += bin(k6) << 6
-        if not k7 == None: keymask += bin(k7) << 7
-        if not k8 == None: keymask += bin(k8) << 8
-        if not k9 == None: keymask += bin(k9) << 9
-        if not kA == None: keymask += bin(kA) << 10
-        if not kB == None: keymask += bin(kB) << 11
-        if not kC == None: keymask += bin(kC) << 12
-        if not kD == None: keymask += bin(kD) << 13
-        if not kE == None: keymask += bin(kE) << 14
-        if not kF == None: keymask += bin(kF) << 15
+        if not (k0 == None): keymask += 1
+        if not (k1 == None): keymask += 1 << 1
+        if not (k2 == None): keymask += 1 << 2
+        if not (k3 == None): keymask += 1 << 3
+        if not (k4 == None): keymask += 1 << 4
+        if not (k5 == None): keymask += 1 << 5
+        if not (k6 == None): keymask += 1 << 6
+        if not (k7 == None): keymask += 1 << 7
+        if not (k8 == None): keymask += 1 << 8
+        if not (k9 == None): keymask += 1 << 9
+        if not (kA == None): keymask += 1 << 10
+        if not (kB == None): keymask += 1 << 11
+        if not (kC == None): keymask += 1 << 12
+        if not (kD == None): keymask += 1 << 13
+        if not (kE == None): keymask += 1 << 14
+        if not (kF == None): keymask += 1 << 15
 
-        core.send_input(self.vm, keymask)
+        core.sendInput(self.vm, keymask)
 
 
     def render(self, forceDissassemblyRender=False, pcHighlight=False):
