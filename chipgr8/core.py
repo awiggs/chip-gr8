@@ -46,7 +46,6 @@ def sendInput(vm, keymask):
     return lib.input(vm, keymask)
 
 def getProgramCounter(vm):
-    #TODO
     return getattr(vm, "PC").contents.value
 
 DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))

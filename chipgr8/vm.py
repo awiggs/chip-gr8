@@ -191,7 +191,7 @@ class Chip8VM(object):
     # Disassembly Methods
 
     def highlightDisassembly(self):
-        line = (core.getProgramCounter(self.vm) - 512) / 2 + 1 # Offset interpret space and add 1 because 1-indexing
+        line = (core.getProgramCounter(self.vm) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
         self.window.setCurrDisassemblyLine(line)
         self.window.scrollDissassemblyToCurrLine()
 

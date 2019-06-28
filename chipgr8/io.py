@@ -132,6 +132,7 @@ class ChipGr8Window():
 
     def clear(self):
         self.gameScreen.fill(self.background)
+        pygame.display.flip()
 
     def fullRender(self, ctx):
         s = self.scale
@@ -157,4 +158,4 @@ class ChipGr8Window():
                     self.shader(self, rx, ry) if ctx[rx, ry] else self.background, 
                     (rx * s, ry * s, s, s),
                 )
-        pygame.display.update((x * s, y * s, 8 * s, rows * s))
+        pygame.display.update(Rect(x * s, y * s, 8 * s, rows * s))
