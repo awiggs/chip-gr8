@@ -77,9 +77,9 @@ class ChipGr8(object):
             if self.vm.window: # TODO: Disassembly scrolling speed currently limited by framerate unless paused
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 4:
-                        self.vm.window.scrollDisassemblyUp()
+                        self.vm.scrollDisassemblyUp(numLines=2)
                     elif event.button == 5:
-                        self.vm.window.scrollDisassemblyDown()
+                        self.vm.scrollDisassemblyDown(numLines=2)
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_F5:
@@ -87,73 +87,16 @@ class ChipGr8(object):
                     if event.key == pygame.K_F6 and self.gamePaused:
                         self.vm.step()
                         self.vm.highlightDisassembly()
+                    if event.key == pygame.K_PAGEUP:
+                        self.vm.scrollDisassemblyUp(numLines=4)
+                    if event.key == pygame.K_PAGEDOWN:
+                        self.vm.scrollDisassemblyDown(numLines=4)
+                    if event.key == pygame.K_HOME:
+                        self.vm.scrollDisassemblyUp()
+                    if event.key == pygame.K_END:
+                        self.vm.scrollDisassemblyDown()
 
-                    if event.key == pygame.K_0:
-                        self.keys |= 1
-                    if event.key == pygame.K_1:
-                        self.keys |= 1 << 1
-                    if event.key == pygame.K_2:
-                        self.keys |= 1 << 2
-                    if event.key == pygame.K_3:
-                        self.keys |= 1 << 3
-                    if event.key == pygame.K_4:
-                        self.keys |= 1 << 4
-                    if event.key == pygame.K_5:
-                        self.keys |= 1 << 5
-                    if event.key == pygame.K_6:
-                        self.keys |= 1 << 6
-                    if event.key == pygame.K_7:
-                        self.keys |= 1 << 7
-                    if event.key == pygame.K_8:
-                        self.keys |= 1 << 8
-                    if event.key == pygame.K_9:
-                        self.keys |= 1 << 9
-                    if event.key == pygame.K_a:
-                        self.keys |= 1 << 10
-                    if event.key == pygame.K_b:
-                        self.keys |= 1 << 11
-                    if event.key == pygame.K_c:
-                        self.keys |= 1 << 12
-                    if event.key == pygame.K_d:
-                        self.keys |= 1 << 13
-                    if event.key == pygame.K_e:
-                        self.keys |= 1 << 14
-                    if event.key == pygame.K_f:
-                        self.keys |= 1 << 15
-                        
-                if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_0:
-                        self.keys &= ~(1)
-                    if event.key == pygame.K_1:
-                        self.keys &= ~(1 << 1)
-                    if event.key == pygame.K_2:
-                        self.keys &= ~(1 << 2)
-                    if event.key == pygame.K_3:
-                        self.keys &= ~(1 << 3)
-                    if event.key == pygame.K_4:
-                        self.keys &= ~(1 << 4)
-                    if event.key == pygame.K_5:
-                        self.keys &= ~(1 << 5)
-                    if event.key == pygame.K_6:
-                        self.keys &= ~(1 << 6)
-                    if event.key == pygame.K_7:
-                        self.keys &= ~(1 << 7)
-                    if event.key == pygame.K_8:
-                        self.keys &= ~(1 << 8)
-                    if event.key == pygame.K_9:
-                        self.keys &= ~(1 << 9)
-                    if event.key == pygame.K_a:
-                        self.keys &= ~(1 << 10)
-                    if event.key == pygame.K_b:
-                        self.keys &= ~(1 << 11)
-                    if event.key == pygame.K_c:
-                        self.keys &= ~(1 << 12)
-                    if event.key == pygame.K_d:
-                        self.keys &= ~(1 << 13)
-                    if event.key == pygame.K_e:
-                        self.keys &= ~(1 << 14)
-                    if event.key == pygame.K_f:
-                        self.keys &= ~(1 << 15)
+                self.checkInputKeys(event)
 
         return True
 
@@ -161,3 +104,72 @@ class ChipGr8(object):
         self.gamePaused = not self.gamePaused
         self.currFreq = self.pauseFreq if self.gamePaused else self.vm.freq
         self.vm.highlightDisassembly()
+
+    def checkInputKeys(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_0:
+                self.keys |= 1
+            if event.key == pygame.K_1:
+                self.keys |= 1 << 1
+            if event.key == pygame.K_2:
+                self.keys |= 1 << 2
+            if event.key == pygame.K_3:
+                self.keys |= 1 << 3
+            if event.key == pygame.K_4:
+                self.keys |= 1 << 4
+            if event.key == pygame.K_5:
+                self.keys |= 1 << 5
+            if event.key == pygame.K_6:
+                self.keys |= 1 << 6
+            if event.key == pygame.K_7:
+                self.keys |= 1 << 7
+            if event.key == pygame.K_8:
+                self.keys |= 1 << 8
+            if event.key == pygame.K_9:
+                self.keys |= 1 << 9
+            if event.key == pygame.K_a:
+                self.keys |= 1 << 10
+            if event.key == pygame.K_b:
+                self.keys |= 1 << 11
+            if event.key == pygame.K_c:
+                self.keys |= 1 << 12
+            if event.key == pygame.K_d:
+                self.keys |= 1 << 13
+            if event.key == pygame.K_e:
+                self.keys |= 1 << 14
+            if event.key == pygame.K_f:
+                self.keys |= 1 << 15
+            
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_0:
+                self.keys &= ~(1)
+            if event.key == pygame.K_1:
+                self.keys &= ~(1 << 1)
+            if event.key == pygame.K_2:
+                self.keys &= ~(1 << 2)
+            if event.key == pygame.K_3:
+                self.keys &= ~(1 << 3)
+            if event.key == pygame.K_4:
+                self.keys &= ~(1 << 4)
+            if event.key == pygame.K_5:
+                self.keys &= ~(1 << 5)
+            if event.key == pygame.K_6:
+                self.keys &= ~(1 << 6)
+            if event.key == pygame.K_7:
+                self.keys &= ~(1 << 7)
+            if event.key == pygame.K_8:
+                self.keys &= ~(1 << 8)
+            if event.key == pygame.K_9:
+                self.keys &= ~(1 << 9)
+            if event.key == pygame.K_a:
+                self.keys &= ~(1 << 10)
+            if event.key == pygame.K_b:
+                self.keys &= ~(1 << 11)
+            if event.key == pygame.K_c:
+                self.keys &= ~(1 << 12)
+            if event.key == pygame.K_d:
+                self.keys &= ~(1 << 13)
+            if event.key == pygame.K_e:
+                self.keys &= ~(1 << 14)
+            if event.key == pygame.K_f:
+                self.keys &= ~(1 << 15)

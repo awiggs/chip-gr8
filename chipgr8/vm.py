@@ -191,9 +191,26 @@ class Chip8VM(object):
     # Disassembly Methods
 
     def highlightDisassembly(self):
-        line = (core.getProgramCounter(self.vm) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
-        self.window.setCurrDisassemblyLine(line)
-        self.window.scrollDissassemblyToCurrLine()
+        if self.window:
+            self.window.setWarningStatus(core.getProgramCounter(self.vm) % 2 == 1)
+            
+            line = (core.getProgramCounter(self.vm) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
+            self.window.setCurrDisassemblyLine(line)
+            self.window.scrollDissassemblyToCurrLine()
+
+    def scrollDisassemblyUp(self, numLines=None):
+        if self.window:
+            if numLines == None:
+                self.window.scrollDissassemblyToLine(0)
+            else:
+                self.window.offsetScrollDisassembly(-1 * numLines)
+
+    def scrollDisassemblyDown(self, numLines=None):
+        if self.window:
+            if numLines == None:
+                self.window.scrollDissassemblyToLine(self.window.getLastDisassemblyLine(), centre=False)
+            else:
+                self.window.offsetScrollDisassembly(numLines)
 
 class VRAMContext(object):
 
