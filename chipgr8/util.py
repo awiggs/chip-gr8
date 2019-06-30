@@ -47,7 +47,9 @@ def write(path, buffer, mode='w'):
         fs.write(buffer)
     return buffer
 
-def findRom(rom):
+def findROM(rom):
+    if not rom:
+        return None
     if os.path.exists(rom):
         return rom
     rom      = rom.lower()

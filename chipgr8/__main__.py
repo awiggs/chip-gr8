@@ -5,17 +5,26 @@ import sys
 '''
 Parse command line arguments and provide the appropriate options to init. 
 
-usage: chipgr8 
-    -v --version The version number
-    -vvv --verbose Print verbose print statements to console during execution
-    -h --help    A help message
-    -r --rom     The path or name of a rom
-    -a --assemble Assemble a text file into a chip 8 rom file
-    -d --disassemble Disassemble a chip 8 rom file into a text file
+ChipGr8: The AI focused Chip 8 Emulator
+
+usage: chipgr8 [-h] [-v] [-vvv] [-r ROM] [-a SOURCE] [-d BINARY] [-o OUT] [-n]
+               [-x] [-s]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -vvv, --verbose       show more information on the console while running
+  -r ROM, --rom ROM     provide a chip 8 ROM to run
+  -a SOURCE, --assemble SOURCE
+                        run the assembler with input SOURCE
+  -d BINARY, --disassemble BINARY
+                        run this disassembler with input BINARY
+  -o OUT, --out OUT     output file for assembler/disassembler
+  -n, --nolabels        do not generate labels in disassembly
+  -x, --hexdump         show hex in disassembly
+  -s, --smooth          enable smooth rendering mode
 '''
 
-
-# Parse command line arguments and pass appropriate parameters to init
 parser = argparse.ArgumentParser(
     prog         = 'chipgr8',
     description  = chipgr8.DESCRIPTION,
@@ -77,11 +86,9 @@ elif args.binary:
     if not args.out:
         print(result)
 else:
-    if not args.rom:
-        args.rom = "404.ch8"
-    chipgr8.ChipGr8(
+    chipgr8.init(
         verbose = args.verbose,
         smooth  = args.smooth,
-        ROM     = chipgr8.findRom(args.rom) or "404.ch8", 
+        ROM     = chipgr8.findROM(args.rom) or '404.ch8', 
         display = True,
-    )
+    ).go()

@@ -1,42 +1,136 @@
 import os
+import pygame
 import pickle as pkl
-import chipgr8.core as core
-import chipgr8.io   as io
+import numpy  as np
+
+import chipgr8.io           as io
+import chipgr8.core         as core
+import chipgr8.shaders      as shaders
 import chipgr8.disassembler as disassembler
 
-from chipgr8.util import write, findRom
+from chipgr8.util import write, findROM
+from lazyarray    import larray
 
 class Chip8VM(object):
     '''
-    Wraps the Chip8VMStruct object produced by core.initVM and provides a 
-    pythonic interface to the VM state.
+    Wraps the Chip8VMStruct object produced by core.initVM, provides a 
+    pythonic interface to the VM state, and performs IO actions if necessary.
     '''
-    vm = None
+
+    __freq = 600
+    '''The VM runnning frequency'''
+
+    __pausedFreq = 30
+    '''The VM paused frequency'''
+
+    __VMs = None
+    '''Containing VM collection'''
+
+    ROM = None
+    '''The ROM file path'''
+
+    VM = None
+    '''The VM struct instance'''
+
+    ctx = None
+    '''Lazy array (numpy compliant) repesenting video memory'''
+
+    inputHistory = []
+    '''All input events a list of tuples (key, steps)'''
+
+    sampleRate = 1,
+    '''For AI agents, how many steps are taken per act'''
+
+    smooth = False,
+    '''Flag for smooth rendering'''
+    
+    paused = False,
+    '''Flag for pausing'''
+
     window = None
-    romDisassembly = None
+    '''Window instance'''
+
+    keys = 0
+    '''Current input keys sample'''
+
+    done = False
+    '''Indicates whether the VM is in a done state'''
 
     def __init__(
         self,
-        frequency = 600,
-        smooth    = False,
-        display   = False,
-        timing    = False,
+        ROM          = None,
+        frequency    = 600,
+        loadState    = None,
+        inputHistory = None,
+        sampleRate   = 1,
+        display      = False,
+        smooth       = False,
+        startPaused  = False,
+        shader       = shaders.default,
     ):
         '''
-        Initializes a new Chip8VM object, calling core.initVM to allocate a new
-        C struct.
+        Initializes a new Chip8VM object. Responsible for allocating a new VM
+        struct, game window, etc. If called with display equal to true will
+        begin the game loop.
+
+        @params ROM             str                name or path to the ROM to load
+                frequency       int                frequency to run the VM at
+                loadState       str                path or tag to a save state
+                inputHistory    List[(int, int)]   a list of predifined IO events
+                sampleRate      int                how many steps act moves forward
+                display         bool               if true creates a game window
+                smooth          bool               if true uses smooth rendering
+                startPaused     bool               if true starts the vm paused
+                shader          Shader             display shader to use
         '''
         # TODO adjust for Super Chip-48
         width, height = 64, 32
-        self.freq   = (frequency // 60) * 60
-        self.smooth = smooth
-        self.vm     = core.initVM(frequency // 60)
-        self.ctx    = VRAMContext(self.vm.VRAM, width, height) 
 
-        if display:
-            self.window = io.ChipGr8Window(width, height)
+        self.__freq = (frequency // 60) * 60
+        self.smooth = smooth
+        self.paused = startPaused
+        self.window = io.ChipGr8Window(width, height) if display else None
+        self.VM     = core.initVM(frequency // 60)
+        self.loadROM(ROM)
+
+        def getVRAM(x, y):
+            bit        = (y * width) + x
+            byteOffset = bit // 8
+            bitOffset  = bit %  8
+            byte       = self.VM.VRAM[byteOffset]
+            return (byte >> (7 - bitOffset)) & 0x1
+        
+        self.ctx    = larray(getVRAM, shape=(width, height))
+
+    def __del__(self):
+        '''
+        Releases VM resources
+        '''
+        core.freeVM(self.VM)
 
     # ROM Methods
+
+    def go(self):
+        '''
+        Runs displayable VM core loop.
+        '''
+        assert self.window, 'Cannot start a VM with no window!'
+        assert self.ROM,    'Cannot start a VM with no ROM!'
+
+        clk = pygame.time.Clock()
+        
+        self.window.initDisassemblyText(self.ROM.encode())
+        self.window.clear()
+        self.render(forceDissassemblyRender=True)
+
+        while (self.eventProcessor()):
+            self.input(self.keys)
+            if self.paused:
+                clk.tick(self.__pausedFreq)
+            else:
+                clk.tick(self.__freq)
+                self.step()
+            self.render(pcHighlight=self.paused)
 
     def loadROM(self, nameOrPath):
         '''
@@ -46,25 +140,15 @@ class Chip8VM(object):
 
         @params nameOrPath The name or path of the ROM to load
         '''
-        if self.vm == None:
+        if self.VM == None:
             raise RuntimeError("VM not loaded.")
 
-        rom = findRom(nameOrPath)
+        self.ROM = findROM(nameOrPath)
 
-        if not rom:
+        if not self.ROM:
             raise FileNotFoundError("The specified file does not exist.")
-        if not core.loadROM(self.vm, rom.encode()):
+        if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
-
-        if self.window:
-            self.window.initDisassemblyText(rom.encode())
-
-    def unloadROM(self):
-        '''
-        Unloads a ROM if one is loaded. Internally calls core.unloadROM.
-        '''
-        # TODO: unloadROM is not implemented in C
-        core.unloadROM(self.vm)
     
     # State Methods
 
@@ -81,7 +165,7 @@ class Chip8VM(object):
         if not os.path.isfile(path):
             raise FileNotFoundError("Save state file not found.")
         
-        self.vm = pkl.load(open(path, 'rb'))
+        self.VM = pkl.load(open(path, 'rb'))
 
     def saveState(self, path=None, tag=None, force=False):
         '''
@@ -95,82 +179,42 @@ class Chip8VM(object):
         #TODO: What are tags
 
         if not os.path.isfile(path) or force:
-            pkl.dump(self.vm, open(path, 'bw'))
+            pkl.dump(self.VM, open(path, 'bw'))
         else:
             raise FileExistsError("File already exists.")
 
-
     # IO Methods
 
-    def input(
-        self, 
-        raw     = None, 
-        handler = None, 
-        # Individual keys
-        k1=None, k2=None, k3=None, kC=None,
-        k4=None, k5=None, k6=None, kD=None,
-        k7=None, k8=None, k9=None, kE=None,
-        kA=None, k0=None, kB=None, kF=None,
-    ):
+    def input(self, keys):
         '''
         Set the current VM IO state.
 
-        @params raw     A raw set of bytes representing the io memory
-                handler A function that accepts VM state and returns IO
-                kX      Explicit parameters for each key
+        @params keys    int     
+                A raw set of bytes representing the io memory
         '''
-        if not (raw == None):
-            core.sendInput(self.vm, raw)
-            return
-        
-        if not (handler == None):
-            raise NotImplementedError("Handler arguement has not been implemented yet.")
-
-        keymask = 0
-
-        if not (k0 == None): keymask += 1
-        if not (k1 == None): keymask += 1 << 1
-        if not (k2 == None): keymask += 1 << 2
-        if not (k3 == None): keymask += 1 << 3
-        if not (k4 == None): keymask += 1 << 4
-        if not (k5 == None): keymask += 1 << 5
-        if not (k6 == None): keymask += 1 << 6
-        if not (k7 == None): keymask += 1 << 7
-        if not (k8 == None): keymask += 1 << 8
-        if not (k9 == None): keymask += 1 << 9
-        if not (kA == None): keymask += 1 << 10
-        if not (kB == None): keymask += 1 << 11
-        if not (kC == None): keymask += 1 << 12
-        if not (kD == None): keymask += 1 << 13
-        if not (kE == None): keymask += 1 << 14
-        if not (kF == None): keymask += 1 << 15
-
-        core.sendInput(self.vm, keymask)
-
+        core.sendInput(self.VM, keys)
 
     def render(self, forceDissassemblyRender=False, pcHighlight=False):
         '''
         Force a render to the window (if it is open).
         '''
         if self.window:
-            if self.vm.diffClear:
+            if self.VM.diffClear:
                 self.window.clear()
             if self.smooth:
-                if self.vm.diffSize and not self.vm.diffSkip:
+                if self.VM.diffSize and not self.VM.diffSkip:
                     self.window.fullRender(self.ctx)
             else:
-                if self.vm.diffSize:
+                if self.VM.diffSize:
                     self.window.render(
                         self.ctx, 
-                        self.vm.diffX, 
-                        self.vm.diffY, 
-                        self.vm.diffSize,
+                        self.VM.diffX, 
+                        self.VM.diffY, 
+                        self.VM.diffSize,
                     )
                 
             self.window.renderDisassembly(override=forceDissassemblyRender, highlight=pcHighlight)
-
-            # Seg fault on windows??
-            self.window.sound(self.vm.ST[0] > 0)
+            self.window.sound(self.VM.ST[0] > 0)
     
     # State Methods
 
@@ -178,25 +222,160 @@ class Chip8VM(object):
         '''
         Simulate a single VM clock cycle. Internally calls core.step.
         '''
-        core.step(self.vm)
+        core.step(self.VM)
 
     def steps(self, n):
         '''
         Simulate a number of clock cycles in a row. Internally calls core.step.
         '''
         while n > 0:
-            core.step(self.vm)
+            core.step(self.VM)
             n -= 1
 
-    # Disassembly Methods
+    def reset(self):
+        '''
+        Complete reset to original state. Reloads ROM.
+        '''
+        pass # TODO
 
-    def highlightDisassembly(self):
-        if self.window:
-            self.window.setWarningStatus(core.getProgramCounter(self.vm) % 2 == 1)
+    def linkVMs(self, VMs):
+        '''
+        Links VM with a VM collection.
+
+        @param VMs  Chip8VMs     the collection to link to
+        '''
+        self.__VMs = VMs
+
+    def act(self, action):
+        '''
+        Performs an action and steps forward.
+        
+        @param action   int     input action to perform
+        '''
+        self.input(action)
+        self.steps(self.sampleRate)
+
+    def doneIf(self, done):
+        '''
+        Sets the VM to done if `done` is true. Signals VMs collection if 
+        applicable.
+
+        @param done     bool    if done
+        '''
+        if not self.done and done:
+            self.done = True
+            if self.__VMs:
+                self.__VMs.signalDone(self)
+
+    # Event Processor
+
+    def eventProcessor(self):
+        if self.VM is None:
+            return False
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            if self.window: # TODO: Disassembly scrolling speed currently limited by framerate unless paused
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 4:
+                        self.scrollDisassemblyUp(numLines=2)
+                    elif event.button == 5:
+                        self.scrollDisassemblyDown(numLines=2)
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_F5:
+                        self.togglePause()
+                    if event.key == pygame.K_F6 and self.paused:
+                        self.step()
+                        self.highlightDisassembly()
+                    if event.key == pygame.K_PAGEUP:
+                        self.scrollDisassemblyUp(numLines=4)
+                    if event.key == pygame.K_PAGEDOWN:
+                        self.scrollDisassemblyDown(numLines=4)
+                    if event.key == pygame.K_HOME:
+                        self.scrollDisassemblyUp()
+                    if event.key == pygame.K_END:
+                        self.scrollDisassemblyDown()
+
+                self.keyProcessor(event)
+
+        return True
+
+    def keyProcessor(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_0:
+                self.keys |= 1
+            if event.key == pygame.K_1:
+                self.keys |= 1 << 1
+            if event.key == pygame.K_2:
+                self.keys |= 1 << 2
+            if event.key == pygame.K_3:
+                self.keys |= 1 << 3
+            if event.key == pygame.K_4:
+                self.keys |= 1 << 4
+            if event.key == pygame.K_5:
+                self.keys |= 1 << 5
+            if event.key == pygame.K_6:
+                self.keys |= 1 << 6
+            if event.key == pygame.K_7:
+                self.keys |= 1 << 7
+            if event.key == pygame.K_8:
+                self.keys |= 1 << 8
+            if event.key == pygame.K_9:
+                self.keys |= 1 << 9
+            if event.key == pygame.K_a:
+                self.keys |= 1 << 10
+            if event.key == pygame.K_b:
+                self.keys |= 1 << 11
+            if event.key == pygame.K_c:
+                self.keys |= 1 << 12
+            if event.key == pygame.K_d:
+                self.keys |= 1 << 13
+            if event.key == pygame.K_e:
+                self.keys |= 1 << 14
+            if event.key == pygame.K_f:
+                self.keys |= 1 << 15
             
-            line = (core.getProgramCounter(self.vm) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
-            self.window.setCurrDisassemblyLine(line)
-            self.window.scrollDissassemblyToCurrLine()
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_0:
+                self.keys &= ~(1)
+            if event.key == pygame.K_1:
+                self.keys &= ~(1 << 1)
+            if event.key == pygame.K_2:
+                self.keys &= ~(1 << 2)
+            if event.key == pygame.K_3:
+                self.keys &= ~(1 << 3)
+            if event.key == pygame.K_4:
+                self.keys &= ~(1 << 4)
+            if event.key == pygame.K_5:
+                self.keys &= ~(1 << 5)
+            if event.key == pygame.K_6:
+                self.keys &= ~(1 << 6)
+            if event.key == pygame.K_7:
+                self.keys &= ~(1 << 7)
+            if event.key == pygame.K_8:
+                self.keys &= ~(1 << 8)
+            if event.key == pygame.K_9:
+                self.keys &= ~(1 << 9)
+            if event.key == pygame.K_a:
+                self.keys &= ~(1 << 10)
+            if event.key == pygame.K_b:
+                self.keys &= ~(1 << 11)
+            if event.key == pygame.K_c:
+                self.keys &= ~(1 << 12)
+            if event.key == pygame.K_d:
+                self.keys &= ~(1 << 13)
+            if event.key == pygame.K_e:
+                self.keys &= ~(1 << 14)
+            if event.key == pygame.K_f:
+                self.keys &= ~(1 << 15)
+
+    # UI Actions
+
+    def togglePause(self):
+        self.paused = not self.paused
+        self.highlightDisassembly()
 
     def scrollDisassemblyUp(self, numLines=None):
         if self.window:
@@ -212,19 +391,9 @@ class Chip8VM(object):
             else:
                 self.window.offsetScrollDisassembly(numLines)
 
-class VRAMContext(object):
-
-    def __init__(self, VRAM, width, height):
-        self.VRAM   = VRAM
-        self.width  = width
-        self.height = height
-
-    def __getitem__(self, idx):
-        x, y       = idx
-        x          = x % self.width
-        y          = y % self.height
-        bit        = (y * self.width) + x
-        byteOffset = bit // 8
-        bitOffset  = bit %  8
-        byte       = self.VRAM[byteOffset]
-        return (byte >> (7 - bitOffset)) & 0x1
+    def highlightDisassembly(self):
+        if self.window:
+            self.window.setWarningStatus(core.getProgramCounter(self.VM) % 2 == 1)
+            line = (core.getProgramCounter(self.VM) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
+            self.window.setCurrDisassemblyLine(line)
+            self.window.scrollDissassemblyToCurrLine()

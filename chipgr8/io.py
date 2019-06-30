@@ -4,6 +4,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
 import sys
 import time
 import pygame
+import numpy as np
 
 from pygame.locals import *
 from pygame import event
@@ -194,14 +195,13 @@ class ChipGr8Window():
     def fullRender(self, ctx):
         s = self.scale
         self.clear()
-        for x in range(self.gameWidth):
-            for y in range(self.gameHeight):
-                if ctx[x, y]:
-                    pygame.draw.rect(
-                        self.gameScreen, 
-                        self.shader(self, x, y), 
-                        (x * s, y * s, s, s),
-                    )
+        for (x, y), p in np.ndenumerate(ctx):
+            if p:
+                pygame.draw.rect(
+                    self.gameScreen, 
+                    self.shader(self, x, y), 
+                    (x * s, y * s, s, s),
+                )
         pygame.display.flip()
 
     def render(self, ctx, x, y, rows):

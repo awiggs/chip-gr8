@@ -12,7 +12,7 @@ cc = gcc_clang(cmd='gcc', dbg='gdb')
 libs = []
 # additional compiler flags
 flags = ['-Wall', '-Werror', '-pedantic', '-std=c99']
-
+# do not build tests as a shared library
 if options.command != command_test:
     linkflags = ['-shared']    
 
