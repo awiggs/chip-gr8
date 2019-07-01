@@ -195,8 +195,8 @@ class ChipGr8Window():
     def fullRender(self, ctx):
         s = self.scale
         self.clear()
-        for (x, y), p in np.ndenumerate(ctx):
-            if p:
+        for (x, y) in np.ndindex(ctx.shape):
+            if ctx[x, y]:
                 pygame.draw.rect(
                     self.gameScreen, 
                     self.shader(self, x, y), 
