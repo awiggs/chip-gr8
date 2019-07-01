@@ -38,6 +38,14 @@ Before building and running, make sure you have pygame and pytest. You can insta
 
 # Globally
 
+Run automatically from directory:
+
+```
+python -m pip install -r requirements.txt
+```
+
+or manually:
+
 ```
 python -m pip install pygame
 python -m pip install pytest
@@ -46,6 +54,14 @@ python -m pip install lazyarray
 ```
 
 # User
+
+Run automatically from directory:
+
+```
+python -m pip install --user -r requirements.txt
+```
+
+or manually:
 
 ```
 python -m pip install -U pygame --user
