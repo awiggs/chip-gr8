@@ -110,7 +110,7 @@ class Chip8VM(object):
 
     # ROM Methods
 
-    def go(self):
+    def go(self, function=None):
         '''
         Runs displayable VM core loop.
         '''
@@ -124,6 +124,8 @@ class Chip8VM(object):
         self.render(forceDissassemblyRender=True)
 
         while (self.eventProcessor()):
+            if function:
+                function()
             self.input(self.keys)
             if self.paused:
                 clk.tick(self.__pausedFreq)

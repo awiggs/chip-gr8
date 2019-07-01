@@ -3,7 +3,7 @@ class Chip8VMs(object):
     Represents a collection of Chip8VMs.
     '''
 
-    __instancess = []
+    __instances = []
     '''A list of Chip8VM instances'''
 
     __notDoneInstances = []
@@ -12,10 +12,9 @@ class Chip8VMs(object):
     __doneInstances = []
     '''A list of all Chip8VM instances taht are done'''
 
-    def __init__(self, instances, base=None):
+    def __init__(self, instances):
         '''
         @param instances List[Chip8VM]  a list of Chip8VM instances 
-               base      Chip8VMs       the Chip8VM that owns the instances
         '''
         self.__instances        = instances[:]
         self.__notDoneInstances = instances[:]

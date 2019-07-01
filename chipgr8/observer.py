@@ -18,6 +18,7 @@ class Observer(object):
                 the query object or callable funcntion
         @returns        Obsesrver   itself
         '''
+        # TODO
         return self
 
     def observe(self, vm):

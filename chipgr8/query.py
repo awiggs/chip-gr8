@@ -25,7 +25,8 @@ class Query(object):
 
     def observe(self, vm):
         '''
-        Asssumes the query is done. Returns the correct bits.
+        Asssumes the query is done and successful and therefore returns the byte
+        at addr.
 
         @param vm   Chip8VM     the vm instance
         @returns    int         the bits

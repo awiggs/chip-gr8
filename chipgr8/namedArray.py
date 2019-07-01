@@ -22,10 +22,10 @@ class NamedArray(object):
     def __repr__(self):
         return 'NamedArray({}, {})'.format(self.names, self.values)
 
-    def ndarray(self):
+    def nparray(self):
         import numpy as np
-        return np.array(self.values)
+        return np.array(self.values, dtype=np.dtype('uint8'))
 
     def tensor(self):
         import tensorflow as tf
-        return tf.Variable(self.values, tf.float8)
+        return tf.Variable(self.values, tf.uint8)
