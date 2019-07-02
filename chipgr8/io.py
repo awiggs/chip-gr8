@@ -32,7 +32,7 @@ class ChipGr8Window():
     disScrollChange  = False
     disassemblyWidth = 300
     disHighlight = None
-    disHighlightColour = (242, 231, 163)
+    disHighlightColour = (139, 182, 252)
     disHighlightAlpha = 128
     tone        = os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
 
