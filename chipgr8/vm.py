@@ -38,13 +38,19 @@ class Chip8VM(object):
     inputHistory = []
     '''All input events a list of tuples (key, steps)'''
 
-    sampleRate = 1,
+    sampleRate = 1
     '''For AI agents, how many steps are taken per act'''
 
-    smooth = False,
+    stepCounter = 0
+    '''How many steps were taken since the last sample'''
+
+    aiKeys = 0
+    '''Input last pressed by the AI agent'''
+
+    smooth = False
     '''Flag for smooth rendering'''
     
-    paused = False,
+    paused = False
     '''Flag for pausing'''
 
     window = None
@@ -110,9 +116,15 @@ class Chip8VM(object):
 
     # ROM Methods
 
-    def go(self, function=None):
+    def go(self, function=None, aiInputMask=None, actBetweenSamples=True):
         '''
         Runs displayable VM core loop.
+
+        @params function            The AI agent function. May return a 16-bit integer representing intended keypresses
+                aiInputMask         A mask for combining user and AI inputs. If None, inputs will be logically ORed. If
+                                    any 16-bit integer, inputs made by the AI for keys masked with 0 will be ignored.
+                                    Inputs made by a user for keys masked with 1 will also be ignored.
+                actBetweenSamples   If true, keys pressed by the AI will remain pressed until the next sample
         '''
         assert self.window, 'Cannot start a VM with no window!'
         assert self.ROM,    'Cannot start a VM with no ROM!'
@@ -124,12 +136,18 @@ class Chip8VM(object):
         self.render(forceDissassemblyRender=True)
 
         while (self.eventProcessor()):
-            if function:
-                function()
-            self.input(self.keys)
             if self.paused:
                 clk.tick(self.__pausedFreq)
             else:
+                combinedInput = self.keys if aiInputMask is None else self.keys & ~aiInputMask
+                if function:
+                    if self.stepCounter == 0:
+                        self.aiKeys = function()
+                    if self.stepCounter == 0 or actBetweenSamples:
+                        combinedInput |= self.aiKeys if aiInputMask is None else self.aiKeys & aiInputMask
+                self.input(combinedInput)
+                self.stepCounter = (self.stepCounter + 1) % self.sampleRate
+
                 clk.tick(self.__freq)
                 self.step()
             self.render(pcHighlight=self.paused)
