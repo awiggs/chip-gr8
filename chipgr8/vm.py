@@ -2,6 +2,7 @@ import os
 import pygame
 import pickle as pkl
 import numpy  as np
+import json
 
 import chipgr8.io           as io
 import chipgr8.core         as core
@@ -10,6 +11,7 @@ import chipgr8.disassembler as disassembler
 
 from chipgr8.util import write, findROM
 from lazyarray    import larray
+from collections  import namedtuple
 
 class Chip8VM(object):
     '''
@@ -62,6 +64,8 @@ class Chip8VM(object):
     done = False
     '''Indicates whether the VM is in a done state'''
 
+    keyBindings = None
+
     def __init__(
         self,
         ROM          = None,
@@ -98,6 +102,7 @@ class Chip8VM(object):
         self.window = io.ChipGr8Window(width, height) if display else None
         self.VM     = core.initVM(frequency // 60)
         self.loadROM(ROM)
+        self.loadKeyBindings()
 
         def getVRAM(x, y):
             bit        = (y * width) + x
@@ -304,18 +309,18 @@ class Chip8VM(object):
                         self.scrollDisassemblyDown(numLines=2)
 
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_F5:
+                    if event.key == getattr(self.keyBindings, "debugPause", None):
                         self.togglePause()
-                    if event.key == pygame.K_F6 and self.paused:
+                    elif event.key == getattr(self.keyBindings, "debugStep", None) and self.paused:
                         self.step()
                         self.highlightDisassembly()
-                    if event.key == pygame.K_PAGEUP:
+                    elif event.key == getattr(self.keyBindings, "debugPageUp", None):
                         self.scrollDisassemblyUp(numLines=4)
-                    if event.key == pygame.K_PAGEDOWN:
+                    elif event.key == getattr(self.keyBindings, "debugPageDown", None):
                         self.scrollDisassemblyDown(numLines=4)
-                    if event.key == pygame.K_HOME:
+                    elif event.key == getattr(self.keyBindings, "debugHome", None):
                         self.scrollDisassemblyUp()
-                    if event.key == pygame.K_END:
+                    elif event.key == getattr(self.keyBindings, "debugEnd", None):
                         self.scrollDisassemblyDown()
 
                 self.keyProcessor(event)
@@ -324,71 +329,72 @@ class Chip8VM(object):
 
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_0:
+            print(event.key)
+            if event.key == getattr(self.keyBindings, "k0", None):
                 self.keys |= 1
-            if event.key == pygame.K_1:
+            elif event.key == getattr(self.keyBindings, "k1", None):
                 self.keys |= 1 << 1
-            if event.key == pygame.K_2:
+            elif event.key == getattr(self.keyBindings, "k2", None):
                 self.keys |= 1 << 2
-            if event.key == pygame.K_3:
+            elif event.key == getattr(self.keyBindings, "k3", None):
                 self.keys |= 1 << 3
-            if event.key == pygame.K_4:
+            elif event.key == getattr(self.keyBindings, "k4", None):
                 self.keys |= 1 << 4
-            if event.key == pygame.K_5:
+            elif event.key == getattr(self.keyBindings, "k5", None):
                 self.keys |= 1 << 5
-            if event.key == pygame.K_6:
+            elif event.key == getattr(self.keyBindings, "k6", None):
                 self.keys |= 1 << 6
-            if event.key == pygame.K_7:
+            elif event.key == getattr(self.keyBindings, "k7", None):
                 self.keys |= 1 << 7
-            if event.key == pygame.K_8:
+            elif event.key == getattr(self.keyBindings, "k8", None):
                 self.keys |= 1 << 8
-            if event.key == pygame.K_9:
+            elif event.key == getattr(self.keyBindings, "k9", None):
                 self.keys |= 1 << 9
-            if event.key == pygame.K_a:
+            elif event.key == getattr(self.keyBindings, "ka", None):
                 self.keys |= 1 << 10
-            if event.key == pygame.K_b:
+            elif event.key == getattr(self.keyBindings, "kb", None):
                 self.keys |= 1 << 11
-            if event.key == pygame.K_c:
+            elif event.key == getattr(self.keyBindings, "kc", None):
                 self.keys |= 1 << 12
-            if event.key == pygame.K_d:
+            elif event.key == getattr(self.keyBindings, "kd", None):
                 self.keys |= 1 << 13
-            if event.key == pygame.K_e:
+            elif event.key == getattr(self.keyBindings, "ke", None):
                 self.keys |= 1 << 14
-            if event.key == pygame.K_f:
+            elif event.key == getattr(self.keyBindings, "kf", None):
                 self.keys |= 1 << 15
             
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_0:
+            if event.key == getattr(self.keyBindings, "k0", None):
                 self.keys &= ~(1)
-            if event.key == pygame.K_1:
+            elif event.key == getattr(self.keyBindings, "k1", None):
                 self.keys &= ~(1 << 1)
-            if event.key == pygame.K_2:
+            elif event.key == getattr(self.keyBindings, "k2", None):
                 self.keys &= ~(1 << 2)
-            if event.key == pygame.K_3:
+            elif event.key == getattr(self.keyBindings, "k3", None):
                 self.keys &= ~(1 << 3)
-            if event.key == pygame.K_4:
+            elif event.key == getattr(self.keyBindings, "k4", None):
                 self.keys &= ~(1 << 4)
-            if event.key == pygame.K_5:
+            elif event.key == getattr(self.keyBindings, "k5", None):
                 self.keys &= ~(1 << 5)
-            if event.key == pygame.K_6:
+            elif event.key == getattr(self.keyBindings, "k6", None):
                 self.keys &= ~(1 << 6)
-            if event.key == pygame.K_7:
+            elif event.key == getattr(self.keyBindings, "k7", None):
                 self.keys &= ~(1 << 7)
-            if event.key == pygame.K_8:
+            elif event.key == getattr(self.keyBindings, "k8", None):
                 self.keys &= ~(1 << 8)
-            if event.key == pygame.K_9:
+            elif event.key == getattr(self.keyBindings, "k9", None):
                 self.keys &= ~(1 << 9)
-            if event.key == pygame.K_a:
+            elif event.key == getattr(self.keyBindings, "ka", None):
                 self.keys &= ~(1 << 10)
-            if event.key == pygame.K_b:
+            elif event.key == getattr(self.keyBindings, "kb", None):
                 self.keys &= ~(1 << 11)
-            if event.key == pygame.K_c:
+            elif event.key == getattr(self.keyBindings, "kc", None):
                 self.keys &= ~(1 << 12)
-            if event.key == pygame.K_d:
+            elif event.key == getattr(self.keyBindings, "kd", None):
                 self.keys &= ~(1 << 13)
-            if event.key == pygame.K_e:
+            elif event.key == getattr(self.keyBindings, "ke", None):
                 self.keys &= ~(1 << 14)
-            if event.key == pygame.K_f:
+            elif event.key == getattr(self.keyBindings, "kf", None):
                 self.keys &= ~(1 << 15)
 
     # UI Actions
@@ -417,3 +423,12 @@ class Chip8VM(object):
             line = (core.getProgramCounter(self.VM) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
             self.window.setCurrDisassemblyLine(line)
             self.window.scrollDissassemblyToCurrLine()
+
+    def loadKeyBindings(self):
+        try: 
+            f = open("KeyConfig.json")
+            bindings = json.load(f)
+            self.keyBindings = namedtuple("KeyBindings", bindings.keys())(*bindings.values())
+            self.keyBindings.debugPause = None
+        except:
+            print("KeyBindings configuration file not found.")
