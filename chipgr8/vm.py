@@ -170,13 +170,16 @@ class Chip8VM(object):
             if self.paused:
                 clk.tick(self.__pausedFreq)
             else:
+                # Add masked user input to combined input
                 combinedInput = self.keys if aiInputMask is None else self.keys & ~aiInputMask
                 if function:
+                    # Get masked ai input when AI step is occuring. Otherwise, apply last move if enabled
                     if self.stepCounter == 0:
                         self.aiKeys = function()
                     if self.stepCounter == 0 or actBetweenSamples:
                         combinedInput |= self.aiKeys if aiInputMask is None else self.aiKeys & aiInputMask
                 self.input(combinedInput)
+                # Update AI step counter
                 self.stepCounter = (self.stepCounter + 1) % self.sampleRate
 
                 clk.tick(self.__freq)
