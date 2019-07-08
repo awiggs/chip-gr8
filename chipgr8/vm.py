@@ -360,7 +360,6 @@ class Chip8VM(object):
 
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
-            print(event.key)
             if event.key == self.keyBindings["k0"]:
                 self.keys |= 1
             elif event.key == self.keyBindings["k1"]:
