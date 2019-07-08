@@ -78,7 +78,7 @@ if args.source:
         print(result)
 elif args.binary:
     result = chipgr8.disassemble(
-        inPath  = chipgr8.findRom(args.binary), 
+        inPath  = chipgr8.findROM(args.binary),
         outPath = args.out, 
         labels  = None if args.nolabels else {},
         hexdump = args.hexdump,
