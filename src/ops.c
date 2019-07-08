@@ -432,9 +432,10 @@ void opLDSprite(Chip8VM_t* vm, u8 reg) {
  */
 void opLDBCD(Chip8VM_t* vm, u8 reg) {
     u16 i = *vm->I;
-    vm->RAM[i] = i / 100;
-    vm->RAM[i+1] = (i / 10) % 10;
-    vm->RAM[i+2] = i % 10;
+    u8  x = vm->V[reg];
+    vm->RAM[i] = x / 100;
+    vm->RAM[i+1] = (x / 10) % 10;
+    vm->RAM[i+2] = x % 10;
 }
 
 /*

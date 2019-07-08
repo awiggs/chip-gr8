@@ -299,7 +299,7 @@ Instruction_t decode(word_t opcode) {
                 return LDMEM;
             }
             else {
-                debugs("Invalid instruction.");
+                debugs("Encountered an invalid instruction.");
                 return INVALID_INSTRUCTION;
             }
         }

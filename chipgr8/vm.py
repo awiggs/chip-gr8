@@ -162,7 +162,7 @@ class Chip8VM(object):
 
         clk = pygame.time.Clock()
         
-        self.window.initDisassemblyText(self.ROM.encode())
+        self.window.disModule.initText(self.ROM.encode())
         self.window.clear()
         self.render(forceDissassemblyRender=True)
 
@@ -267,7 +267,7 @@ class Chip8VM(object):
                         self.VM.diffSize,
                     )
                 
-            self.window.renderDisassembly(override=forceDissassemblyRender, highlight=pcHighlight)
+            self.window.disModule.render(override=forceDissassemblyRender, highlight=pcHighlight)
             self.window.sound(self.VM.ST[0] > 0)
     
     # State Methods
@@ -290,7 +290,9 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
-        pass # TODO
+        ROM_temp = self.ROM
+        self.VM = core.initVM(self.__freq // 60)
+        self.ROM = ROM_temp
 
     def linkVMs(self, VMs):
         '''
@@ -358,7 +360,6 @@ class Chip8VM(object):
 
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
-            print(event.key)
             if event.key == self.keyBindings["k0"]:
                 self.keys |= 1
             elif event.key == self.keyBindings["k1"]:
@@ -435,23 +436,23 @@ class Chip8VM(object):
     def scrollDisassemblyUp(self, numLines=None):
         if self.window:
             if numLines == None:
-                self.window.scrollDissassemblyToLine(0)
+                self.window.disModule.scrollDissassemblyToLine(0)
             else:
-                self.window.offsetScrollDisassembly(-1 * numLines)
+                self.window.disModule.offsetScrollDisassembly(-1 * numLines)
 
     def scrollDisassemblyDown(self, numLines=None):
         if self.window:
             if numLines == None:
-                self.window.scrollDissassemblyToLine(self.window.getLastDisassemblyLine(), centre=False)
+                self.window.disModule.scrollDissassemblyToLine(self.window.disModule.getLastDisassemblyLine(), centre=False)
             else:
-                self.window.offsetScrollDisassembly(numLines)
+                self.window.disModule.offsetScrollDisassembly(numLines)
 
     def highlightDisassembly(self):
         if self.window:
-            self.window.setWarningStatus(core.getProgramCounter(self.VM) % 2 == 1)
+            self.window.disModule.setWarningStatus(core.getProgramCounter(self.VM) % 2 == 1)
             line = (core.getProgramCounter(self.VM) - 512) // 2 + 1 # Offset interpret space and add 1 because 1-indexing
-            self.window.setCurrDisassemblyLine(line)
-            self.window.scrollDissassemblyToCurrLine()
+            self.window.disModule.setCurrDisassemblyLine(line)
+            self.window.disModule.scrollDissassemblyToCurrLine()
 
     def loadKeyBindings(self):
         try: 
