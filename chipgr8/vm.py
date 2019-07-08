@@ -3,6 +3,7 @@ import pygame
 import pickle as pkl
 import numpy  as np
 import json
+import sys
 
 import chipgr8.io           as io
 import chipgr8.core         as core
@@ -65,6 +66,31 @@ class Chip8VM(object):
     '''Indicates whether the VM is in a done state'''
 
     keyBindings = None
+
+    defaultKeyBindings = {
+        "k0" : 120,
+        "k1" : 49,
+        "k2" : 50,
+        "k3" : 51,
+        "k4" : 113,
+        "k5" : 119,
+        "k6" : 101,
+        "k7" : 97,
+        "k8" : 115,
+        "k9" : 100,
+        "ka": 122,
+        "kb": 99,
+        "kc": 52,
+        "kd": 114,
+        "ke": 102,
+        "kf": 118,
+        "debugPause": 286,
+        "debugStep": 287,
+        "debugHome": 278,
+        "debugEnd": 279,
+        "debugPageUp": 280,
+        "debugPageDown": 281
+    }
 
     def __init__(
         self,
@@ -309,18 +335,18 @@ class Chip8VM(object):
                         self.scrollDisassemblyDown(numLines=2)
 
                 if event.type == pygame.KEYDOWN:
-                    if event.key == getattr(self.keyBindings, "debugPause", None):
+                    if event.key == self.keyBindings["debugPause"]:
                         self.togglePause()
-                    elif event.key == getattr(self.keyBindings, "debugStep", None) and self.paused:
+                    elif event.key == self.keyBindings["debugStep"] and self.paused:
                         self.step()
                         self.highlightDisassembly()
-                    elif event.key == getattr(self.keyBindings, "debugPageUp", None):
+                    elif event.key == self.keyBindings["debugPageUp"]:
                         self.scrollDisassemblyUp(numLines=4)
-                    elif event.key == getattr(self.keyBindings, "debugPageDown", None):
+                    elif event.key == self.keyBindings["debugPageDown"]:
                         self.scrollDisassemblyDown(numLines=4)
-                    elif event.key == getattr(self.keyBindings, "debugHome", None):
+                    elif event.key == self.keyBindings["debugHome"]:
                         self.scrollDisassemblyUp()
-                    elif event.key == getattr(self.keyBindings, "debugEnd", None):
+                    elif event.key == self.keyBindings["debugEnd"]:
                         self.scrollDisassemblyDown()
 
                 self.keyProcessor(event)
@@ -330,71 +356,71 @@ class Chip8VM(object):
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
             print(event.key)
-            if event.key == getattr(self.keyBindings, "k0", None):
+            if event.key == self.keyBindings["k0"]:
                 self.keys |= 1
-            elif event.key == getattr(self.keyBindings, "k1", None):
+            elif event.key == self.keyBindings["k1"]:
                 self.keys |= 1 << 1
-            elif event.key == getattr(self.keyBindings, "k2", None):
+            elif event.key == self.keyBindings["k2"]:
                 self.keys |= 1 << 2
-            elif event.key == getattr(self.keyBindings, "k3", None):
+            elif event.key == self.keyBindings["k3"]:
                 self.keys |= 1 << 3
-            elif event.key == getattr(self.keyBindings, "k4", None):
+            elif event.key == self.keyBindings["k4"]:
                 self.keys |= 1 << 4
-            elif event.key == getattr(self.keyBindings, "k5", None):
+            elif event.key == self.keyBindings["k5"]:
                 self.keys |= 1 << 5
-            elif event.key == getattr(self.keyBindings, "k6", None):
+            elif event.key == self.keyBindings["k6"]:
                 self.keys |= 1 << 6
-            elif event.key == getattr(self.keyBindings, "k7", None):
+            elif event.key == self.keyBindings["k7"]:
                 self.keys |= 1 << 7
-            elif event.key == getattr(self.keyBindings, "k8", None):
+            elif event.key == self.keyBindings["k8"]:
                 self.keys |= 1 << 8
-            elif event.key == getattr(self.keyBindings, "k9", None):
+            elif event.key == self.keyBindings["k9"]:
                 self.keys |= 1 << 9
-            elif event.key == getattr(self.keyBindings, "ka", None):
+            elif event.key == self.keyBindings["ka"]:
                 self.keys |= 1 << 10
-            elif event.key == getattr(self.keyBindings, "kb", None):
+            elif event.key == self.keyBindings["kb"]:
                 self.keys |= 1 << 11
-            elif event.key == getattr(self.keyBindings, "kc", None):
+            elif event.key == self.keyBindings["kc"]:
                 self.keys |= 1 << 12
-            elif event.key == getattr(self.keyBindings, "kd", None):
+            elif event.key == self.keyBindings["kd"]:
                 self.keys |= 1 << 13
-            elif event.key == getattr(self.keyBindings, "ke", None):
+            elif event.key == self.keyBindings["ke"]:
                 self.keys |= 1 << 14
-            elif event.key == getattr(self.keyBindings, "kf", None):
+            elif event.key == self.keyBindings["kf"]:
                 self.keys |= 1 << 15
             
         if event.type == pygame.KEYUP:
-            if event.key == getattr(self.keyBindings, "k0", None):
+            if event.key == self.keyBindings["k0"]:
                 self.keys &= ~(1)
-            elif event.key == getattr(self.keyBindings, "k1", None):
+            elif event.key == self.keyBindings["k1"]:
                 self.keys &= ~(1 << 1)
-            elif event.key == getattr(self.keyBindings, "k2", None):
+            elif event.key == self.keyBindings["k2"]:
                 self.keys &= ~(1 << 2)
-            elif event.key == getattr(self.keyBindings, "k3", None):
+            elif event.key == self.keyBindings["k3"]:
                 self.keys &= ~(1 << 3)
-            elif event.key == getattr(self.keyBindings, "k4", None):
+            elif event.key == self.keyBindings["k4"]:
                 self.keys &= ~(1 << 4)
-            elif event.key == getattr(self.keyBindings, "k5", None):
+            elif event.key == self.keyBindings["k5"]:
                 self.keys &= ~(1 << 5)
-            elif event.key == getattr(self.keyBindings, "k6", None):
+            elif event.key == self.keyBindings["k6"]:
                 self.keys &= ~(1 << 6)
-            elif event.key == getattr(self.keyBindings, "k7", None):
+            elif event.key == self.keyBindings["k7"]:
                 self.keys &= ~(1 << 7)
-            elif event.key == getattr(self.keyBindings, "k8", None):
+            elif event.key == self.keyBindings["k8"]:
                 self.keys &= ~(1 << 8)
-            elif event.key == getattr(self.keyBindings, "k9", None):
+            elif event.key == self.keyBindings["k9"]:
                 self.keys &= ~(1 << 9)
-            elif event.key == getattr(self.keyBindings, "ka", None):
+            elif event.key == self.keyBindings["ka"]:
                 self.keys &= ~(1 << 10)
-            elif event.key == getattr(self.keyBindings, "kb", None):
+            elif event.key == self.keyBindings["kb"]:
                 self.keys &= ~(1 << 11)
-            elif event.key == getattr(self.keyBindings, "kc", None):
+            elif event.key == self.keyBindings["kc"]:
                 self.keys &= ~(1 << 12)
-            elif event.key == getattr(self.keyBindings, "kd", None):
+            elif event.key == self.keyBindings["kd"]:
                 self.keys &= ~(1 << 13)
-            elif event.key == getattr(self.keyBindings, "ke", None):
+            elif event.key == self.keyBindings["ke"]:
                 self.keys &= ~(1 << 14)
-            elif event.key == getattr(self.keyBindings, "kf", None):
+            elif event.key == self.keyBindings["kf"]:
                 self.keys &= ~(1 << 15)
 
     # UI Actions
@@ -428,7 +454,63 @@ class Chip8VM(object):
         try: 
             f = open("KeyConfig.json")
             bindings = json.load(f)
-            self.keyBindings = namedtuple("KeyBindings", bindings.keys())(*bindings.values())
-            self.keyBindings.debugPause = None
+            self.keyBindings = bindings
         except:
             print("KeyBindings configuration file not found.")
+        self.sanityCheckBindings()
+
+    def sanityCheckBindings(self):
+        validKeyConfig = True
+        bindingsUsed = []
+        validKeys = list(self.defaultKeyBindings.keys())
+
+        if self.keyBindings is None:
+            validKeyConfig = False
+        else:
+            for key in self.keyBindings:
+                if self.keyBindings[key] not in bindingsUsed and isinstance(self.keyBindings[key], int):
+                    bindingsUsed.append(self.keyBindings[key])
+                else:
+                    validKeyConfig = False
+                    break
+
+                try:
+                    validKeys.remove(key)
+                except:
+                    validKeyConfig = False
+                    break
+
+            if(not len(validKeys) == 0):
+                validKeyConfig = False
+
+        if (not validKeyConfig):
+            response = input("KeyConfig.json file is corrupted.\nWould you like to restore default key bindings? (Y/n)")
+            if response == "Y" or response == "y":
+                self.updateKeyBindings(self.defaultKeyBindings)
+            else:
+                print("Program cannot proceed with corrupted bindings, shutting down...")
+                sys.exit()
+
+
+    def updateKeyBindings(self, bindings):
+        f = open("KeyConfig.json", "w")
+        json.dump(bindings, f, indent=4)
+
+
+    def setKeyBinding(self, newBindDict):
+        validKeys = list(self.defaultKeyBindings.keys())
+        invallidValues = list(self.keyBindings.values())
+        for key in newBindDict:
+            if key in self.keyBindings:
+                invallidValues.remove(self.keyBindings[key])    
+
+        for key in newBindDict:
+            if key not in validKeys:
+                raise Exception("Invallid Binding. Key: " + key + " is not a valid key.\nUse 'print(vm.defaultKeyBindings.keys())' to see all valid keys.")
+            elif not isinstance(newBindDict[key], int):
+                raise Exception("Invallid Binding. Binding value: " + str(newBindDict[key]) + " is not an integer. Values must be integers")
+            elif newBindDict[key] in invallidValues:
+                raise Exception("Invallid Binding. Binding value: " + str(newBindDict[key]) + " is already in use. Try 'print(list(vm.keyBindings.values())) to see a list of all currently used bindings.")
+            else:
+                self.keyBindings[key] = newBindDict[key]
+                self.updateKeyBindings(self.keyBindings)
