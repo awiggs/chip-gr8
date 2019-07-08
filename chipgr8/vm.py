@@ -290,7 +290,9 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
-        pass # TODO
+        ROM_temp = self.ROM
+        self.VM = core.initVM(self.__freq // 60)
+        self.ROM = ROM_temp
 
     def linkVMs(self, VMs):
         '''
