@@ -12,6 +12,7 @@ from pygame import event
 import chipgr8.core         as core
 import chipgr8.shaders      as shaders
 import chipgr8.disassemblerWindowModule as disWinModule
+import chipgr8.consoleModule as consoleModule
 
 class ChipGr8Window():
 
@@ -29,7 +30,7 @@ class ChipGr8Window():
 
         self.gameSize          = gameWidth * self.scale, gameHeight * self.scale
         self.disModule         = disWinModule.DisassemblerWindowModule(300, self.gameSize[1])
-        self.screenSize        = (self.gameSize[0] + self.disModule.width, self.gameSize[1])
+        self.screenSize        = (self.gameSize[0] + self.disModule.width, self.gameSize[1] + 300)
         self.gameWidth         = gameWidth
         self.gameHeight        = gameHeight
 
@@ -40,6 +41,9 @@ class ChipGr8Window():
 
         # Disassembler menu
         self.disModule.setScreen(self.screen.subsurface(Rect((self.gameSize[0], 0), (self.disModule.width, self.disModule.height))))
+        
+        # Console module
+        self.consoleModule     = consoleModule.ConsoleModule(self.screen.subsurface(Rect((0, self.gameSize[1]), (self.gameSize[0], 300))))
 
         self.shader = shaders.default
         pygame.mixer.music.load(self.tone)

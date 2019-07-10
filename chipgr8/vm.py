@@ -268,6 +268,7 @@ class Chip8VM(object):
                     )
                 
             self.window.disModule.render(override=forceDissassemblyRender, highlight=pcHighlight)
+            self.window.consoleModule.render()
             self.window.sound(self.VM.ST[0] > 0)
     
     # State Methods
@@ -354,10 +355,13 @@ class Chip8VM(object):
                     elif event.key == self.keyBindings["debugEnd"]:
                         self.scrollDisassemblyDown()
 
-                self.keyProcessor(event)
+                if self.paused:
+                    self.window.consoleModule.update(event)
+                else:
+                    self.keyProcessor(event)
 
         return True
-
+        
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == self.keyBindings["k0"]:
