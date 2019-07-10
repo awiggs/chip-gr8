@@ -42,7 +42,7 @@ body pre.code code {
 }
 body code {
   background: inherit;
-  color: #d737d7;
+  color: #00ca83;
 }
 body code::before {
   content: '`';
@@ -74,7 +74,7 @@ body .ignore {
   pointer-events: none;
 }
 body a {
-  color: #d737d7;
+  color: #00ca83;
   font-size: inherit;
   box-shadow: none;
   text-decoration: none;
@@ -84,14 +84,14 @@ body a:hover,
 body a:focus,
 body a:active,
 body a:visited {
-  color: #d737d7;
+  color: #00ca83;
   font-size: inherit;
   box-shadow: none;
   text-decoration: none;
 }
 body a:hover {
   cursor: pointer;
-  color: #d737d7;
+  color: #00ca83;
   text-decoration: underline;
 }
 body a .active {
@@ -110,7 +110,7 @@ body a.subtle:hover {
   color: #000000;
 }
 body a.subtle-accent:hover {
-  color: #d737d7;
+  color: #00ca83;
 }
 body a.slide {
   position: relative;
@@ -126,7 +126,7 @@ body a.slide:before {
   height: 1px;
   bottom: -4px;
   left: 0;
-  background-color: #d737d7;
+  background-color: #00ca83;
   visibility: hidden;
   transform: scaleX(0);
   transform-origin: left center;
@@ -186,10 +186,10 @@ body .bkg-subtext {
   background: #6f6f6f;
 }
 body .clr-accent {
-  color: #d737d7;
+  color: #00ca83;
 }
 body .bkg-accent {
-  background: #d737d7;
+  background: #00ca83;
 }
 body .clr-error {
   color: #f42c42;
@@ -511,13 +511,15 @@ body footer .container {
 body .logo {
   width: 100%;
 }
-body .logo svg {
-  width: 40vh;
-  height: 40vh;
+body .logo img {
+  width: 55vh;
+  height: 55vh;
   max-width: 100%;
   max-height: 100%;
   display: block;
   margin: auto;
+  margin-top: -5%;
+  margin-bottom: -5%;
 }
 body .logos {
   padding: 16px;
@@ -573,7 +575,7 @@ body .example:hover .mekpie path.c {
   fill: #ffbc49;
 }
 body .example:hover .ejrbuss path {
-  stroke: #d737d7;
+  stroke: #00ca83;
 }
 body .example:hover .uofa path.a {
   fill: #f5f3c0;
@@ -606,7 +608,7 @@ body .navbar .left a {
   color: #000000;
 }
 body .navbar .left a.active {
-  color: #d737d7;
+  color: #00ca83;
 }
 body .navbar .left a:hover {
   text-decoration: none;
@@ -646,7 +648,7 @@ body .navbar .center input:focus {
   outline: none;
 }
 body .scroll-marker {
-  background: #d737d7;
+  background: #00ca83;
   position: fixed;
   display: block;
   height: 1px;
@@ -739,10 +741,10 @@ body .side-nav .nav-item.active > a:hover {
   font-weight: 400;
 }
 body .side-nav .nav.outer > .nav-item.active {
-  border-left: 1px solid #d737d7;
+  border-left: 1px solid #00ca83;
 }
 body .side-nav .nav.outer > .nav-item.active .nav.inner > .nav-item.active {
-  border-left: 1px solid #d737d7;
+  border-left: 1px solid #00ca83;
 }
 body .side-nav .nav.outer > .nav-item.active .nav.inner {
   display: flex;
@@ -764,8 +766,8 @@ body .side-nav .nav.inner {
     stroke: transparent;
   }
   to {
-    fill: #d737d7;
-    stroke: #d737d7;
+    fill: #00ca83;
+    stroke: #00ca83;
   }
 }
 body .tani .debug {
