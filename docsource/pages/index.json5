@@ -1,6 +1,6 @@
 {
-    layout: '../layouts/API',
+    layout: '../layouts/Docs',
     title: 'chip-gr8',
-    subtitle: 'Chip 8 emulation for AI',
+    subtitle: 'Chip 8 Emulation for AI',
     place: 'home',
 }
