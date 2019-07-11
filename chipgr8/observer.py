@@ -1,8 +1,9 @@
 from chipgr8.namedArray import NamedArray
+from chipgr8.query import Query
 
 class Observer(object):
 
-    queries = []
+    queries = dict()
     '''A list of all queries associated with this observer'''
 
     def addQuery(self, name, query):
@@ -18,8 +19,15 @@ class Observer(object):
                 the query object or callable funcntion
         @returns        Obsesrver   itself
         '''
-        # TODO
+        if self.isObservable(query):
+            self.queries[name] = query
+        else:
+            raise TypeError("Query is not a function or Query object")
+
         return self
+
+    def isObservable(self, query):
+        return callable(query) or isinstance(query, Query)
 
     def observe(self, vm):
         '''
@@ -28,8 +36,23 @@ class Observer(object):
         @params vm   Chip8VM     the vm instance to observe
         @returns     NamedArray  the observations
         '''
-        NamedArray(['names'], ['values'])
-        pass # TODO
+        result = NamedArray([], [])
+        for name, query in self.queries.items():
+
+            assert self.isObservable(query), "Query not observable"
+
+            value = None
+            if callable(query):
+                value = query(vm)
+            elif isinstance(query, Query):
+                value = query.observe(vm)
+            else:
+                raise TypeError("Unexpected query type")
+            
+            result.append(name, value)
+
+        return result
+
 
     def __str__(self):
         '''
@@ -46,4 +69,8 @@ class Observer(object):
 
         @returns    str     the source code representation
         '''
-        pass # TODO
+        result = ""
+        for _, query in self.queries.items():
+            result += "{}\n".format(repr(query)) 
+
+        return result

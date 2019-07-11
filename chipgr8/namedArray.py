@@ -1,7 +1,7 @@
 class NamedArray(object):
 
-    names    = None
-    values   = None
+    names    = []
+    values   = [] 
 
     def __init__(self, names, values):
         self.names  = names
@@ -21,6 +21,10 @@ class NamedArray(object):
 
     def __repr__(self):
         return 'NamedArray({}, {})'.format(self.names, self.values)
+
+    def append(self, name, value):
+        self.names.append(name)
+        self.values.append(value)
 
     def nparray(self):
         import numpy as np
