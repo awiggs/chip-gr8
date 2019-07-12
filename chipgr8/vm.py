@@ -123,6 +123,7 @@ class Chip8VM(object):
         width, height = 64, 32
 
         self.__freq = (frequency // 60) * 60
+        self.inputHistory = inputHistory
         self.smooth = smooth
         self.paused = startPaused
         self.window = io.ChipGr8Window(width, height) if display else None
@@ -246,6 +247,7 @@ class Chip8VM(object):
         @params keys    int     
                 A raw set of bytes representing the io memory
         '''
+        self.inputHistory.append((keys, self.VM.clock))
         core.sendInput(self.VM, keys)
 
     def render(self, forceDissassemblyRender=False, pcHighlight=False):
@@ -499,11 +501,9 @@ class Chip8VM(object):
                 print("Program cannot proceed with corrupted bindings, shutting down...")
                 sys.exit()
 
-
     def updateKeyBindings(self, bindings):
         f = open("KeyConfig.json", "w")
         json.dump(bindings, f, indent=4)
-
 
     def setKeyBinding(self, newBindDict):
         validKeys = list(self.defaultKeyBindings.keys())
