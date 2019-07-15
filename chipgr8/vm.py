@@ -140,10 +140,13 @@ class Chip8VM(object):
         self.__freq = (frequency // 60) * 60
         self.smooth = smooth
         self.paused = startPaused
-        self.window = io.ChipGr8Window(width, height) if display else None
         self.VM     = core.initVM(frequency // 60)
         self.loadROM(ROM)
         self.loadKeyBindings()
+
+        assert inputHistory is None or len(inputHistory) > 1
+
+        self.window = io.ChipGr8Window(width, height) if display else None
 
         def getVRAM(x, y):
             bit        = (y * width) + x
