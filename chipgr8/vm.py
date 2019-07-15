@@ -41,6 +41,9 @@ class Chip8VM(object):
     inputHistory = []
     '''All input events a list of tuples (key, steps)'''
 
+    record = True
+    '''Flag for recording input history'''
+
     sampleRate = 1
     '''For AI agents, how many steps are taken per act'''
 
@@ -122,8 +125,10 @@ class Chip8VM(object):
         # TODO adjust for Super Chip-48
         width, height = 64, 32
 
+        self.record       = inputHistory is None
+        self.inputHistory = inputHistory or []
+
         self.__freq = (frequency // 60) * 60
-        self.inputHistory = inputHistory
         self.smooth = smooth
         self.paused = startPaused
         self.window = io.ChipGr8Window(width, height) if display else None
@@ -167,21 +172,33 @@ class Chip8VM(object):
         self.window.clear()
         self.render(forceDissassemblyRender=True)
 
+        historyIdx = 1
+
         while (self.eventProcessor()):
             if self.paused:
                 clk.tick(self.__pausedFreq)
             else:
-                # Add masked user input to combined input
-                combinedInput = self.keys if aiInputMask is None else self.keys & ~aiInputMask
-                if function:
-                    # Get masked ai input when AI step is occuring. Otherwise, apply last move if enabled
-                    if self.stepCounter == 0:
-                        self.aiKeys = function()
-                    if self.stepCounter == 0 or actBetweenSamples:
-                        combinedInput |= self.aiKeys if aiInputMask is None else self.aiKeys & aiInputMask
-                self.input(combinedInput)
-                # Update AI step counter
-                self.stepCounter = (self.stepCounter + 1) % self.sampleRate
+                if self.record:
+                    # Add masked user input to combined input
+                    combinedInput = self.keys if aiInputMask is None else self.keys & ~aiInputMask
+                    if function:
+                        # Get masked ai input when AI step is occuring. Otherwise, apply last move if enabled
+                        if self.stepCounter == 0:
+                            self.aiKeys = function()
+                        if self.stepCounter == 0 or actBetweenSamples:
+                            combinedInput |= self.aiKeys if aiInputMask is None else self.aiKeys & aiInputMask
+                    self.input(combinedInput)
+                    # Update AI step counter
+                    self.stepCounter = (self.stepCounter + 1) % self.sampleRate
+                else:
+                    # Use the previous input until the next stored change is encountered
+                    if self.VM.clock < self.inputHistory[historyIdx][1]:
+                        self.input(self.inputHistory[historyIdx-1][0])
+                    else:
+                        self.input(self.inputHistory[historyIdx][0])
+                        historyIdx += 1
+                        if historyIdx == len(self.inputHistory):
+                            break
 
                 clk.tick(self.__freq)
                 self.step()
@@ -247,7 +264,11 @@ class Chip8VM(object):
         @params keys    int     
                 A raw set of bytes representing the io memory
         '''
-        self.inputHistory.append((keys, self.VM.clock))
+        if self.record:
+            # if keys is the same as the last thing in the input history, don't store it
+            if (not self.inputHistory) or (self.inputHistory and (keys != self.inputHistory[-1][0])):
+                self.inputHistory.append((keys, self.VM.clock))
+
         core.sendInput(self.VM, keys)
 
     def render(self, forceDissassemblyRender=False, pcHighlight=False):
