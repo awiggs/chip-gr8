@@ -187,7 +187,7 @@ class Chip8VM(object):
                     # Add masked user input to combined input
                     combinedInput = self.userKeys if self.aiInputMask is None else self.userKeys & ~self.aiInputMask
                     if function and self.stepCounter == 0:
-                        function()
+                        function(self)
                     combinedInput |= self.aiKeys if self.aiInputMask is None else self.aiKeys & self.aiInputMask
                     self.input(combinedInput, forceSend=True)
                     # Update AI step counter
