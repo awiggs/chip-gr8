@@ -32,9 +32,9 @@ class DisassemblerWindowModule:
     def __init__(self, width, height):
         self.height = height
         self.width = width
-        self.fontSize = 24
+        self.fontSize = 16
         self.lineHeight = 24
-        self.font = pygame.font.Font(None, self.fontSize)
+        self.font = pygame.font.SysFont("monospace", self.fontSize)
         self.disassemblyScroll = pygame.surface.Surface((self.width, self.height))
         self.disassemblyScroll.fill(self.fontBackCol)
         self.disHighlight = pygame.Surface((self.width, self.lineHeight))
