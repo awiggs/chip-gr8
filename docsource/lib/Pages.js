@@ -35,13 +35,51 @@ export default {
     }),
     'index': new Page({
         name: 'index',
-        content: '# Introduction\n\nProject page dedicated to the demonstration and information of fourth year design project.\n\n~~We are currently in project planning phase so stay tuned for future updates!~~\n\n<Insert some text explaining how we\'re fourth year engineering students making our capstone project and decided to create Chip-Gr8>\n\n# About\n(Might want to move this section either to the About Page or just have this as a brief summary?)\n\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\n\n# Timeline\n\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\n\n**Early May**\n\n> Started brainstorming ideas for the course project\n\n**Mid May**\n\n> Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started \n>\n> Project is named "CHIP-GR8" (pronounced Chip-Great)\n\n**Late May**\n\n> Design documentation is filled out via team discussions\n>\n> Prototyping work begins\n\n**Early June**\n\n> Python wrapper and C-based emulator programming begins\n>\n> Work is focused on the C-based emulator and the CTypes integration\n\n**Mid June**\n\n> Visualization is completed; CHIP-8 ROMs can be visualized with no input\n>\n> Emulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux\n\n**Late June**\n\n> C-based emulator is completed, therefore project milestone 1 is completed\n>\n> Python integration is completed, therefore project milestone 2 is completed\n>\n> Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule\n>\n> Memory visualization milestone is started\n>\n> Final bugs are squashed from previous milestones\n\n**Early July**\n\n> Development on AI tools has begun; these will be used when developing  AIs\n>\n> Memory visualization is working minimally, progress still being made and bugs being fixed\n\n**Mid July**\n\n> Memory visualization module is completed, therefore concluding milestone 4\n>\n> AI tools have been completed, therefore completing milestone 5\n>\n> Development on example AIs begins\n\n**Late July**\n\n> Example AIs are worked on to provide demonstration-worthy agents\n>\n> Final bugs are wrapped up if time permits\n\nProject set to be completed by August 9th, 2019.\n',
-        plainTxt: 'Introduction\nProject page dedicated to the demonstration and information of fourth year design project.\n~~We are currently in project planning phase so stay tuned for future updates!~~\n&lt;Insert some text explaining how we&#39;re fourth year engineering students making our capstone project and decided to create Chip-Gr8&gt;\nAbout\n(Might want to move this section either to the About Page or just have this as a brief summary?)\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\nTimeline\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\nEarly May\nStarted brainstorming ideas for the course project\n\nMid May\nIdea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started \nProject is named &quot;CHIP-GR8&quot; (pronounced Chip-Great)\n\nLate May\nDesign documentation is filled out via team discussions\nPrototyping work begins\n\nEarly June\nPython wrapper and C-based emulator programming begins\nWork is focused on the C-based emulator and the CTypes integration\n\nMid June\nVisualization is completed; CHIP-8 ROMs can be visualized with no input\nEmulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux\n\nLate June\nC-based emulator is completed, therefore project milestone 1 is completed\nPython integration is completed, therefore project milestone 2 is completed\nSupport for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule\nMemory visualization milestone is started\nFinal bugs are squashed from previous milestones\n\nEarly July\nDevelopment on AI tools has begun; these will be used when developing  AIs\nMemory visualization is working minimally, progress still being made and bugs being fixed\n\nMid July\nMemory visualization module is completed, therefore concluding milestone 4\nAI tools have been completed, therefore completing milestone 5\nDevelopment on example AIs begins\n\nLate July\nExample AIs are worked on to provide demonstration-worthy agents\nFinal bugs are wrapped up if time permits\n\nProject set to be completed by August 9th, 2019.\n',
+        content: "# Introduction\n\nProject page dedicated to the demonstration and information of fourth year design project.\n\n~~We are currently in project planning phase so stay tuned for future updates!~~\n\n<Insert some text explaining how we're fourth year engineering students making our capstone project and decided to create Chip-Gr8>\n\n# About\n(Might want to move this section either to the About Page or just have this as a brief summary?)\n\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\n\n# Timeline\n\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\n\nProject set to be completed by August 9th, 2019.\n",
+        plainTxt: 'Introduction\nProject page dedicated to the demonstration and information of fourth year design project.\n~~We are currently in project planning phase so stay tuned for future updates!~~\n&lt;Insert some text explaining how we&#39;re fourth year engineering students making our capstone project and decided to create Chip-Gr8&gt;\nAbout\n(Might want to move this section either to the About Page or just have this as a brief summary?)\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\nTimeline\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\nProject set to be completed by August 9th, 2019.\n',
         route: '/index',
-        layout: '../layouts/Docs',
+        layout: '../layouts/Home',
         title: 'chip-gr8',
         subtitle: 'Chip 8 Emulation for AI',
         place: 'home',
+        timeline: [
+            {
+                title: 'Early May',
+                content: 'Started brainstorming ideas for the course project.',
+            },
+            {
+                title: 'Mid May',
+                content: 'Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started. Project is named "CHIP-GR8" (pronounced Chip-Great).',
+            },
+            {
+                title: 'Late May',
+                content: 'Design documentation is filled out via team discussions Prototyping work begins.',
+            },
+            {
+                title: 'Early June',
+                content: 'Python wrapper and C-based emulator programming begins. Work is focused on the C-based emulator and the CTypes integration.',
+            },
+            {
+                title: 'Mid June',
+                content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. mulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux.',
+            },
+            {
+                title: 'Late June',
+                content: 'C-based emulator is completed, therefore project milestone 1 is completed. Python integration is completed, therefore project milestone 2 is completed. Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule. Memory visualization milestone is started. Final bugs are squashed from previous milestones',
+            },
+            {
+                title: 'Early July',
+                content: 'Development on AI tools has begun; these will be used when developing. AIs Memory visualization is working minimally, progress still being made and bugs being fixed.',
+            },
+            {
+                title: 'Mid July',
+                content: 'Memory visualization module is completed, therefore concluding milestone 4. AI tools have been completed, therefore completing milestone 5. Development on example AIs begins',
+            },
+            {
+                title: 'Late July',
+                content: 'Example AIs are worked on to provide demonstration-worthy agents. Final bugs are wrapped up if time permits.',
+            },
+        ],
     }),
     'reference': new Page({
         name: 'reference',

@@ -1,0 +1,33 @@
+.timeline {
+
+    .timeline-item {
+
+        .timeline-left {
+            .timeline-icon {
+                background: @color-accent;
+            }
+        }
+
+        .timeline-content {
+            .timeline-title {
+                margin-top: -8px;
+                font-weight: @font-weight-bold;
+                font-size: @font-size-lg;
+            }
+        }
+
+        &::before {
+            background: @color-divider;
+            width: 1px;
+        }
+
+    }
+
+    .timeline-item:last-child {
+
+        &::before {
+            opacity: 0;
+        }
+
+    }
+}
