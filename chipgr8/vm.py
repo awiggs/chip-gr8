@@ -53,6 +53,9 @@ class Chip8VM(object):
     aiKeys = 0
     '''Input last pressed by the AI agent'''
 
+    aiInputMask = 0
+    '''Input mask to combine user and AI input'''
+
     smooth = False
     '''Flag for smooth rendering'''
     
@@ -62,7 +65,7 @@ class Chip8VM(object):
     window = None
     '''Window instance'''
 
-    keys = 0
+    userKeys = 0
     '''Current input keys sample'''
 
     done = False
@@ -106,6 +109,7 @@ class Chip8VM(object):
         smooth       = False,
         startPaused  = False,
         shader       = shaders.default,
+        aiInputMask  = 0,
     ):
         '''
         Initializes a new Chip8VM object. Responsible for allocating a new VM
@@ -121,12 +125,17 @@ class Chip8VM(object):
                 smooth          bool               if true uses smooth rendering
                 startPaused     bool               if true starts the vm paused
                 shader          Shader             display shader to use
+                aiInputMask     int                A mask for combining user and AI inputs. If
+                                                   any 16-bit integer, inputs made by the AI for
+                                                   keys masked with 0 will be ignored. Inputs made
+                                                   by a user for keys masked with 1 will also be ignored.
         '''
         # TODO adjust for Super Chip-48
         width, height = 64, 32
 
         self.record       = inputHistory is None
         self.inputHistory = inputHistory or []
+        self.aiInputMask  = aiInputMask
 
         self.__freq = (frequency // 60) * 60
         self.smooth = smooth
@@ -153,15 +162,11 @@ class Chip8VM(object):
 
     # ROM Methods
 
-    def go(self, function=None, aiInputMask=None, actBetweenSamples=True):
+    def go(self, function=None):
         '''
         Runs displayable VM core loop.
 
-        @params function            The AI agent function. May return a 16-bit integer representing intended keypresses
-                aiInputMask         A mask for combining user and AI inputs. If None, inputs will be logically ORed. If
-                                    any 16-bit integer, inputs made by the AI for keys masked with 0 will be ignored.
-                                    Inputs made by a user for keys masked with 1 will also be ignored.
-                actBetweenSamples   If true, keys pressed by the AI will remain pressed until the next sample
+        @params function            The AI agent function
         '''
         assert self.window, 'Cannot start a VM with no window!'
         assert self.ROM,    'Cannot start a VM with no ROM!'
@@ -180,22 +185,19 @@ class Chip8VM(object):
             else:
                 if self.record:
                     # Add masked user input to combined input
-                    combinedInput = self.keys if aiInputMask is None else self.keys & ~aiInputMask
-                    if function:
-                        # Get masked ai input when AI step is occuring. Otherwise, apply last move if enabled
-                        if self.stepCounter == 0:
-                            self.aiKeys = function()
-                        if self.stepCounter == 0 or actBetweenSamples:
-                            combinedInput |= self.aiKeys if aiInputMask is None else self.aiKeys & aiInputMask
-                    self.input(combinedInput)
+                    combinedInput = self.userKeys if self.aiInputMask is None else self.userKeys & ~self.aiInputMask
+                    if function and self.stepCounter == 0:
+                        function()
+                    combinedInput |= self.aiKeys if self.aiInputMask is None else self.aiKeys & self.aiInputMask
+                    self.input(combinedInput, forceSend=True)
                     # Update AI step counter
                     self.stepCounter = (self.stepCounter + 1) % self.sampleRate
                 else:
                     # Use the previous input until the next stored change is encountered
                     if self.VM.clock < self.inputHistory[historyIdx][1]:
-                        self.input(self.inputHistory[historyIdx-1][0])
+                        self.input(self.inputHistory[historyIdx-1][0], forceSend=True)
                     else:
-                        self.input(self.inputHistory[historyIdx][0])
+                        self.input(self.inputHistory[historyIdx][0], forceSend=True)
                         historyIdx += 1
                         if historyIdx == len(self.inputHistory):
                             break
@@ -257,19 +259,22 @@ class Chip8VM(object):
 
     # IO Methods
 
-    def input(self, keys):
+    def input(self, keys, forceSend=False):
         '''
         Set the current VM IO state.
 
         @params keys    int     
                 A raw set of bytes representing the io memory
         '''
-        if self.record:
-            # if keys is the same as the last thing in the input history, don't store it
-            if (not self.inputHistory) or (self.inputHistory and (keys != self.inputHistory[-1][0])):
-                self.inputHistory.append((keys, self.VM.clock))
 
-        core.sendInput(self.VM, keys)
+        if self.window is None or forceSend:
+            if self.record:
+                # if keys is the same as the last thing in the input history, don't store it
+                if (not self.inputHistory) or (self.inputHistory and (keys != self.inputHistory[-1][0])):
+                    self.inputHistory.append((keys, self.VM.clock))
+            core.sendInput(self.VM, keys)
+        else:
+            self.aiKeys = keys
 
     def render(self, forceDissassemblyRender=False, pcHighlight=False):
         '''
@@ -388,71 +393,71 @@ class Chip8VM(object):
     def keyProcessor(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == self.keyBindings["k0"]:
-                self.keys |= 1
+                self.userKeys |= 1
             elif event.key == self.keyBindings["k1"]:
-                self.keys |= 1 << 1
+                self.userKeys |= 1 << 1
             elif event.key == self.keyBindings["k2"]:
-                self.keys |= 1 << 2
+                self.userKeys |= 1 << 2
             elif event.key == self.keyBindings["k3"]:
-                self.keys |= 1 << 3
+                self.userKeys |= 1 << 3
             elif event.key == self.keyBindings["k4"]:
-                self.keys |= 1 << 4
+                self.userKeys |= 1 << 4
             elif event.key == self.keyBindings["k5"]:
-                self.keys |= 1 << 5
+                self.userKeys |= 1 << 5
             elif event.key == self.keyBindings["k6"]:
-                self.keys |= 1 << 6
+                self.userKeys |= 1 << 6
             elif event.key == self.keyBindings["k7"]:
-                self.keys |= 1 << 7
+                self.userKeys |= 1 << 7
             elif event.key == self.keyBindings["k8"]:
-                self.keys |= 1 << 8
+                self.userKeys |= 1 << 8
             elif event.key == self.keyBindings["k9"]:
-                self.keys |= 1 << 9
+                self.userKeys |= 1 << 9
             elif event.key == self.keyBindings["ka"]:
-                self.keys |= 1 << 10
+                self.userKeys |= 1 << 10
             elif event.key == self.keyBindings["kb"]:
-                self.keys |= 1 << 11
+                self.userKeys |= 1 << 11
             elif event.key == self.keyBindings["kc"]:
-                self.keys |= 1 << 12
+                self.userKeys |= 1 << 12
             elif event.key == self.keyBindings["kd"]:
-                self.keys |= 1 << 13
+                self.userKeys |= 1 << 13
             elif event.key == self.keyBindings["ke"]:
-                self.keys |= 1 << 14
+                self.userKeys |= 1 << 14
             elif event.key == self.keyBindings["kf"]:
-                self.keys |= 1 << 15
+                self.userKeys |= 1 << 15
             
         if event.type == pygame.KEYUP:
             if event.key == self.keyBindings["k0"]:
-                self.keys &= ~(1)
+                self.userKeys &= ~(1)
             elif event.key == self.keyBindings["k1"]:
-                self.keys &= ~(1 << 1)
+                self.userKeys &= ~(1 << 1)
             elif event.key == self.keyBindings["k2"]:
-                self.keys &= ~(1 << 2)
+                self.userKeys &= ~(1 << 2)
             elif event.key == self.keyBindings["k3"]:
-                self.keys &= ~(1 << 3)
+                self.userKeys &= ~(1 << 3)
             elif event.key == self.keyBindings["k4"]:
-                self.keys &= ~(1 << 4)
+                self.userKeys &= ~(1 << 4)
             elif event.key == self.keyBindings["k5"]:
-                self.keys &= ~(1 << 5)
+                self.userKeys &= ~(1 << 5)
             elif event.key == self.keyBindings["k6"]:
-                self.keys &= ~(1 << 6)
+                self.userKeys &= ~(1 << 6)
             elif event.key == self.keyBindings["k7"]:
-                self.keys &= ~(1 << 7)
+                self.userKeys &= ~(1 << 7)
             elif event.key == self.keyBindings["k8"]:
-                self.keys &= ~(1 << 8)
+                self.userKeys &= ~(1 << 8)
             elif event.key == self.keyBindings["k9"]:
-                self.keys &= ~(1 << 9)
+                self.userKeys &= ~(1 << 9)
             elif event.key == self.keyBindings["ka"]:
-                self.keys &= ~(1 << 10)
+                self.userKeys &= ~(1 << 10)
             elif event.key == self.keyBindings["kb"]:
-                self.keys &= ~(1 << 11)
+                self.userKeys &= ~(1 << 11)
             elif event.key == self.keyBindings["kc"]:
-                self.keys &= ~(1 << 12)
+                self.userKeys &= ~(1 << 12)
             elif event.key == self.keyBindings["kd"]:
-                self.keys &= ~(1 << 13)
+                self.userKeys &= ~(1 << 13)
             elif event.key == self.keyBindings["ke"]:
-                self.keys &= ~(1 << 14)
+                self.userKeys &= ~(1 << 14)
             elif event.key == self.keyBindings["kf"]:
-                self.keys &= ~(1 << 15)
+                self.userKeys &= ~(1 << 15)
 
     # UI Actions
 
