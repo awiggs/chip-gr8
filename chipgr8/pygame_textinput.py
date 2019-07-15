@@ -69,58 +69,62 @@ class TextInput:
 
         self.clock = pygame.time.Clock()
 
-    def update(self, event):
-        if event.type == pygame.KEYDOWN:
-            self.cursor_visible = True  # So the user sees where he writes
+    def update(self, events, ignores=[]):
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key in ignores:
+                    continue
 
-            # If none exist, create counter for that key:
-            if event.key not in self.keyrepeat_counters:
-                self.keyrepeat_counters[event.key] = [0, event.unicode]
+                self.cursor_visible = True  # So the user sees where he writes
 
-            if event.key == pl.K_BACKSPACE:
-                self.input_string = (
-                    self.input_string[:max(self.cursor_position - 1, 0)]
-                    + self.input_string[self.cursor_position:]
-                )
+                # If none exist, create counter for that key:
+                if event.key not in self.keyrepeat_counters:
+                    self.keyrepeat_counters[event.key] = [0, event.unicode]
 
-                # Subtract one from cursor_pos, but do not go below zero:
-                self.cursor_position = max(self.cursor_position - 1, 0)
-            elif event.key == pl.K_DELETE:
-                self.input_string = (
-                    self.input_string[:self.cursor_position]
-                    + self.input_string[self.cursor_position + 1:]
-                )
+                if event.key == pl.K_BACKSPACE:
+                    self.input_string = (
+                        self.input_string[:max(self.cursor_position - 1, 0)]
+                        + self.input_string[self.cursor_position:]
+                    )
 
-            elif event.key == pl.K_RETURN:
-                return True
+                    # Subtract one from cursor_pos, but do not go below zero:
+                    self.cursor_position = max(self.cursor_position - 1, 0)
+                elif event.key == pl.K_DELETE:
+                    self.input_string = (
+                        self.input_string[:self.cursor_position]
+                        + self.input_string[self.cursor_position + 1:]
+                    )
 
-            elif event.key == pl.K_RIGHT:
-                # Add one to cursor_pos, but do not exceed len(input_string)
-                self.cursor_position = min(self.cursor_position + 1, len(self.input_string))
+                elif event.key == pl.K_RETURN:
+                    return True
 
-            elif event.key == pl.K_LEFT:
-                # Subtract one from cursor_pos, but do not go below zero:
-                self.cursor_position = max(self.cursor_position - 1, 0)
+                elif event.key == pl.K_RIGHT:
+                    # Add one to cursor_pos, but do not exceed len(input_string)
+                    self.cursor_position = min(self.cursor_position + 1, len(self.input_string))
 
-            elif event.key == pl.K_END:
-                self.cursor_position = len(self.input_string)
+                elif event.key == pl.K_LEFT:
+                    # Subtract one from cursor_pos, but do not go below zero:
+                    self.cursor_position = max(self.cursor_position - 1, 0)
 
-            elif event.key == pl.K_HOME:
-                self.cursor_position = 0
+                elif event.key == pl.K_END:
+                    self.cursor_position = len(self.input_string)
 
-            else:
-                # If no special key is pressed, add unicode of key to input_string
-                self.input_string = (
-                    self.input_string[:self.cursor_position]
-                    + event.unicode
-                    + self.input_string[self.cursor_position:]
-                )
-                self.cursor_position += len(event.unicode)  # Some are empty, e.g. K_UP
+                elif event.key == pl.K_HOME:
+                    self.cursor_position = 0
 
-        elif event.type == pl.KEYUP:
-            # *** Because KEYUP doesn't include event.unicode, this dict is stored in such a weird way
-            if event.key in self.keyrepeat_counters:
-                del self.keyrepeat_counters[event.key]
+                else:
+                    # If no special key is pressed, add unicode of key to input_string
+                    self.input_string = (
+                        self.input_string[:self.cursor_position]
+                        + event.unicode
+                        + self.input_string[self.cursor_position:]
+                    )
+                    self.cursor_position += len(event.unicode)  # Some are empty, e.g. K_UP
+
+            elif event.type == pl.KEYUP:
+                # *** Because KEYUP doesn't include event.unicode, this dict is stored in such a weird way
+                if event.key in self.keyrepeat_counters:
+                    del self.keyrepeat_counters[event.key]
 
         # Update key counters:
         for key in self.keyrepeat_counters:

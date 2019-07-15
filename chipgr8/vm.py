@@ -358,7 +358,11 @@ class Chip8VM(object):
         if self.VM is None:
             return False
 
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        if self.window and self.paused:
+            self.window.consoleModule.update(events, ignores=[pygame.K_F5])
+
+        for event in events:
             if event.type == pygame.QUIT:
                 return False
             if self.window: # TODO: Disassembly scrolling speed currently limited by framerate unless paused
@@ -383,10 +387,9 @@ class Chip8VM(object):
                     elif event.key == self.keyBindings["debugEnd"]:
                         self.scrollDisassemblyDown()
 
-                if self.paused:
-                    self.window.consoleModule.update(event)
-                else:
-                    self.keyProcessor(event)
+        if not self.paused:
+            for event in events:
+                self.keyProcessor(event)
 
         return True
         
