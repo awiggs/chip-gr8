@@ -6,7 +6,6 @@ import Footer          from '../components/Footer';
 import SearchResults   from '../components/SearchResults';
 import EjrbussMarkdown from '../components/EjrbussMarkdown';
 import Places          from '../components/Places';
-import Logo            from '../components/Logo';
 import Timeline        from '../components/Timeline';
 
 // Libraries
@@ -25,7 +24,7 @@ export default ({ pageName }) => {
                     searchCtx={searchCtx}
                     showScrollMarker
                     showSearch
-                    leftLinks={<Places home />}
+                    leftLinks={<Places {...{ [page.place]: true }} />}
                     rightLinks={<a href={Vars.github} className='p-md subtle-accent'>
                         <i className='fab fa-github fa-lg' />
                     </a>}
@@ -33,7 +32,6 @@ export default ({ pageName }) => {
                 <SideNav />
                 <SearchResults searchCtx={searchCtx} />
                 <div className='content container grid-md docs'>
-                    <Logo />
                     <p className='text-center subtext p-md'>{page.version}</p>
                     <div className='text-center clr-accent subtitle'>
                         <EjrbussMarkdown source={page.subtitle} />

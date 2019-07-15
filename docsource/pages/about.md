@@ -9,6 +9,24 @@ We are a group of Software, and Electrical, Engineering students from the Univer
 ![placeholder](../static/img/Andrew2.png)
 ![placeholder](../static/img/Forrest.png)
 
-# The Project
+# Acknowledgements
+Several people made this project possible and we would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.
 
-The project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.
+## Faculty Supervisor
+
+#### Rich Little
+![placeholder](../static/img/placeholder.png)
+
+We chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way.
+
+
+## Supporters
+
+#### Dr. Xiaodai Dong
+Thank you to Dr. Xiaodai Dong for being the primary instructor this semester.
+
+#### Dr. T. Ilamparithi
+Thank you to Dr. Ilamparithi for being the course coordinator this semester.
+
+#### Sai Prakash Reddy Konda
+Thank you to the TA for their help with the course.

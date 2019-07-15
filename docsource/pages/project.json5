@@ -1,0 +1,43 @@
+{
+    layout: '../layouts/Project',
+    title: 'chip-gr8 | Project',
+    place: 'project',
+    timeline: [
+        {
+            title: 'Early May',
+            content: 'Started brainstorming ideas for the course project.',
+        },
+        {
+            title: 'Mid May',
+            content: 'Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started. Project is named "CHIP-GR8" (pronounced Chip-Great).',
+        },
+        {
+            title: 'Late May',
+            content: 'Design documentation is filled out via team discussions Prototyping work begins.',
+        },
+        {
+            title: 'Early June',
+            content: 'Python wrapper and C-based emulator programming begins. Work is focused on the C-based emulator and the CTypes integration.',
+        },
+        {
+            title: 'Mid June',
+            content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. mulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux.'
+        },
+        {
+            title: 'Late June',
+            content: 'C-based emulator is completed, therefore project milestone 1 is completed. Python integration is completed, therefore project milestone 2 is completed. Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule. Memory visualization milestone is started. Final bugs are squashed from previous milestones'
+        },
+        {
+            title: 'Early July',
+            content: 'Development on AI tools has begun; these will be used when developing. AIs Memory visualization is working minimally, progress still being made and bugs being fixed.'
+        },
+        {
+            title: 'Mid July',
+            content: 'Memory visualization module is completed, therefore concluding milestone 4. AI tools have been completed, therefore completing milestone 5. Development on example AIs begins'
+        },
+        {
+            title: 'Late July',
+            content: 'Example AIs are worked on to provide demonstration-worthy agents. Final bugs are wrapped up if time permits.'
+        }
+    ],
+}
