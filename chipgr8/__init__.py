@@ -4,6 +4,7 @@ from .disassembler import disassemble, hexdump
 from .assembler    import assemble
 from .util         import findROM
 from .query        import Query
+from .observer     import Observer
 
 VERSION     = '0.0.1'
 DESCRIPTION = "ChipGr8: The AI focused Chip 8 Emulator"

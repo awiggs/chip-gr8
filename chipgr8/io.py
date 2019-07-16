@@ -44,6 +44,7 @@ class ChipGr8Window():
         
         # Console module
         self.consoleModule     = consoleModule.ConsoleModule(self.screen.subsurface(Rect((0, self.gameSize[1]), (self.gameSize[0], 300))))
+        # consoleModule.ConsoleModule(self.screen.subsurface(Rect((0, self.gameSize[1]), (self.gameSize[0], 300))))
 
         self.shader = shaders.default
         pygame.mixer.music.load(self.tone)
