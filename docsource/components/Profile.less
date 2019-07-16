@@ -1,0 +1,36 @@
+.profile {
+    
+    img {
+        box-shadow: @shadow;
+        display: inline-block;
+        border-radius: 50%;
+        margin-left: @xlg;
+        margin-left: @xlg;
+        margin-top: @lg;
+        margin-bottom: @lg;
+    
+        width: calc(100% - calc(2 * @xlg));
+
+        &.left {
+            float:left;
+        }
+
+        &.right {
+            float:right;
+        }
+    }
+
+    .profile-name {
+        font-size: @font-size-lg;
+    }
+
+    .profile-position {
+        font-size: @font-size-sm;
+        color: @color-subtext;
+    }
+
+    .profile-content {
+        margin-top: 1em;
+    }
+
+}

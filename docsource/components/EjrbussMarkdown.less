@@ -1,0 +1,33 @@
+.md {
+
+    .profile {
+
+        width: 256px;
+        vertical-align: top;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: @xlg;
+        margin-left: @xlg;
+        height: 100%;
+        box-shadow: @shadow;
+
+        &.profile-left {
+            float: left;
+        }
+
+        &.profile-right {
+            float: right;
+        }
+
+    }
+
+    .icon-link {
+        color: @color-subtext;
+        margin: @sm;
+        transition: all 0.05s;
+
+        &:hover {
+            color: @color-text;
+        }
+    }
+}

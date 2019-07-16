@@ -1,5 +1,5 @@
 {
-    layout: '../layouts/API',
+    layout: '../layouts/About',
     title: 'chip-gr8 | About',
     place: 'about',
 }
