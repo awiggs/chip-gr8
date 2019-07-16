@@ -3,7 +3,7 @@ import pygame
 
 class ConsoleModule:
     def __init__(self, screen):
-        self.ti = TextInput()
+        self.ti = TextInput(font_size=16)
         self.screen = screen
 
     def render(self):
