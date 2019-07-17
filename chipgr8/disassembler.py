@@ -70,13 +70,14 @@ def hexdump(buffer=None, inPath=None, outPath=None):
     return dump
 
 def disassemble(
-    buffer  = None, 
-    inPath  = None, 
-    outPath = None, 
-    labels  = {}, 
-    decargs = True, 
-    prefix  = '  ', 
-    hexdump = False
+    buffer   = None, 
+    inPath   = None, 
+    outPath  = None, 
+    labels   = {}, 
+    decargs  = True, 
+    prefix   = '  ', 
+    hexdump  = False,
+    labelSep = '\n  ',
 ):
     '''
     Converts a byte array or input file to a string representation of Chip-8
@@ -99,15 +100,17 @@ def disassemble(
     minaddr = 0x200
     maxaddr = minaddr + len(buffer)
     instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump)
-        for (high, low) 
+        for (high, low)
         in chunk(2, buffer, pad=b'\0')
     ]
     source = ''
     for (i, instruction) in enumerate(instructions):
         addr = '0x' + hexarg(minaddr + (i * 2))
         if labels and addr in labels:
-            source += labels[addr] + '\n'
-        source += prefix + instruction.replace('\n', '\n' + prefix) + '\n'
+            source += '{:10s}{}'.format(labels[addr], labelSep)
+        else:
+            source += prefix
+        source += instruction.replace('\n', '\n' + prefix) + '\n'
 
     if outPath: write(outPath, source)
     return source

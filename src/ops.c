@@ -287,6 +287,7 @@ void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
  *          size    The size of the sprite in bytes (n)
  */
 void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
+
     u16 i = *vm->I;
     u8 x = vm->diffX = vm->V[regX];
     u8 y = vm->diffY = vm->V[regY];
