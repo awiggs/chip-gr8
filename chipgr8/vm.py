@@ -3,6 +3,7 @@ import sys
 import json
 import pygame
 import pickle
+import logging
 
 import chipgr8.core as core
 
@@ -10,6 +11,8 @@ from chipgr8.window import Window
 from chipgr8.util   import write, findROM, resolveTag
 from lazyarray      import larray
 from collections    import namedtuple
+
+logger = logging.getLogger(__name__)
 
 class Chip8VM(object):
     '''
@@ -142,6 +145,7 @@ class Chip8VM(object):
         @params function            The AI agent function
         '''
         assert self.window, 'Cannot use `go` without a window'
+        logger.info('VM starting in user mode (go) `{}`'.format(self))
         try:
             while not self.done:
                 self.act(0)
@@ -156,6 +160,7 @@ class Chip8VM(object):
 
         @params nameOrPath The name or path of the ROM to load
         '''
+        logger.info('Loading rom `{}` into `{}`'.format(nameOrPath, self))
         if reset:
             self.reset()
         self.ROM = findROM(nameOrPath)
@@ -175,7 +180,8 @@ class Chip8VM(object):
         @params path If provided, the path to load the state from
                 tag  If provided, the tag of the state
         '''
-        #TODO: What are tags
+        assert path or tag
+        logger.info('Loading state from `{}` into `{}`'.format(path or tag, self))
         if tag:
             path = resolveTag(tag)
         if not os.path.isfile(path):
@@ -194,6 +200,8 @@ class Chip8VM(object):
                 force If true, overwrite already existing files, otherwise
                       throw an error
         '''
+        assert path or tag
+        logger.info('Saving state to `{}` for `{}`'.format(path or tag, self))
         if tag:
             path = resolveTag(tag)
         print('> ', os.path.exists(path))
@@ -240,6 +248,7 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
+        logger.info('Resetting vm `{}`'.format(self))
         self.VM = core.initVM(self.__freq // 60)
         if self.ROM:
             self.loadROM(self.ROM, reset=False)
@@ -262,6 +271,8 @@ class Chip8VM(object):
         @param action   int     input action to perform
         '''
         for _ in range(self.sampleRate):
+            if self.done:
+                break
             if not self.paused:
                 self.input(action)
                 self.step()
@@ -280,6 +291,7 @@ class Chip8VM(object):
         @param done  bool  if done
         '''
         if not self.done and done:
+            logger.info('VM is done `{}`'.format(self))
             self.done = True
             if self.__VMs:
                 self.__VMs.signalDone(self)
