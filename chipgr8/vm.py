@@ -140,7 +140,7 @@ class Chip8VM(object):
                 bit        = (y * width) + x
                 byteOffset = bit // 8
                 bitOffset  = bit %  8
-                byte       = self.VM.VRAM[byteOffset]
+                byte       = self.VM.VRAM[byteOffset % 0x100]
                 return (byte >> (7 - bitOffset)) & 0x1
             self.__ctx = larray(getVRAM, shape=(width, height))
         return self.__ctx
