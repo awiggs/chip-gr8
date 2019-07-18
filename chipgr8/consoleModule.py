@@ -57,7 +57,6 @@ class ConsoleModule(Module):
         self.__cursorSurface = Surface((1, self.theme.font.get_height()))
         self.__globals       = {
             'chipgr8'     : chipgr8,
-            'findROM'     : chipgr8.findROM,
             'Query'       : chipgr8.Query,
             'Observer'    : chipgr8.Observer,
             'write'       : chipgr8.util.write,
@@ -156,7 +155,11 @@ class ConsoleModule(Module):
         return super().render()
 
     def update(self, vm, events):
-        self.__globals['vm'] = vm
+        if vm.paused:
+            def play():
+                vm.paused = False
+            self.__globals['vm']   = vm
+            self.__globals['play'] = play
         for event in events:
             if event.type == KEYDOWN:
                 key           = event.key

@@ -23,7 +23,6 @@ class Observer(object):
             self.queries[name] = query
         else:
             raise TypeError("Query is not a function or Query object")
-
         return self
 
     def isObservable(self, query):

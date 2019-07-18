@@ -47,6 +47,9 @@ def write(path, buffer, mode='w'):
         fs.write(buffer)
     return buffer
 
+def resolveTag(tag):
+    return os.path.realpath(os.path.join(__file__, '../data/tags/', tag))
+
 def findROM(rom):
     if not rom:
         return None

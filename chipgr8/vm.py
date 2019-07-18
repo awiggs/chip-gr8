@@ -2,12 +2,12 @@ import os
 import sys
 import json
 import pygame
-import pickle as pkl
+import pickle
 
 import chipgr8.core as core
 
 from chipgr8.window import Window
-from chipgr8.util   import write, findROM
+from chipgr8.util   import write, findROM, resolveTag
 from lazyarray      import larray
 from collections    import namedtuple
 
@@ -170,7 +170,7 @@ class Chip8VM(object):
             raise FileNotFoundError("ROM `{}` does not exist.".format(self.ROM))
         if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
-        return 'Loaded ROM'
+        return 'Loaded ROM.'
     
     def loadState(self, path=None, tag=None):
         '''
@@ -181,11 +181,12 @@ class Chip8VM(object):
                 tag  If provided, the tag of the state
         '''
         #TODO: What are tags
-
+        if tag:
+            path = resolveTag(tag)
         if not os.path.isfile(path):
             raise FileNotFoundError("Save state file not found.")
-        
-        self.VM = pkl.load(open(path, 'rb'))
+        self.VM = pickle.load(open(path, 'rb'))
+        return 'Save state loaded.'
 
     def saveState(self, path=None, tag=None, force=False):
         '''
@@ -196,12 +197,13 @@ class Chip8VM(object):
                 force If true, overwrite already existing files, otherwise
                       throw an error
         '''
-        #TODO: What are tags
-
+        if tag:
+            path = resolveTag(tag)
         if not os.path.isfile(path) or force:
-            pkl.dump(self.VM, open(path, 'bw'))
+            pickle.dump(self.VM, open(path, 'bw'))
         else:
             raise FileExistsError("File already exists.")
+        return 'Save state saved.'
 
     def input(self, keys, user=False):
         '''
@@ -245,6 +247,7 @@ class Chip8VM(object):
             self.loadROM(self.ROM, reset=False)
         if self.window:
             self.window.gameModule.clearUpdate()
+        return 'Reset.'
 
     def linkVMs(self, VMs):
         '''

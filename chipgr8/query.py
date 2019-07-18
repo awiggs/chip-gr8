@@ -6,7 +6,7 @@ class Query(object):
     success = None
     '''True if query is done and 1 address was found'''
 
-    __previous = None
+    previous = None
     '''Pevious iteration'''
 
     __addr = None
@@ -29,17 +29,18 @@ class Query(object):
         self.success    = self.done or None
         self.__RAM      = vm.VM.RAM
         self.__addr     = addr
-        self.__previous = [(addr, 0) for addr in range(vm.VM.sizeRAM)]
+        self.previous = [(addr, 0) for addr in range(vm.VM.sizeRAM)]
 
     def checkIfDone(self):
         if self.done:
-            return
-        numFound = len(self.__previous)
+            return 'Query finished.'
+        numFound = len(self.previous)
         if numFound > 1:
-            return len(self.__previous)
+            return 'Query matched {} addresses.'.format(len(self.previous))
         self.done    = True
         self.success = numFound == 1
-        self.__addr  = self.__previous[0][0] if numFound == 1 else None
+        self.__addr  = self.previous[0][0] if numFound == 1 else None
+        return 'Query finished.'
 
     def observe(self, vm):
         '''
@@ -55,9 +56,9 @@ class Query(object):
         '''
         Limit query to addresses where the current value is `value`.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] == value
         ]
         return self.checkIfDone()
@@ -66,9 +67,9 @@ class Query(object):
         '''
         Limit query to addresses where the current value is less than `value`.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] < value
         ]
         return self.checkIfDone()
@@ -78,9 +79,9 @@ class Query(object):
         Limit query to addresses where the current value is greater than 
         `value`.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] > value
         ]
         return self.checkIfDone()
@@ -90,9 +91,9 @@ class Query(object):
         Limit query to addresses where the current value is less than or equal
         to `value`.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] <= value
         ]
         return self.checkIfDone()
@@ -102,9 +103,9 @@ class Query(object):
         Limit query to addresses where the current value is greater than or
         equal to `value`.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] >= value
         ]
         return self.checkIfDone()
@@ -114,9 +115,9 @@ class Query(object):
         Indicate an unknown starting value for the query. Does not limit the
         query. If no query has started adds all addresses to the query.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, _)
-            in self.__previous
+            in self.previous
         ]
         return self.checkIfDone()
 
@@ -125,9 +126,9 @@ class Query(object):
         Limit query to addresses where the value has decreased since the last
         query.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, value)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] > value
         ]
         return self.checkIfDone()
@@ -137,9 +138,9 @@ class Query(object):
         Limit query to addresses where the evalue has increased since the last
         query.
         '''
-        self.__previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__RAM[addr])
             for (addr, value)
-            in self.__previous
+            in self.previous
             if self.__RAM[addr] < value
         ]
         return self.checkIfDone()
@@ -150,5 +151,5 @@ class Query(object):
         this Query.
         '''
         if not self.success:
-            return 'Query(addr=???, count={})'.format(len(self.__previous))
+            return 'Query(addr=???, count={})'.format(len(self.previous))
         return 'Query(addr={})'.format(self.__addr)
