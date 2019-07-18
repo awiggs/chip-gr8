@@ -20,14 +20,19 @@ class Chip8VM(object):
     pythonic interface to the VM state, and performs IO actions if necessary.
     '''
 
-    __freq = 600
-    '''The VM runnning frequency'''
+    
 
     __pausedFreq = 30
     '''The VM paused frequency'''
 
     __VMs = None
     '''Containing VM collection'''
+
+    __ctx = None
+    '''Graphics content cache'''
+
+    freq = 600
+    '''The VM runnning frequency'''
 
     window = None
     '''Window instance'''
@@ -121,22 +126,27 @@ class Chip8VM(object):
         self.VM           = core.initVM(frequency // 60)
         if ROM:
             self.loadROM(ROM, reset=False)
-
-        width, height = 64, 32
-        def getVRAM(x, y):
-            bit        = (y * width) + x
-            byteOffset = bit // 8
-            bitOffset  = bit %  8
-            byte       = self.VM.VRAM[byteOffset]
-            return (byte >> (7 - bitOffset)) & 0x1
-        
-        self.ctx    = larray(getVRAM, shape=(width, height)) if display else None
         self.window = Window(
-            width, height, 
+            64, 32, 
             foreground = foreground, 
             background = background,
         ) if display else None
-        self.pyclock = pygame.time.Clock() if display else None        
+        self.pyclock = pygame.time.Clock() if display else None
+
+    def ctx(self):
+        if not self.__ctx:
+            width, height = 64, 32
+            def getVRAM(x, y):
+                bit        = (y * width) + x
+                byteOffset = bit // 8
+                bitOffset  = bit %  8
+                byte       = self.VM.VRAM[byteOffset]
+                return (byte >> (7 - bitOffset)) & 0x1
+            self.__ctx = larray(getVRAM, shape=(width, height))
+        return self.__ctx
+
+    def clearCtx(self):
+        self.__ctx = None
 
     def go(self):
         '''
