@@ -20,13 +20,14 @@ class GameModule(Module):
 
     def update(self, vm, events):
 
-        # Nothing to update
-        if not vm.VM.diffSize:
-            return
-
         # Clear screen
         if vm.VM.diffClear:
             self.surface.fill(self.theme.background)
+            self.__diff = self.bounds
+            return
+
+        # Nothing to update
+        if not vm.VM.diffSize:
             return
 
         self.smoothUpdate(vm) if vm.smooth else self.diffUpdate(vm)
