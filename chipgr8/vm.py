@@ -127,7 +127,7 @@ class Chip8VM(object):
             byte       = self.VM.VRAM[byteOffset]
             return (byte >> (7 - bitOffset)) & 0x1
         
-        self.ctx    = larray(getVRAM, shape=(width, height))
+        self.ctx    = larray(getVRAM, shape=(width, height)) if display else None
         self.window = Window(
             width, height, 
             foreground = foreground, 
