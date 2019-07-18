@@ -34,9 +34,17 @@ python -m chipgr8 -h
 
 # Requirements
 
-Before building and running, make sure you have pygame and pytest. You can install them globally or for your user
+To install run
 
-# Globally
+```
+python setupy.py install
+```
+
+## Legacy
+
+This pertains to the old "install" method. Before building and running, make sure you have pygame and pytest. You can install them globally or for your user
+
+### Globally
 
 Run automatically from directory:
 
@@ -53,7 +61,7 @@ python -m pip install numpy
 python -m pip install lazyarray
 ```
 
-# User
+### User
 
 Run automatically from directory:
 

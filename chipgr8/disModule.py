@@ -51,7 +51,7 @@ class DisModule(Module):
             self.__ROM = vm.ROM
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
-        self.hl          = (vm.VM.PC[0] - 0x200) // 2
+        self.hl          = (vm.VM.PC - 0x200) // 2
         self.scrollTo(self.hl - 3)
 
     def initDis(self, inPath):

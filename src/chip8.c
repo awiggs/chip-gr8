@@ -27,8 +27,8 @@ void postStep(Chip8VM_t* vm) {
     // Update timers at 60Hz
     if (vm->clock % vm->freq == 0) {
         // Decrement DT and ST if positive
-        if (*vm->DT > 0) { *vm->DT -= 1; }
-        if (*vm->ST > 0) { *vm->ST -= 1; }
+        if (vm->DT > 0) { vm->DT -= 1; }
+        if (vm->ST > 0) { vm->ST -= 1; }
     }
 }
 
@@ -39,13 +39,13 @@ void postStep(Chip8VM_t* vm) {
  *         keymask a mask of keys currently down
  */
 void input(Chip8VM_t* vm, u16 keymask) {
-    *vm->keys = keymask;
+    vm->keys = keymask;
     if (keymask && vm->wait) {
         u8 decodedKeymask = 0;
         // Decode keymask, get most significant bit key
         while (keymask >>= 1) { decodedKeymask++; }
         // Assign to wait register V[W]
-        vm->V[*vm->W] = decodedKeymask;
+        vm->V[vm->W] = decodedKeymask;
         // Stop waiting
         vm->wait = 0;
     }
@@ -66,75 +66,29 @@ int helloSharedLibrary() {
  * @params vm the vm to intialize
  */
 void initVM(Chip8VM_t* vm, u8 freq) {
-    // Initialize constant fields
-    vm->sizeRAM   = RAM_SIZE;
-    vm->sizeVRAM  = VRAM_SIZE;
-    vm->sizeStack = LEN_STACK * 2;
-    vm->seed  = 0;
-    vm->wait  = 0;
-    vm->clock = 0;
-    vm->freq  = freq;
-
-    // Initialize allocated fields
-    vm->RAM   = malloc(vm->sizeRAM);
-    vm->VRAM  = malloc(vm->sizeVRAM);
-    memset(vm->RAM,  0, vm->sizeRAM);
-    memset(vm->VRAM, 0, vm->sizeVRAM);
-
-    // Initialize pointers
-    vm->SP    = STACK_POINTER(vm->RAM);
-    vm->PC    = PROGRAM_COUNTER(vm->RAM);
-    vm->I     = ADDRESS_REGISTER(vm->RAM);
-    vm->V     = GENERAL_REGISTERS(vm->RAM);
-    vm->DT    = DELAY_TIMER(vm->RAM);
-    vm->ST    = SOUND_TIMER(vm->RAM);
-    vm->keys  = KEY_IO_REGISTERS(vm->RAM);
-    vm->W     = WAIT_REGISTER(vm->RAM);
-
-    vm->stack = STACK_START(vm->RAM);
-    vm->hexes = HEXSPRITE_START(vm->RAM);
-
-    *vm->SP   = 0;
-    *vm->PC   = PROGRAM_SPACE_START;
-    *vm->I    = PROGRAM_SPACE_START;
-    *vm->DT   = 0;
-    *vm->ST   = 0;
-    *vm->keys = 0;
-    *vm->W    = 0;
+    debugf("vm pointer: %p\n", (void *) vm);
+    // memset(vm->RAM, 0, 0xFFF);
+    vm->freq = freq;
+    vm->PC   = PROGRAM_SPACE_START;
+    vm->I    = PROGRAM_SPACE_START;
 
     // Initialize hexsprites
-    // TODO: Condense hexsprites?
-    STORE_HEXSPRITE(vm->hexes, 0, HEXSPRITE_0);
-    STORE_HEXSPRITE(vm->hexes, 1, HEXSPRITE_1);
-    STORE_HEXSPRITE(vm->hexes, 2, HEXSPRITE_2);
-    STORE_HEXSPRITE(vm->hexes, 3, HEXSPRITE_3);
-    STORE_HEXSPRITE(vm->hexes, 4, HEXSPRITE_4);
-    STORE_HEXSPRITE(vm->hexes, 5, HEXSPRITE_5);
-    STORE_HEXSPRITE(vm->hexes, 6, HEXSPRITE_6);
-    STORE_HEXSPRITE(vm->hexes, 7, HEXSPRITE_7);
-    STORE_HEXSPRITE(vm->hexes, 8, HEXSPRITE_8);
-    STORE_HEXSPRITE(vm->hexes, 9, HEXSPRITE_9);
+    STORE_HEXSPRITE(vm->hexes, 0,  HEXSPRITE_0);
+    STORE_HEXSPRITE(vm->hexes, 1,  HEXSPRITE_1);
+    STORE_HEXSPRITE(vm->hexes, 2,  HEXSPRITE_2);
+    STORE_HEXSPRITE(vm->hexes, 3,  HEXSPRITE_3);
+    STORE_HEXSPRITE(vm->hexes, 4,  HEXSPRITE_4);
+    STORE_HEXSPRITE(vm->hexes, 5,  HEXSPRITE_5);
+    STORE_HEXSPRITE(vm->hexes, 6,  HEXSPRITE_6);
+    STORE_HEXSPRITE(vm->hexes, 7,  HEXSPRITE_7);
+    STORE_HEXSPRITE(vm->hexes, 8,  HEXSPRITE_8);
+    STORE_HEXSPRITE(vm->hexes, 9,  HEXSPRITE_9);
     STORE_HEXSPRITE(vm->hexes, 10, HEXSPRITE_A);
     STORE_HEXSPRITE(vm->hexes, 11, HEXSPRITE_B);
     STORE_HEXSPRITE(vm->hexes, 12, HEXSPRITE_C);
     STORE_HEXSPRITE(vm->hexes, 13, HEXSPRITE_D);
     STORE_HEXSPRITE(vm->hexes, 14, HEXSPRITE_E);
     STORE_HEXSPRITE(vm->hexes, 15, HEXSPRITE_F);
-}
-
-/**
- * Deallocates a VM instance. The VM instance should NOT be accessed after
- * being passed to this function.
- * 
- * @params vm the vm to deallocate
- */
-void freeVM(Chip8VM_t* vm) {
-    // #TODO perform any other necessary cleanup (eg. closing ROM file)
-    /* if (vm->ROM != NULL) {
-        unloadROM(vm);
-    }*/
-    free(vm->VRAM);
-    free(vm->RAM);
 }
 
 /**
@@ -159,9 +113,9 @@ void step(Chip8VM_t* vm) {
  * @returns    the next 
  */
 word_t fetch(Chip8VM_t* vm) {
-    word_t msb = vm->RAM[*vm->PC] << 8;
-    word_t lsb = vm->RAM[*vm->PC + 1];
-    *vm->PC += 2;
+    word_t msb = vm->RAM[vm->PC] << 8;
+    word_t lsb = vm->RAM[vm->PC + 1];
+    vm->PC += 2;
     return msb + lsb;
 }
 
@@ -504,8 +458,8 @@ int loadROM(Chip8VM_t* vm, char* filePath) {
     fseek(file, 0, SEEK_END);
     u32 len = ftell(file);
     rewind(file);
-    if (len > vm->sizeRAM - PROGRAM_SPACE_START) {
-        len = vm->sizeRAM - PROGRAM_SPACE_START;
+    if (len > 0x1000- PROGRAM_SPACE_START) {
+        len = 0x1000 - PROGRAM_SPACE_START;
     }
     debugf("ROM Length: %u\n", len);
 
@@ -513,7 +467,7 @@ int loadROM(Chip8VM_t* vm, char* filePath) {
     fclose(file);
     debugs("Succesfully loaded ROM file.\n");
     // Reset PC and SP (more? TODO)
-    *vm->PC = PROGRAM_SPACE_START;
-    *vm->SP = 0;
+    vm->PC = PROGRAM_SPACE_START;
+    vm->SP = 0;
     return 1;
 }

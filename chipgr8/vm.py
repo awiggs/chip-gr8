@@ -135,13 +135,6 @@ class Chip8VM(object):
         ) if display else None
         self.pyclock = pygame.time.Clock() if display else None        
 
-    def __del__(self):
-        '''
-        Releases VM resources
-        '''
-        if self.VM:
-            core.freeVM(self.VM)
-
     def go(self):
         '''
         Runs displayable VM core loop.
@@ -222,7 +215,7 @@ class Chip8VM(object):
         '''
         Simulate a single VM clock cycle. Internally calls core.step.
         '''
-        keys = self.VM.keys[0]
+        keys = self.VM.keys
         if self.record and keys != self.inputHistory[-1][0]:
             self.inputHistory.append((keys, self.VM.clock))
         if not self.record and not self.done:
@@ -241,7 +234,6 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
-        core.freeVM(self.VM)
         self.VM = core.initVM(self.__freq // 60)
         if self.ROM:
             self.loadROM(self.ROM, reset=False)
@@ -270,7 +262,7 @@ class Chip8VM(object):
             if self.window:
                 self.window.update(self)
                 self.window.render(force=self.paused)
-                self.window.sound(self.VM.ST[0] > 0)
+                self.window.sound(self.VM.ST > 0)
                 self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
 
     def doneIf(self, done):

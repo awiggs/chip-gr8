@@ -29,7 +29,7 @@ class Query(object):
         self.success    = self.done or None
         self.__RAM      = vm.VM.RAM
         self.__addr     = addr
-        self.previous = [(addr, 0) for addr in range(vm.VM.sizeRAM)]
+        self.previous = [(addr, 0) for addr in range(0x1000)]
 
     def checkIfDone(self):
         if self.done:
