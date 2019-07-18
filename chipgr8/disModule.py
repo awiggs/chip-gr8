@@ -11,6 +11,7 @@ class DisModule(Module):
     __hlSurface        = None
     __lastClock        = 0
     __yChanged         = False
+    __ROM              = ''
 
     def __init__(self, surface, theme):
         super().__init__(surface, theme)
@@ -44,7 +45,8 @@ class DisModule(Module):
     def update(self, vm, events):
         if vm.VM.clock == self.__lastClock:
             return
-        if not self.dis and vm.ROM:
+        if self.__ROM != vm.ROM:
+            self.__ROM = vm.ROM
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
         self.hl          = (vm.VM.PC[0] - 0x200) // 2

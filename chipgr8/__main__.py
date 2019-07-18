@@ -104,10 +104,11 @@ else:
         chipgr8.themes['dark']
     )
     chipgr8.init(
-        verbose    = args.verbose,
-        smooth     = args.smooth,
-        ROM        = chipgr8.findROM(args.rom) or '404.ch8', 
-        display    = True,
-        foreground = '#' + (args.foreground or foreground),
-        background = '#' + (args.background or background),
+        verbose     = args.verbose,
+        smooth      = args.smooth,
+        ROM         = chipgr8.findROM(args.rom) or '404.ch8', 
+        startPaused = not args.rom,
+        display     = True,
+        foreground  = '#' + (args.foreground or foreground),
+        background  = '#' + (args.background or background),
     ).go()

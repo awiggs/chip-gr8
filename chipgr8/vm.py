@@ -113,7 +113,7 @@ class Chip8VM(object):
         self.smooth       = smooth
         self.paused       = startPaused
         self.VM           = core.initVM(frequency // 60)
-        self.loadROM(ROM)
+        self.loadROM(ROM, reset=False)
 
         width, height = 64, 32
         def getVRAM(x, y):
@@ -152,7 +152,7 @@ class Chip8VM(object):
         except KeyboardInterrupt:
             print('Goodbye!')
 
-    def loadROM(self, nameOrPath):
+    def loadROM(self, nameOrPath, reset=True):
         '''
         Load a ROM from the given path, or check if it is the name of a ROM in
         `data/roms`. Throws an error if no ROM could be found. Internally calls
@@ -160,11 +160,9 @@ class Chip8VM(object):
 
         @params nameOrPath The name or path of the ROM to load
         '''
-        if self.VM == None:
-            raise RuntimeError("VM not loaded.")
-
+        if reset:
+            self.reset()
         self.ROM = findROM(nameOrPath)
-
         if not self.ROM:
             raise FileNotFoundError("The specified file does not exist.")
         if not core.loadROM(self.VM, self.ROM.encode()):
@@ -237,8 +235,12 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
+        core.freeVM(self.VM)
         self.VM = core.initVM(self.__freq // 60)
-        loadROM(self.ROM)
+        if self.ROM:
+            self.loadROM(self.ROM, reset=False)
+        if self.window:
+            self.window.gameModule.clearUpdate()
 
     def linkVMs(self, VMs):
         '''

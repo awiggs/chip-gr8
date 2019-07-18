@@ -169,7 +169,7 @@ class ConsoleModule(Module):
 
         # Re-render inputLine surface
         surface = self.theme.font.render(
-            self.prompt + self.inputLine, 
+            self.prompt + self.inputLine + ' ', 
             self.theme.antialias, 
             self.theme.foreground,
         )
@@ -180,9 +180,9 @@ class ConsoleModule(Module):
             self.cursorCount %= CURSOR_SWITCH_MS
             self.cursorOn     = not self.cursorOn
 
+        self.cursorOn = self.cursorOn and vm.paused
         if self.cursorOn:
             x = self.theme.font.size(self.prompt + self.inputLine[:self.cursorPos])[0]
-            # Without this, the cursor is invisible when self.cursorPosition > 0:
             if self.cursorPos > 0:
                 x -= self.__cursorSurface.get_width()
             surface.blit(self.__cursorSurface, (x, 0))
