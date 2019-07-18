@@ -116,7 +116,7 @@ else:
     )
     chipgr8.init(
         smooth      = args.smooth,
-        ROM         = chipgr8.findROM(args.rom) or '404.ch8', 
+        ROM         = chipgr8.findROM(args.rom), 
         startPaused = not args.rom,
         display     = True,
         aiInputMask = 0,

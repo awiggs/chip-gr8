@@ -132,7 +132,7 @@ class ConsoleModule(Module):
         logger.debug('evaluating ``'.format(source))
         try:    
             return eval(source, self.__globals, self.__locals)
-        except:
+        except Exception as error:
             logger.debug('eval `{}` raised `{}`'.format(source, error), exc_info=error)            
         try:    
             exec(source, self.__globals, self.__locals)

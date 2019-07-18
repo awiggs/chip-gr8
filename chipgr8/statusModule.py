@@ -29,7 +29,7 @@ class StatusModule(Module):
         newStatus = '{}    SPS: {:<4d}   ROM: {}'.format(
             'PAUSED ' if vm.paused else 'PLAYING',
             0 if vm.paused else int(vm.pyclock.get_fps()),
-            os.path.basename(vm.ROM),
+            os.path.basename(vm.ROM) if vm.ROM else 'None',
         )
         if newStatus != self.status:
             self.status = newStatus

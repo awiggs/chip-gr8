@@ -43,7 +43,9 @@ class DisModule(Module):
         return super().render()
 
     def update(self, vm, events):
-        if vm.VM.clock == self.__lastClock:
+        if not vm.ROM:
+            return
+        if vm.VM.clock == self.__lastClock and self.__ROM == vm.ROM:
             return
         if self.__ROM != vm.ROM:
             self.__ROM = vm.ROM

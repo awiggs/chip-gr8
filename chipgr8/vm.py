@@ -116,7 +116,8 @@ class Chip8VM(object):
         self.smooth       = smooth
         self.paused       = startPaused
         self.VM           = core.initVM(frequency // 60)
-        self.loadROM(ROM, reset=False)
+        if self.ROM:
+            self.loadROM(ROM, reset=False)
 
         width, height = 64, 32
         def getVRAM(x, y):
