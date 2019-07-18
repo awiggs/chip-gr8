@@ -1,15 +1,17 @@
+from multiprocessing import Pool, cpu_count
+
 class Chip8VMs(object):
     '''
     Represents a collection of Chip8VMs.
     '''
 
-    __instances = []
+    __instances = set()
     '''A list of Chip8VM instances'''
 
-    __notDoneInstances = []
+    __notDoneInstances = set()
     '''A list of all Chip8VM instances that are not done'''
 
-    __doneInstances = []
+    __doneInstances = set()
     '''A list of all Chip8VM instances taht are done'''
 
     def get(self):
@@ -19,9 +21,9 @@ class Chip8VMs(object):
         '''
         @param instances List[Chip8VM]  a list of Chip8VM instances 
         '''
-        self.__instances        = instances[:]
-        self.__notDoneInstances = instances[:]
-        self.__doneInstances    = []
+        self.__instances        = set(instances)
+        self.__notDoneInstances = set(instances)
+        self.__doneInstances    = set()
         for vm in instances:
             vm.linkVMs(self) # Need to link so that VMs can signal us
 
@@ -37,8 +39,8 @@ class Chip8VMs(object):
         '''
         for vm in self.__instances:
             vm.reset()
-        self.__notDoneInstances = self.__instances[:]
-        self.__doneInstances    = []
+        self.__notDoneInstances = set(self.__instances)
+        self.__doneInstances    = set()
 
     def signalDone(self, vm):
         '''
@@ -46,8 +48,9 @@ class Chip8VMs(object):
 
         @param vm   Chip8VM     the done VM
         '''
+        print('here')
         self.__notDoneInstances.remove(vm)
-        self.__doneInstances.append(vm)
+        self.__doneInstances.add(vm)
 
     def find(self, predicate):
         '''
@@ -84,10 +87,23 @@ class Chip8VMs(object):
 
         @param do   Callable[[Chip8VM]]     action to perform
         '''
-        pass # TODO
+        with Pool(cpu_count()) as pool:
+            stepped = set(pool.map(PoolHandler(do), self.__notDoneInstances))
+        self.__instances        = stepped.union(self.__doneInstances)
+        self.__notDoneInstances = set(vm for vm in stepped if not vm.done)
+        self.__doneInstances    = set(vm for vm in stepped if vm.done)
 
     def __iter__(self):
         '''
         Returns an iterable of all not done VM instances.
         '''
         return iter(self.__notDoneInstances)
+
+class PoolHandler(object):
+
+    def __init__(self, do):
+        self.do = do
+
+    def __call__(self, vm):
+        self.do(vm)
+        return vm

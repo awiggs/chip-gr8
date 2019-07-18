@@ -27,9 +27,12 @@ class Query(object):
 
         self.done     = addr is not None
         self.success  = self.done or None
-        self.__RAM    = None if vm is None else vm.VM.RAM
         self.__addr   = addr
-        self.previous = [(addr, 0) for addr in range(0x1000)] if vm else None
+        self.__RAM    = None if vm is None else vm.VM.RAM
+        self.previous = None if vm is None else [(addr, self.__RAM[addr]) 
+            for addr 
+            in range(0x1000)
+        ]
 
     def checkIfDone(self):
         if self.done:
@@ -56,92 +59,61 @@ class Query(object):
         '''
         Limit query to addresses where the current value is `value`.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-            if self.__RAM[addr] == value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur == value)
 
     def lt(self, value):
         '''
         Limit query to addresses where the current value is less than `value`.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-            if self.__RAM[addr] < value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur < value)
 
     def gt(self, value):
         '''
         Limit query to addresses where the current value is greater than 
         `value`.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-            if self.__RAM[addr] > value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur > value)
 
     def lte(self, value):
         '''
         Limit query to addresses where the current value is less than or equal
         to `value`.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-            if self.__RAM[addr] <= value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur <= value)
 
     def gte(self, value):
         '''
         Limit query to addresses where the current value is greater than or
         equal to `value`.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-            if self.__RAM[addr] >= value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur >= value)
 
     def unknown(self):
         '''
         Indicate an unknown starting value for the query. Does not limit the
         query. If no query has started adds all addresses to the query.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, _)
-            in self.previous
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : True)
 
     def inc(self):
         '''
         Limit query to addresses where the value has decreased since the last
         query.
         '''
-        self.previous = [(addr, self.__RAM[addr])
-            for (addr, value)
-            in self.previous
-            if self.__RAM[addr] > value
-        ]
-        return self.checkIfDone()
+        return self.filter(lambda cur, prev : cur > prev)
 
     def dec(self):
         '''
         Limit query to addresses where the evalue has increased since the last
         query.
         '''
+        return self.filter(lambda cur, prev : cur < prev)
+
+    def filter(self,pred):
         self.previous = [(addr, self.__RAM[addr])
             for (addr, value)
             in self.previous
-            if self.__RAM[addr] < value
+            if pred(self.__RAM[addr], value)
         ]
         return self.checkIfDone()
 
