@@ -27,9 +27,9 @@ class Query(object):
 
         self.done       = addr is not None
         self.success    = self.done or None
-        self.__RAM      = vm.VM.RAM
+        self.__RAM      = None if vm is None else vm.VM.RAM
         self.__addr     = addr
-        self.previous = [(addr, 0) for addr in range(vm.VM.sizeRAM)]
+        self.previous = None if vm is None else [(addr, 0) for addr in range(vm.VM.sizeRAM)]
 
     def checkIfDone(self):
         if self.done:
