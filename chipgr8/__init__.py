@@ -2,7 +2,7 @@
 from .chipgr8      import init
 from .disassembler import disassemble, hexdump
 from .assembler    import assemble
-from .util         import findROM
+from .util         import findROM, readableInputHistory
 from .query        import Query
 from .observer     import Observer
 

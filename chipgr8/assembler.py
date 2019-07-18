@@ -1,6 +1,9 @@
 import re
+import logging 
 
 from chipgr8.util import read, write
+
+logger = logging.getLogger(__name__)
 
 V_REGISTERS = [
     'V0', 'V1', 'V2', 'V3',
@@ -21,8 +24,11 @@ def assemble(source=None, inPath=None, outPath=None):
             outPath If provided, the output file
     @returns        ROM binary
     '''
+    logger.info('Assembling source: `{}` inPath: `{}` outPath: `{}`'.format(
+        source, inPath, outPath
+    ))
     if inPath: source = read(inPath)
-    
+
     (lines, labels) = retrieveLabels(source)
     buffer = b''
     for line in lines:
