@@ -61,6 +61,7 @@ class Window():
             self.screen.subsurface((w, h, 300, 280)),
             self
         )
+        pygame.display.flip()
 
     def sound(self, play):
         if play:
