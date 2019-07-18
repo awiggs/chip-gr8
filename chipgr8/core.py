@@ -16,7 +16,6 @@ def initVM(freq):
     Allocates and returns a pointer to a VM.
     '''
     vm = Chip8VMStruct()
-    print(ctypes.sizeof(vm))
     logger.debug('Initializing VM {}'.format(vm))
     lib.initVM(vm, freq)
     return vm
