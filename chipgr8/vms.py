@@ -12,6 +12,9 @@ class Chip8VMs(object):
     __doneInstances = []
     '''A list of all Chip8VM instances taht are done'''
 
+    def get(self):
+        return self.__instances
+
     def __init__(self, instances):
         '''
         @param instances List[Chip8VM]  a list of Chip8VM instances 

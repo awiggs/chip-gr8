@@ -9,31 +9,27 @@
 # with ptr(type)
 
 STRUCT_DEFINITION = lambda : [
-    # Name        Type      Description
-    ('RAM',       ptr(u8),  'Main memory'),
-    ('VRAM',      ptr(u8),  'Video memory'),
-    ('stack',     ptr(u16), 'Address stack'),
-    ('sizeRAM',   u16,      'Size of main memory'),
-    ('sizeVRAM',  u16,      'Size of video memory'),
-    ('sizeStack', u8,       'Size of stack'),
-    ('SP',        ptr(u8),  'Stack pointer'),
-    ('PC',        ptr(u16), 'Program counter'),
-    ('I',         ptr(u16), 'Address register'),
-    ('V',         ptr(u8),  'General purpose registers'),
-    ('DT',        ptr(u8),  'Delay timer'),
-    ('ST',        ptr(u8),  'Sound timer'),
-    ('W',         ptr(u8),  'Wait register'),
-    ('keys',      ptr(u16), 'Key IO registers'),
-    ('seed',      u8,       'Seed for RNG'),
-    ('wait',      u8,       'Chip-8 in wait mode'),
-    ('clock',     u64,      'Time since simulation began'),
-    ('freq',      u8,       'Frequency as a factor of 60Hz'),
-    ('hexes',     ptr(u8),  'Hexsprite pointer'),
-    ('diffX',     u8,       'VRAM diff X position'),
-    ('diffY',     u8,       'VRAM diff Y position'),
-    ('diffSize',  u8,       'VRAM diff size'),
-    ('diffClear', u8,       'Indicate a CLS instruction'),
-    ('diffSkip',  u8,       'Flag to indicate a skipable DRW instruction'),
+    # Name        Type                 Description
+    ('hexes',     array(u8,  '80'),    'Hexsprite pointer'),
+    ('VRAM',      array(u8,  '0x100'), 'Video memory'),
+    ('stack',     array(u16, '0x10'),  'Address stack'),
+    ('V',         array(u8,  '0x10'),  'General purpose registers'),
+    ('SP',        u8,                  'Stack pointer'),
+    ('PC',        u16,                 'Program counter'),
+    ('I',         u16,                 'Address register'),
+    ('DT',        u8,                  'Delay timer'),
+    ('ST',        u8,                  'Sound timer'),
+    ('W',         u8,                  'Wait register'),
+    ('keys',      u16,                 'Key IO registers'),
+    ('seed',      u8,                  'Seed for RNG'),
+    ('wait',      u8,                  'Chip-8 in wait mode'),
+    ('clock',     u64,                 'Time since simulation began'),
+    ('freq',      u16,                 'Frequency as a factor of 60Hz'),
+    ('diffX',     u8,                  'VRAM diff X position'),
+    ('diffY',     u8,                  'VRAM diff Y position'),
+    ('diffSize',  u8,                  'VRAM diff size'),
+    ('diffClear', u8,                  'Indicate a CLS instruction'),
+    ('diffSkip',  u8,                  'Flag to indicate a skipable DRW instruction'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #
@@ -69,10 +65,18 @@ def defineVMStruct():
 
 import ctypes
 
-class Chip8VMStruct(ctypes.Structure):
+class Chip8Regs(ctypes.Structure):
     _pack_   = 1
     _fields_ = [
         <fields>
+    ]
+
+class Chip8VMStruct(ctypes.Union):
+    _pack_      = 1
+    _anonymous_ = ['_regs']
+    _fields_    = [
+        ('RAM',   ctypes.c_uint8 * 0x1000),
+        ('_regs', Chip8Regs),
     ]
 '''.replace('<fields>', '\n        '.join(['(\'{}\', {}), # {}'.format(name, t0, comment) 
         for (name, (t0, t1), comment) 
@@ -91,7 +95,6 @@ class Chip8VMStruct(ctypes.Structure):
  * If you need to modify this struct modify the definition in that file.
  */
 
-
 #ifndef AUTOGEN_VMSTRUCT_H
 #define AUTOGEN_VMSTRUCT_H
 
@@ -99,12 +102,17 @@ class Chip8VMStruct(ctypes.Structure):
 typedef struct Chip8VM_t Chip8VM_t;
 #pragma pack(push, 1)
 struct Chip8VM_t {
-    <fields>
+    union {
+        u8 RAM[0x1000];
+        struct {
+            <fields>
+        };
+    };
 } __attribute__((packed, aligned(1)));
 #pragma pack(pop)
 
 #endif /* AUTOGEN_VMSTRUCT_H */
-'''.replace('<fields>', '\n    '.join(['{}; // {}'.format(t1.format(name), comment) 
+'''.replace('<fields>', '\n            '.join(['{}; // {}'.format(t1.format(name), comment) 
         for (name, (t0, t1), comment) 
         in definition
     ])))

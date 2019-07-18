@@ -20,13 +20,6 @@ def initVM(freq):
     lib.initVM(vm, freq)
     return vm
 
-def freeVM(vm):
-    '''
-    Deallocates the provided VM.
-    '''
-    logger.debug('Freeing VM {}'.format(vm))
-    lib.freeVM(vm)
-
 def step(vm):
     '''
     Performs a single step on the eprovided VM.
@@ -43,13 +36,7 @@ def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''
-    logger.debug('sending input 0x{:04X}'.format(keymask))
     return lib.input(vm, keymask)
-
-def getProgramCounter(vm):
-    return getattr(vm, "PC").contents.value
-
-
 
 dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*')))
 DLL_DIST_PATH    = dist[0] if dist else '<No dist path found!>'
@@ -75,9 +62,6 @@ for path in [
         
     lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_uint8]
     lib.initVM.restype = None
-
-    lib.freeVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
-    lib.freeVM.restype = None
 
     lib.step.argtypes = [ctypes.POINTER(Chip8VMStruct)]
     lib.step.restype = None

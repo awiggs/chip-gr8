@@ -50,6 +50,9 @@ class GameModule(Module):
     def smoothUpdate(self, vm):
         if vm.smooth and vm.VM.diffSkip:
             return
+        self.fullUpdate(vm)
+
+    def fullUpdate(self, vm):
         s               = self.theme.scale
         ctx             = vm.ctx
         (width, height) = ctx.shape

@@ -51,12 +51,13 @@ def resolveTag(tag):
     return os.path.realpath(os.path.join(__file__, '../data/tags/', tag))
 
 def findROM(rom):
-    if not rom:
-        return None
     if os.path.exists(rom):
         return rom
     rom      = rom.lower()
     romsPath = os.path.realpath(os.path.join(__file__, '../data/roms'))
-    for name in os.listdir(romsPath):
+    roms     = os.listdir(romsPath)
+    roms.sort()
+    for name in roms:
         if name.lower().startswith(rom) and name.endswith('ch8'):
             return os.path.join(romsPath, name)
+    raise Exception('`{}` is not a valid ROM!'.format(rom))

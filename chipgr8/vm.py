@@ -135,13 +135,6 @@ class Chip8VM(object):
         ) if display else None
         self.pyclock = pygame.time.Clock() if display else None        
 
-    def __del__(self):
-        '''
-        Releases VM resources
-        '''
-        if self.VM:
-            core.freeVM(self.VM)
-
     def go(self):
         '''
         Runs displayable VM core loop.
@@ -170,6 +163,8 @@ class Chip8VM(object):
             raise FileNotFoundError("ROM `{}` does not exist.".format(self.ROM))
         if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
+        if self.window:
+            self.window.refresh(self)
         return 'Loaded ROM.'
     
     def loadState(self, path=None, tag=None):
@@ -186,6 +181,8 @@ class Chip8VM(object):
         if not os.path.isfile(path):
             raise FileNotFoundError("Save state file not found.")
         self.VM = pickle.load(open(path, 'rb'))
+        if self.window:
+            self.window.refresh(self)
         return 'Save state loaded.'
 
     def saveState(self, path=None, tag=None, force=False):
@@ -199,7 +196,8 @@ class Chip8VM(object):
         '''
         if tag:
             path = resolveTag(tag)
-        if not os.path.isfile(path) or force:
+        print('> ', os.path.exists(path))
+        if not os.path.exists(path) or force:
             pickle.dump(self.VM, open(path, 'bw'))
         else:
             raise FileExistsError("File already exists.")
@@ -222,7 +220,7 @@ class Chip8VM(object):
         '''
         Simulate a single VM clock cycle. Internally calls core.step.
         '''
-        keys = self.VM.keys[0]
+        keys = self.VM.keys
         if self.record and keys != self.inputHistory[-1][0]:
             self.inputHistory.append((keys, self.VM.clock))
         if not self.record and not self.done:
@@ -241,7 +239,6 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
-        core.freeVM(self.VM)
         self.VM = core.initVM(self.__freq // 60)
         if self.ROM:
             self.loadROM(self.ROM, reset=False)
@@ -268,9 +265,10 @@ class Chip8VM(object):
                 self.input(action)
                 self.step()
             if self.window:
+                self.input(action)
                 self.window.update(self)
                 self.window.render(force=self.paused)
-                self.window.sound(self.VM.ST[0] > 0)
+                self.window.sound(self.VM.ST > 0)
                 self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
 
     def doneIf(self, done):

@@ -3,8 +3,6 @@ import pygame
 from chipgr8.module       import Module
 from chipgr8.disassembler import disassemble
 
-MARGIN = 10
-
 class DisModule(Module):
 
     __disSurface       = None
@@ -51,7 +49,7 @@ class DisModule(Module):
             self.__ROM = vm.ROM
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
-        self.hl          = (vm.VM.PC[0] - 0x200) // 2
+        self.hl          = (vm.VM.PC - 0x200) // 2
         self.scrollTo(self.hl - 3)
 
     def initDis(self, inPath):
@@ -75,6 +73,7 @@ class DisModule(Module):
                     source,
                     self.theme.antialias,
                     self.theme.foreground,
+                    self.theme.background,
                 ),
                 (2, i * lineHeight)
             )
@@ -83,6 +82,7 @@ class DisModule(Module):
                     source,
                     self.theme.antialias,
                     self.theme.background,
+                    self.theme.foreground,
                 ),
                 (2, i * lineHeight)
             )

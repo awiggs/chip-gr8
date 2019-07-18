@@ -7,10 +7,11 @@ from chipgr8.namedArray  import NamedArray
 pong = Game(
     ROM      = 'pong',
     observer = Observer()
-        .addQuery('ballX', Query(addr=0x120))
-        .addQuery('score', Query(addr=0x200)),
+        .addQuery('opponent', Query(addr=756))
+        .addQuery('score', Query(addr=755))
+        .addQuery('done', lambda vm: vm.VM.RAM[755] == 10 or vm.VM.RAM[756] == 10),
     actions  = NamedArray(
         ['up', 'down'],
-        [0x0,  0x1],
+        [0x10,  0x2],
     ),
 )

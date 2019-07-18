@@ -28,7 +28,7 @@ export default ({ src, name, position, right=false, children }) => right
                     <img src={src} className={right ? 'right' : 'left'} />
                 </div>
                 <div className='col-8 col-sm-12'>
-                    <h2 className='profile-name'>{name}</h2>
+                    <div className='profile-name'>{name}</div>
                     <div className='profile-position'>{position}</div>
                     <div className='profile-content'>
                         {children}

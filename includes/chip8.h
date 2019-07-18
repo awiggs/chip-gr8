@@ -15,14 +15,6 @@
 
 #define PROGRAM_SPACE_START         0x200
 
-#define RAM_SIZE                    0x1000
-#define VRAM_SIZE                   (64 / 8) * 32
-
-#define LEN_STACK                   16
-
-#define HEXSPRITE_BASE_OFFSET       0
-#define HEXSPRITE_START(_ram)       (_ram + HEXSPRITE_BASE_OFFSET)
-
 #define HEXSPRITE_0                 0xF999F
 #define HEXSPRITE_1                 0x26227
 #define HEXSPRITE_2                 0xF1F8F
@@ -49,35 +41,6 @@
                                                 } \
                                             )
 
-#define REGISTER_BASE_OFFSET        80
-
-#define ALL_REGISTERS_SIZE          26
-// The following are offset from REGISTER_BASE_OFFSET
-#define STACK_POINTER_OFFSET        0
-#define PROGRAM_COUNTER_OFFSET      1
-#define ADDRESS_REGISTER_OFFSET     3
-#define GENERAL_REGISTERS_OFFSET    5
-#define DELAY_TIMER_OFFSET          21
-#define SOUND_TIMER_OFFSET          22
-#define KEY_IO_REGISTERS_OFFSET     23
-#define WAIT_REGISTER_OFFSET        25
-// End offsets from REGISTER_BASE_OFFSET
-
-#define REGISTER_BASE(_ram)         (_ram + REGISTER_BASE_OFFSET)
-
-#define STACK_POINTER(_ram)         ((void *) (REGISTER_BASE(_ram) + STACK_POINTER_OFFSET))
-#define PROGRAM_COUNTER(_ram)       ((void *) (REGISTER_BASE(_ram) + PROGRAM_COUNTER_OFFSET))
-#define ADDRESS_REGISTER(_ram)      ((void *) (REGISTER_BASE(_ram) + ADDRESS_REGISTER_OFFSET))
-#define GENERAL_REGISTERS(_ram)     ((void *) (REGISTER_BASE(_ram) + GENERAL_REGISTERS_OFFSET))
-#define DELAY_TIMER(_ram)           ((void *) (REGISTER_BASE(_ram) + DELAY_TIMER_OFFSET))
-#define SOUND_TIMER(_ram)           ((void *) (REGISTER_BASE(_ram) + SOUND_TIMER_OFFSET))
-#define KEY_IO_REGISTERS(_ram)      ((void *) (REGISTER_BASE(_ram) + KEY_IO_REGISTERS_OFFSET))
-#define WAIT_REGISTER(_ram)         ((void *) (REGISTER_BASE(_ram) + WAIT_REGISTER_OFFSET))
-
-#define STACK_BASE_OFFSET           REGISTER_BASE_OFFSET + ALL_REGISTERS_SIZE
-#define STACK_START(_ram)           ((void *) (_ram + STACK_BASE_OFFSET))
-
-
 typedef u16 word_t;
 
 #include "autogen_Chip8VMStruct.h"
@@ -97,14 +60,6 @@ int helloSharedLibrary();
  *         freq the frequency as a factor of 60Hz
  */
 void initVM(Chip8VM_t* vm, u8 freq);
-
-/**
- * Deallocates a VM instance. The VM instance should NOT be accessed after
- * being passed to this function.
- * 
- * @params vm the vm to deallocate
- */
-void freeVM(Chip8VM_t* vm); 
 
 /**
  * Steps a VM 1 clock cycle. 
