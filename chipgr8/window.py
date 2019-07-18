@@ -35,7 +35,7 @@ class Window():
 
         (w, h)          = gameWidth * self.scale, gameHeight * self.scale
         self.gameSize   = gameWidth * self.scale, gameHeight * self.scale
-        self.screenSize = (w + 300, h + 300)
+        self.screenSize = (w + 300, h + 290)
         self.screen     = pygame.display.set_mode(self.screenSize)
         self.font       = pygame.font.Font(pygame.font.match_font('monospace'), 16)
         pygame.display.set_caption(chipgr8.DESCRIPTION)
@@ -46,11 +46,11 @@ class Window():
             self,
         )
         self.consoleModule = ConsoleModule(
-            self.screen.subsurface((0, h, w, 280)),
+            self.screen.subsurface((0, h, w, 270)),
             self,
         )
         self.statusModule = StatusModule(
-            self.screen.subsurface((0, h + 280, w + 300, 20)),
+            self.screen.subsurface((0, h + 270, w + 300, 20)),
             self,
         )
         self.disModule = DisModule(
@@ -58,7 +58,7 @@ class Window():
             self,
         )
         self.regModule = RegModule(
-            self.screen.subsurface((w, h, 300, 280)),
+            self.screen.subsurface((w, h, 300, 270)),
             self
         )
         pygame.display.flip()
@@ -68,6 +68,11 @@ class Window():
             pygame.mixer.music.play()
         else: 
             pygame.mixer.music.stop()
+
+    def refresh(self, vm):
+        self.update(vm)
+        self.gameModule.fullUpdate(vm)
+        pygame.display.flip()
 
     def update(self, vm):
         events = self.controlModule.update(vm, pygame.event.get())

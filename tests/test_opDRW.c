@@ -30,5 +30,4 @@ int main() {
     
     printf("RAM[0]: %x\n", vm.hexes[10]);
     
-    freeVM(&vm);
 }

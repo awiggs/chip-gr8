@@ -8,7 +8,6 @@
  * If you need to modify this struct modify the definition in that file.
  */
 
-
 #ifndef AUTOGEN_VMSTRUCT_H
 #define AUTOGEN_VMSTRUCT_H
 
@@ -16,30 +15,31 @@
 typedef struct Chip8VM_t Chip8VM_t;
 #pragma pack(push, 1)
 struct Chip8VM_t {
-    u8* RAM; // Main memory
-    u8* VRAM; // Video memory
-    u16* stack; // Address stack
-    u16 sizeRAM; // Size of main memory
-    u16 sizeVRAM; // Size of video memory
-    u8 sizeStack; // Size of stack
-    u8* SP; // Stack pointer
-    u16* PC; // Program counter
-    u16* I; // Address register
-    u8* V; // General purpose registers
-    u8* DT; // Delay timer
-    u8* ST; // Sound timer
-    u8* W; // Wait register
-    u16* keys; // Key IO registers
-    u8 seed; // Seed for RNG
-    u8 wait; // Chip-8 in wait mode
-    u64 clock; // Time since simulation began
-    u8 freq; // Frequency as a factor of 60Hz
-    u8* hexes; // Hexsprite pointer
-    u8 diffX; // VRAM diff X position
-    u8 diffY; // VRAM diff Y position
-    u8 diffSize; // VRAM diff size
-    u8 diffClear; // Indicate a CLS instruction
-    u8 diffSkip; // Flag to indicate a skipable DRW instruction
+    union {
+        u8 RAM[0x1000];
+        struct {
+            u8 hexes[80]; // Hexsprite pointer
+            u8 VRAM[0x100]; // Video memory
+            u16 stack[0x10]; // Address stack
+            u8 V[0x10]; // General purpose registers
+            u8 SP; // Stack pointer
+            u16 PC; // Program counter
+            u16 I; // Address register
+            u8 DT; // Delay timer
+            u8 ST; // Sound timer
+            u8 W; // Wait register
+            u16 keys; // Key IO registers
+            u8 seed; // Seed for RNG
+            u8 wait; // Chip-8 in wait mode
+            u64 clock; // Time since simulation began
+            u16 freq; // Frequency as a factor of 60Hz
+            u8 diffX; // VRAM diff X position
+            u8 diffY; // VRAM diff Y position
+            u8 diffSize; // VRAM diff size
+            u8 diffClear; // Indicate a CLS instruction
+            u8 diffSkip; // Flag to indicate a skipable DRW instruction
+        };
+    };
 } __attribute__((packed, aligned(1)));
 #pragma pack(pop)
 
