@@ -69,6 +69,11 @@ class Window():
         else: 
             pygame.mixer.music.stop()
 
+    def refresh(self, vm):
+        self.update(vm)
+        self.gameModule.fullUpdate(vm)
+        pygame.display.flip()
+
     def update(self, vm):
         events = self.controlModule.update(vm, pygame.event.get())
         self.gameModule.update(vm, events)

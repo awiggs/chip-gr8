@@ -163,6 +163,8 @@ class Chip8VM(object):
             raise FileNotFoundError("ROM `{}` does not exist.".format(self.ROM))
         if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
+        if self.window:
+            self.window.refresh(self)
         return 'Loaded ROM.'
     
     def loadState(self, path=None, tag=None):
@@ -179,6 +181,8 @@ class Chip8VM(object):
         if not os.path.isfile(path):
             raise FileNotFoundError("Save state file not found.")
         self.VM = pickle.load(open(path, 'rb'))
+        if self.window:
+            self.window.refresh(self)
         return 'Save state loaded.'
 
     def saveState(self, path=None, tag=None, force=False):
@@ -192,7 +196,8 @@ class Chip8VM(object):
         '''
         if tag:
             path = resolveTag(tag)
-        if not os.path.isfile(path) or force:
+        print('> ', os.path.exists(path))
+        if not os.path.exists(path) or force:
             pickle.dump(self.VM, open(path, 'bw'))
         else:
             raise FileExistsError("File already exists.")

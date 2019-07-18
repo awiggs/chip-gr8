@@ -115,7 +115,7 @@ class ConsoleModule(Module):
         outputLine = str(self.evaluate(inputLine))
         if outputLine:
             self.outputLines = (
-                [str(self.evaluate(inputLine))] + 
+                [outputLine] + 
                 self.outputLines[:MAX_LINES - 1]
             )
             self.historyPos = -1
@@ -128,12 +128,12 @@ class ConsoleModule(Module):
         self.cursorPos = 0
 
     def evaluate(self, source):
-        logger.debug('evaluating ``'.format(source))
-        try:    
-            return eval(source, self.__globals, self.__locals)
-        except Exception as error:
-            logger.debug('eval `{}` raised `{}`'.format(source, error), exc_info=error)            
-        try:    
+        logger.debug('evaluating `{}`'.format(source))
+        try:
+            try:    
+                return eval(source, self.__globals, self.__locals)
+            except SyntaxError as error:
+                logger.debug('eval `{}` raised `{}`'.format(source, error), exc_info=error)            
             exec(source, self.__globals, self.__locals)
             return ''
         except Exception as error:
@@ -158,6 +158,7 @@ class ConsoleModule(Module):
         if vm.paused:
             def play():
                 vm.paused = False
+                return 'Resumed.'
             self.__globals['vm']   = vm
             self.__globals['play'] = play
         for event in events:

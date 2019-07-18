@@ -36,7 +36,6 @@ def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''
-    logger.debug('sending input 0x{:04X}'.format(keymask))
     return lib.input(vm, keymask)
 
 dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*')))
