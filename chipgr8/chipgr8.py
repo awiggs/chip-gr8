@@ -4,7 +4,6 @@ from time            import sleep
 
 import pygame
 import chipgr8.core    as core
-import chipgr8.shaders as shaders
 
 def init(
     ROM          = None,
@@ -16,8 +15,10 @@ def init(
     display      = False,
     smooth       = False,
     startPaused  = False,
-    shader       = shaders.default,
+    aiInputMask  = 0,
     verbose      = False,
+    foreground   = (255, 255, 255),
+    background   = (0, 0, 0)
 ):
     '''
     Creates a new VM instance or instances with the provided configuration
@@ -25,17 +26,18 @@ def init(
     display loop. Performs some basic sanity checking on confioguration
     variables.
 
-    @params ROM             str         name or path to the ROM to load
-            frequency       int         frequency to run the VM at
-            loadState       str         path or tag to a save state
-            inputHistory    List[int]   a list of predifined IO events
-            sampleRate      int         how many steps act moves forward
-            instances       int         the number of VMs to create
-            display         bool        if true creates a game window
-            smooth          bool        if true uses smooth rendering
-            startPaused     bool        if true starts the vm paused
-            shader          Shader      display shader to use
-            verbose         bool        if true enables debug printing
+    @params ROM             str                   name or path to the ROM to load
+            frequency       int                   frequency to run the VM at
+            loadState       str                   path or tag to a save state
+            inputHistory    List[int]             a list of predifined IO events
+            sampleRate      int                   how many steps act moves forward
+            instances       int                   the number of VMs to create
+            display         bool                  if true creates a game window
+            smooth          bool                  if true uses smooth rendering
+            startPaused     bool                  if true starts the vm paused
+            verbose         bool                  if true enables debug printing
+            foreground      str | (int, int, int) foreground color
+            background      str | (int, int, int) background color
     '''
     # Some simple sanity checks
     assert instances > 0,                 'Must have some number of instances!'
@@ -49,10 +51,12 @@ def init(
         loadState, 
         inputHistory,
         sampleRate,
-        display, 
-        smooth, 
-        startPaused, 
-        shader, 
+        display,
+        smooth,
+        startPaused,
+        aiInputMask,
+        pygame.Color(foreground),
+        pygame.Color(background),
     ]
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)
         for _

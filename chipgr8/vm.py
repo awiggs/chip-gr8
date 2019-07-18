@@ -4,8 +4,7 @@ import json
 import pygame
 import pickle as pkl
 
-import chipgr8.core    as core
-import chipgr8.shaders as shaders
+import chipgr8.core as core
 
 from chipgr8.window import Window
 from chipgr8.util   import write, findROM
@@ -71,35 +70,38 @@ class Chip8VM(object):
 
     def __init__(
         self,
-        ROM          = None,
-        frequency    = 600,
-        loadState    = None,
-        inputHistory = None,
-        sampleRate   = 1,
-        display      = False,
-        smooth       = False,
-        startPaused  = False,
-        shader       = shaders.default,
-        aiInputMask  = 0,
+        ROM,
+        frequency,
+        loadState,
+        inputHistory,
+        sampleRate,
+        display,
+        smooth,
+        startPaused,
+        aiInputMask,
+        foreground,
+        background,
     ):
         '''
         Initializes a new Chip8VM object. Responsible for allocating a new VM
         struct, game window, etc. If called with display equal to true will
         begin the game loop.
 
-        @params ROM             str                name or path to the ROM to load
-                frequency       int                frequency to run the VM at
-                loadState       str                path or tag to a save state
-                inputHistory    List[(int, int)]   a list of predifined IO events
-                sampleRate      int                how many steps act moves forward
-                display         bool               if true creates a game window
-                smooth          bool               if true uses smooth rendering
-                startPaused     bool               if true starts the vm paused
-                shader          Shader             display shader to use
-                aiInputMask     int                A mask for combining user and AI inputs. If
-                                                   any 16-bit integer, inputs made by the AI for
-                                                   keys masked with 0 will be ignored. Inputs made
-                                                   by a user for keys masked with 1 will also be ignored.
+        @params ROM             str              name or path to the ROM to load
+                frequency       int              frequency to run the VM at
+                loadState       str              path or tag to a save state
+                inputHistory    List[(int, int)] a list of predifined IO events
+                sampleRate      int              how many steps act moves forward
+                display         bool             if true creates a game window
+                smooth          bool             if true uses smooth rendering
+                startPaused     bool             if true starts the vm paused
+                shader          Shader           display shader to use
+                aiInputMask     int              A mask for combining user and AI inputs. If
+                                                 any 16-bit integer, inputs made by the AI for
+                                                 keys masked with 0 will be ignored. Inputs made
+                                                 by a user for keys masked with 1 will also be ignored.
+                foreground      (int, int, int)  hex color code or color tuple
+                background      (int, int, int)  hex color code or color tuple
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
@@ -121,9 +123,13 @@ class Chip8VM(object):
             byte       = self.VM.VRAM[byteOffset]
             return (byte >> (7 - bitOffset)) & 0x1
         
-        self.ctx     = larray(getVRAM, shape=(width, height))
-        self.window  = Window(width, height) if display else None
-        self.pyclock = pygame.time.Clock()   if display else None        
+        self.ctx    = larray(getVRAM, shape=(width, height))
+        self.window = Window(
+            width, height, 
+            foreground = foreground, 
+            background = background,
+        ) if display else None
+        self.pyclock = pygame.time.Clock() if display else None        
 
     def __del__(self):
         '''
@@ -255,6 +261,7 @@ class Chip8VM(object):
             if self.window:
                 self.window.update(self)
                 self.window.render(force=self.paused)
+                self.window.sound(self.VM.ST[0] > 0)
                 self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
 
     def doneIf(self, done):

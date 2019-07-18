@@ -1,6 +1,6 @@
+import sys
 import chipgr8
 import argparse
-import sys
 
 '''
 Parse command line arguments and provide the appropriate options to init. 
@@ -69,6 +69,19 @@ parser.add_argument('-s', '--smooth',
     action = 'store_true',
     help   = 'enable smooth rendering mode',
 )
+parser.add_argument('-f', '--foreground',
+    action = 'store',
+    help   = 'display foreground',
+)
+parser.add_argument('-b', '--background',
+    action = 'store',
+    help   = 'display background',
+)
+parser.add_argument('-t', '--theme',
+    action  = 'store',
+    choices = chipgr8.themes.keys(),
+    help    = 'display theme (light, dark, sunrise, hacker)'
+)
 
 args = parser.parse_args()
 
@@ -86,9 +99,15 @@ elif args.binary:
     if not args.out:
         print(result)
 else:
+    foreground, background = chipgr8.themes.get(
+        args.theme, 
+        chipgr8.themes['dark']
+    )
     chipgr8.init(
-        verbose = args.verbose,
-        smooth  = args.smooth,
-        ROM     = chipgr8.findROM(args.rom) or '404.ch8', 
-        display = True,
+        verbose    = args.verbose,
+        smooth     = args.smooth,
+        ROM        = chipgr8.findROM(args.rom) or '404.ch8', 
+        display    = True,
+        foreground = '#' + (args.foreground or foreground),
+        background = '#' + (args.background or background),
     ).go()
