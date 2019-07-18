@@ -57,13 +57,13 @@ class DisModule(Module):
     def initDis(self, inPath):
         lineHeight = self.theme.font.get_height()
         self.dis   = [
-            '{:03X}'.format(i) + ' ' + source
+            '{:03X}'.format(0x200 + i) + ' ' + source
             for (i, source)
             in enumerate(disassemble(
                 inPath   = inPath, 
                 labelSep = '',
                 prefix   = ' ' * 10,
-            ).split('\n'))
+            ).strip().split('\n'))
         ]
         self.__disSurface = pygame.Surface((299, lineHeight * (len(self.dis) + 100)))
         self.__hlSurface  = pygame.Surface((299, lineHeight * len(self.dis)))
