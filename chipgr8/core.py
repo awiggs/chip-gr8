@@ -16,7 +16,6 @@ def initVM(freq):
     Allocates and returns a pointer to a VM.
     '''
     vm = Chip8VMStruct()
-    print(ctypes.sizeof(vm))
     logger.debug('Initializing VM {}'.format(vm))
     lib.initVM(vm, freq)
     return vm
@@ -37,7 +36,6 @@ def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''
-    logger.debug('sending input 0x{:04X}'.format(keymask))
     return lib.input(vm, keymask)
 
 dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*')))

@@ -3,8 +3,6 @@ import pygame
 from chipgr8.module       import Module
 from chipgr8.disassembler import disassemble
 
-MARGIN = 10
-
 class DisModule(Module):
 
     __disSurface       = None
@@ -75,6 +73,7 @@ class DisModule(Module):
                     source,
                     self.theme.antialias,
                     self.theme.foreground,
+                    self.theme.background,
                 ),
                 (2, i * lineHeight)
             )
@@ -83,6 +82,7 @@ class DisModule(Module):
                     source,
                     self.theme.antialias,
                     self.theme.background,
+                    self.theme.foreground,
                 ),
                 (2, i * lineHeight)
             )

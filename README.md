@@ -40,44 +40,6 @@ To install run
 python setupy.py install
 ```
 
-## Legacy
-
-This pertains to the old "install" method. Before building and running, make sure you have pygame and pytest. You can install them globally or for your user
-
-### Globally
-
-Run automatically from directory:
-
-```
-python -m pip install -r requirements.txt
-```
-
-or manually:
-
-```
-python -m pip install pygame
-python -m pip install pytest
-python -m pip install numpy
-python -m pip install lazyarray
-```
-
-### User
-
-Run automatically from directory:
-
-```
-python -m pip install --user -r requirements.txt
-```
-
-or manually:
-
-```
-python -m pip install -U pygame --user
-python -m pip install -U pytest --user
-python -m pip install -U numpy --user
-python -m pip install -U lazyarray --user
-```
-
 # Changing the VM Struct
 
 To update the VM struct used in the C and python code modify `defineChip8VMStruct.py` and then run 
