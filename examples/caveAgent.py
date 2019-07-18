@@ -25,10 +25,10 @@ while not vm.done:
     yPos = observations.myY
 
     # get the value of my up,down,left,right
-    up      = vm.ctx[xPos, yPos - 1]
-    right   = vm.ctx[xPos + 1, yPos]
-    down    = vm.ctx[xPos, yPos + 1]
-    left    = vm.ctx[xPos - 1, yPos]
+    up      = vm.ctx()[xPos, yPos - 1]
+    right   = vm.ctx()[xPos + 1, yPos]
+    down    = vm.ctx()[xPos, yPos + 1]
+    left    = vm.ctx()[xPos - 1, yPos]
     
     # make a decision
     if right == 0:
