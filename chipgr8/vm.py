@@ -216,6 +216,7 @@ class Chip8VM(object):
             self.userKeys = keys
         else:
             self.aiKeys = keys
+
         core.sendInput(self.VM, (self.aiKeys & self.aiInputMask) | (self.userKeys & ~self.aiInputMask))
     
     def step(self):
