@@ -116,7 +116,7 @@ class Chip8VM(object):
         self.smooth       = smooth
         self.paused       = startPaused
         self.VM           = core.initVM(frequency // 60)
-        if self.ROM:
+        if ROM:
             self.loadROM(ROM, reset=False)
 
         width, height = 64, 32
