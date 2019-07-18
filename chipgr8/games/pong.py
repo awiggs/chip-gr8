@@ -3,7 +3,6 @@ from chipgr8.query       import Query
 from chipgr8.games.game  import Game
 from chipgr8.namedArray  import NamedArray
 
-# TODO These values are not real!!!
 pong = Game(
     ROM      = 'pong',
     observer = Observer()

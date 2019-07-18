@@ -108,6 +108,7 @@ class Chip8VM(object):
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
+        self.sampleRate   = sampleRate
         self.record       = inputHistory is None
         self.inputHistory = inputHistory or [(0, 0)]
         self.aiInputMask  = aiInputMask
