@@ -6,3 +6,10 @@ Breakout        : David Winter
 Brix            : Andreas Gustafsson
 Connect 4       : David Winter
 Hidden          : David Winter
+Lunar Lander    : Udo Pernisz
+Pong (2 player) : Paul Vervalin
+Space Invaders  : David Winter
+Squash          : David Winter
+Syzygy          : Roy Trevino
+Tetris          : Fran Dachille
+Worm            : Revival Studios
