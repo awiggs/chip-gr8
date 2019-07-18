@@ -1,5 +1,6 @@
-import chipgr8
 import math
+import chipgr8
+import traceback
 
 from .module import Module
 
@@ -127,11 +128,13 @@ class ConsoleModule(Module):
     def evaluate(self, source):
         try:    
             return eval(source, self.__globals, self.__locals)
-        except: pass
+        except:
+            pass
         try:    
             exec(source, self.__globals, self.__locals)
             return ''
         except Exception as error:
+            print('console:', source, '->', error)
             return error
 
     def render(self):

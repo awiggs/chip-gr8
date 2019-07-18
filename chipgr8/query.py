@@ -35,12 +35,11 @@ class Query(object):
         if self.done:
             return
         numFound = len(self.__previous)
-        print(numFound)
         if numFound > 1:
-            return
+            return len(self.__previous)
         self.done    = True
         self.success = numFound == 1
-        self.__addr  = self.__previous[0] if numFound == 1 else None
+        self.__addr  = self.__previous[0][0] if numFound == 1 else None
 
     def observe(self, vm):
         '''
@@ -61,7 +60,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] == value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def lt(self, value):
         '''
@@ -72,7 +71,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] < value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def gt(self, value):
         '''
@@ -84,7 +83,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] > value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def lte(self, value):
         '''
@@ -96,7 +95,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] <= value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def gte(self, value):
         '''
@@ -108,7 +107,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] >= value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def unknown(self):
         '''
@@ -119,7 +118,7 @@ class Query(object):
             for (addr, _)
             in self.__previous
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def inc(self):
         '''
@@ -131,7 +130,7 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] > value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def dec(self):
         '''
@@ -143,12 +142,13 @@ class Query(object):
             in self.__previous
             if self.__RAM[addr] < value
         ]
-        self.checkIfDone()
+        return self.checkIfDone()
 
     def __repr__(self):
         '''
         Converts this Query to python code that when evaluated, recreates
         this Query.
         '''
-        assert self.success, 'Cannot represent a query that is not finalized!'
+        if not self.success:
+            return 'Query(addr=???, count={})'.format(len(self.__previous))
         return 'Query(addr={})'.format(self.__addr)

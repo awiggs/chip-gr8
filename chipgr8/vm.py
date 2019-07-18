@@ -69,7 +69,6 @@ class Chip8VM(object):
     pyclock = None
     '''Pygame clock'''
 
-
     def __init__(
         self,
         ROM          = None,
