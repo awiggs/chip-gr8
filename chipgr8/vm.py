@@ -47,6 +47,9 @@ class Chip8VM(object):
     record = True
     '''Flag for recording input history'''
 
+    historyPos = 0
+    '''Index of history for playback'''
+
     inputHistory = []
     '''All input events a list of tuples (key, steps)'''
 
@@ -135,7 +138,8 @@ class Chip8VM(object):
         '''
         Releases VM resources
         '''
-        core.freeVM(self.VM)
+        if self.VM:
+            core.freeVM(self.VM)
 
     def go(self):
         '''
@@ -162,7 +166,7 @@ class Chip8VM(object):
             self.reset()
         self.ROM = findROM(nameOrPath)
         if not self.ROM:
-            raise FileNotFoundError("The specified file does not exist.")
+            raise FileNotFoundError("ROM `{}` does not exist.".format(self.ROM))
         if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
         return 'Loaded ROM'
@@ -220,10 +224,10 @@ class Chip8VM(object):
             self.inputHistory.append((keys, self.VM.clock))
         if not self.record and not self.done:
             # Use the previous input until the next stored change is encountered
-            if self.VM.clock < self.inputHistory[historyPos + 1][1]:
+            if self.VM.clock < self.inputHistory[self.historyPos + 1][1]:
                 self.input(self.inputHistory[self.historyPos][0])
             else:
-                historyPos += 1
+                self.historyPos += 1
                 self.doneIf(self.historyPos + 1 == len(self.inputHistory))
                 self.input(self.inputHistory[self.historyPos][0])
         core.step(self.VM)

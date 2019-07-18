@@ -1,59 +1,75 @@
-import os, sys
-sys.path.append(os.path.expanduser('C:/Users/torrey/Desktop/UVic/Fifth Year/summer/seng499/chip-gr8'))
-
-import chipgr8.vm as vm
+import os
+import sys
+import chipgr8
 
 # Visual assertion that the input history is correct
 def testHumanRecord():
-    c = vm.Chip8VM(ROM='pong', inputHistory=None, display=True)
-    assert c.record, "c.record was expected to be True"
-    c.go()
-    print(c.inputHistory)
+    vm = chipgr8.init(ROM='pong', inputHistory=None, display=True)
+    assert vm.record, "c.record was expected to be True"
+    vm.go()
+    print(vm.inputHistory)
 
 # Visual assertion that the playback is correct
 def testPlayback():
-    history = [(0, 0), (2, 1314), (0, 1394), (2, 1502), (0, 1541), (16, 1713), (0, 1843), (16, 1974), (0, 2114), (16, 2224), 
-               (0, 2333), (2, 2502), (0, 2596), (2, 2862), (0, 2930), (16, 4701), (0, 4811), (2, 4918), (0, 5051)]
-    
-    c = vm.Chip8VM(ROM='pong', inputHistory=history, display=True)
-    assert c.inputHistory == history, "c.inputHistory was not as expected"
-    assert c.record is False, "c.record was expected to be False"
-    c.go()
+    history = [
+        (0, 0), 
+        (2, 1314), 
+        (0, 1394), 
+        (2, 1502), 
+        (0, 1541), 
+        (16, 1713), 
+        (0, 1843), 
+        (16, 1974), 
+        (0, 2114), 
+        (16, 2224), 
+        (0, 2333),
+        (2, 2502), 
+        (0, 2596), 
+        (2, 2862), 
+        (0, 2930), 
+        (16, 4701), 
+        (0, 4811), 
+        (2, 4918), 
+        (0, 5051),
+    ]
+    vm = chipgr8.init(ROM='pong', inputHistory=history, display=True)
+    assert vm.inputHistory == history, "c.inputHistory was not as expected"
+    assert vm.record is False, "c.record was expected to be False"
+    vm.go()
 
 # Visual assertion that the recorded play and the played-back play are the same
 def testHumanRecordAndPlayback():
     # record
-    c = vm.Chip8VM(ROM='pong', inputHistory=None, display=True)
-    assert c.record, "c.record was expected to be True"
-    history = c.inputHistory
-    c.go()
-    
+    vm1 = chipgr8.init(ROM='pong', display=True, aiInputMask=0)
+    assert vm1.record, "c.record was expected to be True"
+    history = vm1.inputHistory
+    vm1.go()
     # playback
-    d = vm.Chip8VM(ROM='pong', inputHistory=history, display=True)
-    assert d.inputHistory == history, "d.inputHistory was not as expected"
-    assert d.record is False, "d.record was expected to be False"
-    d.go()
+    vm2 = chipgr8.init(ROM='pong', inputHistory=history, display=True)
+    assert vm2.inputHistory == history, "d.inputHistory was not as expected"
+    assert vm2.record is False, "d.record was expected to be False"
+    vm2.go()
 
 # Visual assertion that the AI input is saved and that the playback is correct
 def testAIRecordAndPlayback():
-    c = vm.Chip8VM(ROM='pong', inputHistory=None, display=False)
-    assert c.record, "c.record was expected to be True"
+    vm1 = chipgr8.init(ROM='pong')
+    assert vm1.record, "c.record was expected to be True"
     for _ in range(1000):
-        c.act(0)
+        vm1.act(0)
     for _ in range(1000):
-        c.act(1 << 1)
+        vm1.act(1 << 1)
     for _ in range(2000):
-        c.act(0)
+        vm1.act(0)
     for _ in range(1000):
-        c.act(1 << 4)
+        vm1.act(1 << 4)
     for _ in range(1000):
-        c.act(0)
-    print(c.inputHistory)
+        vm1.act(0)
+    print(vm1.inputHistory)
 
     # playback
-    d = vm.Chip8VM(ROM='pong', inputHistory=c.inputHistory, display=True)
-    assert d.record is False, "d.record was expected to be False"
-    d.go()
+    vm2 = chipgr8.init(ROM='pong', inputHistory=vm1.inputHistory, display=True)
+    assert vm2.record is False, "d.record was expected to be False"
+    vm2.go()
 
 # Test that a human user can input keypresses at the same time as an AI and that the playback
 # displays both of them correctly
@@ -67,30 +83,38 @@ def testMixedHumanAndAIInput():
             vm.input(0)
 
     # record
-    c = vm.Chip8VM(ROM='pong', inputHistory=None, display=True, aiInputMask=16)
-    assert c.record, "c.record was expected to be True"
-    c.go(aiFunc)
-    print(c.inputHistory)
+    vm1 = chipgr8.init(ROM='pong', aiInputMask=16, display=True)
+    assert vm1.record, "c.record was expected to be True"
+    for _ in range(1000):
+        vm1.act(0)
+    for _ in range(1000):
+        vm1.act(1 << 1)
+    for _ in range(2000):
+        vm1.act(0)
+    for _ in range(1000):
+        vm1.act(1 << 4)
+    for _ in range(1000):
+        vm1.act(0)
+    print(vm1.inputHistory)
 
     # playback
-    d = vm.Chip8VM(ROM='pong', inputHistory=c.inputHistory, display=True)
-    assert d.record is False, "d.record was expected to be False"
-    d.go()
+    vm2 = chipgr8.init(ROM='pong', inputHistory=vm1.inputHistory, display=True)
+    assert not vm2.record
+    vm2.go()
 
 # Visual assertion that 
 def testSingleInputHistory():
     history = [(0, 0)]
-
-    c = vm.Chip8VM(ROM='pong', inputHistory=history, display=True)
-    assert c.record is False, "c.record was expected to be False"
-    print(c.inputHistory)
-    c.go()
+    vm = chipgr8.init(ROM='pong', inputHistory=history, display=True)
+    assert vm.record is False, "c.record was expected to be False"
+    print(vm.inputHistory)
+    vm.go()
 
 
 # Run tests
-# testRecord()
+# testHumanRecord()
 # testPlayback()
-# testRecordAndPlayback()
+# testHumanRecordAndPlayback()
 # testAIRecordAndPlayback()
-# testMixedHumanAndAIInput()
-testSingleInputHistory()
+testMixedHumanAndAIInput()
+# testSingleInputHistory()

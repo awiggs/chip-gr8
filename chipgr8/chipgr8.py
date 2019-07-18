@@ -15,7 +15,7 @@ def init(
     display      = False,
     smooth       = False,
     startPaused  = False,
-    aiInputMask  = 0,
+    aiInputMask  = 0xFFFF,
     foreground   = (255, 255, 255),
     background   = (0, 0, 0)
 ):
@@ -53,8 +53,8 @@ def init(
         smooth,
         startPaused,
         aiInputMask,
-        pygame.Color(foreground),
-        pygame.Color(background),
+        pygame.Color(foreground) if type(foreground) == str else foreground,
+        pygame.Color(background) if type(background) == str else background,
     ]
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)
         for _

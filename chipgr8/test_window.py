@@ -1,19 +1,19 @@
-from chipgr8.io import ChipGr8Window
+from chipgr8.window import Window
 import sys, pygame, time
 from pygame.locals import *
 
 def demo1():
-    w = ChipGr8Window()
+    w = Window()
     w.render(getTestBitMap())
     input("press enter to quit")
 
 def demo2():
-    w = ChipGr8Window()
+    w = Window()
     w.render(getTestBitMap2())
     input("press enter to quit")
 
 def demo3():
-    w = ChipGr8Window()
+    w = Window()
     while True:
         for event in pygame.event.get():
             if event.type==QUIT:

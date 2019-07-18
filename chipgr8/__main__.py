@@ -119,6 +119,7 @@ else:
         ROM         = chipgr8.findROM(args.rom) or '404.ch8', 
         startPaused = not args.rom,
         display     = True,
+        aiInputMask = 0,
         foreground  = '#' + (args.foreground or foreground),
         background  = '#' + (args.background or background),
     ).go()
