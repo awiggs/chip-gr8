@@ -39,66 +39,67 @@ export default ({ pageName }) => {
 We are a group of Software, and Electrical, Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.
 `}
                     />
-                    <Profile src='../static/img/red.png' name='Eric' position='Developer'>
+                    <Profile src='../static/img/Eric.png' name='Eric' position='Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 `}
                         />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
+                        <a href='https://www.linkedin.com/in/ejrbuss/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
+                        <a href='https://github.com/ejrbuss' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/red.png' right name='Torrey' position='Developer'>
+                    <Profile src='../static/img/Torrey.png' right name='Torrey' position='Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 `}
                         />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
+                        <a href='https://www.linkedin.com/in/torrey-randolph/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
+                        <a href='https://github.com/torreyr' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/red.png' name='Jon' position='Developer'>
+                    <Profile src='../static/img/Jon.png' name='Jon' position='Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 `}
                         />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
+                        {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
+                        <a href='https://github.com/UltravioletVoodoo' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/red.png' right name='James' position='Developer'>
+                    <Profile src='../static/img/James.png' right name='James' position='Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 `}
                         />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
+                        {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
+                        <a href='https://github.com/jbarlo' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/red.png' name='Andrew' position='Developer'>
+                    <Profile src='../static/img/Andrew.png' name='Andrew' position='Developer'>
+                        <EjrbussMarkdown 
+                            source=
+{`
+Andrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.
+`}
+                        />
+                        <a href='https://www.linkedin.com/in/awiggs96/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
+                        <a href='https://www.github.com/awiggs' className='subtle'><i className='fab fa-github' /></a>
+                    </Profile>
+                    <Profile src='../static/img/John.png' right name='Forrest' position='Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 `}
                         />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
+                        <a href='https://www.linkedin.com/in/john-curry/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
+                        <a href='https://github.com/john-curry' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/red.png' right name='Forrest' position='Developer'>
-                        <EjrbussMarkdown 
-                            source=
-{`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-`}
-                        />
-                        <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
-                        <a href='#' className='subtle'><i className='fab fa-github' /></a>
-                    </Profile>
+                    <br/>
                     <EjrbussMarkdown source=
 {`
 # Acknowledgements
@@ -115,10 +116,9 @@ We chose Rich Little as our faculty supervisor for his background in algorithms 
 `}
                         />
                     </Profile>
+                    <br/>
                     <EjrbussMarkdown source=
 {`
-We chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way. This is an extra sentence to add padding to this paragraph so that things are aligned better.
-
 ## Supporters
 
 #### Dr. Xiaodai Dong

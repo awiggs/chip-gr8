@@ -1,2 +1,2 @@
-Welcome to Chip-Gr8! This project was the capstone project of six Engineering students at the University of Victoria. 
+Welcome to Chip-Gr8! This project was the capstone project of six engineering students at the University of Victoria. 
 By combining our passions for gaming and artificial intelligence, we created a CHIP-8 emulator that doubles as a tool for learning how to develop Python AI programs. The aim of this project was to give new generations of programmers a stepping stone application into the world of AI.

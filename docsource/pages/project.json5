@@ -9,11 +9,11 @@
         },
         {
             title: 'Mid May',
-            content: 'Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started. Project is named "CHIP-GR8" (pronounced Chip-Great).',
+            content: 'Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started. Project is named "Chip-Gr8" (pronounced Chip-Great).',
         },
         {
             title: 'Late May',
-            content: 'Design documentation is filled out via team discussions Prototyping work begins.',
+            content: 'Design documentation is filled out via team discussions. Prototyping work begins.',
         },
         {
             title: 'Early June',
@@ -21,23 +21,23 @@
         },
         {
             title: 'Mid June',
-            content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. mulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux.'
+            content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. Emulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux.'
         },
         {
             title: 'Late June',
-            content: 'C-based emulator is completed, therefore project milestone 1 is completed. Python integration is completed, therefore project milestone 2 is completed. Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule. Memory visualization milestone is started. Final bugs are squashed from previous milestones'
+            content: 'C-based emulator is completed, therefore project milestone 1 is completed. Python integration is completed, therefore project milestone 2 is completed. Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule. Memory visualization milestone is started. Final bugs are squashed from previous milestones.'
         },
         {
             title: 'Early July',
-            content: 'Development on AI tools has begun; these will be used when developing. AIs Memory visualization is working minimally, progress still being made and bugs being fixed.'
+            content: 'Development on AI tools has begun; these will be used when developing example AIs. AIs Memory visualization is working minimally, progress still being made and bugs being fixed.'
         },
         {
             title: 'Mid July',
-            content: 'Memory visualization module is completed, therefore concluding milestone 4. AI tools have been completed, therefore completing milestone 5. Development on example AIs begins'
+            content: 'Memory visualization module is completed, therefore concluding milestone 4. AI tools have been completed, therefore completing milestone 5. Development on example AIs begins.'
         },
         {
             title: 'Late July',
-            content: 'Example AIs are worked on to provide demonstration-worthy agents. Final bugs are wrapped up if time permits.'
+            content: 'Example AIs are worked on to provide demonstration-worthy agents. UI upgrades are implemented. Final bugs are wrapped up if time permits.'
         }
     ],
 }
