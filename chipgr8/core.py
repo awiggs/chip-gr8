@@ -1,17 +1,22 @@
+import logging
 import ctypes
+import glob
 import os
 
 from chipgr8.autogen_Chip8VMStruct import Chip8VMStruct
 
+logger = logging.getLogger(__name__)
+
 def helloSharedLibrary():
     assert lib.helloSharedLibrary() == 0xAFBFCF
-    print('DLL loaded succesfully')
+    logger.info('DLL loaded succesfully')
 
 def initVM(freq):
     '''
     Allocates and returns a pointer to a VM.
     '''
     vm = Chip8VMStruct()
+    logger.debug('Initializing VM {}'.format(vm))
     lib.initVM(vm, freq)
     return vm
 
@@ -19,6 +24,7 @@ def freeVM(vm):
     '''
     Deallocates the provided VM.
     '''
+    logger.debug('Freeing VM {}'.format(vm))
     lib.freeVM(vm)
 
 def step(vm):
@@ -33,26 +39,26 @@ def loadROM(vm, filePath):
     '''
     return lib.loadROM(vm, filePath)
 
-def unloadROM(vm):
-    '''
-    Unloades a ROM, if one was loaded previously, from a VM.
-    '''
-    return lib.unloadROM(vm)
-
 def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''
+    logger.debug('sending input 0x{:04X}'.format(keymask))
     return lib.input(vm, keymask)
 
 def getProgramCounter(vm):
     return getattr(vm, "PC").contents.value
 
+
+
+dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*')))
+DLL_DIST_PATH    = dist[0] if dist else '<No dist path found!>'
 DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
 DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))
 
 lib = None
 for path in [
+    DLL_DIST_PATH,
     DLL_DEBUG_PATH,
     DLL_DEBUG_PATH + '.dll',
     DLL_DEBUG_PATH + '.exe',
@@ -62,29 +68,26 @@ for path in [
     DLL_RELEASE_PATH + '.exe',
     DLL_RELEASE_PATH + '.so',
 ]:
-    if os.path.isfile(path):
+    try:
         lib = ctypes.CDLL(path)
+    except Exception as error:
+        continue
         
-        lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_uint8]
-        lib.initVM.restype = None
+    lib.initVM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_uint8]
+    lib.initVM.restype = None
 
-        lib.freeVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
-        lib.freeVM.restype = None
+    lib.freeVM.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+    lib.freeVM.restype = None
 
-        lib.step.argtypes = [ctypes.POINTER(Chip8VMStruct)]
-        lib.step.restype = None
+    lib.step.argtypes = [ctypes.POINTER(Chip8VMStruct)]
+    lib.step.restype = None
 
-        lib.loadROM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_char_p]
-        lib.loadROM.restype = ctypes.c_int
+    lib.loadROM.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_char_p]
+    lib.loadROM.restype = ctypes.c_int
 
-        # TODO unloadROM ctypes specifications
-        # lib.unloadROM.argtypes = []
-        # lib.unloadROM.restype = 
-
-        lib.input.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_ushort]
-        lib.input.restype = None
-
-        break
-
+    lib.input.argtypes = [ctypes.POINTER(Chip8VMStruct), ctypes.c_ushort]
+    lib.input.restype = None
+    
+    break
 else:
     raise Exception('DLL has not been built!\nRun `mekpie build`!')

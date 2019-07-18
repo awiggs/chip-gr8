@@ -53,7 +53,7 @@ def findROM(rom):
     if os.path.exists(rom):
         return rom
     rom      = rom.lower()
-    romsPath = os.path.realpath(os.path.join(__file__, '../../data/roms'))
+    romsPath = os.path.realpath(os.path.join(__file__, '../data/roms'))
     for name in os.listdir(romsPath):
         if name.lower().startswith(rom) and name.endswith('ch8'):
             return os.path.join(romsPath, name)

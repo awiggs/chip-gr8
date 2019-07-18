@@ -16,7 +16,6 @@ def init(
     smooth       = False,
     startPaused  = False,
     aiInputMask  = 0,
-    verbose      = False,
     foreground   = (255, 255, 255),
     background   = (0, 0, 0)
 ):
@@ -35,7 +34,6 @@ def init(
             display         bool                  if true creates a game window
             smooth          bool                  if true uses smooth rendering
             startPaused     bool                  if true starts the vm paused
-            verbose         bool                  if true enables debug printing
             foreground      str | (int, int, int) foreground color
             background      str | (int, int, int) background color
     '''

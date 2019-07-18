@@ -1,5 +1,8 @@
 import json
 import pygame
+import logging
+
+logger = logging.getLogger(__name__)
 
 from chipgr8.util import read, write
 
@@ -40,7 +43,6 @@ class ControlModule(object):
         self.loadBindings()
 
     def update(self, vm, events):
-        
         if vm.paused:
             for event in events:
                 if event.type == pygame.QUIT:
@@ -142,7 +144,8 @@ class ControlModule(object):
         try:
             self.__bindings = json.loads(read('KeyConfig.json'))
         except:
-            self.__bindings = None
+            logger.warning('No `KeyConig.json`, using default bindings')
+            self.__bindings = self.defaultBindings.copy()
         self.sanityCheckBindings()
 
     def updateBindings(self):
@@ -172,13 +175,12 @@ class ControlModule(object):
                 validKeyConfig = False
 
         if not validKeyConfig:
-            response = input("KeyConfig.json file is corrupted.\nWould you like to restore default key bindings? (Y/n)")
+            response = input("KeyConfig.json was invalid.\nWould you like to restore default key bindings? (Y/n)")
             if response.lower() in ['y', 'yes']:
                 self.__bindings = self.defaultBindings.copy()
                 self.updateBindings()
             else:
-                print("Program cannot proceed with corrupted bindings, shutting down...")
-                exit(-1)
+                raise Exception('Inbalid Binding: `KeyConfig.json` was invalid')
 
     def setKeyBinding(self, newBindings):
 

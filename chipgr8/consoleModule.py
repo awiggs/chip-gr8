@@ -1,6 +1,9 @@
 import math
+import logging
 import chipgr8
 import traceback
+
+logger = logging.getLogger(__name__)
 
 from .module import Module
 
@@ -126,15 +129,16 @@ class ConsoleModule(Module):
         self.cursorPos = 0
 
     def evaluate(self, source):
+        logger.debug('evaluating ``'.format(source))
         try:    
             return eval(source, self.__globals, self.__locals)
         except:
-            pass
+            logger.debug('eval `{}` raised `{}`'.format(source, error), exc_info=error)            
         try:    
             exec(source, self.__globals, self.__locals)
             return ''
         except Exception as error:
-            print('console:', source, '->', error)
+            logger.error('exec: `{}` raised `{}`'.format(source, error), exc_info=error)
             return error
 
     def render(self):

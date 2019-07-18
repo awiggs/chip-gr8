@@ -1,5 +1,6 @@
 import os
 import pygame
+import chipgr8
 
 from chipgr8.controlModule import ControlModule
 from chipgr8.gameModule    import GameModule
@@ -20,7 +21,7 @@ class Window():
         foreground = (255, 255, 255),
         background = (0, 0, 0),
         antialias  = True,
-        tone       = os.path.realpath(os.path.join(__file__, "../../data/sound/pureTone.mp3"))
+        tone       = os.path.realpath(os.path.join(__file__, "../data/sound/pureTone.mp3"))
     ):
         pygame.init()
         pygame.font.init()
@@ -37,7 +38,7 @@ class Window():
         self.screenSize = (w + 300, h + 300)
         self.screen     = pygame.display.set_mode(self.screenSize)
         self.font       = pygame.font.Font(pygame.font.match_font('monospace'), 16)
-        pygame.display.set_caption('chipgr8')
+        pygame.display.set_caption(chipgr8.DESCRIPTION)
 
         self.controlModule = ControlModule()
         self.gameModule = GameModule(

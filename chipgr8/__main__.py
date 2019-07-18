@@ -1,5 +1,6 @@
 import sys
 import chipgr8
+import logging
 import argparse
 
 '''
@@ -28,15 +29,16 @@ optional arguments:
 parser = argparse.ArgumentParser(
     prog         = 'chipgr8',
     description  = chipgr8.DESCRIPTION,
-    allow_abbrev = False, 
+    #allow_abbrev = False, 
 )
-parser.add_argument('-v', '--version',
+parser.add_argument('-V', '--version',
     action  = 'version',
     version = 'chipgr8 ' + chipgr8.VERSION,
 )
-parser.add_argument('-vvv', '--verbose',
-    action = 'store_true',
-    help   = 'show more information on the console while running', 
+parser.add_argument('-v', '--verbose',
+    action  = 'count',
+    default = 0,
+    help    = 'show more information on the console while running (-v for some, -vvv for more)', 
 )
 parser.add_argument('-r', '--rom',
     action = 'store',
@@ -83,7 +85,16 @@ parser.add_argument('-t', '--theme',
     help    = 'display theme (light, dark, sunrise, hacker)'
 )
 
-args = parser.parse_args()
+args      = parser.parse_args()
+logLevels = [
+    logging.ERROR, 
+    logging.WARNING, 
+    logging.INFO, 
+    logging.DEBUG,
+]
+logging.basicConfig(
+    level=logLevels[min(len(logLevels) - 1, args.verbose)]
+)
 
 if args.source:
     result = chipgr8.assemble(inPath=args.source, outPath=args.out)
@@ -104,7 +115,6 @@ else:
         chipgr8.themes['dark']
     )
     chipgr8.init(
-        verbose     = args.verbose,
         smooth      = args.smooth,
         ROM         = chipgr8.findROM(args.rom) or '404.ch8', 
         startPaused = not args.rom,

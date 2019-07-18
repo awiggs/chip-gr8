@@ -26,6 +26,9 @@ class Chip8VM(object):
     __VMs = None
     '''Containing VM collection'''
 
+    window = None
+    '''Window instance'''
+
     ROM = None
     '''The ROM file path'''
 
@@ -49,9 +52,6 @@ class Chip8VM(object):
 
     sampleRate = 1
     '''For AI agents, how many steps are taken per act'''
-
-    window = None
-    '''Window instance'''
 
     userKeys = 0
     '''Current input keys sample'''
@@ -143,9 +143,7 @@ class Chip8VM(object):
 
         @params function            The AI agent function
         '''
-        assert self.window, 'Cannot start a VM with no window!'
-        assert self.ROM,    'Cannot start a VM with no ROM!'
-
+        assert self.window, 'Cannot use `go` without a window'
         try:
             while not self.done:
                 self.act(0)
@@ -167,6 +165,7 @@ class Chip8VM(object):
             raise FileNotFoundError("The specified file does not exist.")
         if not core.loadROM(self.VM, self.ROM.encode()):
             raise RuntimeError("Library failed to load ROM.")
+        return 'Loaded ROM'
     
     def loadState(self, path=None, tag=None):
         '''
@@ -271,7 +270,7 @@ class Chip8VM(object):
         Sets the VM to done if `done` is true. Signals VMs collection if 
         applicable.
 
-        @param done     bool    if done
+        @param done  bool  if done
         '''
         if not self.done and done:
             self.done = True

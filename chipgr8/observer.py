@@ -69,7 +69,7 @@ class Observer(object):
 
         @returns    str     the source code representation
         '''
-        return '(Observer(){})'.format('\n'.join('.addQuery({}, {})'.format(name, query)
+        return '(Observer(){})'.format(''.join('.addQuery(\'{}\', {})'.format(name, query)
             for (name, query)
             in self.queries.items()
         ))

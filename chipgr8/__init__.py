@@ -12,7 +12,8 @@ themes = {
     'sunrise'  : ('ff6464', '780a3c'),
     'hacker'   : ('20C20E', '000000'),
     'redalert' : ('FF0000', '000000'),
+    'snake'    : ('00CA83', 'FFFFFF'),
 }
 
 VERSION     = '0.0.1'
-DESCRIPTION = "ChipGr8: The AI focused Chip 8 Emulator"
+DESCRIPTION = "Chip-Gr8: The AI focused Chip 8 Emulator"
