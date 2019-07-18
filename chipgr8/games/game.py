@@ -18,5 +18,5 @@ class Game(object):
                 actions     ndarray     valid game actions
         '''
         self.ROM      = ROM
-        self.observer = lambda vm : observer(vm)
+        self.observer = lambda vm : observer.observe(vm)
         self.actions  = actions

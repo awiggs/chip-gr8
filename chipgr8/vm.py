@@ -260,6 +260,7 @@ class Chip8VM(object):
                 self.input(action)
                 self.step()
             if self.window:
+                self.input(action)
                 self.window.update(self)
                 self.window.render(force=self.paused)
                 self.window.sound(self.VM.ST > 0)

@@ -25,11 +25,11 @@ class Query(object):
         '''
         assert vm or addr, 'Query must be created with a VM instance or an address!'
 
-        self.done       = addr is not None
-        self.success    = self.done or None
-        self.__RAM      = vm.VM.RAM
-        self.__addr     = addr
-        self.previous = [(addr, 0) for addr in range(0x1000)]
+        self.done     = addr is not None
+        self.success  = self.done or None
+        self.__RAM    = None if vm is None else vm.VM.RAM
+        self.__addr   = addr
+        self.previous = [(addr, 0) for addr in range(0x1000)] if vm else None
 
     def checkIfDone(self):
         if self.done:
