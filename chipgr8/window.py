@@ -64,10 +64,11 @@ class Window():
         pygame.display.flip()
 
     def sound(self, play):
-        if play:
-            pygame.mixer.music.play()
-        else: 
-            pygame.mixer.music.stop()
+        pass
+        #if play:
+        #    #pygame.mixer.music.play()
+        #else: 
+        #    pygame.mixer.music.stop()
 
     def refresh(self, vm):
         self.update(vm)
