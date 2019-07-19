@@ -18,7 +18,7 @@ class Chip8VMs(object):
         '''
         Returns the collection of instance of Virtual Machines
         '''
-        return self.__instances
+        return enumerate(self.__instances)
 
     def __init__(self, instances):
         '''
@@ -51,7 +51,6 @@ class Chip8VMs(object):
 
         @param vm   Chip8VM     the done VM
         '''
-        print('here')
         self.__notDoneInstances.remove(vm)
         self.__doneInstances.add(vm)
 
