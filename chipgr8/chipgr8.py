@@ -3,7 +3,9 @@ from chipgr8.vms     import Chip8VMs
 from time            import sleep
 
 import pygame
-import chipgr8.core    as core
+import logging
+
+logger = logging.getLogger(__name__)
 
 def init(
     ROM          = None,
@@ -56,6 +58,7 @@ def init(
         pygame.Color(foreground) if type(foreground) == str else foreground,
         pygame.Color(background) if type(background) == str else background,
     ]
+    logger.info('Initializing with `{}`'.format(args))
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)
         for _
         in range(instances)

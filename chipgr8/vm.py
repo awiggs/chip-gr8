@@ -3,6 +3,7 @@ import sys
 import json
 import pygame
 import pickle
+import logging
 
 import chipgr8.core as core
 
@@ -11,20 +12,27 @@ from chipgr8.util   import write, findROM, resolveTag
 from lazyarray      import larray
 from collections    import namedtuple
 
+logger = logging.getLogger(__name__)
+
 class Chip8VM(object):
     '''
     Wraps the Chip8VMStruct object produced by core.initVM, provides a 
     pythonic interface to the VM state, and performs IO actions if necessary.
     '''
 
-    __freq = 600
-    '''The VM runnning frequency'''
+    
 
     __pausedFreq = 30
     '''The VM paused frequency'''
 
     __VMs = None
     '''Containing VM collection'''
+
+    __ctx = None
+    '''Graphics content cache'''
+
+    __freq = 600
+    '''The VM runnning frequency'''
 
     window = None
     '''Window instance'''
@@ -108,6 +116,7 @@ class Chip8VM(object):
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
+        self.sampleRate   = sampleRate
         self.record       = inputHistory is None
         self.inputHistory = inputHistory or [(0, 0)]
         self.aiInputMask  = aiInputMask
@@ -118,22 +127,27 @@ class Chip8VM(object):
         self.VM           = core.initVM(frequency // 60)
         if ROM:
             self.loadROM(ROM, reset=False)
-
-        width, height = 64, 32
-        def getVRAM(x, y):
-            bit        = (y * width) + x
-            byteOffset = bit // 8
-            bitOffset  = bit %  8
-            byte       = self.VM.VRAM[byteOffset]
-            return (byte >> (7 - bitOffset)) & 0x1
-        
-        self.ctx    = larray(getVRAM, shape=(width, height)) if display else None
         self.window = Window(
-            width, height, 
+            64, 32, 
             foreground = foreground, 
             background = background,
         ) if display else None
-        self.pyclock = pygame.time.Clock() if display else None        
+        self.pyclock = pygame.time.Clock() if display else None
+
+    def ctx(self):
+        if not self.__ctx:
+            width, height = 64, 32
+            def getVRAM(x, y):
+                bit        = (y * width) + x
+                byteOffset = bit // 8
+                bitOffset  = bit %  8
+                byte       = self.VM.VRAM[byteOffset % 0x100]
+                return (byte >> (7 - bitOffset)) & 0x1
+            self.__ctx = larray(getVRAM, shape=(width, height))
+        return self.__ctx
+
+    def clearCtx(self):
+        self.__ctx = None
 
     def go(self):
         '''
@@ -142,6 +156,7 @@ class Chip8VM(object):
         @params function            The AI agent function
         '''
         assert self.window, 'Cannot use `go` without a window'
+        logger.info('VM starting in user mode (go) `{}`'.format(self))
         try:
             while not self.done:
                 self.act(0)
@@ -156,6 +171,7 @@ class Chip8VM(object):
 
         @params nameOrPath The name or path of the ROM to load
         '''
+        logger.info('Loading rom `{}` into `{}`'.format(nameOrPath, self))
         if reset:
             self.reset()
         self.ROM = findROM(nameOrPath)
@@ -175,7 +191,8 @@ class Chip8VM(object):
         @params path If provided, the path to load the state from
                 tag  If provided, the tag of the state
         '''
-        #TODO: What are tags
+        assert path or tag
+        logger.info('Loading state from `{}` into `{}`'.format(path or tag, self))
         if tag:
             path = resolveTag(tag)
         if not os.path.isfile(path):
@@ -194,6 +211,8 @@ class Chip8VM(object):
                 force If true, overwrite already existing files, otherwise
                       throw an error
         '''
+        assert path or tag
+        logger.info('Saving state to `{}` for `{}`'.format(path or tag, self))
         if tag:
             path = resolveTag(tag)
         print('> ', os.path.exists(path))
@@ -240,6 +259,7 @@ class Chip8VM(object):
         '''
         Complete reset to original state. Reloads ROM.
         '''
+        logger.info('Resetting vm `{}`'.format(self))
         self.VM = core.initVM(self.__freq // 60)
         if self.ROM:
             self.loadROM(self.ROM, reset=False)
@@ -262,6 +282,8 @@ class Chip8VM(object):
         @param action   int     input action to perform
         '''
         for _ in range(self.sampleRate):
+            if self.done:
+                break
             if not self.paused:
                 self.input(action)
                 self.step()
@@ -280,6 +302,7 @@ class Chip8VM(object):
         @param done  bool  if done
         '''
         if not self.done and done:
+            logger.info('VM is done `{}`'.format(self))
             self.done = True
             if self.__VMs:
                 self.__VMs.signalDone(self)

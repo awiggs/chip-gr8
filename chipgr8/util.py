@@ -47,6 +47,15 @@ def write(path, buffer, mode='w'):
         fs.write(buffer)
     return buffer
 
+def readableInputHistory(inputHistory, names):
+    history = []
+    for (key, clock) in inputHistory:
+        if key in names:
+            i   = names.values.index(key)
+            key = names.names[i] 
+        history.append((key, clock))
+    return history
+
 def resolveTag(tag):
     return os.path.realpath(os.path.join(__file__, '../data/tags/', tag))
 

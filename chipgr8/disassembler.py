@@ -1,4 +1,8 @@
+import logging
+
 from chipgr8.util import chunk, nibbles, hexarg, decarg, read, write
+
+logger = logging.getLogger(__name__)
 
 CHIP_8_INSTRUCTIONS = [
 #   Instruction Format    Opcode
@@ -60,6 +64,9 @@ def hexdump(buffer=None, inPath=None, outPath=None):
             outPath If provided, the output file
     @returns        The hex dump
     '''
+    logger.info('Hexdumping buffer: `{}` inPath: `{}` outPath: `{}`'.format(
+        buffer, inPath, outPath
+    ))
     if inPath: buffer = read(inPath, 'rb')
 
     dump = '\n'.join(hexarg(*nibbles(high), *nibbles(low))
@@ -93,6 +100,9 @@ def disassemble(
             hexdump Show hex value of line as a comment
     @returns        Disassembled source code
     '''
+    logger.info('Disassembling source: `{}` inPath: `{}` outPath: `{}`'.format(
+        buffer, inPath, outPath
+    ))
     if inPath: 
         buffer = read(inPath, 'rb')
     if not isinstance(labels, dict): 

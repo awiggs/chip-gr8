@@ -87,6 +87,8 @@ class Chip8VMs(object):
 
         @param do   Callable[[Chip8VM]]     action to perform
         '''
+        for vm in self.__notDoneInstances:
+            vm.clearCtx()
         with Pool(cpu_count()) as pool:
             stepped = set(pool.map(PoolHandler(do), self.__notDoneInstances))
         self.__instances        = stepped.union(self.__doneInstances)
@@ -106,4 +108,5 @@ class PoolHandler(object):
 
     def __call__(self, vm):
         self.do(vm)
+        vm.clearCtx()
         return vm
