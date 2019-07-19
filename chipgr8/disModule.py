@@ -10,11 +10,9 @@ class DisModule(Module):
     __lastClock        = 0
     __yChanged         = False
     __ROM              = ''
-    __scrollOnUpdate   = True
 
-    def __init__(self, surface, theme, scrollOnUpdate):
+    def __init__(self, surface, theme):
         super().__init__(surface, theme)
-        self.__scrollOnUpdate = scrollOnUpdate
         self.y      = 0
         self.hl     = 0
         self.dis    = []
@@ -52,7 +50,7 @@ class DisModule(Module):
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
         self.hl          = (vm.VM.PC - 0x200) // 2
-        if self.__scrollOnUpdate or vm.paused:
+        if vm.unpausedDisScroll or vm.paused:
             self.scrollTo(self.hl - 3)
         else:
             self.__yChanged = True

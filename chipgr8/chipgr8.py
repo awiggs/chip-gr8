@@ -28,17 +28,18 @@ def init(
     display loop. Performs some basic sanity checking on confioguration
     variables.
 
-    @params ROM             str                   name or path to the ROM to load
-            frequency       int                   frequency to run the VM at
-            loadState       str                   path or tag to a save state
-            inputHistory    List[int]             a list of predifined IO events
-            sampleRate      int                   how many steps act moves forward
-            instances       int                   the number of VMs to create
-            display         bool                  if true creates a game window
-            smooth          bool                  if true uses smooth rendering
-            startPaused     bool                  if true starts the vm paused
-            foreground      str | (int, int, int) foreground color
-            background      str | (int, int, int) background color
+    @params ROM               str                   name or path to the ROM to load
+            frequency         int                   frequency to run the VM at
+            loadState         str                   path or tag to a save state
+            inputHistory      List[int]             a list of predifined IO events
+            sampleRate        int                   how many steps act moves forward
+            instances         int                   the number of VMs to create
+            display           bool                  if true creates a game window
+            smooth            bool                  if true uses smooth rendering
+            startPaused       bool                  if true starts the vm paused
+            foreground        str | (int, int, int) foreground color
+            background        str | (int, int, int) background color
+            unpausedDisScroll bool                  if false disModule won't scroll
     '''
     # Some simple sanity checks
     assert instances > 0,                 'Must have some number of instances!'

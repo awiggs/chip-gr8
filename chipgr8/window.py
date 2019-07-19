@@ -22,7 +22,6 @@ class Window():
         background = (0, 0, 0),
         antialias  = True,
         tone       = os.path.realpath(os.path.join(__file__, "../data/sound/pureTone.mp3")),
-        scrollDisOnUpdate = True
     ):
         pygame.init()
         pygame.font.init()
@@ -57,7 +56,6 @@ class Window():
         self.disModule = DisModule(
             self.screen.subsurface((w, 0, 300, h)),
             self,
-            scrollDisOnUpdate,
         )
         self.regModule = RegModule(
             self.screen.subsurface((w, h, 300, 270)),

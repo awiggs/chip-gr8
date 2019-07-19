@@ -99,40 +99,42 @@ class Chip8VM(object):
         struct, game window, etc. If called with display equal to true will
         begin the game loop.
 
-        @params ROM             str              name or path to the ROM to load
-                frequency       int              frequency to run the VM at
-                loadState       str              path or tag to a save state
-                inputHistory    List[(int, int)] a list of predifined IO events
-                sampleRate      int              how many steps act moves forward
-                display         bool             if true creates a game window
-                smooth          bool             if true uses smooth rendering
-                startPaused     bool             if true starts the vm paused
-                shader          Shader           display shader to use
-                aiInputMask     int              A mask for combining user and AI inputs. If
-                                                 any 16-bit integer, inputs made by the AI for
-                                                 keys masked with 0 will be ignored. Inputs made
-                                                 by a user for keys masked with 1 will also be ignored.
-                foreground      (int, int, int)  hex color code or color tuple
-                background      (int, int, int)  hex color code or color tuple
+        @params ROM               str               name or path to the ROM to load
+                frequency         int               frequency to run the VM at
+                loadState         str               path or tag to a save state
+                inputHistory      List[(int, int)]  a list of predifined IO events
+                sampleRate        int               how many steps act moves forward
+                display           bool              if true creates a game window
+                smooth            bool              if true uses smooth rendering
+                startPaused       bool              if true starts the vm paused
+                shader            Shader            display shader to use
+                aiInputMask       int               A mask for combining user and AI inputs. If
+                                                    any 16-bit integer, inputs made by the AI for
+                                                    keys masked with 0 will be ignored. Inputs made
+                                                    by a user for keys masked with 1 will also be ignored.
+                foreground        (int, int, int)   hex color code or color tuple
+                background        (int, int, int)   hex color code or color tuple
+                unpausedDisScroll bool              if false, disModule will not 
+                                                    scroll to highlighted code
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
-        self.sampleRate   = sampleRate
-        self.record       = inputHistory is None
-        self.inputHistory = inputHistory or [(0, 0)]
-        self.aiInputMask  = aiInputMask
-        self.historyPos   = 0
-        self.__freq       = (frequency // 60) * 60
-        self.smooth       = smooth
-        self.paused       = startPaused
-        self.VM           = core.initVM(frequency // 60)
+        self.sampleRate         = sampleRate
+        self.record             = inputHistory is None
+        self.inputHistory       = inputHistory or [(0, 0)]
+        self.aiInputMask        = aiInputMask
+        self.historyPos         = 0
+        self.__freq             = (frequency // 60) * 60
+        self.smooth             = smooth
+        self.paused             = startPaused
+        self.VM                 = core.initVM(frequency // 60)
+        self.unpausedDisScroll  = unpausedDisScroll
         if ROM:
             self.loadROM(ROM, reset=False)
         self.window = Window(
             64, 32, 
             foreground = foreground, 
-            background = background,
-            scrollDisOnUpdate=unpausedDisScroll
+            background = background
         ) if display else None
         self.pyclock = pygame.time.Clock() if display else None
 
