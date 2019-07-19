@@ -124,7 +124,7 @@ else:
         startPaused       = not args.rom,
         display           = True,
         aiInputMask       = 0,
-        foreground        = ('#' + args.foreground) or foreground,
-        background        = ('#' + args.background) or background,
+        foreground        = ('#' + args.foreground) if args.foreground else foreground,
+        background        = ('#' + args.background) if args.background else background,
         unpausedDisScroll = args.no_scroll,
     ).go()
