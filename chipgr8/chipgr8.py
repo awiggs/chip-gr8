@@ -19,7 +19,8 @@ def init(
     startPaused  = False,
     aiInputMask  = 0xFFFF,
     foreground   = (255, 255, 255),
-    background   = (0, 0, 0)
+    background   = (0, 0, 0),
+    unpausedDisScroll = True
 ):
     '''
     Creates a new VM instance or instances with the provided configuration
@@ -57,6 +58,7 @@ def init(
         aiInputMask,
         pygame.Color(foreground) if type(foreground) == str else foreground,
         pygame.Color(background) if type(background) == str else background,
+        unpausedDisScroll
     ]
     logger.info('Initializing with `{}`'.format(args))
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)

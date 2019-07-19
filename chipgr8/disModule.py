@@ -10,9 +10,11 @@ class DisModule(Module):
     __lastClock        = 0
     __yChanged         = False
     __ROM              = ''
+    __scrollOnUpdate   = True
 
-    def __init__(self, surface, theme):
+    def __init__(self, surface, theme, scrollOnUpdate):
         super().__init__(surface, theme)
+        self.__scrollOnUpdate = scrollOnUpdate
         self.y      = 0
         self.hl     = 0
         self.dis    = []
@@ -50,7 +52,10 @@ class DisModule(Module):
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
         self.hl          = (vm.VM.PC - 0x200) // 2
-        self.scrollTo(self.hl - 3)
+        if self.__scrollOnUpdate:
+            self.scrollTo(self.hl - 3)
+        else:
+            self.__yChanged = True
 
     def initDis(self, inPath):
         lineHeight = self.theme.font.get_height()

@@ -82,8 +82,11 @@ parser.add_argument('-b', '--background',
 parser.add_argument('-t', '--theme',
     action  = 'store',
     choices = chipgr8.themes.keys(),
-    help    = 'display theme (light, dark, sunrise, hacker)'
+    help    = 'display theme (light, dark, sunrise, hacker, redalert, snake)'
 )
+parser.add_argument('--no-scroll',
+    action  = 'store_false',
+    help    = 'reduce flashing in disassembler by not scrolling to the highlighted position')
 
 args      = parser.parse_args()
 logLevels = [
@@ -114,6 +117,7 @@ else:
         args.theme, 
         chipgr8.themes['dark']
     )
+    print(args)
     chipgr8.init(
         smooth      = args.smooth,
         ROM         = chipgr8.findROM(args.rom) if args.rom else None, 
@@ -122,4 +126,5 @@ else:
         aiInputMask = 0,
         foreground  = '#' + (args.foreground or foreground),
         background  = '#' + (args.background or background),
+        unpausedDisScroll = args.no_scroll
     ).go()

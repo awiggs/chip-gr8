@@ -92,6 +92,7 @@ class Chip8VM(object):
         aiInputMask,
         foreground,
         background,
+        unpausedDisScroll,
     ):
         '''
         Initializes a new Chip8VM object. Responsible for allocating a new VM
@@ -131,6 +132,7 @@ class Chip8VM(object):
             64, 32, 
             foreground = foreground, 
             background = background,
+            scrollDisOnUpdate=unpausedDisScroll
         ) if display else None
         self.pyclock = pygame.time.Clock() if display else None
 
