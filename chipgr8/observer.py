@@ -1,6 +1,7 @@
 from chipgr8.namedArray import NamedArray
 from chipgr8.query import Query
 
+
 class Observer(object):
 
     queries = dict()
@@ -19,14 +20,11 @@ class Observer(object):
                 the query object or callable funcntion
         @returns        Obsesrver   itself
         '''
-        if self.isObservable(query):
+        if callable(query) or isinstance(query, Query):
             self.queries[name] = query
         else:
             raise TypeError("Query is not a function or Query object")
         return self
-
-    def isObservable(self, query):
-        return callable(query) or isinstance(query, Query)
 
     def observe(self, vm):
         '''

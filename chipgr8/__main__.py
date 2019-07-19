@@ -117,7 +117,6 @@ else:
         args.theme, 
         chipgr8.themes['dark']
     )
-    print(args)
     chipgr8.init(
         smooth            = args.smooth,
         ROM               = chipgr8.findROM(args.rom) if args.rom else None, 

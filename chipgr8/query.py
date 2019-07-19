@@ -34,7 +34,7 @@ class Query(object):
             in range(0x1000)
         ]
 
-    def checkIfDone(self):
+    def __checkIfDone(self):
         if self.done:
             return 'Query finished.'
         numFound = len(self.previous)
@@ -115,7 +115,7 @@ class Query(object):
             in self.previous
             if pred(self.__vm.VM.RAM[addr], value)
         ]
-        return self.checkIfDone()
+        return self.__checkIfDone()
 
     def __repr__(self):
         '''

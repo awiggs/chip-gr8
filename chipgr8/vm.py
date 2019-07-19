@@ -32,6 +32,18 @@ class Chip8VM(object):
     __freq = 600
     '''The VM runnning frequency'''
 
+    __userKeys = 0
+    '''Current input keys sample'''
+
+    __aiKeys = 0
+    '''Input last pressed by the AI agent'''
+
+    __historyPos = 0
+    '''Index of history for playback'''
+
+    __done = False
+    '''Indicates whether the VM is in a done state'''
+
     window = None
     '''Window instance'''
 
@@ -40,9 +52,6 @@ class Chip8VM(object):
 
     VM = None
     '''The VM struct instance'''
-
-    ctx = None
-    '''Lazy array (numpy compliant) repesenting video memory'''
 
     smooth = False
     '''Flag for smooth rendering'''
@@ -53,26 +62,14 @@ class Chip8VM(object):
     record = True
     '''Flag for recording input history'''
 
-    historyPos = 0
-    '''Index of history for playback'''
-
     inputHistory = []
     '''All input events a list of tuples (key, steps)'''
 
     sampleRate = 1
     '''For AI agents, how many steps are taken per act'''
 
-    userKeys = 0
-    '''Current input keys sample'''
-
-    aiKeys = 0
-    '''Input last pressed by the AI agent'''
-
     aiInputMask = 0
     '''Input mask to combine user and AI input'''
-
-    done = False
-    '''Indicates whether the VM is in a done state'''
 
     pyclock = None
     '''Pygame clock'''
@@ -121,10 +118,10 @@ class Chip8VM(object):
         self.record             = inputHistory is None
         self.inputHistory       = inputHistory or [(0, 0)]
         self.aiInputMask        = aiInputMask
-        self.historyPos         = 0
-        self.__freq             = (frequency // 60) * 60
         self.smooth             = smooth
         self.paused             = startPaused
+        self.__historyPos       = 0
+        self.__freq             = (frequency // 60) * 60
         self.VM                 = core.initVM(frequency // 60)
         self.unpausedDisScroll  = unpausedDisScroll
         if ROM:
@@ -148,7 +145,7 @@ class Chip8VM(object):
             self.__ctx = larray(getVRAM, shape=(width, height))
         return self.__ctx
 
-    def clearCtx(self):
+    def _clearCtx(self):
         self.__ctx = None
 
     def go(self):
@@ -160,7 +157,7 @@ class Chip8VM(object):
         assert self.window, 'Cannot use `go` without a window'
         logger.info('VM starting in user mode (go) `{}`'.format(self))
         try:
-            while not self.done:
+            while not self.done():
                 self.act(0)
         except KeyboardInterrupt:
             print('Goodbye!')
@@ -232,11 +229,11 @@ class Chip8VM(object):
                 A raw set of bytes representing the io memory
         '''
         if user:
-            self.userKeys = keys
+            self.__userKeys = keys
         else:
-            self.aiKeys = keys
+            self.__aiKeys = keys
 
-        core.sendInput(self.VM, (self.aiKeys & self.aiInputMask) | (self.userKeys & ~self.aiInputMask))
+        core.sendInput(self.VM, (self.__aiKeys & self.aiInputMask) | (self.__userKeys & ~self.aiInputMask))
     
     def step(self):
         '''
@@ -245,17 +242,17 @@ class Chip8VM(object):
         keys = self.VM.keys
         if self.record and keys != self.inputHistory[-1][0]:
             self.inputHistory.append((keys, self.VM.clock))
-        if not self.record and not self.done:
+        if not self.record and not self.done():
             # Use the previous input until the next stored change is encountered
-            if self.VM.clock < self.inputHistory[self.historyPos + 1][1]:
-                self.input(self.inputHistory[self.historyPos][0])
+            if self.VM.clock < self.inputHistory[self.__historyPos + 1][1]:
+                self.input(self.inputHistory[self.__historyPos][0])
             else:
-                self.historyPos += 1
-                self.doneIf(self.historyPos + 1 == len(self.inputHistory))
-                self.input(self.inputHistory[self.historyPos][0])
+                self.__historyPos += 1
+                self.doneIf(self.__historyPos + 1 == len(self.inputHistory))
+                self.input(self.inputHistory[self.__historyPos][0])
         core.step(self.VM)
-        self.aiKeys   = 0
-        self.userKeys = 0
+        self.__aiKeys   = 0
+        self.__userKeys = 0
 
     def reset(self):
         '''
@@ -284,7 +281,7 @@ class Chip8VM(object):
         @param action   int     input action to perform
         '''
         for _ in range(self.sampleRate):
-            if self.done:
+            if self.done():
                 break
             if not self.paused:
                 self.input(action)
@@ -296,6 +293,9 @@ class Chip8VM(object):
                 self.window.sound(self.VM.ST > 0)
                 self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
 
+    def done(self):
+        return self.__done
+
     def doneIf(self, done):
         '''
         Sets the VM to done if `done` is true. Signals VMs collection if 
@@ -303,8 +303,8 @@ class Chip8VM(object):
 
         @param done  bool  if done
         '''
-        if not self.done and done:
+        if not self.__done and done:
             logger.info('VM is done `{}`'.format(self))
-            self.done = True
+            self.__done = True
             if self.__VMs:
-                self.__VMs.signalDone(self)
+                self.__VMs._signalDone(self)

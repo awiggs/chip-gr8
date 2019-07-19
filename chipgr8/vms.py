@@ -14,9 +14,6 @@ class Chip8VMs(object):
     __doneInstances = set()
     '''A list of all Chip8VM instances taht are done'''
 
-    def get(self):
-        return self.__instances
-
     def __init__(self, instances):
         '''
         @param instances List[Chip8VM]  a list of Chip8VM instances 
@@ -42,13 +39,12 @@ class Chip8VMs(object):
         self.__notDoneInstances = set(self.__instances)
         self.__doneInstances    = set()
 
-    def signalDone(self, vm):
+    def _signalDone(self, vm):
         '''
         Allows a VM to signal to its collection that it is done.
 
         @param vm   Chip8VM     the done VM
         '''
-        print('here')
         self.__notDoneInstances.remove(vm)
         self.__doneInstances.add(vm)
 
@@ -88,9 +84,9 @@ class Chip8VMs(object):
         @param do   Callable[[Chip8VM]]     action to perform
         '''
         for vm in self.__notDoneInstances:
-            vm.clearCtx()
+            vm._clearCtx()
         with Pool(cpu_count()) as pool:
-            stepped = set(pool.map(PoolHandler(do), self.__notDoneInstances))
+            stepped = set(pool.map(_PoolHandler(do), self.__notDoneInstances))
         self.__instances        = stepped.union(self.__doneInstances)
         self.__notDoneInstances = set(vm for vm in stepped if not vm.done)
         self.__doneInstances    = set(vm for vm in stepped if vm.done)
@@ -101,12 +97,12 @@ class Chip8VMs(object):
         '''
         return iter(self.__notDoneInstances)
 
-class PoolHandler(object):
+class _PoolHandler(object):
 
     def __init__(self, do):
         self.do = do
 
     def __call__(self, vm):
         self.do(vm)
-        vm.clearCtx()
+        vm._clearCtx()
         return vm

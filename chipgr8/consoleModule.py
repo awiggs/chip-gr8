@@ -155,7 +155,7 @@ class ConsoleModule(Module):
 
     def update(self, vm, events):
         if vm.paused and 'vm' not in self.__globals:
-            self.initGlobals()            
+            self.initGlobals(vm)            
         for event in events:
             if event.type == KEYDOWN:
                 key           = event.key
@@ -194,6 +194,7 @@ class ConsoleModule(Module):
         self.__bufferedSurfaces.append((0, surface))
 
     def initGlobals(self, vm):
+        
         def play():
             vm.paused = False
             return 'Resumed.'
@@ -201,10 +202,9 @@ class ConsoleModule(Module):
         def reset():
             return vm.reset()
 
-        def step(n=1):
-            for _ in range(n):
-                vm.step()
-            return 'Stepped {}.'.format(n)
+        def step():
+            vm.step()
+            return 'Stepped.'
 
         def Query():
             return chipgr8.Query(vm)
@@ -212,4 +212,5 @@ class ConsoleModule(Module):
         self.__globals['vm']    = vm
         self.__globals['play']  = play
         self.__globals['reset'] = reset
+        self.__globals['step']  = step 
         self.__globals['Query'] = Query
