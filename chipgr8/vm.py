@@ -31,7 +31,7 @@ class Chip8VM(object):
     __ctx = None
     '''Graphics content cache'''
 
-    freq = 600
+    __freq = 600
     '''The VM runnning frequency'''
 
     window = None
