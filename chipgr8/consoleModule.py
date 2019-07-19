@@ -57,7 +57,6 @@ class ConsoleModule(Module):
         self.__cursorSurface = Surface((1, self.theme.font.get_height()))
         self.__globals       = {
             'chipgr8'     : chipgr8,
-            'Query'       : chipgr8.Query,
             'Observer'    : chipgr8.Observer,
             'write'       : chipgr8.util.write,
             'read'        : chipgr8.util.read,
@@ -155,12 +154,8 @@ class ConsoleModule(Module):
         return super().render()
 
     def update(self, vm, events):
-        if vm.paused:
-            def play():
-                vm.paused = False
-                return 'Resumed.'
-            self.__globals['vm']   = vm
-            self.__globals['play'] = play
+        if vm.paused and 'vm' not in self.__globals:
+            self.initGlobals()            
         for event in events:
             if event.type == KEYDOWN:
                 key           = event.key
@@ -197,3 +192,24 @@ class ConsoleModule(Module):
 
         self.clock.tick()
         self.__bufferedSurfaces.append((0, surface))
+
+    def initGlobals(self, vm):
+        def play():
+            vm.paused = False
+            return 'Resumed.'
+
+        def reset():
+            return vm.reset()
+
+        def step(n=1):
+            for _ in range(n):
+                vm.step()
+            return 'Stepped {}.'.format(n)
+
+        def Query():
+            return chipgr8.Query(vm)
+        
+        self.__globals['vm']    = vm
+        self.__globals['play']  = play
+        self.__globals['reset'] = reset
+        self.__globals['Query'] = Query

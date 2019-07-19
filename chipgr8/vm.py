@@ -20,8 +20,6 @@ class Chip8VM(object):
     pythonic interface to the VM state, and performs IO actions if necessary.
     '''
 
-    
-
     __pausedFreq = 30
     '''The VM paused frequency'''
 

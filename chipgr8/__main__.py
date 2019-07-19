@@ -59,7 +59,7 @@ parser.add_argument('-o', '--out',
     dest   = 'out',
     help   = 'output file for assembler/disassembler',
 )
-parser.add_argument('-n', '--nolabels',
+parser.add_argument('-L', '--no-labels',
     action = 'store_true',
     help   = 'do not generate labels in disassembly',
 )
@@ -69,7 +69,7 @@ parser.add_argument('-x', '--hexdump',
 )
 parser.add_argument('-s', '--smooth',
     action = 'store_true',
-    help   = 'enable smooth rendering mode',
+    help   = 'enable smooth rendering mode (experimental)',
 )
 parser.add_argument('-f', '--foreground',
     action = 'store',
@@ -84,7 +84,7 @@ parser.add_argument('-t', '--theme',
     choices = chipgr8.themes.keys(),
     help    = 'display theme (light, dark, sunrise, hacker, redalert, snake)'
 )
-parser.add_argument('--no-scroll',
+parser.add_argument('-S', '--no-scroll',
     action  = 'store_false',
     help    = 'reduce flashing in disassembler by not scrolling to the highlighted position')
 
@@ -119,12 +119,12 @@ else:
     )
     print(args)
     chipgr8.init(
-        smooth      = args.smooth,
-        ROM         = chipgr8.findROM(args.rom) if args.rom else None, 
-        startPaused = not args.rom,
-        display     = True,
-        aiInputMask = 0,
-        foreground  = '#' + (args.foreground or foreground),
-        background  = '#' + (args.background or background),
-        unpausedDisScroll = args.no_scroll
+        smooth            = args.smooth,
+        ROM               = chipgr8.findROM(args.rom) if args.rom else None, 
+        startPaused       = not args.rom,
+        display           = True,
+        aiInputMask       = 0,
+        foreground        = ('#' + args.foreground) or foreground,
+        background        = ('#' + args.background) or background,
+        unpausedDisScroll = args.no_scroll,
     ).go()

@@ -35,22 +35,14 @@ class Observer(object):
         @params vm   Chip8VM     the vm instance to observe
         @returns     NamedArray  the observations
         '''
-        result = NamedArray([], [])
+        observations = NamedArray([], [])
         for name, query in self.queries.items():
-
-            assert self.isObservable(query), "Query not observable"
-
-            value = None
+            if isinstance(query, Query):
+                observations.append(name, query.observe(vm))
+        for name, query in self.queries.items():
             if callable(query):
-                value = query(vm)
-            elif isinstance(query, Query):
-                value = query.observe(vm)
-            else:
-                raise TypeError("Unexpected query type")
-            
-            result.append(name, value)
-
-        return result
+                observations.append(name, query(observations, vm=vm))
+        return observations
 
 
     def __str__(self):
@@ -60,7 +52,7 @@ class Observer(object):
         observers for games through GUI interactions.
 
         NOTE: Query objects __str__ method should behave similarly, so to
-              produce the desired results str(Query) should be used to produce
+              produce the desired observationss str(Query) should be used to produce
               the individual query code.
 
         eg.

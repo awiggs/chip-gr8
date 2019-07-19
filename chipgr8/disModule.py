@@ -58,7 +58,7 @@ class DisModule(Module):
     def initDis(self, inPath):
         lineHeight = self.theme.font.get_height()
         self.dis   = [
-            '{:03X}'.format(0x200 + i) + ' ' + source
+            '{:03X}'.format(0x200 + i * 2) + ' ' + source
             for (i, source)
             in enumerate(disassemble(
                 inPath   = inPath, 

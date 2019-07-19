@@ -3,11 +3,11 @@ class Game(object):
     ROM = None
     '''The game ROM path'''
 
-    observer = None
-    '''The game observer'''
-
     actions = None
     '''Valid game actions'''
+    
+    observe = None
+    '''The game observe function'''
 
     def __init__(self, ROM, observer, actions):
         '''
@@ -17,6 +17,7 @@ class Game(object):
                 observer    Observer    the game observer
                 actions     ndarray     valid game actions
         '''
-        self.ROM      = ROM
-        self.observer = lambda vm : observer.observe(vm)
-        self.actions  = actions
+        self.ROM     = ROM
+        self.actions = actions
+        self.observe = lambda vm : observer.observe(vm)
+    

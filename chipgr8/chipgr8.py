@@ -8,19 +8,20 @@ import logging
 logger = logging.getLogger(__name__)
 
 def init(
-    ROM          = None,
-    frequency    = 600,
-    loadState    = None,
-    inputHistory = None,
-    sampleRate   = 1,
-    instances    = 1,
-    display      = False,
-    smooth       = False,
-    startPaused  = False,
-    aiInputMask  = 0xFFFF,
-    foreground   = (255, 255, 255),
-    background   = (0, 0, 0),
-    unpausedDisScroll = True
+    ROM               = None,
+    frequency         = 600,
+    loadState         = None,
+    inputHistory      = None,
+    sampleRate        = 1,
+    instances         = 1,
+    display           = False,
+    smooth            = False,
+    startPaused       = False,
+    aiInputMask       = 0xFFFF,
+    foreground        = (255, 255, 255),
+    background        = (0, 0, 0),
+    theme             = None,
+    unpausedDisScroll = True,
 ):
     '''
     Creates a new VM instance or instances with the provided configuration
@@ -46,6 +47,9 @@ def init(
     assert instances == 1 or not display, 'Cannot create multiple display instances!'
     assert not smooth or display,         '`smooth` is a display specific setting!'
     assert not startPaused or display,    '`startPaused` is a display specific setting!'
+
+    if theme:
+        foreground, background = theme
 
     args = [
         ROM, 

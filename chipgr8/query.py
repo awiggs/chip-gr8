@@ -12,7 +12,7 @@ class Query(object):
     __addr = None
     '''The address'''
 
-    __RAM = None
+    __vm = None
     '''VM struct reference'''
 
     def __init__(self, vm=None, addr=None):
@@ -28,8 +28,8 @@ class Query(object):
         self.done     = addr is not None
         self.success  = self.done or None
         self.__addr   = addr
-        self.__RAM    = None if vm is None else vm.VM.RAM
-        self.previous = None if vm is None else [(addr, self.__RAM[addr]) 
+        self.__vm     = vm
+        self.previous = None if vm is None else [(addr, self.__vm.VM.RAM[addr]) 
             for addr 
             in range(0x1000)
         ]
@@ -110,10 +110,10 @@ class Query(object):
         return self.filter(lambda cur, prev : cur < prev)
 
     def filter(self,pred):
-        self.previous = [(addr, self.__RAM[addr])
+        self.previous = [(addr, self.__vm.VM.RAM[addr])
             for (addr, value)
             in self.previous
-            if pred(self.__RAM[addr], value)
+            if pred(self.__vm.VM.RAM[addr], value)
         ]
         return self.checkIfDone()
 
