@@ -14,7 +14,10 @@ class Chip8VMs(object):
     __doneInstances = set()
     '''A list of all Chip8VM instances taht are done'''
 
-    def get(self):
+    def items(self):
+        '''
+        Returns the collection of instance of Virtual Machines
+        '''
         return self.__instances
 
     def __init__(self, instances):
