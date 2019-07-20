@@ -57,6 +57,19 @@ pong = Game(
     ),
 )
 
+squash = Game(
+    ROM      = 'squash',
+    Observer = Observer()
+        .addQuery('lives',   Query(addr=370))
+        .addQuery('ballX',   Query(addr=375))
+        .addQuery('ballY',   Query(addr=376))
+        .addQuery('paddleY', Query(addr=372)),
+    actions  = NamedList(
+        ['none', 'up', 'down'],
+        [ 0x0,    0x2,  0x10 ],
+    ),
+)
+
 worm = Game(
     ROM      = 'worm',
     observer = Observer()
