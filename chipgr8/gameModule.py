@@ -32,7 +32,7 @@ class GameModule(Module):
 
     def diffUpdate(self, vm):
         s               = self.theme.scale
-        ctx             = vm.ctx
+        ctx             = vm.ctx()
         (width, height) = ctx.shape
         (x, y, rows)    = vm.VM.diffX, vm.VM.diffY, vm.VM.diffSize
         for xOff in range(8):
@@ -54,7 +54,7 @@ class GameModule(Module):
 
     def fullUpdate(self, vm):
         s               = self.theme.scale
-        ctx             = vm.ctx
+        ctx             = vm.ctx()
         (width, height) = ctx.shape
         self.surface.fill(self.theme.background)
         for x in range(width):

@@ -1,4 +1,8 @@
+import logging
+
 from chipgr8.util import chunk, nibbles, hexarg, decarg, read, write
+
+logger = logging.getLogger(__name__)
 
 CHIP_8_INSTRUCTIONS = [
 #   Instruction Format    Opcode
@@ -60,6 +64,9 @@ def hexdump(buffer=None, inPath=None, outPath=None):
             outPath If provided, the output file
     @returns        The hex dump
     '''
+    logger.info('Hexdumping buffer: `{}` inPath: `{}` outPath: `{}`'.format(
+        buffer, inPath, outPath
+    ))
     if inPath: buffer = read(inPath, 'rb')
 
     dump = '\n'.join(hexarg(*nibbles(high), *nibbles(low))
@@ -80,19 +87,36 @@ def disassemble(
     labelSep = '\n  ',
 ):
     '''
-    Converts a byte array or input file to a string representation of Chip-8
-    instructions. Returns the result as a string and optionally writes the 
-    results to a file.
+    Converts a binary ROM into an assembly source file. Returns the source. 
+    Provides option for disassembling with labels and special formats.
 
-    @params buffer  If provided, the instructions to decode
-            inPath  If provided, the input file
-            outPath If provided, the output file
-            labels  If a dictionary generate labels for CALL and JP instructions
-            decargs If True express non address values in decimal
-            prefix  Prefix prior to instruction, defaults to two spaces
-            hexdump Show hex value of line as a comment
-    @returns        Disassembled source code
+    @params buffer      The binary ROM to disassemble as a set of bytes. Optional 
+                        if inPath is provided.
+
+            inPath      The path to a binary ROM to disassemble. Optional if buffer 
+                        is provided.
+
+            outPath     If the path is provided, the source code is written to that
+                        file.
+
+            labels      A dictionary used to generate labels. If None is passed, 
+                        labels will not be generated in the source.
+
+            decargs     If True, instruction numerical operands will be output 
+                        in decimal rather than hexadecimal.
+
+            prefix      The string used to prefix all instructions.
+
+            hexdump     If True, all instructions will be postfixed with a 
+                        comment displaying the hexadecimal value of the 
+                        instruction.
+                        
+            labelSep    The string used to separate labels from instructions.
+
     '''
+    logger.info('Disassembling source: `{}` inPath: `{}` outPath: `{}`'.format(
+        buffer, inPath, outPath
+    ))
     if inPath: 
         buffer = read(inPath, 'rb')
     if not isinstance(labels, dict): 

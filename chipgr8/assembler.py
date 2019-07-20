@@ -1,6 +1,9 @@
 import re
+import logging 
 
 from chipgr8.util import read, write
+
+logger = logging.getLogger(__name__)
 
 V_REGISTERS = [
     'V0', 'V1', 'V2', 'V3',
@@ -11,18 +14,20 @@ V_REGISTERS = [
 
 def assemble(source=None, inPath=None, outPath=None):
     '''
-    Converts a string representation or input file of Chip-8 instructions to a 
-    binary ROM and optionally writes the results to a file. Returns result as a 
-    bytearray. Consider assembly syntax defined here: 
-    https://massung.github.io/CHIP-8/
+    Converts assembly source code, or source code contained in inPath into 
+    binary data (a ROM). This ROM may optionally be written to file with the 
+    outPath argument.
 
     @params source  If provided, the string source code
             inPath  If provided, the input file
             outPath If provided, the output file
     @returns        ROM binary
     '''
+    logger.info('Assembling source: `{}` inPath: `{}` outPath: `{}`'.format(
+        source, inPath, outPath
+    ))
     if inPath: source = read(inPath)
-    
+
     (lines, labels) = retrieveLabels(source)
     buffer = b''
     for line in lines:
