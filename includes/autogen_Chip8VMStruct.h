@@ -38,6 +38,7 @@ struct Chip8VM_t {
             u8 diffSize; // VRAM diff size
             u8 diffClear; // Indicate a CLS instruction
             u8 diffSkip; // Flag to indicate a skipable DRW instruction
+            u8 quirks; // Flag to indicate quirky instructions for specific ROMs
         };
     };
 } __attribute__((packed, aligned(1)));

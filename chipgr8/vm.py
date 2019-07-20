@@ -14,6 +14,15 @@ from collections    import namedtuple
 
 logger = logging.getLogger(__name__)
 
+SHIFT_QUIRK = 0x01
+LOAD_QUIRK  = 0x02
+
+quirks = {
+    "Animal Race.ch8": SHIFT_QUIRK | LOAD_QUIRK,
+    "Blinky.ch8": LOAD_QUIRK,
+    "Space Invaders.ch8": LOAD_QUIRK,
+}
+
 class Chip8VM(object):
     '''
     Represents a CHIP-8 virtual machine. Provides interface and controls for 
@@ -282,7 +291,8 @@ class Chip8VM(object):
         logger.info('Loading rom `{}` into `{}`'.format(nameOrPath, self))
         if reset:
             self.reset()
-        self.ROM = findROM(nameOrPath)
+        self.ROM       = findROM(nameOrPath)
+        self.VM.quirks = quirks.get(os.path.basename(self.ROM), 0x00)
         if not self.ROM:
             raise FileNotFoundError("ROM `{}` does not exist.".format(self.ROM))
         if not core.loadROM(self.VM, self.ROM.encode()):

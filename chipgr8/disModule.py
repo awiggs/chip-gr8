@@ -49,8 +49,8 @@ class DisModule(Module):
             self.__ROM = vm.ROM
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
-        self.hl          = (vm.VM.PC - 0x200) // 2
         if vm.autoScroll or vm.paused:
+            self.hl = (vm.VM.PC - 0x200) // 2
             self.scrollTo(self.hl - 3)
         else:
             self.__yChanged = True

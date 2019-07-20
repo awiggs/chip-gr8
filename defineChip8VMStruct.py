@@ -30,6 +30,7 @@ STRUCT_DEFINITION = lambda : [
     ('diffSize',  u8,                  'VRAM diff size'),
     ('diffClear', u8,                  'Indicate a CLS instruction'),
     ('diffSkip',  u8,                  'Flag to indicate a skipable DRW instruction'),
+    ('quirks',    u8,                  'Flag to indicate quirky instructions for specific ROMs'),
 ]
 
 # THIS IS THE PART YOU LEAVE ALONE #

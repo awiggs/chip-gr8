@@ -29,6 +29,7 @@ class Chip8Regs(ctypes.Structure):
         ('diffSize', ctypes.c_uint8), # VRAM diff size
         ('diffClear', ctypes.c_uint8), # Indicate a CLS instruction
         ('diffSkip', ctypes.c_uint8), # Flag to indicate a skipable DRW instruction
+        ('quirks', ctypes.c_uint8), # Flag to indicate quirky instructions for specific ROMs
     ]
 
 class Chip8VMStruct(ctypes.Union):
