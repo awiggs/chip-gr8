@@ -355,7 +355,7 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKP(Chip8VM_t* vm, u8 reg) {
-    if ((vm->keys >> vm->V[reg]) & 1) {
+    if ((vm->K >> vm->V[reg]) & 1) {
         vm->PC += 2;
     }
 }
@@ -368,7 +368,7 @@ void opSKP(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKNP(Chip8VM_t* vm, u8 reg) {
-    if (!((vm->keys >> vm->V[reg]) & 1)) {
+    if (!((vm->K >> vm->V[reg]) & 1)) {
         vm->PC += 2;
     }
 }

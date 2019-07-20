@@ -349,7 +349,7 @@ class Chip8VM(object):
         '''
         Step the VM forward 1 clock cycle.
         '''
-        keys = self.VM.keys
+        keys = self.VM.K
         if self.record and keys != self.inputHistory[-1][0]:
             self.inputHistory.append((keys, self.VM.clock))
         if not self.record and not self.done():

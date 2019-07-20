@@ -39,7 +39,7 @@ void postStep(Chip8VM_t* vm) {
  *         keymask a mask of keys currently down
  */
 void input(Chip8VM_t* vm, u16 keymask) {
-    vm->keys = keymask;
+    vm->K = keymask;
     if (keymask && vm->wait) {
         u8 decodedKeymask = 0;
         // Decode keymask, get most significant bit key

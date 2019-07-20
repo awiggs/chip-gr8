@@ -20,7 +20,7 @@ STRUCT_DEFINITION = lambda : [
     ('DT',        u8,                  'Delay timer'),
     ('ST',        u8,                  'Sound timer'),
     ('W',         u8,                  'Wait register'),
-    ('keys',      u16,                 'Key IO registers'),
+    ('K',         u16,                 'Key IO registers'),
     ('seed',      u8,                  'Seed for RNG'),
     ('wait',      u8,                  'Chip-8 in wait mode'),
     ('clock',     u64,                 'Time since simulation began'),
