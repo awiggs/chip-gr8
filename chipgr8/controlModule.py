@@ -61,10 +61,10 @@ class ControlModule(object):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 4:
                         logger.debug('Scroll moved up')
-                        vm.window.disModule.scrollUp()
+                        vm._window.disModule.scrollUp()
                     elif event.button == 5:
                         logger.debug('Scroll moved down')
-                        vm.window.disModule.scrollDown()
+                        vm._window.disModule.scrollDown()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == self.__bindings['debugPause']:
                         logger.debug('Key pressed: `debugPause`')
@@ -74,16 +74,16 @@ class ControlModule(object):
                         vm.step()
                     elif event.key == self.__bindings['debugPageUp']:
                         logger.debug('Key pressed: `debugPageUp`')
-                        vm.window.disModule.scrollUp()
+                        vm._window.disModule.scrollUp()
                     elif event.key == self.__bindings['debugPageDown']:
                         logger.debug('Key pressed: `debugPageDown`')
-                        vm.window.disModule.scrollDown()
+                        vm._window.disModule.scrollDown()
                     elif event.key == self.__bindings['debugHome']:
                         logger.debug('Key pressed: `debugHome`')
-                        vm.window.disModule.scrollTo(0)           
+                        vm._window.disModule.scrollTo(0)           
                     elif event.key == self.__bindings['debugEnd']:
                         logger.debug('Key pressed: `End`')
-                        vm.window.disModule.scrollTo(4000)
+                        vm._window.disModule.scrollTo(4000)
         else:
             for event in events:
                 if event.type == pygame.KEYDOWN:

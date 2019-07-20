@@ -118,12 +118,12 @@ else:
         chipgr8.themes['dark']
     )
     chipgr8.init(
-        smooth            = args.smooth,
-        ROM               = chipgr8.findROM(args.rom) if args.rom else None, 
-        startPaused       = not args.rom,
-        display           = True,
-        aiInputMask       = 0,
-        foreground        = ('#' + args.foreground) if args.foreground else foreground,
-        background        = ('#' + args.background) if args.background else background,
-        unpausedDisScroll = args.no_scroll,
+        smooth      = args.smooth,
+        ROM         = chipgr8.findROM(args.rom) if args.rom else None, 
+        startPaused = not args.rom,
+        display     = True,
+        aiInputMask = 0,
+        foreground  = ('#' + args.foreground) if args.foreground else foreground,
+        background  = ('#' + args.background) if args.background else background,
+        autoScroll  = args.no_scroll,
     ).go()

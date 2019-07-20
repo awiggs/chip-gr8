@@ -8,39 +8,68 @@ import logging
 logger = logging.getLogger(__name__)
 
 def init(
-    ROM               = None,
-    frequency         = 600,
-    loadState         = None,
-    inputHistory      = None,
-    sampleRate        = 1,
-    instances         = 1,
-    display           = False,
-    smooth            = False,
-    startPaused       = False,
-    aiInputMask       = 0xFFFF,
-    foreground        = (255, 255, 255),
-    background        = (0, 0, 0),
-    theme             = None,
-    unpausedDisScroll = True,
+    ROM          = None,
+    frequency    = 600,
+    loadState    = None,
+    inputHistory = None,
+    sampleRate   = 1,
+    instances    = 1,
+    display      = False,
+    smooth       = False,
+    startPaused  = False,
+    aiInputMask  = 0xFFFF,
+    foreground   = (255, 255, 255),
+    background   = (0, 0, 0),
+    theme        = None,
+    autoScroll   = True,
 ):
     '''
-    Creates a new VM instance or instances with the provided configuration
-    options, either returning them or allowing them to immediately enter a
-    display loop. Performs some basic sanity checking on confioguration
-    variables.
+    Returns an instance of Chip8VM or Chip8VMs. Used to configure the virtual 
+    machines for a user or a given AI agent.
 
-    @params ROM               str                   name or path to the ROM to load
-            frequency         int                   frequency to run the VM at
-            loadState         str                   path or tag to a save state
-            inputHistory      List[int]             a list of predifined IO events
-            sampleRate        int                   how many steps act moves forward
-            instances         int                   the number of VMs to create
-            display           bool                  if true creates a game window
-            smooth            bool                  if true uses smooth rendering
-            startPaused       bool                  if true starts the vm paused
-            foreground        str | (int, int, int) foreground color
-            background        str | (int, int, int) background color
-            unpausedDisScroll bool                  if false disModule won't scroll
+    @params ROM             If provided will load a ROM into the vm instance or 
+                            instances.
+
+            frequency       The starting frequency of the vm instance or 
+                            instances. Will automatically be set to the closest
+                            multiple of 60 less than or equal to the provided 
+                            frequency.
+
+            loadState       A path or tag to a vm save state that will be 
+                            loaded into each vm instance or instances.
+
+            inputHistory    If provided user and AI input will be ignored and 
+                            the history will be used to reproduce the same 
+                            events.
+
+            sampleRate      The number of steps that are performed when an AI 
+                            calls act.
+
+            instances       The number of vm instances to create.
+
+            display         If True, the vm will create a CHIP-GR8 display. 
+                            Cannot be True if instances does not equal 1.
+
+            smooth          If True, enables the experimental smooth rendering 
+                            mode. This mode is slow on most machines.
+
+            startPaused     If True, the vm instance will start paused.
+
+            aiInputMask     The keys usable to the AI agent as a bitmask. The 
+                            keys available to the user are the bitwise inverse 
+                            of this mask.
+
+            foregound       The foreground color of the CHIP-GR8 display as an 
+                            RGB tuple or hex code.
+
+            background      The background color of the CHIP-GR8 display as an 
+                            RGB tuple or hex code.
+
+            theme           The foreground/background color provided as a tuple.
+            
+            autoScoll       If True, this disassembly source will automatically 
+                            scroll when the CHIP-GR8 display is open and a ROM 
+                            is running.
     '''
     # Some simple sanity checks
     assert instances > 0,                 'Must have some number of instances!'
@@ -63,7 +92,7 @@ def init(
         aiInputMask,
         pygame.Color(foreground) if type(foreground) == str else foreground,
         pygame.Color(background) if type(background) == str else background,
-        unpausedDisScroll
+        autoScroll,
     ]
     logger.info('Initializing with `{}`'.format(args))
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)

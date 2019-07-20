@@ -1,19 +1,29 @@
 class Query(object):
-
-    done = False
-    '''Indicates that the query has founnd either 1 or 0 valid addresses'''
-    
-    success = None
-    '''True if query is done and 1 address was found'''
-
-    previous = None
-    '''Pevious iteration'''
+    '''
+    Used to find a specific memory address. When using a query to search for a 
+    memory address, several predicates can be used to filter the query. 
+    '''
 
     __addr = None
     '''The address'''
 
     __vm = None
     '''VM struct reference'''
+
+    done = False
+    '''
+    True if the query has found 0 or 1 addresses.
+    '''
+    
+    success = None
+    '''
+    True if the query has found 1 address.
+    '''
+
+    previous = None
+    '''
+    Pevious iteration
+    '''
 
     def __init__(self, vm=None, addr=None):
         '''
@@ -34,6 +44,15 @@ class Query(object):
             in range(0x1000)
         ]
 
+    def __repr__(self):
+        '''
+        Converts this Query to python code that when evaluated, recreates
+        this Query.
+        '''
+        if not self.success:
+            return 'Query(addr=???, count={})'.format(len(self.previous))
+        return 'Query(addr={})'.format(self.__addr)
+
     def __checkIfDone(self):
         if self.done:
             return 'Query finished.'
@@ -45,70 +64,6 @@ class Query(object):
         self.__addr  = self.previous[0][0] if numFound == 1 else None
         return 'Query finished.'
 
-    def observe(self, vm):
-        '''
-        Asssumes the query is done and successful and therefore returns the byte
-        at addr.
-
-        @param vm   Chip8VM     the vm instance
-        @returns    int         the bits
-        '''
-        return vm.VM.RAM[self.__addr]
-
-    def eq(self, value):
-        '''
-        Limit query to addresses where the current value is `value`.
-        '''
-        return self.filter(lambda cur, prev : cur == value)
-
-    def lt(self, value):
-        '''
-        Limit query to addresses where the current value is less than `value`.
-        '''
-        return self.filter(lambda cur, prev : cur < value)
-
-    def gt(self, value):
-        '''
-        Limit query to addresses where the current value is greater than 
-        `value`.
-        '''
-        return self.filter(lambda cur, prev : cur > value)
-
-    def lte(self, value):
-        '''
-        Limit query to addresses where the current value is less than or equal
-        to `value`.
-        '''
-        return self.filter(lambda cur, prev : cur <= value)
-
-    def gte(self, value):
-        '''
-        Limit query to addresses where the current value is greater than or
-        equal to `value`.
-        '''
-        return self.filter(lambda cur, prev : cur >= value)
-
-    def unknown(self):
-        '''
-        Indicate an unknown starting value for the query. Does not limit the
-        query. If no query has started adds all addresses to the query.
-        '''
-        return self.filter(lambda cur, prev : True)
-
-    def inc(self):
-        '''
-        Limit query to addresses where the value has decreased since the last
-        query.
-        '''
-        return self.filter(lambda cur, prev : cur > prev)
-
-    def dec(self):
-        '''
-        Limit query to addresses where the evalue has increased since the last
-        query.
-        '''
-        return self.filter(lambda cur, prev : cur < prev)
-
     def filter(self,pred):
         self.previous = [(addr, self.__vm.VM.RAM[addr])
             for (addr, value)
@@ -117,11 +72,63 @@ class Query(object):
         ]
         return self.__checkIfDone()
 
-    def __repr__(self):
+    def observe(self, vm):
         '''
-        Converts this Query to python code that when evaluated, recreates
-        this Query.
+        If a query is successful this method returns the value at the vm 
+        instance's RAM corresponding to this query.
         '''
-        if not self.success:
-            return 'Query(addr=???, count={})'.format(len(self.previous))
-        return 'Query(addr={})'.format(self.__addr)
+        return vm.VM.RAM[self.__addr]
+
+    def eq(self, value):
+        '''
+        Filter queiried memory addresses by values that equal value.
+        '''
+        return self.filter(lambda cur, prev : cur == value)
+
+    def lt(self, value):
+        '''
+        Filter queiried memory addresses by values that are less than value.
+        '''
+        return self.filter(lambda cur, prev : cur < value)
+
+    def gt(self, value):
+        '''
+        Filter queiried memory addresses by values that are greater than value.
+        '''
+        return self.filter(lambda cur, prev : cur > value)
+
+    def lte(self, value):
+        '''
+        Filter queiried memory addresses by values that are less than or equal 
+        to value.
+        '''
+        return self.filter(lambda cur, prev : cur <= value)
+
+    def gte(self, value):
+        '''
+        Filter queiried memory addresses by values that are greater than or 
+        equal to value.
+        '''
+        return self.filter(lambda cur, prev : cur >= value)
+
+    def unknown(self):
+        '''
+        Refresh the previous values of all currently queried memory addresses.
+        '''
+        return self.filter(lambda cur, prev : True)
+
+    def inc(self):
+        '''
+        Filter queiried memory addresses by values that have increased since 
+        the last query.
+        '''
+        return self.filter(lambda cur, prev : cur > prev)
+
+    def dec(self):
+        '''
+        Filter queiried memory addresses by values that have decreased since 
+        the last query.
+        '''
+        return self.filter(lambda cur, prev : cur < prev)
+
+    

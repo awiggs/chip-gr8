@@ -1,47 +1,17 @@
-from chipgr8.namedArray import NamedArray
+from chipgr8.namedList import NamedList
 from chipgr8.query import Query
 
 
 class Observer(object):
+    '''
+    Represents a collection of queries that can be applied to a vm acquiring a 
+    set of observations.
+    '''
 
     queries = dict()
-    '''A list of all queries associated with this observer'''
-
-    def addQuery(self, name, query):
-        '''
-        Adds a query to this observer. A query can either be an instance of
-        a query object, or a function. A query function takes a set of 
-        observations (as a NamedArray) as its argument and returns a new
-        value to add to that array.
-
-        @params name    str     
-                the name to associate to the query
-                query   Query | Callable[[NamedArray], int]
-                the query object or callable funcntion
-        @returns        Obsesrver   itself
-        '''
-        if callable(query) or isinstance(query, Query):
-            self.queries[name] = query
-        else:
-            raise TypeError("Query is not a function or Query object")
-        return self
-
-    def observe(self, vm):
-        '''
-        Given a vm instance, returns a set of observations as a NamedArray.
-
-        @params vm   Chip8VM     the vm instance to observe
-        @returns     NamedArray  the observations
-        '''
-        observations = NamedArray([], [])
-        for name, query in self.queries.items():
-            if isinstance(query, Query):
-                observations.append(name, query.observe(vm))
-        for name, query in self.queries.items():
-            if callable(query):
-                observations.append(name, query(observations, vm=vm))
-        return observations
-
+    '''
+    A list of all queries associated with this observer
+    '''
 
     def __str__(self):
         '''
@@ -62,3 +32,29 @@ class Observer(object):
             for (name, query)
             in self.queries.items()
         ))
+
+    def addQuery(self, name, query):
+        '''
+        Add a query with an associated name to an observer. Accepts either a 
+        finalized query or a function that accepts a set of observations 
+        (NamedList) as the first argument and a vm instance as its second 
+        argument. This function argument can be used to create compound queries.
+        '''
+        if callable(query) or isinstance(query, Query):
+            self.queries[name] = query
+        else:
+            raise TypeError("Query is not a function or Query object")
+        return self
+
+    def observe(self, vm):
+        '''
+        Retrieve a set of observations as a NamedList given a vm instance.
+        '''
+        observations = NamedList([], [])
+        for name, query in self.queries.items():
+            if isinstance(query, Query):
+                observations.append(name, query.observe(vm))
+        for name, query in self.queries.items():
+            if callable(query):
+                observations.append(name, query(observations, vm=vm))
+        return observations

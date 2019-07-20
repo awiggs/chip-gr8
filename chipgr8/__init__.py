@@ -5,6 +5,7 @@ from .assembler    import assemble
 from .util         import findROM, readableInputHistory
 from .query        import Query
 from .observer     import Observer
+from .namedList    import NamedList
 
 themes = {
     'light'    : ('#000000', '#FFFFFF'),

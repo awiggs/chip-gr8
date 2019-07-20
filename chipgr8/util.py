@@ -48,6 +48,10 @@ def write(path, buffer, mode='w'):
     return buffer
 
 def readableInputHistory(inputHistory, names):
+    '''
+    Given an inputHistory and a set of actions, names, as a NamedList, produces
+    a human readable version of the inputHistory. 
+    '''
     history = []
     for (key, clock) in inputHistory:
         if key in names:
@@ -60,6 +64,9 @@ def resolveTag(tag):
     return os.path.realpath(os.path.join(__file__, '../data/tags/', tag))
 
 def findROM(rom):
+    '''
+    Returns the path to rom if it is one of the included ROMs.
+    '''
     if os.path.exists(rom):
         return rom
     rom      = rom.lower()

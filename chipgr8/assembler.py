@@ -14,10 +14,9 @@ V_REGISTERS = [
 
 def assemble(source=None, inPath=None, outPath=None):
     '''
-    Converts a string representation or input file of Chip-8 instructions to a 
-    binary ROM and optionally writes the results to a file. Returns result as a 
-    bytearray. Consider assembly syntax defined here: 
-    https://massung.github.io/CHIP-8/
+    Converts assembly source code, or source code contained in inPath into 
+    binary data (a ROM). This ROM may optionally be written to file with the 
+    outPath argument.
 
     @params source  If provided, the string source code
             inPath  If provided, the input file
