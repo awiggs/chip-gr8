@@ -8,10 +8,8 @@ class Observer(object):
     set of observations.
     '''
 
-    queries = dict()
-    '''
-    A list of all queries associated with this observer
-    '''
+    def __init__(self):
+        self.queries = {}
 
     def __str__(self):
         '''

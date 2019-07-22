@@ -144,8 +144,8 @@ Cave = Game(
         .addQuery("myX", Query(addr=379))
         .addQuery("myY", Query(addr=380)),
     actions     = NamedList(
-        ['none', 'left', 'right', 'up', 'down'],
-        [ K_NONE, K_4,    K_6,     K_2,  K_8  ],
+        ['none', 'left', 'right', 'up', 'down', 'start'],
+        [ K_NONE, K_4,    K_6,     K_2,  K_8,    K_F],
     )
 )
 
@@ -187,8 +187,10 @@ Pong1Player = Game(
     ROM      = 'Pong (1 player)',
     observer = Observer()
         .addQuery('opponent', Query(addr=756))
-        .addQuery('score',    Query(addr=755))
-        .addQuery('done',     lambda o, vm: vm.VM.RAM[755] == 3 or vm.VM.RAM[756] == 3),
+        .addQuery('p1score',  Query(addr=755))
+        .addQuery('p2score',  Query(addr=756))
+        .addQuery('score',    lambda o, vm: o.p1score - o.p2score)
+        .addQuery('done',     lambda o, vm: o.p1score >= 3 or o.p2score >= 3),
     actions  = NamedList(
         ['none',   'up', 'down'],
         [ K_NONE,   K_1,  K_4  ],
@@ -200,7 +202,7 @@ Pong2Player = Game(
     observer = Observer()
         .addQuery('opponent', Query(addr=756))
         .addQuery('score',    Query(addr=755))
-        .addQuery('done',     lambda o, vm: vm.VM.RAM[755] == 3 or vm.VM.RAM[756] == 3),
+        .addQuery('done',     lambda o, vm: vm.VM.RAM[755] >= 3 or vm.VM.RAM[756] >= 3),
     actions  = NamedList(
         ['none',   'p1up', 'p1down', 'p2up', 'p2down'],
         [ K_NONE,   K_1,    K_4,      K_C,    K_D    ],
