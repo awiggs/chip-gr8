@@ -15,7 +15,9 @@ class Chip8VMs(object):
     '''A list of all Chip8VM instances that are not done'''
 
     __doneInstances = set()
-    '''A list of all Chip8VM instances taht are done'''
+    '''A list of all Chip8VM instances that are done'''
+
+    __toBeRemoved = set()
 
     def __init__(self, instances):
         '''
@@ -39,13 +41,16 @@ class Chip8VMs(object):
 
         @param vm   Chip8VM     the done VM
         '''
-        self.__notDoneInstances.remove(vm)
-        self.__doneInstances.add(vm)
+        self.__toBeRemoved.add(vm)
 
     def done(self):
         '''
         Returns True if all vm instances are done.
         '''
+        for vm in self.__toBeRemoved:
+            self.__doneInstances.add(vm)
+            self.__notDoneInstances.remove(vm)
+        self.__toBeRemoved.clear()
         return len(self.__notDoneInstances) == 0
 
     def find(self, predicate):

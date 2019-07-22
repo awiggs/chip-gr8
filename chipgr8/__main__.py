@@ -82,7 +82,7 @@ parser.add_argument('-b', '--background',
 parser.add_argument('-t', '--theme',
     action  = 'store',
     choices = chipgr8.themes.keys(),
-    help    = 'display theme (light, dark, sunrise, hacker, redalert, snake)'
+    help    = 'display theme'
 )
 parser.add_argument('-S', '--no-scroll',
     action  = 'store_false',
