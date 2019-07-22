@@ -188,7 +188,8 @@ Pong1Player = Game(
     observer = Observer()
         .addQuery('opponent', Query(addr=756))
         .addQuery('score',    Query(addr=755))
-        .addQuery('done',     lambda o, vm: vm.VM.RAM[755] == 3 or vm.VM.RAM[756] == 3),
+        #.addQuery('done',     lambda o, vm: vm.VM.RAM[755] == 8 or vm.VM.RAM[756] == 8),
+        .addQuery('done',     lambda o, vm: o.score == 8 or o.opponent == 8),
     actions  = NamedList(
         ['none',   'up', 'down'],
         [ K_NONE,   K_1,  K_4  ],
