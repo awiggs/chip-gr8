@@ -72,10 +72,10 @@ class Chip8VMs(object):
         for vm in self.__notDoneInstances:
             vm._clearCtx()
         with Pool(cpu_count()) as pool:
-            stepped = set(pool.map(_PoolHandler(do), self.__notDoneInstances))
-        self.__instances        = stepped.union(self.__doneInstances)
-        self.__notDoneInstances = set(vm for vm in stepped if not vm.done)
-        self.__doneInstances    = set(vm for vm in stepped if vm.done)
+            run = set(pool.map(_PoolHandler(do), self.__notDoneInstances))
+        self.__instances     = run.union(self.__doneInstances)
+        self.__doneInstances = self.__instances.copy()
+        self.__notDoneInstances.clear()
 
     def maxBy(self, projection):
         '''
@@ -106,6 +106,7 @@ class _PoolHandler(object):
         self.do = do
 
     def __call__(self, vm):
-        self.do(vm)
+        while not vm.done():
+            self.do(vm)
         vm._clearCtx()
         return vm

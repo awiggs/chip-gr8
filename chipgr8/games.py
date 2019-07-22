@@ -186,11 +186,15 @@ LunarLander = Game(
 Pong1Player = Game(
     ROM      = 'Pong (1 player)',
     observer = Observer()
-        .addQuery('opponent', Query(addr=756))
-        .addQuery('p1score',  Query(addr=755))
-        .addQuery('p2score',  Query(addr=756))
-        .addQuery('score',    lambda o, vm: o.p1score - o.p2score)
-        .addQuery('done',     lambda o, vm: o.p1score >= 3 or o.p2score >= 3),
+        .addQuery('opponent',    Query(addr=756))
+        .addQuery('p1Score',     Query(addr=755))
+        .addQuery('p2Score',     Query(addr=756))
+        .addQuery('score',       lambda o, vm: o.p1Score - o.p2Score)
+        .addQuery('bestOf3Done', lambda o, vm: o.p1Score >= 3 or o.p2Score >= 3)
+        .addQuery('bestOf5Done', lambda o, vm: o.p1Score >= 5 or o.p2Score >= 5)
+        .addQuery('bestOf5Done', lambda o, vm: o.p1Score >= 7 or o.p2Score >= 7)
+        .addQuery('bestOf5Done', lambda o, vm: o.p1Score >= 9 or o.p2Score >= 9)
+        .addQuery('done',        lambda o, vm: o.p1Score >= 9 or o.p2Score >= 9),
     actions  = NamedList(
         ['none',   'up', 'down'],
         [ K_NONE,   K_1,  K_4  ],
@@ -204,7 +208,7 @@ Pong2Player = Game(
         .addQuery('score',    Query(addr=755))
         .addQuery('done',     lambda o, vm: vm.VM.RAM[755] >= 3 or vm.VM.RAM[756] >= 3),
     actions  = NamedList(
-        ['none',   'p1up', 'p1down', 'p2up', 'p2down'],
+        ['none',   'p1Up', 'p1Down', 'p2Up', 'p2Down'],
         [ K_NONE,   K_1,    K_4,      K_C,    K_D    ],
     ),
 )
@@ -224,7 +228,9 @@ Squash = Game(
         .addQuery('lives',   Query(addr=370))
         .addQuery('ballX',   Query(addr=375))
         .addQuery('ballY',   Query(addr=376))
-        .addQuery('paddleY', Query(addr=372)),
+        .addQuery('paddleY', Query(addr=372))
+        .addQuery('score',   lambda o, vm: vm.VM.clock)
+        .addQuery('done',    lambda o, vm: o.lives == 0),
     actions  = NamedList(
         ['none', 'up', 'down'],
         [ K_NONE, K_1,  K_4  ],

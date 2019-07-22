@@ -6,7 +6,7 @@ def getLines():
     
 def initializeChunks():
     chunks = []
-    for x in range(8):
+    for _ in range(8):
         chunks.append([])
     return chunks
 
