@@ -1,5 +1,5 @@
 # The Project
-The aim of this project was to design a high performance emulation engine with a Python API for integration with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the [NES](https://www.youtube.com/watch?v=qv6UVOQ0F44) \[1\] and [Atari](https://arxiv.org/pdf/1312.5602v1.pdf) \[2\] systems.
+Chip-Gr8's goal was to design a high performance emulation engine with a Python API for integration with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the [NES](https://www.youtube.com/watch?v=qv6UVOQ0F44) \[1\] and [Atari](https://arxiv.org/pdf/1312.5602v1.pdf) \[2\] systems.
 
 ## What is Chip-Gr8?
 At its core, Chip-Gr8 is an emulator of the CHIP-8 system. Developed in the 1970's by [Joseph Weisbecker](https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems) \[3\], CHIP-8 was meant to be a simple system that programmers could use for beginner video game development. Many simple games, including Pong, Space Invaders, and Breakout, were programmed for the CHIP-8 throughout the 70s and 80s.
@@ -31,30 +31,10 @@ The video shows the game [Breakout](https://en.wikipedia.org/wiki/Breakout_(vide
 ![Alt Text](../static/img/Breakout2.gif)
 
 ## Themes
-Chip-Gr8 comes packaged with 6 themes, which are:
+Chip-Gr8 comes packaged with 6 themes, which are (from top-left to bottom-right):
 
-- **Dark (default)**
+Dark (default), Light, Sunrise, Hacker, Red Alert, Snake.
 
-![DarkTheme](../static/img/themes/DarkTheme.png)
-
-- **Light**
-
-![LightTheme](../static/img/themes/LightTheme.png)
-
-- **Sunrise**
-
-![SunriseTheme](../static/img/themes/SunriseTheme.png)
-
-- **Hacker**
-
-![HackerTheme](../static/img/themes/HackerTheme.png)
-
-- **Redalert**
-
-![RedAlertTheme](../static/img/themes/RedAlertTheme.png)
-
-- **Snake**
-
-![SnakeTheme](../static/img/themes/SnakeTheme.png)
+![ThemeGrid](../static/img/themes/ThemeGrid.png)
 
 # Project Timeline

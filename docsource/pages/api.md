@@ -7,11 +7,11 @@ This section details the API of Chip-Gr8. It is broken down into the primary cla
 
 ## Parameters
 
-## `.source=None`
+## `source=None`
 
-## `.inPath=None`
+## `inPath=None`
 
-## `.outPath=None`
+## `outPath=None`
 
 Converts assembly **source** code, or source code contained in **inPath** into binary data (a ROM). This ROM may optionally be written to file with the **outPath** argument.
 
@@ -153,7 +153,16 @@ The name of the ROM file for this game.
 ## `.observe(vm)`
 Returns a set of game specific observations given a vm.
 
-# hexdump(buffer=None, inPath=None, outPath=None)
+# hexdump((Parameters))
+
+## Parameters
+
+## `buffer=None`
+
+## `inPath=None`
+
+## `outPath=None`
+
 Dumps a **buffer** or file at **inPath** as a set of 16bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to **outPath** if provided.
 
 # init((Parameters))
@@ -275,5 +284,12 @@ If a query is successful this method returns the value at the vm instance's RAM 
 ## `.unknown()`
 Refresh the previous values of all currently queried memory addresses.
 
-# readableInputHistory(inputHistory, names)
+# readableInputHistory((Parameters))
+
+## Parameters
+
+## `inputHistory`
+
+## `names`
+
 Given an **inputHistory** and a set of actions, **names**, as a **NamedList**, produces a human readable version of the **inputHistory**.
