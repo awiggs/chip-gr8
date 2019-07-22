@@ -40,4 +40,42 @@
             content: 'Example AIs are worked on to provide demonstration-worthy agents. UI upgrades are implemented. Final bugs are wrapped up if time permits.'
         }
     ],
+    bibliography: [
+        {
+            title: 'Bibliography',
+            content: ''
+        },
+        {
+            title: '',
+            content: '[1]  "MarI/O - Machine Learning for Video Games", YouTube, 2019. [Online]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[2] V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou, D. Wierstra and M. Riedmiller, Playing Atari with Deep Reinforcement Learning. DeepMind Technologies, 2013.'
+        },
+        {
+            title: '',
+            contenet: '[3] "Joseph Weisbecker", En.wikipedia.org, 2018. [Online]. Available: https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[4] "ctypes — A foreign function library for Python — Python 3.7.4 documentation", Docs.python.org, 2019. [Online]. Available: https://docs.python.org/3/library/ctypes.html. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[5] "NumPy — NumPy", Numpy.org, 2019. [Online]. Available: https://numpy.org/. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[6] "pygame", Pygame.org, 2019. [Online]. Available: https://www.pygame.org/news. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[7] "lazyarray — lazyarray 0.3.2 documentation", Lazyarray.readthedocs.io, 2019. [Online]. Available: https://lazyarray.readthedocs.io/en/latest/. [Accessed: 22- Jul- 2019]'
+        },
+        {
+            title: '',
+            content: '[8] "Breakout (video game)", En.wikipedia.org, 2019. [Online]. Available: https://en.wikipedia.org/wiki/Breakout_(video_game). [Accessed: 22- Jul- 2019]'
+        }
+    ]
 }

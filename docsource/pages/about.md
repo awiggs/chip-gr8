@@ -12,7 +12,7 @@ Jon is a fourth year Software Engineering student aiming to graduate in 2020. He
 
 Andrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.
 
-// Text for Forrest here
+He is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.
 
 # Acknowledgements
 Several people made this project possible and we would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.
