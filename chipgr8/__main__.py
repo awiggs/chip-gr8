@@ -61,6 +61,7 @@ parser.add_argument('-o', '--out',
 )
 parser.add_argument('-L', '--no-labels',
     action = 'store_true',
+    dest   = 'noLabels',
     help   = 'do not generate labels in disassembly',
 )
 parser.add_argument('-x', '--hexdump',
@@ -86,6 +87,7 @@ parser.add_argument('-t', '--theme',
 )
 parser.add_argument('-S', '--no-scroll',
     action  = 'store_false',
+    dest    = 'noScroll',
     help    = 'reduce flashing in disassembler by not scrolling to the highlighted position')
 
 args      = parser.parse_args()
@@ -107,7 +109,7 @@ elif args.binary:
     result = chipgr8.disassemble(
         inPath  = chipgr8.findROM(args.binary),
         outPath = args.out, 
-        labels  = None if args.nolabels else {},
+        labels  = None if args.noLabels else {},
         hexdump = args.hexdump,
     )
     if not args.out:
@@ -125,5 +127,5 @@ else:
         aiInputMask = 0,
         foreground  = ('#' + args.foreground) if args.foreground else foreground,
         background  = ('#' + args.background) if args.background else background,
-        autoScroll  = args.no_scroll,
+        autoScroll  = args.noScroll,
     ).go()
