@@ -59,7 +59,7 @@ parser.add_argument('-o', '--out',
     dest   = 'out',
     help   = 'output file for assembler/disassembler',
 )
-parser.add_argument('-n', '--nolabels',
+parser.add_argument('-L', '--no-labels',
     action = 'store_true',
     help   = 'do not generate labels in disassembly',
 )
@@ -69,7 +69,7 @@ parser.add_argument('-x', '--hexdump',
 )
 parser.add_argument('-s', '--smooth',
     action = 'store_true',
-    help   = 'enable smooth rendering mode',
+    help   = 'enable smooth rendering mode (experimental)',
 )
 parser.add_argument('-f', '--foreground',
     action = 'store',
@@ -82,8 +82,11 @@ parser.add_argument('-b', '--background',
 parser.add_argument('-t', '--theme',
     action  = 'store',
     choices = chipgr8.themes.keys(),
-    help    = 'display theme (light, dark, sunrise, hacker)'
+    help    = 'display theme (light, dark, sunrise, hacker, redalert, snake)'
 )
+parser.add_argument('-S', '--no-scroll',
+    action  = 'store_false',
+    help    = 'reduce flashing in disassembler by not scrolling to the highlighted position')
 
 args      = parser.parse_args()
 logLevels = [
@@ -120,6 +123,7 @@ else:
         startPaused = not args.rom,
         display     = True,
         aiInputMask = 0,
-        foreground  = '#' + (args.foreground or foreground),
-        background  = '#' + (args.background or background),
+        foreground  = ('#' + args.foreground) if args.foreground else foreground,
+        background  = ('#' + args.background) if args.background else background,
+        autoScroll  = args.no_scroll,
     ).go()

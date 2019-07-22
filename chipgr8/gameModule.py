@@ -44,8 +44,7 @@ class GameModule(Module):
                     self.theme.foreground if ctx[rx, ry] else self.theme.background,
                     (rx * s, ry * s, s, s),
                 )
-        (bx, by, bw, bh) = self.bounds
-        self.__diff = (bx + x * s, by + y * s, 8 * s, rows * s)
+        self.__diff = self.bounds
 
     def smoothUpdate(self, vm):
         if vm.smooth and vm.VM.diffSkip:

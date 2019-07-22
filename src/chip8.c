@@ -39,7 +39,7 @@ void postStep(Chip8VM_t* vm) {
  *         keymask a mask of keys currently down
  */
 void input(Chip8VM_t* vm, u16 keymask) {
-    vm->keys = keymask;
+    vm->K = keymask;
     if (keymask && vm->wait) {
         u8 decodedKeymask = 0;
         // Decode keymask, get most significant bit key
@@ -68,9 +68,9 @@ int helloSharedLibrary() {
 void initVM(Chip8VM_t* vm, u8 freq) {
     debugf("vm pointer: %p\n", (void *) vm);
     // memset(vm->RAM, 0, 0xFFF);
-    vm->freq = freq;
-    vm->PC   = PROGRAM_SPACE_START;
-    vm->I    = PROGRAM_SPACE_START;
+    vm->freq    = freq;
+    vm->PC      = PROGRAM_SPACE_START;
+    vm->I       = PROGRAM_SPACE_START;
 
     // Initialize hexsprites
     STORE_HEXSPRITE(vm->hexes, 0,  HEXSPRITE_0);
@@ -339,7 +339,7 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
             break;
         }
         case SHIFTREG: {
-            opSHR(vm, getRegisterX(opcode));
+            opSHR(vm, getRegisterX(opcode), getRegisterY(opcode));
             break;
         }
         case SUBN: {
@@ -347,7 +347,7 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode) {
             break;
         }
         case SHIFTL: {
-            opSHL(vm, getRegisterX(opcode));
+            opSHL(vm, getRegisterX(opcode), getRegisterY(opcode));
             break;
         }
         case SKIPNR: {

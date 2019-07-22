@@ -28,7 +28,7 @@ struct Chip8VM_t {
             u8 DT; // Delay timer
             u8 ST; // Sound timer
             u8 W; // Wait register
-            u16 keys; // Key IO registers
+            u16 K; // Key IO registers
             u8 seed; // Seed for RNG
             u8 wait; // Chip-8 in wait mode
             u64 clock; // Time since simulation began
@@ -38,6 +38,7 @@ struct Chip8VM_t {
             u8 diffSize; // VRAM diff size
             u8 diffClear; // Indicate a CLS instruction
             u8 diffSkip; // Flag to indicate a skipable DRW instruction
+            u8 quirks; // Flag to indicate quirky instructions for specific ROMs
         };
     };
 } __attribute__((packed, aligned(1)));

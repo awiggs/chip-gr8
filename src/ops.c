@@ -193,20 +193,29 @@ void opSUB(Chip8VM_t* vm, u8 regX, u8 regY) {
 
 /*
  * Instruction: 8xy6
- * Description: Set the value of register Vx to the result of bit shifting the value
- *              of register Vx to the right and set the flag VF accordingly.
+ * Description: Default behaviour is to shift the value of register Vx to the right,
+ *              store the result in Vx, and set the flag VF accordingly. When a ROM
+ *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
+ *              register Vy to the right, store the result in Vx, and set the flag
+ *              VF accordingly.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHR(Chip8VM_t* vm, u8 reg) {
-    vm->V[0xF] = vm->V[reg] & 0x1;
-    vm->V[reg] = vm->V[reg] >> 2;
+void opSHR(Chip8VM_t* vm, u8 regX, u8 regY) {
+    if (!(vm->quirks & SHIFT_QUIRK)) {
+        regY = regX;
+    }
+    vm->V[0xF]  = vm->V[regY] & 0x1;
+    vm->V[regX] = vm->V[regY] >> 1;
 }
 
 /*
  * Instruction: 8xy7
- * Description: Set the value of register Vx to the value of register Vy minus the
- *              value of register Vx and set the borrow flag VF.
+ * Description: Default behaviour is to shift the value of register Vx to the right,
+ *              store the result in Vx, and set the flag VF accordingly. When a ROM
+ *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
+ *              register Vy to the right, store the result in Vx, and set the flag
+ *              VF accordingly.
  * @params  vm      The current state of the Virtual Machine
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
@@ -223,9 +232,12 @@ void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY) {
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHL(Chip8VM_t* vm, u8 reg) {
-    vm->V[0xF] = vm->V[reg] & 0x8;
-    vm->V[reg] = vm->V[reg] << 2;
+void opSHL(Chip8VM_t* vm, u8 regX, u8 regY) {
+    if (!(vm->quirks & SHIFT_QUIRK)) {
+        regY = regX;
+    }
+    vm->V[0xF]  = vm->V[regY] & 0x8;
+    vm->V[regX] = vm->V[regY] << 1;
 }
 
 /*
@@ -343,7 +355,7 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKP(Chip8VM_t* vm, u8 reg) {
-    if ((vm->keys >> vm->V[reg]) & 1) {
+    if ((vm->K >> vm->V[reg]) & 1) {
         vm->PC += 2;
     }
 }
@@ -356,7 +368,7 @@ void opSKP(Chip8VM_t* vm, u8 reg) {
  *          reg     Number (x) indicating a register Vx
  */
 void opSKNP(Chip8VM_t* vm, u8 reg) {
-    if (!((vm->keys >> vm->V[reg]) & 1)) {
+    if (!((vm->K >> vm->V[reg]) & 1)) {
         vm->PC += 2;
     }
 }
@@ -441,28 +453,40 @@ void opLDBCD(Chip8VM_t* vm, u8 reg) {
 
 /*
  * Instruction: Fx55
- * Description: Store the values of registers V0 through Vx in memory starting at
- *              location I.
+ * Description: Store the value of memory starting at location I into registers V0
+ *              through Vx. Default behaviour is to leave the value of I unaffected.
+ *              When a ROM has the LOAD_QUIRK flag set, the behaviour is to increment
+ *              the value of I.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
 void opLDRegs(Chip8VM_t* vm, u8 reg) {
     u16 i = vm->I;
-    for (u8 j = 0; j <= reg; j++) {
+    u8 j;
+    for (j = 0; j <= reg; j++) {
         vm->RAM[i + j] = vm->V[j];
+    }
+    if (vm->quirks & LOAD_QUIRK) {
+        vm->I = i + j;
     }
 }
 
 /*
  * Instruction: Fx65
  * Description: Store the value of memory starting at location I into registers V0
- *              through Vx.
+ *              through Vx. Default behaviour is to leave the value of I unaffected.
+ *              When a ROM has the LOAD_QUIRK flag set, the behaviour is to increment
+ *              the value of I.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
 void opLDMem(Chip8VM_t* vm, u8 reg) {
     u16 i = vm->I;
-    for (u8 j = 0; j <= reg; j++) {
+    u8 j;
+    for (j = 0; j <= reg; j++) {
         vm->V[j] = vm->RAM[i + j];
+    }
+    if (vm->quirks & LOAD_QUIRK) {
+        vm->I = i + j;
     }
 }

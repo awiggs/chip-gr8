@@ -49,13 +49,16 @@ class DisModule(Module):
             self.__ROM = vm.ROM
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
-        self.hl          = (vm.VM.PC - 0x200) // 2
-        self.scrollTo(self.hl - 3)
+        if vm.autoScroll or vm.paused:
+            self.hl = (vm.VM.PC - 0x200) // 2
+            self.scrollTo(self.hl - 3)
+        else:
+            self.__yChanged = True
 
     def initDis(self, inPath):
         lineHeight = self.theme.font.get_height()
         self.dis   = [
-            '{:03X}'.format(0x200 + i) + ' ' + source
+            '{:03X}'.format(0x200 + i * 2) + ' ' + source
             for (i, source)
             in enumerate(disassemble(
                 inPath   = inPath, 

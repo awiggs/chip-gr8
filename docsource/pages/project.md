@@ -1,8 +1,8 @@
 # The Project
-The aim of this project was to design a high performance emulation engine with a Python API for integration with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the NES and Atari systems.
+The aim of this project was to design a high performance emulation engine with a Python API for integration with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the [NES](https://www.youtube.com/watch?v=qv6UVOQ0F44) and [Atari](https://arxiv.org/pdf/1312.5602v1.pdf) systems.
 
 ## What is Chip-Gr8?
-At its core, Chip-Gr8 is an emulator of the CHIP-8 system. Developed in the 1970's by Joseph Weisbecker, CHIP-8 was meant to be a simple system that programmers could use for beginner video game development. Many simple games, including Pong, Space Invaders, and Breakout, were programmed for the CHIP-8 throughout the 70s and 80s.
+At its core, Chip-Gr8 is an emulator of the CHIP-8 system. Developed in the 1970's by [Joseph Weisbecker](https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems), CHIP-8 was meant to be a simple system that programmers could use for beginner video game development. Many simple games, including Pong, Space Invaders, and Breakout, were programmed for the CHIP-8 throughout the 70s and 80s.
 
 The key feature of Chip-Gr8 is the artificial intelligence (AI) API that is integrated into the emulator. This is meant to give developers an introductory experience into video game AI development, as well as modern maching learning techniques and useful AI libraries.
 
@@ -12,11 +12,12 @@ As a team, we wanted a project idea that would both test our skills and that oth
 We hoped that by developing not just a marketable product, but an educational tool, that we could excite people into learning the basics of the world of artificial intelligence programming.
 
 ## Technologies Used
-The Chip-Gr8 project was written in C and Python. C was used for the core CHIP-8 emulator opreations and memory management. Python was integrated closely with C using a library called CTypes. Python was used to handle the primary virtual machine structure, load/unload ROMs, as well as handling any I/O and visual display. Additional libraries used in Python were:
-- NumPy
-- PyGame
-- Lazyarray
+The Chip-Gr8 project was written in C and Python. C was used for the core CHIP-8 emulator opreations and memory management. Python was integrated closely with C using a library called [CTypes](https://docs.python.org/3/library/ctypes.html). Python was used to handle the primary virtual machine structure, load/unload ROMs, as well as any I/O and visual display. Additional libraries used in Python were:
 
-< More technical talk here >
+- [NumPy](https://numpy.org/)
+- [PyGame](https://www.pygame.org/news)
+- [Lazyarray](https://lazyarray.readthedocs.io/en/latest/)
+
+For more detailed information regarding the implementation of Chip-Gr8, including a user manual, check out the [API page](/api)!
 
 # Project Timeline
