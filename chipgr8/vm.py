@@ -238,6 +238,14 @@ class Chip8VM(object):
                 self._window.sound(self.VM.ST > 0)
                 self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
 
+    def actUntil(self, action, predicate):
+        '''
+        Performs act(action) in a loop until the provided predicate returns 
+        true. The predicate is called with the vm instance. 
+        '''
+        while not predicate(self):
+            self.act(action)
+
     def done(self):
         '''
         Returns True if the VM is done and has NOT been reset.
