@@ -243,7 +243,7 @@ class Chip8VM(object):
         Performs act(action) in a loop until the provided predicate returns 
         true. The predicate is called with the vm instance. 
         '''
-        while not predicate(self):
+        while not predicate(self) and not self.done():
             self.act(action)
 
     def done(self):
