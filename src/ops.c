@@ -187,7 +187,7 @@ void opADDReg(Chip8VM_t* vm, u8 regX, u8 regY) {
  *          regY    Number (y) indicating a register Vy
  */
 void opSUB(Chip8VM_t* vm, u8 regX, u8 regY) {
-    vm->V[0xF]  = vm->V[regX] > vm->V[regY];
+    vm->V[0xF]  = vm->V[regX] >= vm->V[regY];
     vm->V[regX] = vm->V[regX] - vm->V[regY];
 }
 
@@ -211,24 +211,24 @@ void opSHR(Chip8VM_t* vm, u8 regX, u8 regY) {
 
 /*
  * Instruction: 8xy7
- * Description: Default behaviour is to shift the value of register Vx to the right,
- *              store the result in Vx, and set the flag VF accordingly. When a ROM
- *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
- *              register Vy to the right, store the result in Vx, and set the flag
- *              VF accordingly.
+ * Description: Set the value of register Vx to the value of register Vy minus the
+ *              value of register Vx and set the borrow flag VF.
  * @params  vm      The current state of the Virtual Machine
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
 void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY) {
-    vm->V[0xF]  = vm->V[regY] > vm->V[regX];
+    vm->V[0xF]  = vm->V[regY] >= vm->V[regX];
     vm->V[regX] = vm->V[regY] - vm->V[regX];
 }
 
 /*
  * Instruction: 8xyE
- * Description: Set the value of register Vx to the result of bit shifting the value
- *              of register Vx to the left and set the flag VF accordingly.
+ * Description: Default behaviour is to shift the value of register Vx to the left,
+ *              store the result in Vx, and set the flag VF accordingly. When a ROM
+ *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
+ *              register Vy to the left, store the result in Vx, and set the flag
+ *              VF accordingly.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
