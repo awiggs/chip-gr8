@@ -3,6 +3,17 @@
 
 This section details the API of Chip-Gr8. It is broken down into the primary classes, including all fields and methods, as well as other important functions.
 
+# assemble((Parameters))
+
+## Parameters
+
+## `.source=None`
+
+## `.inPath=None`
+
+## `.outPath=None`
+
+Converts assembly **source** code, or source code contained in **inPath** into binary data (a ROM). This ROM may optionally be written to file with the **outPath** argument.
 
 # Chip8VM (Class)
 Represents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class **Chip8VMs** should always be instantiated using **init**.

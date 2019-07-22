@@ -90,8 +90,7 @@ Andrew is a fourth year Software Engineering student who plans on graduating in 
                         <EjrbussMarkdown 
                             source=
 {`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-`}
+He is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.`}
                         />
                         <a href='https://www.linkedin.com/in/john-curry/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/john-curry' className='subtle'><i className='fab fa-github' /></a>
