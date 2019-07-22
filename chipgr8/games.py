@@ -144,8 +144,8 @@ Cave = Game(
         .addQuery("myX", Query(addr=379))
         .addQuery("myY", Query(addr=380)),
     actions     = NamedList(
-        ['none', 'left', 'right', 'up', 'down'],
-        [ K_NONE, K_4,    K_6,     K_2,  K_8  ],
+        ['none', 'left', 'right', 'up', 'down', 'start'],
+        [ K_NONE, K_4,    K_6,     K_2,  K_8,    K_F],
     )
 )
 

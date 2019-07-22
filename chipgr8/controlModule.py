@@ -194,7 +194,7 @@ class ControlModule(object):
         try:
             self.__bindings = json.loads(read('KeyConfig.json'))
         except:
-            logger.warning('No `KeyConig.json`, using default bindings')
+            logger.warning('No `KeyConfig.json`, using default bindings')
             self.__bindings = self.defaultBindings.copy()
         self.sanityCheckBindings()
 
