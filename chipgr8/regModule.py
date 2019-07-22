@@ -25,7 +25,7 @@ class RegModule(Module):
             'V3 = 0x{:02X}    '.format(vm.VM.V[0x3]) + ' DT = 0x{:02X}'.format(vm.VM.DT),
             'V4 = 0x{:02X}    '.format(vm.VM.V[0x4]) + ' ST = 0x{:02X}'.format(vm.VM.ST),
             'V5 = 0x{:02X}    '.format(vm.VM.V[0x5]),
-            'V6 = 0x{:02X}    '.format(vm.VM.V[0x6]) + '  K = 0x{:04X}'.format(vm.VM.keys),
+            'V6 = 0x{:02X}    '.format(vm.VM.V[0x6]) + '  K = 0x{:04X}'.format(vm.VM.K),
             'V7 = 0x{:02X}    '.format(vm.VM.V[0x7]) + '  W = 0x{:02X}'.format(vm.VM.W),
             'V8 = 0x{:02X}    '.format(vm.VM.V[0x8]),
             'V9 = 0x{:02X}    '.format(vm.VM.V[0x9]) + '  I = 0x{:03X}'.format(vm.VM.I),

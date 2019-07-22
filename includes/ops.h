@@ -155,7 +155,7 @@ void opSUB(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHR(Chip8VM_t* vm, u8 reg);
+void opSHR(Chip8VM_t* vm, u8 regX, u8 regY);
 
 /*
  * Instruction: 8xy7
@@ -174,7 +174,7 @@ void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY);
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
-void opSHL(Chip8VM_t* vm, u8 reg);
+void opSHL(Chip8VM_t* vm, u8 regX, u8 regY);
 
 /*
  * Instruction: 9xy0

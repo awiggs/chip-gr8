@@ -19,7 +19,7 @@ class Chip8Regs(ctypes.Structure):
         ('DT', ctypes.c_uint8), # Delay timer
         ('ST', ctypes.c_uint8), # Sound timer
         ('W', ctypes.c_uint8), # Wait register
-        ('keys', ctypes.c_uint16), # Key IO registers
+        ('K', ctypes.c_uint16), # Key IO registers
         ('seed', ctypes.c_uint8), # Seed for RNG
         ('wait', ctypes.c_uint8), # Chip-8 in wait mode
         ('clock', ctypes.c_uint64), # Time since simulation began
@@ -29,6 +29,7 @@ class Chip8Regs(ctypes.Structure):
         ('diffSize', ctypes.c_uint8), # VRAM diff size
         ('diffClear', ctypes.c_uint8), # Indicate a CLS instruction
         ('diffSkip', ctypes.c_uint8), # Flag to indicate a skipable DRW instruction
+        ('quirks', ctypes.c_uint8), # Flag to indicate quirky instructions for specific ROMs
     ]
 
 class Chip8VMStruct(ctypes.Union):

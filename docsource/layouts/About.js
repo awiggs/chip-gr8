@@ -43,8 +43,7 @@ We are a group of Software, and Electrical, Engineering students from the Univer
                         <EjrbussMarkdown 
                             source=
 {`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-`}
+Eric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.`}
                         />
                         <a href='https://www.linkedin.com/in/ejrbuss/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/ejrbuss' className='subtle'><i className='fab fa-github' /></a>
@@ -53,8 +52,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         <EjrbussMarkdown 
                             source=
 {`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-`}
+Torrey plans to graduate UVic with a Bachelor of Software Engineering degree in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.`}
                         />
                         <a href='https://www.linkedin.com/in/torrey-randolph/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/torreyr' className='subtle'><i className='fab fa-github' /></a>
@@ -63,8 +61,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         <EjrbussMarkdown 
                             source=
 {`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-`}
+Jon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.`}
                         />
                         {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
                         <a href='https://github.com/UltravioletVoodoo' className='subtle'><i className='fab fa-github' /></a>

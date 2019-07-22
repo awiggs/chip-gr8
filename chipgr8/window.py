@@ -21,7 +21,7 @@ class Window():
         foreground = (255, 255, 255),
         background = (0, 0, 0),
         antialias  = True,
-        tone       = os.path.realpath(os.path.join(__file__, "../data/sound/pureTone.mp3"))
+        tone       = os.path.realpath(os.path.join(__file__, "../data/sound/pureTone.mp3")),
     ):
         pygame.init()
         pygame.font.init()

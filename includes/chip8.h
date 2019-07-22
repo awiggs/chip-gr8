@@ -13,24 +13,25 @@
 #include "debug.h"
 #include "instructions.h"
 
-#define PROGRAM_SPACE_START         0x200
+#define PROGRAM_SPACE_START 0x200
 
-#define HEXSPRITE_0                 0xF999F
-#define HEXSPRITE_1                 0x26227
-#define HEXSPRITE_2                 0xF1F8F
-#define HEXSPRITE_3                 0xF1F1F
-#define HEXSPRITE_4                 0x99F11
-#define HEXSPRITE_5                 0xF8F1F
-#define HEXSPRITE_6                 0xF8F9F
-#define HEXSPRITE_7                 0xF1244
-#define HEXSPRITE_8                 0xF9F9F
-#define HEXSPRITE_9                 0xF9F1F
-#define HEXSPRITE_A                 0xF9F99
-#define HEXSPRITE_B                 0xE9E9E
-#define HEXSPRITE_C                 0xF888F
-#define HEXSPRITE_D                 0xE999E
-#define HEXSPRITE_E                 0xF8F8F
-#define HEXSPRITE_F                 0xF8F88
+#define HEXSPRITE_0         0xF999F
+#define HEXSPRITE_1         0x26227
+#define HEXSPRITE_2         0xF1F8F
+#define HEXSPRITE_3         0xF1F1F
+#define HEXSPRITE_4         0x99F11
+#define HEXSPRITE_5         0xF8F1F
+#define HEXSPRITE_6         0xF8F9F
+#define HEXSPRITE_7         0xF1244
+#define HEXSPRITE_8         0xF9F9F
+#define HEXSPRITE_9         0xF9F1F
+#define HEXSPRITE_A         0xF9F99
+#define HEXSPRITE_B         0xE9E9E
+#define HEXSPRITE_C         0xF888F
+#define HEXSPRITE_D         0xE999E
+#define HEXSPRITE_E         0xF8F8F
+#define HEXSPRITE_F         0xF8F88
+
 
 // To avoid defining very large int literals, interlaces hexsprite int literal with 0s
 // such that 0x11111 becomes 0x1010101010 then stores each byte to arr
@@ -40,6 +41,9 @@
                                                     *(_arr + (_ind * 5) + _i) = ((_hex >> ((4 - _i) * 4) & 0xF) << 4); \
                                                 } \
                                             )
+
+#define SHIFT_QUIRK 0x01
+#define LOAD_QUIRK  0x02
 
 typedef u16 word_t;
 
