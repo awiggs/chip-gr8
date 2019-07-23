@@ -16,9 +16,11 @@ logger = logging.getLogger(__name__)
 
 SHIFT_QUIRK = 0x01
 LOAD_QUIRK  = 0x02
+DRAW_QUIRK  = 0x04
 
 quirks = {
     "Animal Race.ch8": SHIFT_QUIRK | LOAD_QUIRK,
+    "Astro Dodge.ch8": DRAW_QUIRK,
     "Blinky.ch8": LOAD_QUIRK,
     "Space Invaders.ch8": LOAD_QUIRK,
 }
