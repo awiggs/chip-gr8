@@ -41,7 +41,7 @@ struct Chip8VM_t {
             u8 quirks; // Flag to indicate quirky instructions for specific ROMs
         };
     };
-} __attribute__((packed, aligned(1)));
+};
 #pragma pack(pop)
 
 #endif /* AUTOGEN_VMSTRUCT_H */

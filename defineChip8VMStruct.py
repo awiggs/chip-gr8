@@ -109,7 +109,7 @@ struct Chip8VM_t {
             <fields>
         };
     };
-} __attribute__((packed, aligned(1)));
+};
 #pragma pack(pop)
 
 #endif /* AUTOGEN_VMSTRUCT_H */
