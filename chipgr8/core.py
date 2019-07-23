@@ -4,8 +4,11 @@ import glob
 import os
 
 from chipgr8.autogen_Chip8VMStruct import Chip8VMStruct
+from chipgr8.fallbackChip8         import FallbackChip8
 
 logger = logging.getLogger(__name__)
+
+USE_PYTHON_FALLBACK = False
 
 def helloSharedLibrary():
     assert lib.helloSharedLibrary() == 0xAFBFCF
@@ -15,28 +18,47 @@ def initVM(freq):
     '''
     Allocates and returns a pointer to a VM.
     '''
-    vm = Chip8VMStruct()
+    if USE_PYTHON_FALLBACK:
+        vm = FallbackChip8(freq)
+    else:
+        vm = Chip8VMStruct()
+        lib.initVM(vm, freq)
     logger.debug('Initializing VM {}'.format(vm))
-    lib.initVM(vm, freq)
     return vm
 
 def step(vm):
     '''
     Performs a single step on the eprovided VM.
     '''
-    return lib.step(vm)
+    if USE_PYTHON_FALLBACK:
+        vm.step()
+    else:
+        lib.step(vm)
 
 def loadROM(vm, filePath):
     '''
     Loads a ROM from filePath into the VM.
     '''
-    return lib.loadROM(vm, filePath)
+    if USE_PYTHON_FALLBACK:
+        return vm.loadROM(filePath)
+    else:
+        return lib.loadROM(vm, filePath)
 
 def sendInput(vm, keymask):
     '''
     Sends the current input to the VM.
     '''
-    return lib.input(vm, keymask)
+    if USE_PYTHON_FALLBACK:
+        vm.input(keymask)
+    else:
+        lib.input(vm, keymask)
+
+def repair(vm):
+    '''
+    Repairs fallback VM after pickling
+    '''
+    if USE_PYTHON_FALLBACK:
+        vm._defineAliases()
 
 dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*[!py]')))
 DLL_DIST_PATH    = dist[0] if dist else '<No dist path found!>'
@@ -74,4 +96,5 @@ for path in [
     
     break
 else:
-    raise Exception('DLL has not been built!\nRun `mekpie build`!')
+    logger.warning('Could not find DLL, using python fallback')
+    USE_PYTHON_FALLBACK = True

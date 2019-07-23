@@ -199,8 +199,11 @@ class Chip8VM(object):
         '''
         self.__VMs = VMs
 
-    def _clearCtx(self):
+    def _prepForPickle(self):
         self.__ctx = None
+
+    def _repairFromPickle(self):
+        core.repair(self.VM)
 
     def ctx(self):
         '''

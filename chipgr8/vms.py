@@ -70,7 +70,7 @@ class Chip8VMs(object):
         vm references can become out of date due to pickling across processes.
         '''
         for vm in self.__notDoneInstances:
-            vm._clearCtx()
+            vm._prepForPickle()
         with Pool(cpu_count()) as pool:
             run = set(pool.map(_PoolHandler(do), self.__notDoneInstances))
         self.__instances     = run.union(self.__doneInstances)
@@ -106,7 +106,8 @@ class _PoolHandler(object):
         self.do = do
 
     def __call__(self, vm):
+        vm._repairFromPickle()
         while not vm.done():
             self.do(vm)
-        vm._clearCtx()
+        vm._prepForPickle()
         return vm
