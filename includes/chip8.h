@@ -44,6 +44,7 @@
 
 #define SHIFT_QUIRK 0x01
 #define LOAD_QUIRK  0x02
+#define DRAW_QUIRK  0x04
 
 typedef u16 word_t;
 
