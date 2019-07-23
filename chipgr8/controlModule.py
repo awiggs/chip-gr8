@@ -49,6 +49,11 @@ class ControlModule(object):
             if event.type == pygame.QUIT:
                 logger.info('Quit event')
                 vm.doneIf(True)
+                if vm.done():
+                    error = Exception('Trying to quit a done vm! Are you sure you are in a while not done loop?')
+                    logger.error(exc_info=error)
+                    raise error
+                    
             if event.type == pygame.KEYDOWN:
                 if event.key == self.__bindings['reset']:
                     logger.debug('Key pressed: `reset`')
