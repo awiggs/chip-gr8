@@ -1,4 +1,3 @@
-import sys
 import chipgr8
 import logging
 import argparse
