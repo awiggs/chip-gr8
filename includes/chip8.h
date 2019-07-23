@@ -46,7 +46,7 @@
 #define DRAW_QUIRK  0x04
 
 /* Needed for building with cl and distutils */
-void PyInit_libchip_gr8(void);
+extern void PyInit_libchip_gr8(void);
 
 typedef u16 word_t;
 
