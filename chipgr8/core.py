@@ -38,10 +38,10 @@ def sendInput(vm, keymask):
     '''
     return lib.input(vm, keymask)
 
-dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip-gr8.*[!py]')))
+dist = glob.glob(os.path.realpath(os.path.join(__file__, '../libchip_gr8.*[!p][!y]')))
 DLL_DIST_PATH    = dist[0] if dist else '<No dist path found!>'
-DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip-gr8'))
-DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip-gr8'))
+DLL_DEBUG_PATH   = os.path.realpath(os.path.join(__file__, '../../target/debug/libchip_gr8'))
+DLL_RELEASE_PATH = os.path.realpath(os.path.join(__file__, '../../target/release/libchip_gr8'))
 
 lib = None
 for path in [
