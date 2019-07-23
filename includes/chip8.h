@@ -32,7 +32,6 @@
 #define HEXSPRITE_E         0xF8F8F
 #define HEXSPRITE_F         0xF8F88
 
-
 // To avoid defining very large int literals, interlaces hexsprite int literal with 0s
 // such that 0x11111 becomes 0x1010101010 then stores each byte to arr
 #define STORE_HEXSPRITE(_arr, _ind, _spr)   SAFE_MACRO( \
@@ -45,6 +44,9 @@
 #define SHIFT_QUIRK 0x01
 #define LOAD_QUIRK  0x02
 #define DRAW_QUIRK  0x04
+
+/* Needed for building with cl and distutils */
+void PyInit_libchip_gr8(void) {}
 
 typedef u16 word_t;
 
