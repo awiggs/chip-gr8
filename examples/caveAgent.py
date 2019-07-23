@@ -19,7 +19,6 @@ rate = 1
 vm = chipgr8.init(display=True, ROM=cave.ROM, sampleRate=rate)
 position = (0,0)
 direction = "down"
-preferredTurn = "right"
 
 
 # Solves the Cave game
