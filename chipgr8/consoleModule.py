@@ -208,9 +208,25 @@ class ConsoleModule(Module):
 
         def Query():
             return chipgr8.Query(vm)
+
+        def loadROM(rom):
+            return vm.loadROM(rom)
+
+        def addBreakpoint(addr):
+            return vm.addBreakpoint(addr)
+
+        def removeBreakpoint(addr):
+            return vm.removeBreakpoint(addr)
+
+        def clearBreakpoints():
+            return vm.clearBreakpoints()
         
-        self.__globals['vm']    = vm
-        self.__globals['play']  = play
-        self.__globals['reset'] = reset
-        self.__globals['step']  = step 
-        self.__globals['Query'] = Query
+        self.__globals['vm']               = vm
+        self.__globals['play']             = play
+        self.__globals['reset']            = reset
+        self.__globals['step']             = step 
+        self.__globals['Query']            = Query
+        self.__globals['loadROM']          = loadROM
+        self.__globals['addBreakpoint']    = addBreakpoint
+        self.__globals['removeBreakpoint'] = removeBreakpoint
+        self.__globals['clearBreakpoints'] = clearBreakpoints

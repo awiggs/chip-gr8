@@ -73,6 +73,11 @@ class Chip8VM(object):
     Indicates whether the VM is in a done state
     '''
 
+    __breakpoints = []
+    '''
+    Breakpoints
+    '''
+
     _window = None
     '''
     Window instance
@@ -175,17 +180,17 @@ class Chip8VM(object):
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
-        self.sampleRate         = sampleRate
-        self.speed              = int(speed)
-        self.record             = inputHistory is None
-        self.inputHistory       = inputHistory or [(0, 0)]
-        self.aiInputMask        = aiInputMask
-        self.smooth             = smooth
-        self.paused             = startPaused
-        self.__historyPos       = 0
-        self.__freq             = (frequency // 60) * 60
-        self.VM                 = core.initVM(frequency // 60)
-        self.autoScroll  = autoScroll
+        self.sampleRate   = sampleRate
+        self.speed        = int(speed)
+        self.record       = inputHistory is None
+        self.inputHistory = inputHistory or [(0, 0)]
+        self.aiInputMask  = aiInputMask
+        self.smooth       = smooth
+        self.paused       = startPaused
+        self.VM           = core.initVM(frequency // 60)
+        self.autoScroll   = autoScroll
+        self.__historyPos = 0
+        self.__freq       = (frequency // 60) * 60
         if ROM:
             self.loadROM(ROM, reset=False)
         self._window = Window(
@@ -205,6 +210,28 @@ class Chip8VM(object):
 
     def _clearCtx(self):
         self.__ctx = None
+
+    def addBreakpoint(self, addr):
+        '''
+        Add a breakpoint at addr. When the VM steps to this address (when PC is
+        equal to addr) the CHIP-GR8 display will automatically pause.
+        '''
+        self.__breakpoints.append(addr)
+        return 'Breakpoint added.'
+
+    def removeBreakpoint(self, addr):
+        '''
+        Remove a breakpoint at addr.
+        '''
+        self.__breakpoints.remove(addr)
+        return 'Breakpoint removed.'
+
+    def clearBreakpoints(self):
+        '''
+        Clear all current breakpoints.
+        '''
+        self.__breakpoints.clear()
+        return 'Breakpoints cleared.'
 
     def ctx(self):
         '''
@@ -377,3 +404,6 @@ class Chip8VM(object):
         core.step(self.VM)
         self.__aiKeys   = 0
         self.__userKeys = 0
+        if self.VM.PC in self.__breakpoints:
+            self.paused = True
+            print('Hit Breakpoint 0x{:x}'.format(self.VM.PC))
