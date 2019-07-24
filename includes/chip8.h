@@ -45,7 +45,7 @@
 #define LOAD_QUIRK  0x02
 #define DRAW_QUIRK  0x04
 
-inline void PyInit_libchip_gr8();
+void PyInit_libchip_gr8();
 
 typedef u16 word_t;
 
