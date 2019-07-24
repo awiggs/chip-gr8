@@ -47,7 +47,7 @@
 
 
 /* Needed for building with cl and distutils */
-inline void PyInit_libchip_gr8() {}
+inline void PyInit_libchip_gr8();
 
 typedef u16 word_t;
 
