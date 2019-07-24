@@ -38,7 +38,7 @@ def caveAgent():
     while not vm.done():
         obs = Cave.observe(vm)
         position = getPosition(obs)
-        if canMoveForward(obs):
+        if canMoveForward():
             moveForward()
         else:
             turnLeft()
@@ -51,7 +51,7 @@ def caveAgent():
         vm.doneIf(obs.done)
         # If we have a wall on our right we want to move forward if possible
         if rightSideIsWall(obs): 
-            if canMoveForward(obs):
+            if canMoveForward():
                 moveForward()
             else:
                 # We have a wall on our right, but we cant go foward, so we must go left
@@ -119,7 +119,7 @@ def turnLeft():
     elif direction == 'down':
         direction = 'right'
 
-def canMoveForward(obs):
+def canMoveForward():
     '''
     Check if there is a wall infront of the player
     '''
