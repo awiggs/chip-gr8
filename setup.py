@@ -13,7 +13,7 @@ libchip_gr8 = Extension(
 
 setup(
     name                          = 'chipgr8',
-    version                       = '0.0.2',
+    version                       = '0.0.3',
     description                   = 'Chip 8 Emulation for AI',
     long_description              = description,
     long_description_content_type = 'text/markdown',
