@@ -1,4 +1,5 @@
 from chipgr8 import Query, Observer, NamedList
+from numpy   import clip
 
 K_NONE = 0x0000
 K_0    = 0x0001
@@ -143,11 +144,16 @@ Brix = Game(
 )
 
 Cave = Game(
-    ROM         = 'Cave',
-    observer    = Observer()
-        .addQuery("myX", Query(addr=379))
-        .addQuery("myY", Query(addr=380)),
-    actions     = NamedList(
+    ROM      = 'Cave',
+    observer = Observer()
+        .addQuery('x',          Query(addr=379))
+        .addQuery('y',          Query(addr=380))
+        .addQuery('upClear',    lambda o, vm : not vm.ctx()[clip(o.x, 0, 63), clip(o.y - 1, 0, 31)])
+        .addQuery('downClear',  lambda o, vm : not vm.ctx()[clip(o.x, 0, 63), clip(o.y + 1, 0, 31)])
+        .addQuery('leftClear',  lambda o, vm : not vm.ctx()[clip(o.x - 1, 0, 63), clip(o.y, 0, 31)])
+        .addQuery('rightClear', lambda o, vm : not vm.ctx()[clip(o.x + 1, 0, 63), clip(o.y, 0, 31)])
+        .addQuery('done',       lambda o, vm : vm.VM.PC == 0x570),
+    actions  = NamedList(
         ['none', 'left', 'right', 'up', 'down', 'start'],
         [ K_NONE, K_4,    K_6,     K_2,  K_8,    K_F],
     )
