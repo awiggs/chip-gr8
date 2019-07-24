@@ -1,3 +1,4 @@
+# Hide pygame support message
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
 
@@ -5,7 +6,7 @@ environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
 from .chipgr8      import init
 from .disassembler import disassemble, hexdump
 from .assembler    import assemble
-from .util         import findROM, readableInputHistory
+from .util         import findROM, readableInputHistory, read, findVersion
 from .query        import Query
 from .observer     import Observer
 from .namedList    import NamedList
@@ -26,5 +27,5 @@ themes = {
     'snake'    : ('#00CA83', '#FFFFFF'),
 }
 
-VERSION     = '0.0.1'
+VERSION     = findVersion()
 DESCRIPTION = "Chip-Gr8: The AI focused Chip 8 Emulator"

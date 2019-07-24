@@ -13,6 +13,12 @@
 #include "debug.h"
 #include "instructions.h"
 
+#if defined(_WIN32) || defined(_WIN64)
+    #define shared __declspec( dllexport )
+#else
+    #define shared
+#endif
+
 #define PROGRAM_SPACE_START 0x200
 
 #define HEXSPRITE_0         0xF999F
@@ -45,9 +51,8 @@
 #define LOAD_QUIRK  0x02
 #define DRAW_QUIRK  0x04
 
-
 /* Needed for building with cl and distutils */
-inline void PyInit_libchip_gr8() {}
+void PyInit_libchip_gr8();
 
 typedef u16 word_t;
 
@@ -58,7 +63,7 @@ typedef u16 word_t;
  * @returns a SHARED_LIBRARY_ID to ensure that the library has been loaded
  *          correctly.
  */
-int helloSharedLibrary();
+shared int helloSharedLibrary();
 
 /**
  * Initializes a VM instance to a valid initial sate. This is the only way a 
@@ -67,14 +72,14 @@ int helloSharedLibrary();
  * @params vm   the vm to intialize
  *         freq the frequency as a factor of 60Hz
  */
-void initVM(Chip8VM_t* vm, u8 freq);
+shared void initVM(Chip8VM_t* vm, u8 freq);
 
 /**
  * Steps a VM 1 clock cycle. 
  * 
  * @params vm the vm
  */
-void step(Chip8VM_t* vm);
+shared void step(Chip8VM_t* vm);
 
 /**
  * Fetches the next instruction then increments the program counter by 2.
@@ -110,9 +115,9 @@ void evaluate(Chip8VM_t* vm, Instruction_t inst, word_t opcode);
  *         filePath the path to the ROM
  * @returns         0 on failure
  */
-int loadROM(Chip8VM_t* vm, char* filePath);
+shared int loadROM(Chip8VM_t* vm, char* filePath);
 
-void input(Chip8VM_t*, u16);
+shared void input(Chip8VM_t*, u16);
 
 u8 getRegisterX(word_t opcode);
 

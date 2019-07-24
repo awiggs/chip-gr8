@@ -1,5 +1,9 @@
-# Run
 
+# Chip-Gr8
+
+[![Build status](https://ci.appveyor.com/api/projects/status/ks0u7056qu3r8lsk?svg=true)](https://ci.appveyor.com/project/ejrbuss/chip-gr8)
+
+## Run
 To run the python module (make sure you use some version of python 3, preferably 3.6 or later):
 
 ```
