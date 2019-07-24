@@ -26,7 +26,10 @@ class NamedList(object):
         return iter(self.values)
 
     def __getitem__(self, idx):
-        return self.values[idx]
+        try:
+            return self.values[idx]
+        except:
+            return self.values[self.names.index(idx)]
 
     def __len__(self):
         return len(self.values)

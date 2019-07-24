@@ -4,7 +4,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from chipgr8.util import read, write
+from chipgr8.util         import read, write
+from chipgr8.repeatAction import RepeatAction
 
 class ControlModule(object):
 
@@ -42,9 +43,16 @@ class ControlModule(object):
     def __init__(self):
         self.__bindings  = None
         self.__userInput = 0
+        self.__stepper   = None
         self.loadBindings()
 
     def update(self, vm, events):
+        # Initialize and update the stepper
+        if not self.__stepper:
+            self.__stepper = RepeatAction(0.5, 0.1, lambda : vm.step())
+        else:
+            self.__stepper.update()
+        # Handle the events
         for event in events:
             if event.type == pygame.QUIT:
                 logger.info('Quit event')
@@ -75,6 +83,7 @@ class ControlModule(object):
                         vm.paused = False
                     elif event.key == self.__bindings['debugStep']:
                         logger.debug('Key pressed: `debugStep`')
+                        self.__stepper.start()
                         vm.step()
                     elif event.key == self.__bindings['debugPageUp']:
                         logger.debug('Key pressed: `debugPageUp`')
@@ -88,6 +97,9 @@ class ControlModule(object):
                     elif event.key == self.__bindings['debugEnd']:
                         logger.debug('Key pressed: `End`')
                         vm._window.disModule.scrollTo(4000)
+                elif event.type == pygame.KEYUP:
+                    if event.key == self.__bindings['debugStep']:
+                        self.__stepper.stop()
         else:
             for event in events:
                 if event.type == pygame.KEYDOWN:

@@ -1,6 +1,6 @@
 # Hide pygame support message
 from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
 
 # Add imports that should be available at the top level of the API
 from .chipgr8      import init

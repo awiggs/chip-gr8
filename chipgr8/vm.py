@@ -148,6 +148,7 @@ class Chip8VM(object):
         foreground,
         background,
         autoScroll,
+        speed,
     ):
         '''
         Initializes a new Chip8VM object. Responsible for allocating a new VM
@@ -175,6 +176,7 @@ class Chip8VM(object):
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
         self.sampleRate         = sampleRate
+        self.speed              = int(speed)
         self.record             = inputHistory is None
         self.inputHistory       = inputHistory or [(0, 0)]
         self.aiInputMask        = aiInputMask
@@ -222,23 +224,25 @@ class Chip8VM(object):
             self.__ctx = larray(getVRAM, shape=(width, height))
         return self.__ctx
 
-    def act(self, action):
+    def act(self, action, repeat=1):
         '''
         Allows an AI agent to perform action (action is an input key value) and 
         steps the CHIP-8 emulator forward sampleRate clock cycles.
         '''
-        for _ in range(self.sampleRate):
-            if self.done():
-                break
-            if not self.paused:
-                self.input(action)
-                self.step()
-            if self._window:
-                self.input(action)
-                self._window.update(self)
-                self._window.render(force=self.paused)
-                self._window.sound(self.VM.ST > 0)
-                self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
+        for _ in range(repeat):
+            for _ in range(self.sampleRate):
+                if self.done():
+                    break
+                if not self.paused:
+                    self.input(action)
+                    self.step()
+                if self._window:
+                    self.input(action)
+                    self._window.update(self)
+                    if self.paused or not self.VM.clock % self.speed:
+                        self._window.render(force=self.paused)
+                    self._window.sound(self.VM.ST > 0)
+                    self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq * self.speed)
 
     def actUntil(self, action, predicate):
         '''
