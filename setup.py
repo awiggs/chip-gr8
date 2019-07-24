@@ -1,9 +1,10 @@
 from os.path    import join
 from os         import listdir
 from setuptools import setup, Extension, find_packages
+from chipgr8    import VERSION, DESCRIPTION
 
 with open('./README.md') as file:
-    description = file.read()
+    long_description = file.read()
 
 libchip_gr8 = Extension(
     name         = 'chipgr8.libchip_gr8',
@@ -13,11 +14,11 @@ libchip_gr8 = Extension(
 
 setup(
     name                          = 'chipgr8',
-    version                       = '0.0.4',
-    description                   = 'Chip 8 Emulation for AI',
-    long_description              = description,
+    version                       = VERSION,
+    description                   = DESCRIPTION,
+    long_description              = long_description,
     long_description_content_type = 'text/markdown',
-    author                        = 'chipgr8',
+    author                        = 'Chip-Gr8 team',
     author_email                  = 'root@ejrbuss.net',
     license                       = 'MIT',
     url                           = 'https://awiggs.github.io/chip-gr8/',
