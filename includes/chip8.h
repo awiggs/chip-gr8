@@ -45,8 +45,13 @@
 #define LOAD_QUIRK  0x02
 #define DRAW_QUIRK  0x04
 
+
 /* Needed for building with cl and distutils */
-extern void PyInit_libchip_gr8(void);
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+extern 'C' {
+    void PyInit_libchip_gr8() {}
+}
+#endif
 
 typedef u16 word_t;
 
