@@ -47,10 +47,7 @@
 
 
 /* Needed for building with cl and distutils */
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-#pragma comment(linker, "/export:PyInit_libchip_gr8=PyInit_libchip-gr8")
-void PyInit_libchip_gr8() {}
-#endif
+inline void PyInit_libchip_gr8() {}
 
 typedef u16 word_t;
 
