@@ -187,7 +187,7 @@ void opADDReg(Chip8VM_t* vm, u8 regX, u8 regY) {
  *          regY    Number (y) indicating a register Vy
  */
 void opSUB(Chip8VM_t* vm, u8 regX, u8 regY) {
-    vm->V[0xF]  = vm->V[regX] > vm->V[regY];
+    vm->V[0xF]  = vm->V[regX] >= vm->V[regY];
     vm->V[regX] = vm->V[regX] - vm->V[regY];
 }
 
@@ -211,24 +211,24 @@ void opSHR(Chip8VM_t* vm, u8 regX, u8 regY) {
 
 /*
  * Instruction: 8xy7
- * Description: Default behaviour is to shift the value of register Vx to the right,
- *              store the result in Vx, and set the flag VF accordingly. When a ROM
- *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
- *              register Vy to the right, store the result in Vx, and set the flag
- *              VF accordingly.
+ * Description: Set the value of register Vx to the value of register Vy minus the
+ *              value of register Vx and set the borrow flag VF.
  * @params  vm      The current state of the Virtual Machine
  *          regX    Number (x) indicating a register Vx
  *          regY    Number (y) indicating a register Vy
  */
 void opSUBN(Chip8VM_t* vm, u8 regX, u8 regY) {
-    vm->V[0xF]  = vm->V[regY] > vm->V[regX];
+    vm->V[0xF]  = vm->V[regY] >= vm->V[regX];
     vm->V[regX] = vm->V[regY] - vm->V[regX];
 }
 
 /*
  * Instruction: 8xyE
- * Description: Set the value of register Vx to the result of bit shifting the value
- *              of register Vx to the left and set the flag VF accordingly.
+ * Description: Default behaviour is to shift the value of register Vx to the left,
+ *              store the result in Vx, and set the flag VF accordingly. When a ROM
+ *              has the SHIFT_QUIRK flag set, the behaviour is to shift the value of
+ *              register Vy to the left, store the result in Vx, and set the flag
+ *              VF accordingly.
  * @params  vm      The current state of the Virtual Machine
  *          reg     Number (x) indicating a register Vx
  */
@@ -307,41 +307,47 @@ void opDRW(Chip8VM_t* vm, u8 regX, u8 regY, u8 size) {
     vm->diffSize = size;
     vm->diffSkip = 1;
     vm->V[0xF]   = 0;
-    
+
     // for each row of the sprite
     for (u8 j = 0; j < size; j ++) {
         // get the sprite data byte
         u8 spriteByte = vm->RAM[i + j];
-        
+
+        // if the row will be off the bottom of the screen, don't draw it
+        if (vm->quirks & DRAW_QUIRK) {
+            if ((y + j) >= 32) break;
+        }
+
         // calculate the intended coordinates
         u8 row = (y + j) % 32;
         u8 col = x % 64;
-        
+
         // calculate corresponding location in VRAM
         u16 bit          = ((row * 64) + col);
         u16 firstByte    = bit / 8;
         u16 secondByte   = col >= 56 ? (row * 8) : firstByte + 1;
         u8 bitOffset     = bit % 8;
         u8 leftoverBits  = 8 - bitOffset;
-        
+
         // check bounds for safety
         if (secondByte > 0x100) {
             debugs("Tried to draw outside VRAM!");
             return;
         }
-        
+
         // get the existing VRAM data for the intended location
         u8 oldVRAMData = (vm->VRAM[firstByte] << bitOffset) | (vm->VRAM[secondByte] >> leftoverBits);
-        
+
         // compare to set the collision flag
         if (oldVRAMData & spriteByte) {
             vm->V[0xF] = 1;
         }
+
         // Set skip flag
         if (oldVRAMData ^ spriteByte) {
             vm->diffSkip = 0;
         }
-        
+
         // set VRAM memory
         vm->VRAM[firstByte]  ^= (spriteByte >> bitOffset);
         vm->VRAM[secondByte] ^= (spriteByte << leftoverBits);

@@ -5,11 +5,12 @@ from chipgr8.disassembler import disassemble
 
 class DisModule(Module):
 
-    __disSurface       = None
-    __hlSurface        = None
-    __lastClock        = 0
-    __yChanged         = False
-    __ROM              = ''
+    __addrTable  = None
+    __disSurface = None
+    __hlSurface  = None
+    __lastClock  = 0
+    __yChanged   = False
+    __ROM        = ''
 
     def __init__(self, surface, theme):
         super().__init__(surface, theme)
@@ -50,22 +51,19 @@ class DisModule(Module):
             self.initDis(vm.ROM)
         self.__lastClock = vm.VM.clock
         if vm.autoScroll or vm.paused:
-            self.hl = (vm.VM.PC - 0x200) // 2
+            self.hl = self.__addrTable.get(vm.VM.PC, 0)
             self.scrollTo(self.hl - 3)
         else:
             self.__yChanged = True
 
     def initDis(self, inPath):
         lineHeight = self.theme.font.get_height()
-        self.dis   = [
-            '{:03X}'.format(0x200 + i * 2) + ' ' + source
-            for (i, source)
-            in enumerate(disassemble(
-                inPath   = inPath, 
-                labelSep = '',
-                prefix   = ' ' * 10,
-            ).strip().split('\n'))
-        ]
+        self.__addrTable = {}
+        self.dis = disassemble(
+            inPath    = inPath, 
+            srcFormat = '{addr:03X} {label:10s}{instruction}\n',
+            addrTable = self.__addrTable,
+        ).strip().split('\n')
         self.__disSurface = pygame.Surface((299, lineHeight * (len(self.dis) + 100)))
         self.__hlSurface  = pygame.Surface((299, lineHeight * len(self.dis)))
         self.__disSurface.fill(self.theme.background)

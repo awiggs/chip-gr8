@@ -22,6 +22,7 @@ def init(
     background   = (0, 0, 0),
     theme        = None,
     autoScroll   = True,
+    speed        = 1,
 ):
     '''
     Returns an instance of Chip8VM or Chip8VMs. Used to configure the virtual 
@@ -70,6 +71,11 @@ def init(
             autoScoll       If True, this disassembly source will automatically 
                             scroll when the CHIP-GR8 display is open and a ROM 
                             is running.
+
+            speed           The speed at which the UI is tied to the Chip-8
+                            frequency. So when speed is 1, games will appear to
+                            run at the provided freq, but when speed is 2, games
+                            will appear to run twice as fast.
     '''
     # Some simple sanity checks
     assert instances > 0,                 'Must have some number of instances!'
@@ -93,6 +99,7 @@ def init(
         pygame.Color(foreground) if type(foreground) == str else foreground,
         pygame.Color(background) if type(background) == str else background,
         autoScroll,
+        speed,
     ]
     logger.info('Initializing with `{}`'.format(args))
     return Chip8VM(*args) if instances == 1 else Chip8VMs([Chip8VM(*args)

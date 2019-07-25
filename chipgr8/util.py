@@ -77,3 +77,6 @@ def findROM(rom):
         if name.lower().startswith(rom) and name.endswith('ch8'):
             return os.path.join(romsPath, name)
     raise Exception('`{}` is not a valid ROM!'.format(rom))
+
+def findVersion():
+    return read(os.path.realpath(os.path.join(__file__, '../VERSION')))

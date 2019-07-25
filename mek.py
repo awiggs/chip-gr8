@@ -5,7 +5,7 @@ from mekpie.compiler import command_test
 # the name of your project
 name = 'chip-gr8' 
 # the .c file containing `main`
-main = 'libchip-gr8.c'
+main = 'libchip_gr8.c'
 # the c compiler configuration to use (gcc_clang, avr_gcc, or emscripten)
 cc = gcc_clang(cmd='gcc', dbg='gdb')
 # any libraries to load

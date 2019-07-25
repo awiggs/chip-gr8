@@ -16,9 +16,11 @@ logger = logging.getLogger(__name__)
 
 SHIFT_QUIRK = 0x01
 LOAD_QUIRK  = 0x02
+DRAW_QUIRK  = 0x04
 
 quirks = {
     "Animal Race.ch8": SHIFT_QUIRK | LOAD_QUIRK,
+    "Astro Dodge.ch8": DRAW_QUIRK,
     "Blinky.ch8": LOAD_QUIRK,
     "Space Invaders.ch8": LOAD_QUIRK,
 }
@@ -69,6 +71,11 @@ class Chip8VM(object):
     __done = False
     '''
     Indicates whether the VM is in a done state
+    '''
+
+    __breakpoints = []
+    '''
+    Breakpoints
     '''
 
     _window = None
@@ -146,6 +153,7 @@ class Chip8VM(object):
         foreground,
         background,
         autoScroll,
+        speed,
     ):
         '''
         Initializes a new Chip8VM object. Responsible for allocating a new VM
@@ -172,16 +180,17 @@ class Chip8VM(object):
         '''
         assert inputHistory is None or len(inputHistory) > 1, 'Input history mut have recorded at least two key presses!'
 
-        self.sampleRate         = sampleRate
-        self.record             = inputHistory is None
-        self.inputHistory       = inputHistory or [(0, 0)]
-        self.aiInputMask        = aiInputMask
-        self.smooth             = smooth
-        self.paused             = startPaused
-        self.__historyPos       = 0
-        self.__freq             = (frequency // 60) * 60
-        self.VM                 = core.initVM(frequency // 60)
-        self.autoScroll  = autoScroll
+        self.sampleRate   = sampleRate
+        self.speed        = int(speed)
+        self.record       = inputHistory is None
+        self.inputHistory = inputHistory or [(0, 0)]
+        self.aiInputMask  = aiInputMask
+        self.smooth       = smooth
+        self.paused       = startPaused
+        self.VM           = core.initVM(frequency // 60)
+        self.autoScroll   = autoScroll
+        self.__historyPos = 0
+        self.__freq       = (frequency // 60) * 60
         if ROM:
             self.loadROM(ROM, reset=False)
         self._window = Window(
@@ -202,6 +211,28 @@ class Chip8VM(object):
     def _clearCtx(self):
         self.__ctx = None
 
+    def addBreakpoint(self, addr):
+        '''
+        Add a breakpoint at addr. When the VM steps to this address (when PC is
+        equal to addr) the CHIP-GR8 display will automatically pause.
+        '''
+        self.__breakpoints.append(addr)
+        return 'Breakpoint added.'
+
+    def removeBreakpoint(self, addr):
+        '''
+        Remove a breakpoint at addr.
+        '''
+        self.__breakpoints.remove(addr)
+        return 'Breakpoint removed.'
+
+    def clearBreakpoints(self):
+        '''
+        Clear all current breakpoints.
+        '''
+        self.__breakpoints.clear()
+        return 'Breakpoints cleared.'
+
     def ctx(self):
         '''
         Returns an instance of the CHIP-8’s VRAM in a numpy compliant format 
@@ -220,23 +251,33 @@ class Chip8VM(object):
             self.__ctx = larray(getVRAM, shape=(width, height))
         return self.__ctx
 
-    def act(self, action):
+    def act(self, action, repeat=1):
         '''
         Allows an AI agent to perform action (action is an input key value) and 
         steps the CHIP-8 emulator forward sampleRate clock cycles.
         '''
-        for _ in range(self.sampleRate):
-            if self.done():
-                break
-            if not self.paused:
-                self.input(action)
-                self.step()
-            if self._window:
-                self.input(action)
-                self._window.update(self)
-                self._window.render(force=self.paused)
-                self._window.sound(self.VM.ST > 0)
-                self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq)
+        for _ in range(repeat):
+            for _ in range(self.sampleRate):
+                if self.done():
+                    break
+                if not self.paused:
+                    self.input(action)
+                    self.step()
+                if self._window:
+                    self.input(action)
+                    self._window.update(self)
+                    if self.paused or not self.VM.clock % self.speed:
+                        self._window.render(force=self.paused)
+                    self._window.sound(self.VM.ST > 0)
+                    self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq * self.speed)
+
+    def actUntil(self, action, predicate):
+        '''
+        Performs act(action) in a loop until the provided predicate returns 
+        true. The predicate is called with the vm instance. 
+        '''
+        while not predicate(self) and not self.done():
+            self.act(action)
 
     def done(self):
         '''
@@ -363,3 +404,6 @@ class Chip8VM(object):
         core.step(self.VM)
         self.__aiKeys   = 0
         self.__userKeys = 0
+        if self.VM.PC in self.__breakpoints:
+            self.paused = True
+            print('Hit Breakpoint 0x{:x}'.format(self.VM.PC))

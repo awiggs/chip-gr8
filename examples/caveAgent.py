@@ -1,51 +1,155 @@
-import os, sys
+###########################################
+#---------------- CAVE AI ----------------#
+#                                         #
+# Hugs the wall on its right and, using   #
+# a classic maze solving strategy to      #
+# escape.                                 #
+###########################################
+
+
+# TODO remove once pip install is working
+import sys, os
 sys.path.append(os.path.expanduser('C:/Users/jonbe/Desktop/SENG499/chip-gr8'))
+
+# Imports
 import chipgr8
-from chipgr8.games import Cave as cave
+from chipgr8.games import Cave
 
-# Globals
-rate = 1
-downFlag = False
 
-vm = chipgr8.init(display=True, ROM=cave.ROM, sampleRate=rate)
+# Global Variables
+vm = chipgr8.init(display=True, ROM=Cave.ROM, sampleRate=1, speed=4)
+position = (0,0)
+direction = 'down'
 
-# wait for the game to finish loading
-for _ in range(1000):
-    vm.act(cave.actions.none)
+# Solves the Cave game
+def caveAgent():
+    global position
 
-# start the game
-vm.act(cave.actions.start)
+    # wait for the title screen to load
+    waitToLoad(1000)
 
-#loop actions
-while not vm.done():
+    # start the game
+    vm.act(Cave.actions.start)
 
-    # get new observations (x,y) position
-    observations = cave.observe(vm)
-    xPos = observations.myX
-    yPos = observations.myY
+    # wait for the first playable scene to load
+    waitToLoad(1000)
 
-    # get the value of my up,down,left,right
+    # Reach the first wall by going down and turn left to get a wall on our right side
+    while not vm.done():
+        obs = Cave.observe(vm)
+        position = getPosition(obs)
+        if canMoveForward():
+            moveForward()
+        else:
+            turnLeft()
+            break
+
+    # We are against a wall: begin wall hugging logic
+    while not vm.done():
+        obs = Cave.observe(vm)
+        position = getPosition(obs)
+        vm.doneIf(obs.done)
+        # If we have a wall on our right we want to move forward if possible
+        if rightSideIsWall(obs): 
+            if canMoveForward():
+                moveForward()
+            else:
+                # We have a wall on our right, but we cant go foward, so we must go left
+                turnLeft() 
+        else:
+            # We have lost our wall, turning right and going 1 step forward should find it again
+            turnRight() 
+            moveForward()
+
+def waitToLoad(t):
+    '''
+    Wait `t` clock cycles
+    '''
+    vm.act(Cave.actions.none, repeat=t)
+
+def getPosition(obs):
+    '''
+    Returns a tuple of the players X and Y coordinates
+    '''
+    return (obs.x, obs.y)
+
+def move(direction):
+    '''
+    Takes a direction and moves the player token 1 step in that direction  
+    '''
+    vm.actUntil(Cave.actions[direction], positionChanged)
+
+def positionChanged(vm):
+    '''
+    Check if the player's position has changed
+    '''
+    return position != getPosition(Cave.observe(vm))
+
+def moveForward():
+    '''
+    Moves the player 1 step forwards (relative to the player)
+    '''
+    move(direction)
+
+def turnRight():
+    '''
+    Turn the player 90 degrees to the right
+    '''
+    global direction
+    if direction == 'left':
+        direction = 'up'
+    elif direction == 'right':
+        direction = 'down'
+    elif direction == 'up':
+        direction = 'right'
+    elif direction == 'down':
+        direction = 'left'
+
+def turnLeft():
+    '''
+    Turn the player 90 degrees to the left
+    '''
+    global direction
+    if direction == 'left':
+        direction = 'down'
+    elif direction == 'right':
+        direction = 'up'
+    elif direction == 'up':
+        direction = 'left'
+    elif direction == 'down':
+        direction = 'right'
+
+def canMoveForward():
+    '''
+    Check if there is a wall infront of the player
+    '''
+    x, y = position
     try:
-        up          = vm.ctx()[xPos, yPos - 1] == 0 # up is safe
-        right       = vm.ctx()[xPos + 1, yPos] == 0 # right is safe
-        down        = vm.ctx()[xPos, yPos + 1] == 0 # down is safe
-        left        = vm.ctx()[xPos - 1, yPos] == 0 # left is safe
-    except:
-        vm.act(cave.actions.right)
-    # Make decisions
-    if right:
-        vm.act(cave.actions.right)
-        continue
-    if up and not downFlag:
-        vm.act(cave.actions.up)
-        continue
-    if down:
-        vm.act(cave.actions.down)
-        downFlag = True
-        continue
-    else:
-        downFlag = False
-    if left:
-        vm.act(cave.actions.left)
-        continue
-    vm.act(cave.actions.none)
+        if direction == 'left':
+            return not vm.ctx()[x - 1, y]
+        if direction == 'right':
+            return not vm.ctx()[x + 1, y]
+        if direction == 'up':
+            return not vm.ctx()[x, y - 1]
+        if direction == 'down':
+            return not vm.ctx()[x, y + 1]
+    except IndexError:
+        waitToLoad(500)
+        return True
+
+def rightSideIsWall(obs):
+    '''
+    Checks if the player has a wall on their right side
+    '''
+    if direction == 'left':
+        return not obs.upClear
+    if direction == 'right':
+        return not obs.downClear
+    if direction == 'up':
+        return not obs.rightClear
+    if direction == 'down':
+        return not obs.leftClear
+
+# Start the algorithm
+if __name__ == '__main__':
+    caveAgent()

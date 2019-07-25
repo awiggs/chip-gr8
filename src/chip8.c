@@ -1,9 +1,12 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "chip8.h"
 #include "ops.h"
+
+void PyInit_libchip_gr8() {}
 
 /**
  * Performs additional changes to the VM after an instruction has occured.

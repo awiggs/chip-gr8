@@ -42,6 +42,10 @@ CHIP_8_INSTRUCTIONS = [
     ('LD V{x} [I]',       'Fx65'),
 ]
 
+RET_OP  = CHIP_8_INSTRUCTIONS[1][1]
+JP_OP   = CHIP_8_INSTRUCTIONS[2][1]
+CALL_OP = CHIP_8_INSTRUCTIONS[3][1]
+
 SUPER_CHIP_48_INSTRUCTIONS = [
     ('SCU {n}',    '00nB'),
     ('SCD {n}',    '00nC'),
@@ -64,11 +68,7 @@ def hexdump(buffer=None, inPath=None, outPath=None):
             outPath If provided, the output file
     @returns        The hex dump
     '''
-    logger.info('Hexdumping buffer: `{}` inPath: `{}` outPath: `{}`'.format(
-        buffer, inPath, outPath
-    ))
     if inPath: buffer = read(inPath, 'rb')
-
     dump = '\n'.join(hexarg(*nibbles(high), *nibbles(low))
         for (high, low) 
         in chunk(2, buffer, pad=b'\0')
@@ -77,27 +77,28 @@ def hexdump(buffer=None, inPath=None, outPath=None):
     return dump
 
 def disassemble(
-    buffer   = None, 
-    inPath   = None, 
-    outPath  = None, 
-    labels   = {}, 
-    decargs  = True, 
-    prefix   = '  ', 
-    hexdump  = False,
-    labelSep = '\n  ',
+    buffer    = None,
+    inPath    = None,
+    outPath   = None,
+    labels    = {},
+    decargs   = True,
+    srcFormat = '{label}{labelSep}{prefix}{instruction}\n',
+    labelSep  = '\n',
+    prefix    = '  ',
+    addrTable = {},
 ):
     '''
     Converts a binary ROM into an assembly source file. Returns the source. 
     Provides option for disassembling with labels and special formats.
 
-    @params buffer      The binary ROM to disassemble as a set of bytes. Optional 
-                        if inPath is provided.
+    @params buffer      The binary ROM to disassemble as a set of bytes. 
+                        Optional if inPath is provided.
 
-            inPath      The path to a binary ROM to disassemble. Optional if buffer 
-                        is provided.
+            inPath      The path to a binary ROM to disassemble. Optional if 
+                        buffer is provided.
 
-            outPath     If the path is provided, the source code is written to that
-                        file.
+            outPath     If the path is provided, the source code is written to 
+                        that file.
 
             labels      A dictionary used to generate labels. If None is passed, 
                         labels will not be generated in the source.
@@ -105,41 +106,95 @@ def disassemble(
             decargs     If True, instruction numerical operands will be output 
                         in decimal rather than hexadecimal.
 
-            prefix      The string used to prefix all instructions.
+            srcFormat   A format stirng for lines of source code. Can contain 
+                        the following variables label, labelSep, prefix,
+                        instruction, addr, and dump. For example for hexdump 
+                        with address use:
 
-            hexdump     If True, all instructions will be postfixed with a 
-                        comment displaying the hexadecimal value of the 
-                        instruction.
-                        
+                            srcFormat='{addr} {dump}'
+
             labelSep    The string used to separate labels from instructions.
+
+            prefix      The string used to prefix all instructions.                        
+
+            addrTable   A table that will have addresses as keys and 
+                        instructions as values.
 
     '''
     logger.info('Disassembling source: `{}` inPath: `{}` outPath: `{}`'.format(
         buffer, inPath, outPath
     ))
-    if inPath: 
-        buffer = read(inPath, 'rb')
-    if not isinstance(labels, dict): 
-        labels = None
-    minaddr = 0x200
-    maxaddr = minaddr + len(buffer)
-    instructions = [disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump)
-        for (high, low)
-        in chunk(2, buffer, pad=b'\0')
-    ]
-    source = ''
-    for (i, instruction) in enumerate(instructions):
-        addr = '0x' + hexarg(minaddr + (i * 2))
-        if labels and addr in labels:
-            source += '{:10s}{}'.format(labels[addr], labelSep)
-        else:
-            source += prefix
-        source += instruction.replace('\n', '\n' + prefix) + '\n'
+    buffer       = read(inPath, 'rb') if inPath else buffer
+    minaddr      = 0x200
+    maxaddr      = minaddr + len(buffer)
+    instructions = list(chunk(1, buffer))
+    remaining    = list(range(len(instructions)))
+    addr         = None
+    labels       = labels if isinstance(labels, dict) else None
+    stack        = []
 
-    if outPath: write(outPath, source)
+    # Disasemble all the instructions
+    while addr is not None or remaining:
+        addr = remaining.pop(0) if addr is None else addr
+        # If next instruction is already set or invalid, skip
+        if addr >= len(instructions):
+            addr = None
+            continue
+        if type(instructions[addr]) is tuple:
+            addr += 2
+            continue
+        # If next instuction low byte is set or invalid, set high byte to byte 
+        # pseudo instruction
+        if addr + 1 >= len(instructions) or type(instructions[addr + 1]) is tuple:
+            high   = int.from_bytes(instructions[addr], 'big')
+            hh, hl = nibbles(high)
+            arg    = hexarg(hh, hl)
+            instructions[addr] = ('BYTE 0x' + arg, arg, 1)
+            addr = None
+            continue
+        # Try to proceed on the basis of a normal instruction
+        (src, dump, size, nextAddr) = disassembleInstruction(
+            instructions,
+            stack, 
+            labels, 
+            decargs, 
+            addr, 
+            minaddr, 
+            maxaddr,
+        )
+        for i in range(size - 1):
+            instructions[addr + i + 1] = (None, None, None)
+            if addr + i in remaining:
+                remaining.remove(addr + i + 1)
+        instructions[addr] = (src, dump, size)
+        addr = nextAddr
+
+    # Flatten instructions to source
+    source = ''
+    i = 0
+    line = 0
+    while i < len(instructions):
+        src, dump, size = instructions[i]
+        realAddr = minaddr + i
+        i += size
+        label = '{:10s}'.format(labels[realAddr]) if labels and realAddr in labels else ''
+        addrTable[realAddr] = line
+        source += srcFormat.format(
+            label       = label, 
+            instruction = src, 
+            labelSep    = labelSep if label else '', 
+            prefix      = prefix,
+            dump        = dump, 
+            addr        = realAddr,
+        )
+        line   += 1
+    if outPath: 
+        write(outPath, source)
     return source
 
-def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump):
+def disassembleInstruction(instructions, stack, labels, decargs, addr, minaddr, maxaddr):
+    high = int.from_bytes(instructions[addr],     'big')
+    low  = int.from_bytes(instructions[addr + 1], 'big')
     (hh, hl), (lh, ll) = nibbles(high), nibbles(low)
     arguments = dict(
         x    = hexarg(hl),
@@ -149,26 +204,41 @@ def disassembleInstruction(high, low, labels, decargs, minaddr, maxaddr, hexdump
         kk   = decarg(lh, ll) if decargs else ('0x' + hexarg(lh, ll)),
         nnn  = '0x' + hexarg(hl, lh, ll),
     )
+    # Defaults
+    dump = hexarg(hh, hl, lh, ll)
+    size = 2
+    nextAddr = addr + 2
     for (fmt, opcode) in CHIP_8_INSTRUCTIONS:
-        if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
+        if opcodeMatch(opcode, dump):
             # Handle labelled addressing
             nnn = int(arguments['nnn'][2:], 16)
-            if (labels is not None 
-                and 'nnn' in fmt 
+            if ('nnn' in fmt
                 and nnn >= minaddr
                 and nnn <  maxaddr
-                and nnn %  2 == 0
+                and (opcodeMatch(JP_OP, dump) or opcodeMatch(CALL_OP, dump))
             ):
-                if arguments['nnn'] not in labels:
-                    labels[arguments['nnn']] = '.label_' + str(len(labels))
-                arguments['nnn'] = labels[arguments['nnn']]
-            return fmt.format(**arguments) + (' ; 0x' + hexarg(hh, hl, lh, ll) if hexdump else '')
-
-    for (fmt, opcode) in SUPER_CHIP_48_INSTRUCTIONS:
-        if opcodeMatch(opcode, hexarg(hh, hl, lh, ll)):
-            return fmt.format(**arguments)
-    
-    return 'BYTE 0x' + hexarg(hh, hl) + '\nBYTE 0x' + hexarg(lh, ll)
+                if labels is not None and instructions[nnn - 0x200] != (None, None, None):
+                    if nnn not in labels:
+                        labels[nnn] = '.label_' + str(len(labels))
+                    arguments['nnn'] = labels[nnn]
+                # Handle RET
+                if opcodeMatch(RET_OP, dump):
+                    nextAddr = stack.pop() if stack else None
+                # Handle JP
+                if opcodeMatch(JP_OP, dump):
+                    nextAddr = nnn - 0x200
+                # Handle CALL
+                if opcodeMatch(CALL_OP, dump):
+                    stack.append(nextAddr)
+                    nextAddr = nnn - 0x200
+            src = fmt.format(**arguments)
+            break
+    else:
+        src  = 'BYTE 0x' + hexarg(hh, hl)
+        dump = hexarg(hh, hl)
+        size = 1
+        nextAddr = None
+    return (src, dump, size, nextAddr)
 
 def opcodeMatch(pattern, instruction):
     return all(p in 'xyzkn' or p == i for (p, i) in zip(pattern, instruction))
