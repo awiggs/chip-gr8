@@ -208,14 +208,14 @@ class ControlModule(object):
 
     def loadBindings(self):
         try:
-            self.__bindings = json.loads(read('KeyConfig.json'))
+            self.__bindings = json.loads(read('chipgr8.keys.json'))
         except:
             logger.warning('No `KeyConfig.json`, using default bindings')
             self.__bindings = self.defaultBindings.copy()
         self.sanityCheckBindings()
 
     def updateBindings(self):
-        write('KeyConfig.json', json.dumps(self.__bindings, indent=4))
+        write('chipgr8.keys.json', json.dumps(self.__bindings, indent=4))
 
     def sanityCheckBindings(self):
 
@@ -241,7 +241,7 @@ class ControlModule(object):
                 validKeyConfig = False
 
         if not validKeyConfig:
-            response = input('KeyConfig.json was invalid.\nWould you like to restore default key bindings? (Y/n)')
+            response = input('chipgr8.keys.json was invalid.\nWould you like to restore default key bindings? (Y/n)')
             if response.lower() in ['y', 'yes']:
                 self.__bindings = self.defaultBindings.copy()
                 self.updateBindings()
