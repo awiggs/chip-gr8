@@ -240,7 +240,7 @@ Squash = Game(
         .addQuery('ballY',   Query(addr=376))
         .addQuery('paddleY', Query(addr=372))
         .addQuery('score',   lambda o, vm: vm.VM.clock)
-        .addQuery('done',    lambda o, vm: o.lives == 0),
+        .addQuery('done',    lambda o, vm: o.lives == 0 and vm.VM.clock > 12),
     actions  = NamedList(
         ['none', 'up', 'down'],
         [ K_NONE, K_1,  K_4  ],
