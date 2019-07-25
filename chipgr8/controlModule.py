@@ -68,6 +68,13 @@ class ControlModule(object):
                 elif event.key == self.__bindings['quit']:
                     logger.debug('Key pressed `quit`')
                     vm.doneIf(True)
+            if event.type == pygame.MOUSEBUTTONDOWN and not vm.autoScroll:
+                if event.button == 4:
+                    logger.debug('Scroll moved up')
+                    vm._window.disModule.scrollUp()
+                elif event.button == 5:
+                    logger.debug('Scroll moved down')
+                    vm._window.disModule.scrollDown()
         if vm.paused:
             for event in events:
                 if event.type == pygame.MOUSEBUTTONDOWN:
