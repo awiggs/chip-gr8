@@ -9,7 +9,7 @@ from chipgr8.repeatAction import RepeatAction
 
 class ControlModule(object):
 
-    defaultBindings = defaultKeyBindings = {
+    defaultBindings = {
         'k0' : pygame.K_x,
         'k1' : pygame.K_1,
         'k2' : pygame.K_2,
