@@ -24,8 +24,8 @@ class DisModule(Module):
             self.surface.get_height(),
         ))
 
-    def render(self):
-        if not self.__yChanged or not self.__disSurface:
+    def render(self, force=False, breakpoints=[]):
+        if not force and (not self.__yChanged or not self.__disSurface):
             return None
         lineHeight = self.theme.font.get_height()
         self.surface.blit(
@@ -38,6 +38,31 @@ class DisModule(Module):
             (1, (self.hl - self.y) * lineHeight),
             (0, self.hl * lineHeight, 299, lineHeight)
         )
+        if isinstance(breakpoints, list):
+            spacesWidth = self.theme.font.render("   ", True, (0,0,0), (0,0,0)).get_width()
+            for e in breakpoints:
+                if isinstance(e, int):
+                    val = self.__addrTable.get(e, 0)
+                    if val is self.hl:
+                        self.surface.blit(
+                            self.theme.font.render(
+                                "*",
+                                self.theme.antialias,
+                                self.theme.background,
+                                self.theme.foreground,
+                            ),
+                            (2 + spacesWidth, (val - self.y) * lineHeight)
+                        )
+                    elif isinstance(e, int):
+                        self.surface.blit(
+                            self.theme.font.render(
+                                "*",
+                                self.theme.antialias,
+                                self.theme.foreground,
+                                self.theme.background,
+                            ),
+                            (2 + spacesWidth, (val - self.y) * lineHeight)
+                        )
         self.__yChanged = False
         return super().render()
 
