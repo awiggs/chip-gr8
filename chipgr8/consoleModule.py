@@ -3,12 +3,15 @@ import logging
 import chipgr8
 import traceback
 
+from chipgr8.util import chunk
+from chipgr8.module import Module
+from chipgr8.repeatAction import RepeatAction
+
 logger = logging.getLogger(__name__)
 
-from .module import Module
-
 from pygame.locals import (
-    KEYDOWN, 
+    KEYDOWN,
+    KEYUP,
     K_LEFT, 
     K_RIGHT, 
     K_UP, 
@@ -23,12 +26,23 @@ from pygame.time import Clock
 
 MARGIN           = 10
 MAX_LINES        = 14
+MAX_LENGTH       = 62
 CURSOR_SWITCH_MS = 500
 VALID_CHARACTERS = '''
     ABCDEFGHIJKLMNOPQRSTUVWXYZ
     abcdefghijklmnopqrstuvwxyz
     0123456789
     ~!@#$%^&*()_-+={}[]|\\:;'"<>,.?/
+'''
+
+HELP = '''
+You can run python expressions and statements in this prompt.
+The chipgr8 API is available through the variable 'chipgr8'
+and the VM instance is available through the variable 'vm'.
+The following aliases are also available.
+
+    play, reset, step, Query, loadROM. addBreakpoint,
+    removeBreakpoint, clearBreakpoints
 '''
 
 class ConsoleModule(Module):
@@ -54,6 +68,7 @@ class ConsoleModule(Module):
         self.cursorOn        = False
         self.cursorCount     = 0
         self.clock           = Clock()
+        self.__repeat        = RepeatAction(0.3, 0.03, None)
         self.__cursorSurface = Surface((1, self.theme.font.get_height()))
         self.__globals       = {
             'chipgr8'     : chipgr8,
@@ -78,19 +93,23 @@ class ConsoleModule(Module):
                 self.inputLine[:self.cursorPos] + 
                 key + 
                 self.inputLine[self.cursorPos:]
-            )
+            )[:MAX_LENGTH - len(self.prompt)]
             self.cursorPos += len(key)
+        self.__repeat.action = lambda : self.insert(key)
 
     def delete(self):
         back = max(self.cursorPos - 1, 0)
         self.inputLine = self.inputLine[:back] + self.inputLine[self.cursorPos:]
         self.cursorPos = back
+        self.__repeat.action = lambda : self.delete()
 
     def left(self):
         self.cursorPos = max(self.cursorPos - 1, 0)
+        self.__repeat.action = lambda : self.left()
 
     def right(self):
         self.cursorPos = min(self.cursorPos + 1, len(self.inputLine))
+        self.__repeat.action = lambda : self.right()
 
     def up(self):
         if not self.history:
@@ -99,22 +118,27 @@ class ConsoleModule(Module):
         self.inputLine  = self.history[newHistoryPos]
         self.historyPos = newHistoryPos
         self.cursorPos  = len(self.inputLine)
-    
+        self.__repeat.action = lambda : self.up()
+
     def down(self):
         newHistoryPos   = max(self.historyPos - 1, -1)
         self.inputLine  = '' if newHistoryPos == -1 else self.history[newHistoryPos]
         self.historyPos = newHistoryPos
         self.cursorPos  = len(self.inputLine)
+        self.__repeat.action = lambda : self.down()
 
     def submit(self):
         inputLine = self.inputLine.strip()
         if inputLine: 
             self.history.insert(0, inputLine)
 
-        outputLine = str(self.evaluate(inputLine))
-        if outputLine:
+        outputLines = str(self.evaluate(inputLine)).split('\n')
+        outputLines.reverse()
+        for outputLine in outputLines:
+            if not outputLine:
+                outputLine = ' '
             self.outputLines = (
-                [outputLine] + 
+                list(chunk(MAX_LENGTH, outputLine, pad='')) + 
                 self.outputLines[:MAX_LINES - 1]
             )
             self.historyPos = -1
@@ -155,12 +179,12 @@ class ConsoleModule(Module):
 
     def update(self, vm, events):
         if vm.paused and 'vm' not in self.__globals:
-            self.initGlobals(vm)            
+            self.initGlobals(vm)
+        self.__repeat.update()
         for event in events:
             if event.type == KEYDOWN:
                 key           = event.key
                 self.cursorOn = True  # So the user sees where he writes
-
                 if   key == K_BACKSPACE: self.delete()
                 elif key == K_DELETE:    self.delete()
                 elif key == K_RETURN:    self.submit()
@@ -169,6 +193,9 @@ class ConsoleModule(Module):
                 elif key == K_UP:        self.up()
                 elif key == K_DOWN:      self.down()
                 else:                    self.insert(event.unicode)
+                self.__repeat.start()
+            if event.type == KEYUP:
+                self.__repeat.stop()
 
         # Re-render inputLine surface
         surface = self.theme.font.render(
@@ -221,6 +248,7 @@ class ConsoleModule(Module):
         def clearBreakpoints():
             return vm.clearBreakpoints()
         
+        self.__globals['help']             = HELP
         self.__globals['vm']               = vm
         self.__globals['play']             = play
         self.__globals['reset']            = reset
