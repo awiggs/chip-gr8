@@ -42,7 +42,7 @@ and the VM instance is available through the variable 'vm'.
 The following aliases are also available.
 
     play, reset, step, Query, loadROM. addBreakpoint,
-    removeBreakpoint, clearBreakpoints
+    removeBreakpoint, clearBreakpoints, read, write
 '''
 
 class ConsoleModule(Module):
@@ -139,14 +139,15 @@ class ConsoleModule(Module):
                 outputLine = ' '
             self.outputLines = (
                 list(chunk(MAX_LENGTH, outputLine, pad='')) + 
-                self.outputLines[:MAX_LINES - 1]
+                self.outputLines
             )
-            self.historyPos = -1
-            for (i, outputLine) in enumerate(self.outputLines):
-                self.__bufferedSurfaces.append((
-                    self.theme.font.get_height() * (i + 1),
-                    self.theme.font.render(outputLine, self.theme.antialias, self.theme.foreground),
-                ))
+        self.outputLines = self.outputLines[:MAX_LINES] 
+        self.historyPos  = -1
+        for (i, outputLine) in enumerate(self.outputLines):
+            self.__bufferedSurfaces.append((
+                self.theme.font.get_height() * (i + 1),
+                self.theme.font.render(outputLine, self.theme.antialias, self.theme.foreground),
+            ))
         self.inputLine = ''
         self.cursorPos = 0
 
