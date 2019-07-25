@@ -36,7 +36,7 @@ export default ({ pageName }) => {
 {`
 # Meet Our Team
 
-We are a group of Software, and Electrical, Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.
+We are a group of Software and Electrical Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.
 `}
                     />
                     <Profile src='../static/img/Eric.png' name='Eric' position='Team Lead / Developer'>
@@ -90,7 +90,7 @@ Andrew is a fourth year Software Engineering student who plans on graduating in 
                         <EjrbussMarkdown 
                             source=
 {`
-He is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.`}
+Forrest is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.`}
                         />
                         <a href='https://www.linkedin.com/in/john-curry/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/john-curry' className='subtle'><i className='fab fa-github' /></a>

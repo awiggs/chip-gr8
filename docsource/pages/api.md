@@ -49,6 +49,15 @@ A direct reference to the CHIP-8 c-struct. This provides direct memory access (e
 
 ## Methods
 
+## `.addBreakpoint(addr)`
+Add a breakpoint at **addr**. When the VM steps to this address (when PC is equal to **addr**) the CHIP-GR8 display will automatically pause.
+
+## `removeBreakpoint(addr)`
+Remove a breakpoint at **addr**.
+
+## `clearBreakpoints()`
+Clear all current breakpoints.
+
 ## `.act(action)`
 Allows an AI agent to perform **action** (action is an input key value) and steps the CHIP-8 emulator forward **sampleRate** clock cycles.
 
@@ -105,6 +114,9 @@ Returns the vm with the minimum value by the given **projection**, a function th
 ## `.reset()`
 Resets all the vms
 
+# defaultBindings
+Default key bindings for the CHIP-GR8 display as a Python dictionary.
+
 # disassemble((Parameters))
 Converts a binary ROM into an assembly source file. Returns the source. Provides option for disassembling with labels and special format.
 
@@ -125,14 +137,19 @@ A dictionary used to generate labels. If None is passed, labels will not be gene
 ## `decargs=True`
 If True, instruction numerical operands will be output in decimal rather than hexadecimal.
 
+## `.srcFormat='{label}{labelSep}{prefix}{instruction}\n'`
+A format string for lines of source code. Can contain the following variables **label**, **labelSep**, **prefix**, **instruction**, **addr**, and **dump**. For example for hexdump with address use:
+
+srcFormat='{addr} {dump}'
+
+## `.labelSep = '\n  '`
+The string used to separate labels from instructions.
+
 ## `prefix=' '`
 The string used to prefix all instructions.
 
-## `hexdump=False`
-If True, all instructions will be postfixed with a comment displaying the hexadecimal value of the instruction.
-
-## `labelSep = '\n '`
-The string used to separate labels from instructions.
+## `.addrTable={}`
+A table that will have addresses as keys and instructions as values.
 
 # findROM(rom)
 Returns the path to **rom** if it is one of the included ROMs.
@@ -166,6 +183,7 @@ Returns a set of game specific observations given a vm.
 Dumps a **buffer** or file at **inPath** as a set of 16bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to **outPath** if provided.
 
 # init((Parameters))
+Returns an instance of **Chip8VM** or **Chip8VMs**. Used to configure the virtual machines for a user or a given AI agent.
 
 ## Parameters
 
@@ -188,7 +206,7 @@ The number of steps that are performed when an AI calls **act**.
 The number of vm instances to create.
 
 ## `display=False`
-If True, the vm will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.
+If True, the vm will create a CHIP-GR8 display. Cannot be True if instances does not equal 1.
 
 ## `smooth=False`
 If True, enables the experimental smooth rendering mode. This mode is slow on most machines.
@@ -200,16 +218,19 @@ If True, the vm instance will start paused.
 The key usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.
 
 ## `foreground=(255, 255, 255)`
-The foreground color of the Chip-Gr8 display as an RGB tuple or hex code.
+The foreground color of the CHIP-GR8 display as an RGB tuple or hex code.
 
 ## `background=(0, 0, 0)`
-The background color of the Chip-Gr8 display as an RGB tuple or hex code.
+The background color of the CHIP-GR8 display as an RGB tuple or hex code.
 
 ## `theme=None`
 The foreground/background color provided as a tuple.
 
 ## `autoScroll=True`
-If True, this disassembly source will automatically scroll when the Chip-Gr8 display is open and a ROM is running.
+If True, this disassembly source will automatically scroll when the CHIP-GR8 display is open and a ROM is running.
+
+## `speed`
+The speed at which the UI is tied to the CHIP-8 frequency. So when speed is 1, games will appear to run at the provided freq, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.
 
 # NamedList (Class)
 A list-like structure that allows elements to be accessed by named properties. Behaves like a Python list, can be iterated, indexed, spliced, and measured with **len()**.
@@ -293,3 +314,6 @@ Refresh the previous values of all currently queried memory addresses.
 ## `names`
 
 Given an **inputHistory** and a set of actions, **names**, as a **NamedList**, produces a human readable version of the **inputHistory**.
+
+# Themes
+A python dictionary of the builtin CHIP-GR8 themes.
