@@ -70,7 +70,7 @@ Jon is a fourth year Software Engineering student aiming to graduate in 2020. He
                         <EjrbussMarkdown 
                             source=
 {`
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+James is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.
 `}
                         />
                         {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
