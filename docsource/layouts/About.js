@@ -39,7 +39,7 @@ export default ({ pageName }) => {
 We are a group of Software, and Electrical, Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.
 `}
                     />
-                    <Profile src='../static/img/Eric.png' name='Eric' position='Developer'>
+                    <Profile src='../static/img/Eric.png' name='Eric' position='Team Lead / Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -57,7 +57,7 @@ Torrey plans to graduate UVic with a Bachelor of Software Engineering degree in 
                         <a href='https://www.linkedin.com/in/torrey-randolph/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/torreyr' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/Jon.png' name='Jon' position='Developer'>
+                    <Profile src='../static/img/Jon.png' name='Jon' position='Artist / Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -104,7 +104,7 @@ Several people made this project possible and we would like to acknowledge their
 ## Faculty Supervisor
 `}
                     />
-                    <Profile src='../static/img/red.png' name='Rich Little' position='Developer'>
+                    <Profile src='../static/img/red.png' name='Rich Little' position='Faculty Supervisor'>
                         <EjrbussMarkdown 
                             source=
 {`
