@@ -68,7 +68,10 @@ def assembleLine(line, labels):
     instruction          = instruction.upper()
     if instruction not in ASSEMBLY_TABLE:
         raise Exception('Unknown instruction {} on line {}!'.format(instruction, lineno))
-    return bytes.fromhex(ASSEMBLY_TABLE[instruction](rest, labels, lineno))
+    try:
+        return bytes.fromhex(ASSEMBLY_TABLE[instruction](rest, labels, lineno))
+    except Exception as error:
+        raise Exception(str(error) + '\n    at "' + source + '"')
 
 def assembleValue(source, labels, lineno, nibbles):
     # constant
