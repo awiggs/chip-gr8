@@ -8,7 +8,7 @@ Torrey plans to graduate UVic with a Bachelor of Software Engineering degree in 
 
 Jon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.
 
-// Text for James here
+James is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.
 
 Andrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.
 
