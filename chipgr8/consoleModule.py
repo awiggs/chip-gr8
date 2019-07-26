@@ -181,6 +181,9 @@ class ConsoleModule(Module):
     def update(self, vm, events):
         if vm.paused and 'vm' not in self.__globals:
             self.initGlobals(vm)
+        if not vm.paused:
+            self.__repeat.stop()
+            return
         self.__repeat.update()
         for event in events:
             if event.type == KEYDOWN:
