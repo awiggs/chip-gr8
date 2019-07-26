@@ -8,12 +8,15 @@ from chipgr8.disassembler import disassemble
 
 class DisModule(Module):
 
-    __addrTable  = None
-    __disSurface = None
-    __hlSurface  = None
-    __lastClock  = 0
-    __yChanged   = False
-    __ROM        = ''
+    __addrTable      = None
+    __disSurface     = None
+    __hlSurface      = None
+    __ulSurface      = None
+    __lastClock      = 0
+    __yChanged       = False
+    __ROM            = ''
+    __mouseOverLine  = -1
+    __showUnderlines = False
 
     def __init__(self, surface, theme):
         super().__init__(surface, theme)
@@ -59,6 +62,13 @@ class DisModule(Module):
             (1, (self.hl - self.y) * lineHeight),
             (0, self.hl * lineHeight, 299, lineHeight)
         )
+        if self.__showUnderlines:
+            underlinedSurface = self.__hulSurface if self.hl == self.__mouseOverLine else self.__ulSurface
+            self.surface.blit(
+                underlinedSurface,
+                (1, (self.__mouseOverLine - self.y) * lineHeight),
+                (0, self.__mouseOverLine * lineHeight, 299, lineHeight)
+            )
         for addr in breakpoints:
             line = self.__addrTable.get(addr, 0)
             self.surface.blit(
@@ -89,13 +99,17 @@ class DisModule(Module):
         self.__addrTable = {}
         self.dis = disassemble(
             inPath    = inPath, 
-            srcFormat = '{addr:03X} {label:10s}{instruction}\n',
+            srcFormat = '{addr:03X} {label:11s}{instruction}\n',
             addrTable = self.__addrTable,
         ).strip().split('\n')
         self.__disSurface = pygame.Surface((299, lineHeight * (len(self.dis) + 100)))
         self.__hlSurface  = pygame.Surface((299, lineHeight * len(self.dis)))
+        self.__ulSurface  = pygame.Surface((299, lineHeight * len(self.dis)))
+        self.__hulSurface = pygame.Surface((299, lineHeight * len(self.dis)))
         self.__disSurface.fill(self.theme.background)
         self.__hlSurface.fill(self.theme.foreground)
+        self.__ulSurface.fill(self.theme.background)
+        self.__hulSurface.fill(self.theme.foreground)
         for (i, source) in enumerate(self.dis):
             self.__disSurface.blit(
                 self.theme.font.render(
@@ -115,6 +129,41 @@ class DisModule(Module):
                 ),
                 (2, i * lineHeight)
             )
+
+        self.__ulSurface = self.__disSurface.copy()
+        self.__hulSurface = self.__hlSurface.copy()
+        for (i, source) in enumerate(self.dis):
+            # Find label names used in instructions
+            label = source.rpartition(".")
+            if label[1] is not '.' or len(label[2].partition(" ")[2]) > 0:
+                continue
+
+            # Calculate label offset
+            ulOffset = self.theme.font.render(label[0], True, (0,0,0), (0,0,0)).get_width()
+
+            self.theme.font.set_underline(True)
+            self.__ulSurface.blit(
+                self.theme.font.render(
+                    ('.' + label[2]),
+                    self.theme.antialias,
+                    self.theme.foreground,
+                    self.theme.background
+                ),
+                (2 + ulOffset, i * lineHeight)
+            )
+            self.theme.font.set_underline(False)
+            
+            self.theme.font.set_underline(True)
+            self.__hulSurface.blit(
+                self.theme.font.render(
+                    ('.' + label[2]),
+                    self.theme.antialias,
+                    self.theme.background,
+                    self.theme.foreground
+                ),
+                (2 + ulOffset, i * lineHeight)
+            )
+            self.theme.font.set_underline(False)
 
     def scrollTo(self, y):
         oldY            = self.y
@@ -142,3 +191,34 @@ class DisModule(Module):
         except ValueError:
             logger.error('Clicked disassembly line did not start with hex address')
             return -1
+
+    def updateMouseOverLine(self, pos):
+        offset = self.surface.get_abs_offset()
+        pos = (pos[0] - offset[0], pos[1] - offset[1])
+        line = -1
+        if not (pos[0] < 0 or pos[0] > self.surface.get_width() or pos[1] < 0 or pos[1] > self.surface.get_height()):
+            line = pos[1] // self.theme.font.get_height() + self.y
+
+        if self.__mouseOverLine is not line:
+            self.__yChanged = True
+        self.__mouseOverLine = line
+
+    def showUnderlines(self, enable):
+        self.__showUnderlines = enable
+
+    def jumpToMousedLabel(self):
+        if self.__mouseOverLine < 0 or self.__mouseOverLine >= len(self.dis):
+            return
+        
+        # Find label names used in instructions
+        label = self.dis[self.__mouseOverLine].rpartition(".")
+        if label[1] is not '.' or len(label[2].partition(" ")[2]) > 0:
+            return
+
+        # label[2] contains the label without the '.' prefix
+        for (i, lineText) in enumerate(self.dis):
+            candidate = lineText.partition("." + label[2])
+            # Confirm that candidate label match is an actual label, and not
+            # matching part of another label (e.g. .label_1 matches .label_11)
+            if len(candidate[2]) > 0 and not candidate[2][0].isdigit():
+                self.scrollTo(i - 3)

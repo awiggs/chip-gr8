@@ -9,6 +9,8 @@ from chipgr8.repeatAction import RepeatAction
 
 class ControlModule(object):
 
+    ctrlHeld = False
+
     defaultBindings = {
         'k0' : pygame.K_x,
         'k1' : pygame.K_1,
@@ -69,23 +71,38 @@ class ControlModule(object):
                 elif event.key == self.__bindings['quit']:
                     logger.debug('Key pressed `quit`')
                     vm.doneIf(True)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LCTRL:
+                    self.ctrlHeld = True
+                    vm._window.disModule.showUnderlines(self.ctrlHeld)
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LCTRL:
+                    self.ctrlHeld = False
+                    vm._window.disModule.showUnderlines(self.ctrlHeld)
             if event.type == pygame.MOUSEBUTTONDOWN and not vm.autoScroll:
                 if event.button == 1:
                     self.__mouseClock.tick()
                     if self.__mouseClock.get_time() < 300:
                         logger.debug('Mouse double-clicked')
-                        addr = vm._window.disModule.getClickedAddr(event.pos)
-                        if addr > -1:
-                            msg = vm.toggleBreakpoint(addr)
-                            logger.debug(msg)
+                        if not self.ctrlHeld:
+                            addr = vm._window.disModule.getClickedAddr(event.pos)
+                            if addr > -1:
+                                msg = vm.toggleBreakpoint(addr)
+                                logger.debug(msg)
                     else:
                         logger.debug('Mouse left-clicked')
+                        if self.ctrlHeld:
+                            logger.debug('Mouse ctrl-clicked')
+                            vm._window.disModule.jumpToMousedLabel()
                 elif event.button == 4:
                     logger.debug('Scroll moved up')
                     vm._window.disModule.scrollUp()
                 elif event.button == 5:
                     logger.debug('Scroll moved down')
                     vm._window.disModule.scrollDown()
+
+            if event.type == pygame.MOUSEMOTION:
+                vm._window.disModule.updateMouseOverLine(event.pos)
         if vm.paused:
             for event in events:
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -93,12 +110,16 @@ class ControlModule(object):
                         self.__mouseClock.tick()
                         if self.__mouseClock.get_time() < 300:
                             logger.debug('Mouse double-clicked')
-                            addr = vm._window.disModule.getClickedAddr(event.pos)
-                            if addr > -1:
-                                msg = vm.toggleBreakpoint(addr)
-                                logger.debug(msg)
+                            if not self.ctrlHeld:
+                                addr = vm._window.disModule.getClickedAddr(event.pos)
+                                if addr > -1:
+                                    msg = vm.toggleBreakpoint(addr)
+                                    logger.debug(msg)
                         else:
                             logger.debug('Mouse left-clicked')
+                            if self.ctrlHeld:
+                                logger.debug('Mouse ctrl-clicked')
+                                vm._window.disModule.jumpToMousedLabel()
                     elif event.button == 4:
                         logger.debug('Scroll moved up')
                         vm._window.disModule.scrollUp()
