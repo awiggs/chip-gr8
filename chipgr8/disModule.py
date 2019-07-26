@@ -78,6 +78,7 @@ class DisModule(Module):
             self.hl = self.__addrTable.get(vm.VM.PC, 0)
             self.scrollTo(self.hl - 3)
         else:
+            self.hl = -1
             self.__yChanged = True
 
     def initDis(self, inPath):
