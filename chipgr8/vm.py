@@ -217,20 +217,26 @@ class Chip8VM(object):
         equal to addr) the CHIP-GR8 display will automatically pause.
         '''
         self.__breakpoints.append(addr)
-        return 'Breakpoint added.'
+        if self._window:
+            self._window.render(force=True, breakpoints=self.__breakpoints)
+        return 'Breakpoint added. ({})'.format(addr)
 
     def removeBreakpoint(self, addr):
         '''
         Remove a breakpoint at addr.
         '''
         self.__breakpoints.remove(addr)
-        return 'Breakpoint removed.'
+        if self._window:
+            self._window.render(force=True, breakpoints=self.__breakpoints)
+        return 'Breakpoint removed. ({})'.format(addr)
 
     def clearBreakpoints(self):
         '''
         Clear all current breakpoints.
         '''
         self.__breakpoints.clear()
+        if self._window:
+            self._window.render(force=True, breakpoints=self.__breakpoints)
         return 'Breakpoints cleared.'
 
     def ctx(self):
@@ -267,7 +273,7 @@ class Chip8VM(object):
                     self.input(action)
                     self._window.update(self)
                     if self.paused or not self.VM.clock % self.speed:
-                        self._window.render(force=self.paused)
+                        self._window.render(force=self.paused, breakpoints=self.__breakpoints)
                     self._window.sound(self.VM.ST > 0)
                     self.pyclock.tick(self.__pausedFreq if self.paused else self.__freq * self.speed)
 

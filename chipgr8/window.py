@@ -82,7 +82,7 @@ class Window():
         self.disModule.update(vm, events)
         self.regModule.update(vm, events)
 
-    def render(self, force=False):
+    def render(self, force=False, breakpoints=[]):
         gameBounds      = self.gameModule.render()
         self.lastFrame += 1
         if gameBounds or force or self.lastFrame > MIN_FRAMES:
@@ -93,7 +93,7 @@ class Window():
                     gameBounds,
                     self.consoleModule.render(),
                     self.statusModule.render(),
-                    self.disModule.render(),
+                    self.disModule.render(force=force, breakpoints=breakpoints),
                     self.regModule.render(),
                 ] if bounds
             ])
