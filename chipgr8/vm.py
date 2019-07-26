@@ -373,7 +373,6 @@ class Chip8VM(object):
         logger.info('Saving state to `{}` for `{}`'.format(path or tag, self))
         if tag:
             path = resolveTag(tag)
-        print('> ', os.path.exists(path))
         if not os.path.exists(path) or force:
             pickle.dump(self.VM, open(path, 'bw'))
         else:
@@ -412,4 +411,3 @@ class Chip8VM(object):
         self.__userKeys = 0
         if self.VM.PC in self.__breakpoints:
             self.paused = True
-            print('Hit Breakpoint 0x{:x}'.format(self.VM.PC))

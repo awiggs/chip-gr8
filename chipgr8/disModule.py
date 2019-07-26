@@ -14,9 +14,27 @@ class DisModule(Module):
 
     def __init__(self, surface, theme):
         super().__init__(surface, theme)
-        self.y      = 0
-        self.hl     = 0
-        self.dis    = []
+        self.y   = 0
+        self.hl  = 0
+        self.dis = []
+        self.__brkSurface = self.theme.font.render(
+            '*',
+            self.theme.antialias,
+            self.theme.foreground,
+            self.theme.background,
+        )
+        self.__brkHlSurface = self.theme.font.render(
+            '*',
+            self.theme.antialias,
+            self.theme.background,
+            self.theme.foreground,
+        )
+        self.__brkSep = self.theme.font.render(
+            '   ',
+            self.theme.antialias,
+            self.theme.background,
+            self.theme.foreground,
+        ).get_width() + 2
         self.surface.fill(self.theme.foreground)
         self.surface.fill(self.theme.background, rect=(
             1, 0,
@@ -38,31 +56,12 @@ class DisModule(Module):
             (1, (self.hl - self.y) * lineHeight),
             (0, self.hl * lineHeight, 299, lineHeight)
         )
-        if isinstance(breakpoints, list):
-            spacesWidth = self.theme.font.render("   ", True, (0,0,0), (0,0,0)).get_width()
-            for e in breakpoints:
-                if isinstance(e, int):
-                    val = self.__addrTable.get(e, 0)
-                    if val is self.hl:
-                        self.surface.blit(
-                            self.theme.font.render(
-                                "*",
-                                self.theme.antialias,
-                                self.theme.background,
-                                self.theme.foreground,
-                            ),
-                            (2 + spacesWidth, (val - self.y) * lineHeight)
-                        )
-                    elif isinstance(e, int):
-                        self.surface.blit(
-                            self.theme.font.render(
-                                "*",
-                                self.theme.antialias,
-                                self.theme.foreground,
-                                self.theme.background,
-                            ),
-                            (2 + spacesWidth, (val - self.y) * lineHeight)
-                        )
+        for addr in breakpoints:
+            line = self.__addrTable.get(addr, 0)
+            self.surface.blit(
+                self.__brkHlSurface if self.hl == line else self.__brkSurface,
+                (self.__brkSep, (line - self.y) * lineHeight)
+            )
         self.__yChanged = False
         return super().render()
 
