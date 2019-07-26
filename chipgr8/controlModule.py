@@ -41,9 +41,10 @@ class ControlModule(object):
         return list(ControlModule.defaultBindings.keys())
 
     def __init__(self):
-        self.__bindings  = None
-        self.__userInput = 0
-        self.__stepper   = None
+        self.__bindings   = None
+        self.__userInput  = 0
+        self.__stepper    = None
+        self.__mouseClock = pygame.time.Clock()
         self.loadBindings()
 
     def update(self, vm, events):
@@ -69,7 +70,17 @@ class ControlModule(object):
                     logger.debug('Key pressed `quit`')
                     vm.doneIf(True)
             if event.type == pygame.MOUSEBUTTONDOWN and not vm.autoScroll:
-                if event.button == 4:
+                if event.button == 1:
+                    self.__mouseClock.tick()
+                    if self.__mouseClock.get_time() < 300:
+                        logger.debug('Mouse double-clicked')
+                        addr = vm._window.disModule.getClickedAddr(event.pos)
+                        if addr > -1:
+                            msg = vm.toggleBreakpoint(addr)
+                            logger.debug(msg)
+                    else:
+                        logger.debug('Mouse left-clicked')
+                elif event.button == 4:
                     logger.debug('Scroll moved up')
                     vm._window.disModule.scrollUp()
                 elif event.button == 5:
@@ -78,7 +89,17 @@ class ControlModule(object):
         if vm.paused:
             for event in events:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 4:
+                    if event.button == 1:
+                        self.__mouseClock.tick()
+                        if self.__mouseClock.get_time() < 300:
+                            logger.debug('Mouse double-clicked')
+                            addr = vm._window.disModule.getClickedAddr(event.pos)
+                            if addr > -1:
+                                msg = vm.toggleBreakpoint(addr)
+                                logger.debug(msg)
+                        else:
+                            logger.debug('Mouse left-clicked')
+                    elif event.button == 4:
                         logger.debug('Scroll moved up')
                         vm._window.disModule.scrollUp()
                     elif event.button == 5:
@@ -100,7 +121,7 @@ class ControlModule(object):
                         vm._window.disModule.scrollDown()
                     elif event.key == self.__bindings['debugHome']:
                         logger.debug('Key pressed: `debugHome`')
-                        vm._window.disModule.scrollTo(0)           
+                        vm._window.disModule.scrollTo(0)
                     elif event.key == self.__bindings['debugEnd']:
                         logger.debug('Key pressed: `End`')
                         vm._window.disModule.scrollTo(4000)

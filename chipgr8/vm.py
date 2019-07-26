@@ -230,6 +230,15 @@ class Chip8VM(object):
             self._window.render(force=True, breakpoints=self.__breakpoints)
         return 'Breakpoint removed. (0x{:x})'.format(addr)
 
+    def toggleBreakpoint(self, addr):
+        '''
+        Toggles a breakpoint at addr.
+        '''
+        if addr in self.__breakpoints:
+            return self.removeBreakpoint(addr)
+        else:
+            return self.addBreakpoint(addr)
+
     def clearBreakpoints(self):
         '''
         Clear all current breakpoints.

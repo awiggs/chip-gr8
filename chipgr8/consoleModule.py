@@ -42,7 +42,8 @@ and the VM instance is available through the variable 'vm'.
 The following aliases are also available.
 
     play, reset, step, Query, loadROM. addBreakpoint,
-    removeBreakpoint, clearBreakpoints, read, write
+    removeBreakpoint, toggleBreakpoint, clearBreakpoints,
+    read, write
 '''
 
 class ConsoleModule(Module):
@@ -249,6 +250,9 @@ class ConsoleModule(Module):
         def removeBreakpoint(addr):
             return vm.removeBreakpoint(addr)
 
+        def toggleBreakpoint(addr):
+            return vm.toggleBreakpoint(addr)
+
         def clearBreakpoints():
             return vm.clearBreakpoints()
         
@@ -261,4 +265,5 @@ class ConsoleModule(Module):
         self.__globals['loadROM']          = loadROM
         self.__globals['addBreakpoint']    = addBreakpoint
         self.__globals['removeBreakpoint'] = removeBreakpoint
+        self.__globals['toggleBreakpoint'] = toggleBreakpoint
         self.__globals['clearBreakpoints'] = clearBreakpoints

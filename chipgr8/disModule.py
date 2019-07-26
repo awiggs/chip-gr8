@@ -1,4 +1,7 @@
 import pygame
+import logging
+
+logger = logging.getLogger(__name__)
 
 from chipgr8.module       import Module
 from chipgr8.disassembler import disassemble
@@ -43,7 +46,7 @@ class DisModule(Module):
         ))
 
     def render(self, force=False, breakpoints=[]):
-        if not force and (not self.__yChanged or not self.__disSurface):
+        if not self.__disSurface or (not self.__yChanged and not force):
             return None
         lineHeight = self.theme.font.get_height()
         self.surface.blit(
@@ -123,3 +126,19 @@ class DisModule(Module):
 
     def scrollDown(self, lines=2):
         self.scrollTo(self.y + lines)
+
+    def getClickedAddr(self, pos):
+        offset = self.surface.get_abs_offset()
+        pos = (pos[0] - offset[0], pos[1] - offset[1])
+        if pos[0] < 0 or pos[0] > self.surface.get_width() or pos[1] < 0 or pos[1] > self.surface.get_height():
+            return -1
+
+        index = pos[1] // self.theme.font.get_height() + self.y
+        if index >= len(self.dis):
+            return -1
+
+        try:
+            return int(self.dis[index].partition(" ")[0], 16)
+        except ValueError:
+            logger.error('Clicked disassembly line did not start with hex address')
+            return -1
