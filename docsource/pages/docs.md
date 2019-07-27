@@ -6,7 +6,7 @@ Chip-Gr8 is distributed through [pip](https://pypi.org/project/pip/)! To install
 pip install chipgr8
 ```
 
-Currently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.
+Currently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations: Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.
 
 For additional documentation see the [Chip-Gr8 User Manual](/static/Chip-Gr8-Reference-Manual.pdf).
 
@@ -20,13 +20,13 @@ import chipgr8
 from chipgr8.games import Squash
 ```
 
-AI agents are trained and run in loops. This is typically done with a while loop where you wait for a VM instance to be done. For our first agent lets just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.
+AI agents are trained and run in loops. This is typically done with a while loop where you wait for a VM instance to be done. For our first agent let's just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.
 
 ```lang:python-readonly
 vm = chipgr8.init(ROM=Squash.ROM)
 ```
 
-By default the API returns a vm appropriate for running a single AI. we will now create a loop where we repeatedly choose a random action. `Squash.actions` provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.
+By default the API returns a vm appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. `Squash.actions` provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.
 
 ```lang:python-readonly
 while not vm.done():
@@ -39,8 +39,8 @@ Our AI will now run, but we will not be able to see it perform any of its action
 
 ```lang:python-readonly
 chipgr8.init(
-    ROM=Squash.ROM, 
-    inputHistory=vm.inputHistory, 
+    ROM=Squash.ROM,
+    inputHistory=vm.inputHistory,
     display=True
 ).go()
 ```
@@ -55,7 +55,7 @@ while not vms.done():
         vm.doneIf(observations.done)
 ```
 
-This approach is a little slow though since we have to run ever VM instance as part of the same process. We can take advantage of a machines multiple cores by using the vms `.inParallel()` method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.
+This approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine's multiple cores by using the vms `.inParallel()` method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.
 
 ```lang:python-readonly
 def action(vm):
@@ -66,38 +66,38 @@ def action(vm):
 vms.inParallel(action)
 ```
 
-We can now just pick the best vm of the bunch. The squash Object thankfully has another observation that can help us, score. We can use the vms `.maxBy()` function to get the best VM.
+We can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the vms `.maxBy()` function to get the best VM.
 
 ```lang:python-readonly
 best = vms.maxBy(lambda vm : Squash.observe(vm).score)
 ```
 
-We can now watch this vm like we did before using its `inputHistory`. Congratulations on writing your first Chip-Gr8 AI agent!. You can find the final code altogether below.
+We can now watch this vm like we did before using its `inputHistory`. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.
 
 ```lang:python-readonly
 import random
-    import chipgr8
-    from chipgr8.games import Squash
+import chipgr8
+from chipgr8.games import Squash
 
-    # This action is performed repeatedly until the VM is done
-    def action(vm):
-        vm.act(random.choice(Squash.actions))
-        observations = Squash.observe(vm)
-        vm.doneIf(observations.done)
+# This action is performed repeatedly until the VM is done
+def action(vm):
+    vm.act(random.choice(Squash.actions))
+    observations = Squash.observe(vm)
+    vm.doneIf(observations.done)
 
-    # Create 100 CHIP-8 VM instances
-    vms = chipgr8.init(ROM=Squash.ROM, instances=100)
-    # Run all our random agents
-    vms.inParallel(action)
-    # Pick the best one
-    best = vms.maxBy(lambda vm : Squash.observe(vm).score)
+# Create 100 CHIP-8 VM instances
+vms = chipgr8.init(ROM=Squash.ROM, instances=100)
+# Run all our random agents
+vms.inParallel(action)
+# Pick the best one
+best = vms.maxBy(lambda vm : Squash.observe(vm).score)
 
-    # Show a replay of the best
-    chipgr8.init(
-        ROM=Squash.ROM, 
-        inputHistory=best.inputHistory, 
-        display=True
-    ).go() 
+# Show a replay of the best
+chipgr8.init(
+    ROM=Squash.ROM,
+    inputHistory=best.inputHistory,
+    display=True
+).go()
 ```
 
 # Querying Memory
@@ -106,7 +106,7 @@ In order to support more games, or find additional values from CHIP-8 RAM for ga
 
  1. Start the Chip-Gr8 display with the ROM you want to query.
  2. Put the VM into a state you understand.
- 3. Create a `Query` object and use a predicate to limit the number of matches memory addresses.
+ 3. Create a `Query` object and use a predicate to limit the number of matching memory addresses.
  4. Change the VM to a new state and use a new predicate to further filter the results.
  5. Repeat step 4 until there is only a single address that matches.
  6. Copy the `Query` out to a file.
@@ -115,7 +115,7 @@ Several steps are made easier by the fact that `Query` and `Observer` objects wi
 
 ## Queries
 
-Queries provide several predicates to limit discover memory addresses, like `.eq()`, `.dec()`, `.lte()`, etc. A list of all memory addresses, along with their previously queried values can be found using the `.previous` field. For example:
+Queries provide several predicates to limit matched memory addresses, like `.eq()`, `.dec()`, `.lte()`, etc. A list of all memory addresses, along with their previously queried values can be found using the `.previous` field. For example:
 
 ```lang:python-readonly
 q = Query(vm)
@@ -137,7 +137,7 @@ q.observe(vm)
 
 ## Observers
 
-Queries can be combined using an `Observer`. An `Observer` is just a collection of queries and functions that provides one method, observe which applies all these queries and functions to a provided VM instance and returns the result as a `NamedList`, a data structure that behaves like a python list, but can be accessed by attributes and keys, for example to create a list of one element with a key 7:
+Queries can be combined using an `Observer`. An `Observer` is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a `NamedList`. A `NamedList` is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element with a key 7:
 
 ```lang:python-readonly
 myNamedList = NamedList(['key'], [7])
@@ -148,7 +148,7 @@ myNameList.key    # By attribute
 myNameList['key'] # By key
 ```
 
-To add queries to an `Observer` you can call `.addQuery()`. This method also accepts functions that take two arguments. The first argument is all non-function observations. The second is the VM instance. This allows you to create combinational queries. For example
+To add queries to an `Observer` you can call `.addQuery()`. This method also accepts as the query a function that takes two arguments. The first argument is a collection of all non-function observations. The second is the VM instance. This allows you to create combinational queries. For example
 
 ```lang:python-readonly
 o = Observer()
@@ -157,7 +157,7 @@ o.addQuery('done',  lambda o, vm : o.lives == 0)
 ```
 
 ## Games
-Games provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8. 
+Games provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8.
 
 # API Reference
 
@@ -169,7 +169,7 @@ Default key bindings for the Chip-Gr8 display as a Python dictionary.
 
 ### `themes`
 
-A python dictionary of the builtin Chip-Gr8 themes.
+A Python dictionary of the builtin Chip-Gr8 themes.
 
 ## Functions
 
@@ -216,7 +216,7 @@ A table that will have addresses as keys and instructions as values.
 Returns the path to `rom` if it is one of the included ROMs.
 
 ##### `hexdump(buffer=None, inPath=None, outPath=None)`
-Dumps a `buffer` or file at `inPath` as a set of 16bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to `outPath` if provided.
+Dumps a `buffer` or file at `inPath` as a set of 16-bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to `outPath` if provided.
 
 ### `init((Parameters))`
 Returns an instance of `Chip8VM` or `Chip8VMs`. Used to configure the virtual machines for a user or a given AI agent.
@@ -251,7 +251,7 @@ If True, enables the experimental smooth rendering mode. This mode is slow on mo
 If True, the vm instance will start paused.
 
 ##### `aiInputMask=0xFFFF`
-The key usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.
+The keys usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.
 
 ##### `foreground=(255, 255, 255)`
 The foreground color of the Chip-Gr8 display as an RGB tuple or hex code.
@@ -266,13 +266,13 @@ The foreground/background color provided as a tuple.
 If True, this disassembly source will automatically scroll when the Chip-Gr8 display is open and a ROM is running.
 
 ##### `speed`
-The speed at which the UI is tied to the CHIP-8 frequency. So when speed is 1, games will appear to run at the provided freq, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.
+The speed at which the UI is tied to the CHIP-8 frequency. When speed is 1, games will appear to run at the provided frequency, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.
 
 ### `readableInputHistory(inputHistory, names)`
 Given an `inputHistory` and a set of actions, `names`, as a `NamedList`, produces a human readable version of the `inputHistory`.
 
 ## Chip8VM (Class)
-Represents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class `Chip8VMs` should always be instantiated using `init`ß.
+Represents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class `Chip8VMs` should always be instantiated using `init`.
 
 #### `.aiInputMask`
 A number that controls what keys are usable by AI agents calling `act` and what keys are usable by a user on their keyboard. For example, an `aiInputMask` of 0x0000 will prevent an AI agent from using any keys, but a user will be able to use all keys.
@@ -299,7 +299,7 @@ The number of steps that are performed when an AI calls `act`.
 A control flag for the experimental smooth rendering mode. This mode is slow on most machines.
 
 #### `.VM`
-A direct reference to the CHIP-8 c-struct. This provides direct memory access (eg. `VM.RAM[0x200]`) as well as register reference (eg. `VM.PC`). Use these fields with caution as inappropriate usage can result in a segmentation fault. Direct references to `VM` should not be maintained (no aliasing).
+A direct reference to the CHIP-8 C-struct. This provides direct memory access (eg. `VM.RAM[0x200]`) as well as register reference (eg. `VM.PC`). Use these fields with caution as inappropriate usage can result in a segmentation fault. Direct references to `VM` should not be maintained (no aliasing).
 
 #### `.addBreakpoint(addr)`
 Add a breakpoint at `addr`. When the VM steps to this address (when PC is equal to `addr`) the Chip-Gr8 display will automatically pause.
@@ -314,7 +314,7 @@ Clear all current breakpoints.
 Allows an AI agent to perform `action` (action is an input key value) and steps the CHIP-8 emulator forward `sampleRate` clock cycles.
 
 #### `.ctx()`
-Returns an instance of the CHIP-8’s VRAM in a numpy compliant format (lazyarray). Pixel values can be addressed directly. (eg. a pixel at position (16, 8) can be retrieved with `ctx()[16, 8]`). This method is safe to call repeatedly.
+Returns an instance of the CHIP-8’s VRAM in a NumPy compliant format (Lazyarray). Pixel values can be addressed directly. (eg. a pixel at position (16, 8) can be retrieved with `ctx()[16, 8]`). This method is safe to call repeatedly.
 
 #### `.done()`
 Returns True if the VM is done and has NOT been reset.
@@ -344,7 +344,7 @@ Reset the VM with the current ROM still loaded.
 Step the VM forward 1 clock cycle.
 
 ## Chip8VMs (Class)
-Represents a collection of CHIP-8 virtual machines. Provides an interface for interfacing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT `done()`.
+Represents a collection of CHIP-8 virtual machines. Provides an interface for dealing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT `done()`.
 
 #### `.done()`
 Returns True if all vm instances are done.
@@ -353,7 +353,7 @@ Returns True if all vm instances are done.
 Find a specific vm using a function `predicate` that takes a vm as an argument and returns True or False. Returns the first vm for which the `predicate` was True. Searches done and not done vms.
 
 #### `.inParallel(do)`
-Performs a function `do` on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes. 
+Performs a function `do` on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes.
 
 #### `.maxBy(projection)`
 Returns the vm with the maximum value by the given `projection`, a function that takes a vm as its argument and returns a comparable value.
@@ -362,10 +362,10 @@ Returns the vm with the maximum value by the given `projection`, a function that
 Returns the vm with the minimum value by the given `projection`, a function that takes a vm as its argument and returns a comparable value.
 
 #### `.reset()`
-Resets all the vms
+Resets all the vms.
 
 ## Game (Class)
-A generic class for game specific data. Game specific instances of this class exist for each included ROM (cave, pong, work).
+A generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).
 
 #### `.actions`
 A list of valid actions (key values) for the given game.
@@ -389,16 +389,16 @@ A list of values for the list in order.
 Append a `name` and `value` to the list.
 
 #### `.nparray()`
-Retrieve the valyes of the list as a numpy ndarray.
+Retrieve the values of the list as a NumPy ndarray.
 
 #### `.tensor()`
-Retrieve the values of the list as a tensorflow tensor.
+Retrieve the values of the list as a TensorFlow tensor.
 
 ## Observer (Class)
 Represents a collection of queries that can be applied to a vm acquiring a set of observations.
 
 #### `.addQuery(name, query)`
-Add a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations `(NamedList)` as the first argument and a vam instance as its second argument. This function argument can be used to create compound queries.
+Add a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations `(NamedList)` as the first argument and a vm instance as its second argument. This function argument can be used to create compound queries.
 
 #### `.observe(vm)`
 Retrieve a set of observations as a `NamedList` given a `vm` instance.

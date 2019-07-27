@@ -4,7 +4,7 @@ We are a group of Software and Electrical Engineering students from the Universi
 
 Eric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.
 
-Torrey plans to graduate UVic with a Bachelor of Software Engineering degree in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.
+Torrey plans to graduate from UVic with a Bachelor of Software Engineering in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.
 
 Jon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.
 

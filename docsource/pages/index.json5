@@ -23,7 +23,7 @@
         },
         {
             title: 'Mid June',
-            content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. Emulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux.'
+            content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. Emulator bugs are fixed en masse to ensure it runs on Windows, Mac, and Linux.'
         },
         {
             title: 'Late June',
@@ -31,7 +31,7 @@
         },
         {
             title: 'Early July',
-            content: 'Development on AI tools has begun; these will be used when developing example AIs. AIs Memory visualization is working minimally, progress still being made and bugs being fixed.'
+            content: 'Development on AI tools has begun; these will be used when developing example AIs. Memory visualization is working minimally, progress still being made and bugs being fixed.'
         },
         {
             title: 'Mid July',
@@ -44,7 +44,7 @@
     ],
     bibliography: [
         'Den of Geek. (2011). The story of Breakout. [online] Available at: https://www.denofgeek.com/us/games/12171/the-story-of-breakout [Accessed Jul. 2019].',
-        '"MarI/O - Machine Learning for Video Games", YouTube, 2019. [Online]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. [Accessed: 22- Jul- 2019]',        
+        '"MarI/O - Machine Learning for Video Games", YouTube, 2019. [Online]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. [Accessed: 22- Jul- 2019]',
         'V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou, D. Wierstra and M. Riedmiller, Playing Atari with Deep Reinforcement Learning. DeepMind Technologies, 2013.',
         '"Joseph Weisbecker", En.wikipedia.org, 2018. [Online]. Available: https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems. [Accessed: 22- Jul- 2019]',
         'Cheatengine.org. (2019). Cheat Engine. [online] Available at: https://www.cheatengine.org/ [Accessed Jul. 2019].',
