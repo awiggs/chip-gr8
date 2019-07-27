@@ -1,4 +1,18 @@
-export default ({ src, name, position, right=false, children }) => right 
+export default ({ src, name, position, right=false, children }) => !src
+    ? (
+        <div className='profile'>
+            <div className='container columns'>
+                <div className='col-12'>
+                    <div className='profile-name'>{name}</div>
+                    <div className='profile-position'>{position}</div>
+                    <div className='profile-content'>
+                        {children}
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+    : (right 
     ? (
         <div className='profile'>
             <div className='container columns'>
@@ -36,4 +50,4 @@ export default ({ src, name, position, right=false, children }) => right
                 </div>
             </div>
         </div>
-    );
+    ));

@@ -20,13 +20,13 @@ import chipgr8
 from chipgr8.games import Squash
 ```
 
-AI agents are trained and run in loops. This is typically done with a while loop where you wait for a VM instance to be done. For our first agent let's just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.
+AI agents are trained and run in loops. This is typically done with a while loop where you wait for a CHIP-8 VM instance to be done. For our first agent let's just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.
 
 ```lang:python-readonly
 vm = chipgr8.init(ROM=Squash.ROM)
 ```
 
-By default the API returns a vm appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. `Squash.actions` provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.
+By default the API returns a VM appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. `Squash.actions` provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.
 
 ```lang:python-readonly
 while not vm.done():
@@ -35,7 +35,13 @@ while not vm.done():
     vm.doneIf(observations.done)
 ```
 
-Our AI will now run, but we will not be able to see it perform any of its actions. We can watch a replay using the `.inputHistory` of our vm. The `.go()` method will loop the vm instance for us.
+Our AI will now run, but we will not be able to see it perform any of its actions. We can watch a replay using the `.inputHistory` of our VM. The `.go()` method will loop the VM instance for us.
+
+```lang:python-readonly
+vms = chipgr8.init(ROM=Squash.ROM, instances=100)
+```
+
+We can now iterate over the vms and run each one like we did before.
 
 ```lang:python-readonly
 chipgr8.init(
@@ -45,7 +51,7 @@ chipgr8.init(
 ).go()
 ```
 
-Our AI is not very good, but we can easily make it better just by running multiple random AI agents and picking the best one. Let’s start by creating 100 vm instances.
+Our AI is not very good, but we can easily make it better just by running multiple random AI agents and picking the best one. Let’s start by creating 100 VM instances.
 
 ```lang:python-readonly
 while not vms.done():
@@ -55,7 +61,7 @@ while not vms.done():
         vm.doneIf(observations.done)
 ```
 
-This approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine's multiple cores by using the vms `.inParallel()` method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.
+This approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine's multiple cores by using the VMs `.inParallel()` method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.
 
 ```lang:python-readonly
 def action(vm):
@@ -66,13 +72,13 @@ def action(vm):
 vms.inParallel(action)
 ```
 
-We can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the vms `.maxBy()` function to get the best VM.
+We can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the VMs `.maxBy()` function to get the best VM.
 
 ```lang:python-readonly
 best = vms.maxBy(lambda vm : Squash.observe(vm).score)
 ```
 
-We can now watch this vm like we did before using its `inputHistory`. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.
+We can now watch this VM like we did before using its `inputHistory`. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.
 
 ```lang:python-readonly
 import random
@@ -137,7 +143,7 @@ q.observe(vm)
 
 ## Observers
 
-Queries can be combined using an `Observer`. An `Observer` is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a `NamedList`. A `NamedList` is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element with a key 7:
+Queries can be combined using an `Observer`. An `Observer` is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a `NamedList`. A `NamedList` is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element, y, with a key, `key`
 
 ```lang:python-readonly
 myNamedList = NamedList(['key'], [7])
@@ -224,13 +230,13 @@ Returns an instance of `Chip8VM` or `Chip8VMs`. Used to configure the virtual ma
 #### Parameters
 
 ##### `ROM=None`
-If provided will load a ROM into the vm instance or instances.
+If provided will load a ROM into the VM instance or instances.
 
 ##### `frequency=600`
-The starting `frequency` of the vm instance or instances. Will automatically be set to the closest multiple of 60 less than or equal to the provided `frequency`.
+The starting `frequency` of the VM instance or instances. Will automatically be set to the closest multiple of 60 less than or equal to the provided `frequency`.
 
 ##### `loadState=None`
-A path or tag to a vm save state that will be loaded into each vm instance or instances.
+A path or tag to a VM save state that will be loaded into each VM instance or instances.
 
 ##### `inputHistory=None`
 If provided user and AI input will be ignored and the history will be used to reproduce the same events.
@@ -239,16 +245,16 @@ If provided user and AI input will be ignored and the history will be used to re
 The number of steps that are performed when an AI calls `act`.
 
 ##### `instances=1`
-The number of vm instances to create.
+The number of VM instances to create.
 
 ##### `display=False`
-If True, the vm will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.
+If True, the VM will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.
 
 ##### `smooth=False`
 If True, enables the experimental smooth rendering mode. This mode is slow on most machines.
 
 ##### `startPaused=False`
-If True, the vm instance will start paused.
+If True, the VM instance will start paused.
 
 ##### `aiInputMask=0xFFFF`
 The keys usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.
@@ -347,22 +353,30 @@ Step the VM forward 1 clock cycle.
 Represents a collection of CHIP-8 virtual machines. Provides an interface for dealing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT `done()`.
 
 #### `.done()`
-Returns True if all vm instances are done.
+Returns True if all VM instances are done.
 
 #### `.find(predicate)`
-Find a specific vm using a function `predicate` that takes a vm as an argument and returns True or False. Returns the first vm for which the `predicate` was True. Searches done and not done vms.
+Find a specific VM using a function `predicate` that takes a VM as an argument and returns True or False. Returns the first VM for which the `predicate` was True. Searches done and not done VMs.
 
 #### `.inParallel(do)`
+<<<<<<< Updated upstream
 Performs a function `do` on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes.
+=======
+Performs a function `do` on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external VM references can become out of date due to pickling across processes. 
+>>>>>>> Stashed changes
 
 #### `.maxBy(projection)`
-Returns the vm with the maximum value by the given `projection`, a function that takes a vm as its argument and returns a comparable value.
+Returns the VM with the maximum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.
 
 #### `.minBy(projection)`
-Returns the vm with the minimum value by the given `projection`, a function that takes a vm as its argument and returns a comparable value.
+Returns the VM with the minimum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.
 
 #### `.reset()`
+<<<<<<< Updated upstream
 Resets all the vms.
+=======
+Resets all the VMs.
+>>>>>>> Stashed changes
 
 ## Game (Class)
 A generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).
@@ -374,7 +388,7 @@ A list of valid actions (key values) for the given game.
 The name of the ROM file for this game.
 
 #### `.observe(vm)`
-Returns a set of game specific observations given a vm.
+Returns a set of game specific observations given a VM.
 
 ## NamedList (Class)
 A list-like structure that allows elements to be accessed by named properties. Behaves like a Python list, can be iterated, indexed, spliced, and measured with `len()`.
@@ -395,7 +409,7 @@ Retrieve the values of the list as a NumPy ndarray.
 Retrieve the values of the list as a TensorFlow tensor.
 
 ## Observer (Class)
-Represents a collection of queries that can be applied to a vm acquiring a set of observations.
+Represents a collection of queries that can be applied to a VM acquiring a set of observations.
 
 #### `.addQuery(name, query)`
 Add a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations `(NamedList)` as the first argument and a vm instance as its second argument. This function argument can be used to create compound queries.
@@ -434,7 +448,7 @@ Filter queried memory addresses by values that are less than `value`.
 Filter queried memory addresses by values that are less than or equal to `value`.
 
 #### `.observe(vm)`
-If a query is successful this method returns the value at the vm instance's RAM corresponding to this query.
+If a query is finished this method returns the value at the VM instance's RAM corresponding to this query, otherwise it raises an Excception.
 
 #### `.unknown()`
 Refresh the previous values of all currently queried memory addresses.

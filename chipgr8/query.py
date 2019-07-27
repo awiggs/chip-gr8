@@ -74,8 +74,9 @@ class Query(object):
 
     def observe(self, vm):
         '''
-        If a query is successful this method returns the value at the vm 
-        instance's RAM corresponding to this query.
+        If a query is finished this method returns the value at the VM 
+        instance's RAM corresponding to this query, otherwise it raises an 
+        Excception.
         '''
         return vm.VM.RAM[self.__addr]
 

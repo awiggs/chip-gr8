@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Boot.less */ "./components/Boot.less");
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Boot_less__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js";
 
 
  // Load Less styles
@@ -183,7 +183,7 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Copyright.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Copyright.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -195,7 +195,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
       lineNumber: 2
     },
     __self: this
-  }), "Group 1 SENG 499 2019");
+  }), "\xA9 Chip-Gr8 Team 2019");
 });
 
 /***/ }),
@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/string-util */ "./lib/string-util.js");
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_string_util__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Editor.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Editor.js";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -445,7 +445,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor */ "./components/Editor.js");
 /* harmony import */ var _lib_no_space_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/no-space-lang */ "./lib/no-space-lang.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -705,7 +705,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocialMedia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMedia */ "./components/SocialMedia.js");
 /* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Copyright */ "./components/Copyright.js");
 /* harmony import */ var _Love__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Love */ "./components/Love.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Footer.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Footer.js";
 
 
 
@@ -793,7 +793,7 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Footer.js
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Love.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Love.js";
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -854,7 +854,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ScrollMarker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollMarker */ "./components/ScrollMarker.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Navbar.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Navbar.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -962,14 +962,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Places.js";
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var home = _ref.home,
       about = _ref.about,
-      reference = _ref.reference;
+      project = _ref.project,
+      api = _ref.api;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/index',
     __source: {
@@ -978,7 +979,7 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "m-md ".concat(home ? 'active' : ''),
+    className: "m-md home ".concat(home ? 'active' : ''),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
@@ -1005,21 +1006,244 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js
       lineNumber: 7
     },
     __self: this
-  }, "About")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/reference',
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }), "About")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + '/docs',
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "m-md ".concat(reference ? 'active' : ''),
+    className: "m-md ".concat(api ? 'active' : ''),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: this
-  }, "Reference")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-book",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }), "Docs")));
+});
+
+/***/ }),
+
+/***/ "./components/Profile.js":
+/*!*******************************!*\
+  !*** ./components/Profile.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Profile.js";
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var src = _ref.src,
+      name = _ref.name,
+      position = _ref.position,
+      _ref$right = _ref.right,
+      right = _ref$right === void 0 ? false : _ref$right,
+      children = _ref.children;
+  return !src ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, children)))) : right ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-8 col-sm-12 hide-sm",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, children)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-4 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: src,
+    className: right ? 'right' : 'left',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12 show-sm",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }, children)))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-4 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: src,
+    className: right ? 'right' : 'left',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-8 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }, children))));
 });
 
 /***/ }),
@@ -1036,7 +1260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1069,7 +1293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SearchResults.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SearchResults.js";
 
 
 
@@ -1197,7 +1421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SideNav.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SideNav.js";
 
 
 
@@ -1295,7 +1519,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SocialMedia.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SocialMedia.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1321,10 +1545,10 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SocialMed
 
 /***/ }),
 
-/***/ "./layouts/API.js":
-/*!************************!*\
-  !*** ./layouts/API.js ***!
-  \************************/
+/***/ "./layouts/About.js":
+/*!**************************!*\
+  !*** ./layouts/About.js ***!
+  \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1339,11 +1563,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SearchResults__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SearchResults */ "./components/SearchResults.js");
 /* harmony import */ var _components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
 /* harmony import */ var _components_Places__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Places */ "./components/Places.js");
-/* harmony import */ var _lib_Pages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/Pages */ "./lib/Pages.js");
-/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
-/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/layouts/API.js";
+/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Profile */ "./components/Profile.js");
+/* harmony import */ var _lib_Pages__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/Pages */ "./lib/Pages.js");
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/layouts/About.js";
 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1357,6 +1582,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
  // Libraries
 
 
@@ -1364,19 +1590,19 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var pageName = _ref.pageName;
-  var page = _lib_Pages__WEBPACK_IMPORTED_MODULE_8__["default"][pageName];
-  var searchCtx = Object(_lib_hooks__WEBPACK_IMPORTED_MODULE_10__["useSearch"])();
+  var page = _lib_Pages__WEBPACK_IMPORTED_MODULE_9__["default"][pageName];
+  var searchCtx = Object(_lib_hooks__WEBPACK_IMPORTED_MODULE_11__["useSearch"])();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "page",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 21
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Boot__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, page, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 22
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1386,63 +1612,353 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
     leftLinks: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Places__WEBPACK_IMPORTED_MODULE_7__["default"], _extends({}, _defineProperty({}, page.place, true), {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 27
       },
       __self: this
     })),
     rightLinks: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       target: "_blank",
-      href: _Vars__WEBPACK_IMPORTED_MODULE_9___default.a.github,
+      href: _Vars__WEBPACK_IMPORTED_MODULE_10___default.a.github,
       className: "p-md subtle-accent",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 28
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fab fa-github fa-lg",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 29
       },
       __self: this
     })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 23
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SearchResults__WEBPACK_IMPORTED_MODULE_5__["default"], {
     searchCtx: searchCtx,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 33
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "content container grid-md",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    source: page.content,
+    source: "\n# Meet Our Team\n\nWe are a group of Software and Electrical Engineering students from the University of Victoria. We combined our passions for programming, artificial intelligence, and gaming to deliver an artificial intelligence tool to help newcomers discover a love for technology and creating something new.\n",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Eric.png",
+    name: "Eric Buss",
+    position: "Team Lead / Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nEric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/ejrbuss/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/ejrbuss",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Torrey.png",
+    right: true,
+    name: "Torrey Randolph",
+    position: "Low Level Architect",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nTorrey plans to graduate from UVic with a Bachelor of Software Engineering in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/torrey-randolph/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/torreyr",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Jon.png",
+    name: "Jonathan Bezeau",
+    position: "Artist / Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nJon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/UltravioletVoodoo",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/James.png",
+    right: true,
+    name: "James Barlow",
+    position: "UI Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nJames is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/jbarlo",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Andrew.png",
+    name: "Andrew Wiggins",
+    position: "Web Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nAndrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/awiggs96/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.github.com/awiggs",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/John.png",
+    right: true,
+    name: "Forrest Curry",
+    position: "AI Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nForrest is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/john-curry/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/john-curry",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\n# Acknowledgements\nChip-Gr8 would not have been possible without the help of several individuals. We would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.\n\n## Faculty Supervisor\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    name: "Rich Little",
+    position: "Faculty Supervisor",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nWe chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\n## Supporters\n\nThank you to Dr. Xiaodai Dong for being the primary instructor this semester.\n\nThank you to Dr. Ilamparithi for being the course coordinator this semester.\n\nThank you to Sai Prakash Reddy Konda, our TA, for their help with the course.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
     },
     __self: this
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 129
     },
     __self: this
   }));
@@ -1464,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/lib/Page.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/lib/Page.js";
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -1703,31 +2219,61 @@ __webpack_require__.r(__webpack_exports__);
   },
   'about': new _Page__WEBPACK_IMPORTED_MODULE_0__["default"]({
     name: 'about',
-    content: '# Meet Our Team\n\nWe are a group of Software, and Electrical, Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.\n\n![placeholder](../static/img/Eric.png)\n![placeholder](../static/img/Torrey.png)\n![placeholder](../static/img/Jon.png)\n![placeholder](../static/img/James.png)\n![placeholder](../static/img/Andrew2.png)\n![placeholder](../static/img/Forrest.png)\n\n# The Project\n\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.',
-    plainTxt: 'Meet Our Team\nWe are a group of Software, and Electrical, Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.\nplaceholder\nplaceholder\nplaceholder\nplaceholder\nplaceholder\nplaceholder\nThe Project\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\n',
+    content: "# Meet Our Team\n\nWe are a group of Software and Electrical Engineering students from the University of Victoria. We combined our passions for programming, artificial intelligence, and gaming to deliver an artificial intelligence tool to help newcomers discover a love for technology and creating something new.\n\nEric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.\n\nTorrey plans to graduate from UVic with a Bachelor of Software Engineering in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.\n\nJon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.\n\nJames is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.\n\nAndrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.\n\nForrest is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.\n\n# Acknowledgements\nChip-Gr8 would not have been possible without the help of several individuals. We would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.\n\n## Faculty Supervisor\nWe chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way.\n\n## Supporters\n\n#### Dr. Xiaodai Dong\nThank you to Dr. Xiaodai Dong for being the primary instructor this semester.\n\n#### Dr. T. Ilamparithi\nThank you to Dr. Ilamparithi for being the course coordinator this semester.\n\n#### Sai Prakash Reddy Konda\nThank you to the TA for their help with the course.\n",
+    plainTxt: 'Meet Our Team\nWe are a group of Software and Electrical Engineering students from the University of Victoria. We combined our passions for programming, artificial intelligence, and gaming to deliver an artificial intelligence tool to help newcomers discover a love for technology and creating something new.\nEric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.\nTorrey plans to graduate from UVic with a Bachelor of Software Engineering in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.\nJon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.\nJames is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.\nAndrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.\nForrest is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.\nAcknowledgements\nChip-Gr8 would not have been possible without the help of several individuals. We would like to acknowledge their involvement in Chip-Gr8&#39;s development journey, and extend to them our deepest thanks.\nFaculty Supervisor\nWe chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way.\nSupporters\nDr. Xiaodai Dong\nThank you to Dr. Xiaodai Dong for being the primary instructor this semester.\nDr. T. Ilamparithi\nThank you to Dr. Ilamparithi for being the course coordinator this semester.\nSai Prakash Reddy Konda\nThank you to the TA for their help with the course.\n',
     route: '/about',
-    layout: '../layouts/API',
+    layout: '../layouts/About',
     title: 'chip-gr8 | About',
     place: 'about'
   }),
+  'docs': new _Page__WEBPACK_IMPORTED_MODULE_0__["default"]({
+    name: 'docs',
+    content: "# Overview\n\nChip-Gr8 is distributed through [pip](https://pypi.org/project/pip/)! To install run\n\n```readonly-nolines\npip install chipgr8\n```\n\nCurrently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations: Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.\n\nFor additional documentation see the [Chip-Gr8 User Manual](/static/Chip-Gr8-Reference-Manual.pdf).\n\n# Writing Your First Agent\n\nThis example will help you write your first AI agent. An AI agent performs two key tasks, observations and actions. To get started import the Chip-Gr8 API, and a game object. The game objects provide useful defaults for observations, actions, as well as the correct ROM name. For this example we will use the game Squash. Squash is a single player Pong. We will also import random for later.\n\n```lang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\n```\n\nAI agents are trained and run in loops. This is typically done with a while loop where you wait for a CHIP-8 VM instance to be done. For our first agent let's just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.\n\n```lang:python-readonly\nvm = chipgr8.init(ROM=Squash.ROM)\n```\n\nBy default the API returns a VM appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. `Squash.actions` provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.\n\n```lang:python-readonly\nwhile not vm.done():\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\n```\n\nOur AI will now run, but we will not be able to see it perform any of its actions. We can watch a replay using the `.inputHistory` of our VM. The `.go()` method will loop the VM instance for us.\n\n```lang:python-readonly\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\n```\n\nWe can now iterate over the vms and run each one like we did before.\n\n```lang:python-readonly\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=vm.inputHistory,\n    display=True\n).go()\n```\n\nOur AI is not very good, but we can easily make it better just by running multiple random AI agents and picking the best one. Let’s start by creating 100 VM instances.\n\n```lang:python-readonly\nwhile not vms.done():\n    for vm in vms:\n        vm.act(random.choice(Squash.actions))\n        observations = Squash.observe(vm)\n        vm.doneIf(observations.done)\n```\n\nThis approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine's multiple cores by using the VMs `.inParallel()` method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.\n\n```lang:python-readonly\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\n\nvms.inParallel(action)\n```\n\nWe can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the VMs `.maxBy()` function to get the best VM.\n\n```lang:python-readonly\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\n```\n\nWe can now watch this VM like we did before using its `inputHistory`. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.\n\n```lang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\n\n# This action is performed repeatedly until the VM is done\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\n\n# Create 100 CHIP-8 VM instances\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\n# Run all our random agents\nvms.inParallel(action)\n# Pick the best one\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\n\n# Show a replay of the best\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=best.inputHistory,\n    display=True\n).go()\n```\n\n# Querying Memory\n\nIn order to support more games, or find additional values from CHIP-8 RAM for games already included with Chip-Gr8, components are provided for querying memory. These components are meant to be used in a workflow like the following:\n\n 1. Start the Chip-Gr8 display with the ROM you want to query.\n 2. Put the VM into a state you understand.\n 3. Create a `Query` object and use a predicate to limit the number of matching memory addresses.\n 4. Change the VM to a new state and use a new predicate to further filter the results.\n 5. Repeat step 4 until there is only a single address that matches.\n 6. Copy the `Query` out to a file.\n\nSeveral steps are made easier by the fact that `Query` and `Observer` objects will print their own source code in the REPL. You can easily write these to a file using the write function.\n\n## Queries\n\nQueries provide several predicates to limit matched memory addresses, like `.eq()`, `.dec()`, `.lte()`, etc. A list of all memory addresses, along with their previously queried values can be found using the `.previous` field. For example:\n\n```lang:python-readonly\nq = Query(vm)\nq.eq(0x04)\nprint(q.previous)\n```\n\nYou can instantiate a finished `Query` by providing an address instead of a VM instance. For example, to create a query that looks at address 0x200:\n\n```lang:python-readonly\nq = Query(0x200)\n```\n\nThis `Query` can now be used to retrieve the value in CHIP-8 RAM at 0x200 of any VM instance with:\n\n```lang:python-readonly\nq.observe(vm)\n```\n\n## Observers\n\nQueries can be combined using an `Observer`. An `Observer` is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a `NamedList`. A `NamedList` is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element, y, with a key, `key`\n\n```lang:python-readonly\nmyNamedList = NamedList(['key'], [7])\n\n# To access the element you can use the following ways:\nmyNameList[0]     # By index\nmyNameList.key    # By attribute\nmyNameList['key'] # By key\n```\n\nTo add queries to an `Observer` you can call `.addQuery()`. This method also accepts as the query a function that takes two arguments. The first argument is a collection of all non-function observations. The second is the VM instance. This allows you to create combinational queries. For example\n\n```lang:python-readonly\no = Observer()\no.addQuery('lives', Query(0x115))\no.addQuery('done',  lambda o, vm : o.lives == 0)\n```\n\n## Games\nGames provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8.\n\n# API Reference\n\n## Constants\n\n### `defaultBindings`\n\nDefault key bindings for the Chip-Gr8 display as a Python dictionary.\n\n### `themes`\n\nA Python dictionary of the builtin Chip-Gr8 themes.\n\n## Functions\n\n### `assemble(source=None, inPath=None, outPath=None)`\nConverts assembly `source` code, or source code contained in `inPath` into binary data (a ROM). This ROM may optionally be written to file with the `outPath` argument.\n\n### `disassemble((Parameters))`\nConverts a binary ROM into an assembly source file. Returns the source. Provides option for disassembling with labels and special format.\n\n##### Parameters\n\n##### `buffer=None`\nThe binary ROM to disassemble as a set of bytes. Optional if `inPath` is provided.\n\n##### `inPath=None`\nThe path to a binary ROM to disassemble. Optional if `buffer` is provided.\n\n##### `outPath=None`\nIf the path is provided, the source code is written to that file.\n\n##### `labels={}`\nA dictionary used to generate labels. If None is passed, labels will not be generated in the source.\n\n##### `decargs=True`\nIf True, instruction numerical operands will be output in decimal rather than hexadecimal.\n\n##### `srcFormat='{label}{labelSep}{prefix}{instruction}\\n'`\nA format string for lines of source code. Can contain the following variables `label`, `labelSep`, `prefix`, `instruction`, `addr`, and `dump`. For example for hexdump with address use:\n\n```lang:python-readonly\nsrcFormat='{addr} {dump}'\n```\n\n##### `labelSep = '\\n  '`\nThe string used to separate labels from instructions.\n\n##### `prefix=' '`\nThe string used to prefix all instructions.\n\n##### `addrTable={}`\nA table that will have addresses as keys and instructions as values.\n\n##### `findROM(rom)`\nReturns the path to `rom` if it is one of the included ROMs.\n\n##### `hexdump(buffer=None, inPath=None, outPath=None)`\nDumps a `buffer` or file at `inPath` as a set of 16-bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to `outPath` if provided.\n\n### `init((Parameters))`\nReturns an instance of `Chip8VM` or `Chip8VMs`. Used to configure the virtual machines for a user or a given AI agent.\n\n#### Parameters\n\n##### `ROM=None`\nIf provided will load a ROM into the VM instance or instances.\n\n##### `frequency=600`\nThe starting `frequency` of the VM instance or instances. Will automatically be set to the closest multiple of 60 less than or equal to the provided `frequency`.\n\n##### `loadState=None`\nA path or tag to a VM save state that will be loaded into each VM instance or instances.\n\n##### `inputHistory=None`\nIf provided user and AI input will be ignored and the history will be used to reproduce the same events.\n\n##### `sampleRate=1`\nThe number of steps that are performed when an AI calls `act`.\n\n##### `instances=1`\nThe number of VM instances to create.\n\n##### `display=False`\nIf True, the VM will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.\n\n##### `smooth=False`\nIf True, enables the experimental smooth rendering mode. This mode is slow on most machines.\n\n##### `startPaused=False`\nIf True, the VM instance will start paused.\n\n##### `aiInputMask=0xFFFF`\nThe keys usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.\n\n##### `foreground=(255, 255, 255)`\nThe foreground color of the Chip-Gr8 display as an RGB tuple or hex code.\n\n##### `background=(0, 0, 0)`\nThe background color of the Chip-Gr8 display as an RGB tuple or hex code.\n\n##### `theme=None`\nThe foreground/background color provided as a tuple.\n\n##### `autoScroll=True`\nIf True, this disassembly source will automatically scroll when the Chip-Gr8 display is open and a ROM is running.\n\n##### `speed`\nThe speed at which the UI is tied to the CHIP-8 frequency. When speed is 1, games will appear to run at the provided frequency, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.\n\n### `readableInputHistory(inputHistory, names)`\nGiven an `inputHistory` and a set of actions, `names`, as a `NamedList`, produces a human readable version of the `inputHistory`.\n\n## Chip8VM (Class)\nRepresents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class `Chip8VMs` should always be instantiated using `init`.\n\n#### `.aiInputMask`\nA number that controls what keys are usable by AI agents calling `act` and what keys are usable by a user on their keyboard. For example, an `aiInputMask` of 0x0000 will prevent an AI agent from using any keys, but a user will be able to use all keys.\n\n#### `.inputHistory`\nA list of number pairs that represent changes in key presses. The first value in the pair is the key value, the second is the clock value when input changed to that value.\n\n#### `.paused`\nA control flag set to True if the display is paused.\n\n#### `.pyclock`\nThe pygame clock used to keep track of time between steps when using the Chip-Gr8 display.\n\n#### `.record`\nA control flag set to True if `inputHistory` is being recorded.\n\n#### `.ROM`\nThe path to the currently loaded game ROM.\n\n#### `.sampleRate`\nThe number of steps that are performed when an AI calls `act`.\n\n#### `.smooth`\nA control flag for the experimental smooth rendering mode. This mode is slow on most machines.\n\n#### `.VM`\nA direct reference to the CHIP-8 C-struct. This provides direct memory access (eg. `VM.RAM[0x200]`) as well as register reference (eg. `VM.PC`). Use these fields with caution as inappropriate usage can result in a segmentation fault. Direct references to `VM` should not be maintained (no aliasing).\n\n#### `.addBreakpoint(addr)`\nAdd a breakpoint at `addr`. When the VM steps to this address (when PC is equal to `addr`) the Chip-Gr8 display will automatically pause.\n\n#### `removeBreakpoint(addr)`\nRemove a breakpoint at `addr`.\n\n#### `clearBreakpoints()`\nClear all current breakpoints.\n\n#### `.act(action)`\nAllows an AI agent to perform `action` (action is an input key value) and steps the CHIP-8 emulator forward `sampleRate` clock cycles.\n\n#### `.ctx()`\nReturns an instance of the CHIP-8’s VRAM in a NumPy compliant format (Lazyarray). Pixel values can be addressed directly. (eg. a pixel at position (16, 8) can be retrieved with `ctx()[16, 8]`). This method is safe to call repeatedly.\n\n#### `.done()`\nReturns True if the VM is done and has NOT been reset.\n\n#### `.doneIf(done)`\nSignals to the VM that it is done.\n\n#### `.go()`\nStarts the VM in an until `done()` loop, calling `act(0)` repeatedly. This is ideal for user interaction without an AI agent.\n\n#### `.input(keys)`\nSend an input key value to the CHIP-8 emulator. Input keys are masked by `aiInputMask`.\n\n#### `.loadROM(nameOrPath, reset=True)`\nLoads a ROM from the provided path or searches for the name in the set of provided ROM files. If `reset` is True then VM will be reset prior to loading the ROM.\n\n#### `.loadState(path=None, tag=None)`\nLoad a CHIP-8 emulator state from a `path` or by associated `tag`, restoring a previous state of `VM`.\n\n#### `.saveState(path=None, tag=None)`\nSave the current CHIP-8 emulator state to a `path` or `tag`.\n\n#### `.reset()`\nReset the VM with the current ROM still loaded.\n\n#### `.step()`\nStep the VM forward 1 clock cycle.\n\n## Chip8VMs (Class)\nRepresents a collection of CHIP-8 virtual machines. Provides an interface for dealing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT `done()`.\n\n#### `.done()`\nReturns True if all VM instances are done.\n\n#### `.find(predicate)`\nFind a specific VM using a function `predicate` that takes a VM as an argument and returns True or False. Returns the first VM for which the `predicate` was True. Searches done and not done VMs.\n\n#### `.inParallel(do)`\n<<<<<<< Updated upstream\nPerforms a function `do` on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes.\n=======\nPerforms a function `do` on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external VM references can become out of date due to pickling across processes. \n>>>>>>> Stashed changes\n\n#### `.maxBy(projection)`\nReturns the VM with the maximum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.\n\n#### `.minBy(projection)`\nReturns the VM with the minimum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.\n\n#### `.reset()`\n<<<<<<< Updated upstream\nResets all the vms.\n=======\nResets all the VMs.\n>>>>>>> Stashed changes\n\n## Game (Class)\nA generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).\n\n#### `.actions`\nA list of valid actions (key values) for the given game.\n\n#### `.ROM`\nThe name of the ROM file for this game.\n\n#### `.observe(vm)`\nReturns a set of game specific observations given a VM.\n\n## NamedList (Class)\nA list-like structure that allows elements to be accessed by named properties. Behaves like a Python list, can be iterated, indexed, spliced, and measured with `len()`.\n\n#### `.names`\nA list of keys for the list in order.\n\n#### `.values`\nA list of values for the list in order.\n\n#### `.append(name, value)`\nAppend a `name` and `value` to the list.\n\n#### `.nparray()`\nRetrieve the values of the list as a NumPy ndarray.\n\n#### `.tensor()`\nRetrieve the values of the list as a TensorFlow tensor.\n\n## Observer (Class)\nRepresents a collection of queries that can be applied to a VM acquiring a set of observations.\n\n#### `.addQuery(name, query)`\nAdd a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations `(NamedList)` as the first argument and a vm instance as its second argument. This function argument can be used to create compound queries.\n\n#### `.observe(vm)`\nRetrieve a set of observations as a `NamedList` given a `vm` instance.\n\n## Query (Class)\nUsed to find a specific memory address. When using a query to search for a memory address, several predicates can be used to filter the query.\n\n#### `.done`\nTrue if the query has found 0 or 1 addresses.\n\n#### `.success`\nTrue if the query has found 1 address.\n\n#### `.dec()`\nFilter queried memory addresses by values that have decreased since the last query.\n\n#### `.eq(value)`\nFilter queried memory addresses by values that equal `value`.\n\n#### `.gt(value)`\nFilter queried memory addresses by values that are greater than `value`.\n\n#### `.gte(value)`\nFilter queried memory addresses by values that are greater than or equal to `value`.\n\n#### `.inc()`\nFilter queried memory addresses by values that have increased since the last query.\n\n#### `.lt(value)`\nFilter queried memory addresses by values that are less than `value`.\n\n#### `.lte(value)`\nFilter queried memory addresses by values that are less than or equal to `value`.\n\n#### `.observe(vm)`\nIf a query is finished this method returns the value at the VM instance's RAM corresponding to this query, otherwise it raises an Excception.\n\n#### `.unknown()`\nRefresh the previous values of all currently queried memory addresses.",
+    plainTxt: 'Overview\nChip-Gr8 is distributed through pip! To install run\nreadonly-nolines\npip install chipgr8\nCurrently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8&#39;s backend for Windows users with the following configurations: Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users pip install should build the backend binaries using your system&#39;s compiler.\nFor additional documentation see the Chip-Gr8 User Manual.\nWriting Your First Agent\nThis example will help you write your first AI agent. An AI agent performs two key tasks, observations and actions. To get started import the Chip-Gr8 API, and a game object. The game objects provide useful defaults for observations, actions, as well as the correct ROM name. For this example we will use the game Squash. Squash is a single player Pong. We will also import random for later.\nlang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\nAI agents are trained and run in loops. This is typically done with a while loop where you wait for a CHIP-8 VM instance to be done. For our first agent let&#39;s just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.\nlang:python-readonly\nvm = chipgr8.init(ROM=Squash.ROM)\nBy default the API returns a VM appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. Squash.actions provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.\nlang:python-readonly\nwhile not vm.done():\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nOur AI will now run, but we will not be able to see it perform any of its actions. We can watch a replay using the .inputHistory of our VM. The .go() method will loop the VM instance for us.\nlang:python-readonly\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\nWe can now iterate over the vms and run each one like we did before.\nlang:python-readonly\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=vm.inputHistory,\n    display=True\n).go()\nOur AI is not very good, but we can easily make it better just by running multiple random AI agents and picking the best one. Let’s start by creating 100 VM instances.\nlang:python-readonly\nwhile not vms.done():\n    for vm in vms:\n        vm.act(random.choice(Squash.actions))\n        observations = Squash.observe(vm)\n        vm.doneIf(observations.done)\nThis approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine&#39;s multiple cores by using the VMs .inParallel() method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.\n```lang:python-readonly\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nvms.inParallel(action)\n```\nWe can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the VMs .maxBy() function to get the best VM.\nlang:python-readonly\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\nWe can now watch this VM like we did before using its inputHistory. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.\n```lang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\nThis action is performed repeatedly until the VM is done\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nCreate 100 CHIP-8 VM instances\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\nRun all our random agents\nvms.inParallel(action)\nPick the best one\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\nShow a replay of the best\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=best.inputHistory,\n    display=True\n).go()\n```\nQuerying Memory\nIn order to support more games, or find additional values from CHIP-8 RAM for games already included with Chip-Gr8, components are provided for querying memory. These components are meant to be used in a workflow like the following:\nStart the Chip-Gr8 display with the ROM you want to query.\nPut the VM into a state you understand.\nCreate a Query object and use a predicate to limit the number of matching memory addresses.\nChange the VM to a new state and use a new predicate to further filter the results.\nRepeat step 4 until there is only a single address that matches.\nCopy the Query out to a file.\n\nSeveral steps are made easier by the fact that Query and Observer objects will print their own source code in the REPL. You can easily write these to a file using the write function.\nQueries\nQueries provide several predicates to limit matched memory addresses, like .eq(), .dec(), .lte(), etc. A list of all memory addresses, along with their previously queried values can be found using the .previous field. For example:\nlang:python-readonly\nq = Query(vm)\nq.eq(0x04)\nprint(q.previous)\nYou can instantiate a finished Query by providing an address instead of a VM instance. For example, to create a query that looks at address 0x200:\nlang:python-readonly\nq = Query(0x200)\nThis Query can now be used to retrieve the value in CHIP-8 RAM at 0x200 of any VM instance with:\nlang:python-readonly\nq.observe(vm)\nObservers\nQueries can be combined using an Observer. An Observer is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a NamedList. A NamedList is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element, y, with a key, key\n```lang:python-readonly\nmyNamedList = NamedList([&#39;key&#39;], [7])\nTo access the element you can use the following ways:\nmyNameList[0]     # By index\nmyNameList.key    # By attribute\nmyNameList[&#39;key&#39;] # By key\n```\nTo add queries to an Observer you can call .addQuery(). This method also accepts as the query a function that takes two arguments. The first argument is a collection of all non-function observations. The second is the VM instance. This allows you to create combinational queries. For example\nlang:python-readonly\no = Observer()\no.addQuery(&#39;lives&#39;, Query(0x115))\no.addQuery(&#39;done&#39;,  lambda o, vm : o.lives == 0)\nGames\nGames provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8.\nAPI Reference\nConstants\ndefaultBindings\nDefault key bindings for the Chip-Gr8 display as a Python dictionary.\nthemes\nA Python dictionary of the builtin Chip-Gr8 themes.\nFunctions\nassemble(source=None, inPath=None, outPath=None)\nConverts assembly source code, or source code contained in inPath into binary data (a ROM). This ROM may optionally be written to file with the outPath argument.\ndisassemble((Parameters))\nConverts a binary ROM into an assembly source file. Returns the source. Provides option for disassembling with labels and special format.\nParameters\nbuffer=None\nThe binary ROM to disassemble as a set of bytes. Optional if inPath is provided.\ninPath=None\nThe path to a binary ROM to disassemble. Optional if buffer is provided.\noutPath=None\nIf the path is provided, the source code is written to that file.\nlabels={}\nA dictionary used to generate labels. If None is passed, labels will not be generated in the source.\ndecargs=True\nIf True, instruction numerical operands will be output in decimal rather than hexadecimal.\nsrcFormat=&#39;{label}{labelSep}{prefix}{instruction}\\n&#39;\nA format string for lines of source code. Can contain the following variables label, labelSep, prefix, instruction, addr, and dump. For example for hexdump with address use:\nlang:python-readonly\nsrcFormat=&#39;{addr} {dump}&#39;\nlabelSep = &#39;\\n  &#39;\nThe string used to separate labels from instructions.\nprefix=&#39; &#39;\nThe string used to prefix all instructions.\naddrTable={}\nA table that will have addresses as keys and instructions as values.\nfindROM(rom)\nReturns the path to rom if it is one of the included ROMs.\nhexdump(buffer=None, inPath=None, outPath=None)\nDumps a buffer or file at inPath as a set of 16-bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to outPath if provided.\ninit((Parameters))\nReturns an instance of Chip8VM or Chip8VMs. Used to configure the virtual machines for a user or a given AI agent.\nParameters\nROM=None\nIf provided will load a ROM into the VM instance or instances.\nfrequency=600\nThe starting frequency of the VM instance or instances. Will automatically be set to the closest multiple of 60 less than or equal to the provided frequency.\nloadState=None\nA path or tag to a VM save state that will be loaded into each VM instance or instances.\ninputHistory=None\nIf provided user and AI input will be ignored and the history will be used to reproduce the same events.\nsampleRate=1\nThe number of steps that are performed when an AI calls act.\ninstances=1\nThe number of VM instances to create.\ndisplay=False\nIf True, the VM will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.\nsmooth=False\nIf True, enables the experimental smooth rendering mode. This mode is slow on most machines.\nstartPaused=False\nIf True, the VM instance will start paused.\naiInputMask=0xFFFF\nThe keys usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.\nforeground=(255, 255, 255)\nThe foreground color of the Chip-Gr8 display as an RGB tuple or hex code.\nbackground=(0, 0, 0)\nThe background color of the Chip-Gr8 display as an RGB tuple or hex code.\ntheme=None\nThe foreground/background color provided as a tuple.\nautoScroll=True\nIf True, this disassembly source will automatically scroll when the Chip-Gr8 display is open and a ROM is running.\nspeed\nThe speed at which the UI is tied to the CHIP-8 frequency. When speed is 1, games will appear to run at the provided frequency, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.\nreadableInputHistory(inputHistory, names)\nGiven an inputHistory and a set of actions, names, as a NamedList, produces a human readable version of the inputHistory.\nChip8VM (Class)\nRepresents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class Chip8VMs should always be instantiated using init.\n.aiInputMask\nA number that controls what keys are usable by AI agents calling act and what keys are usable by a user on their keyboard. For example, an aiInputMask of 0x0000 will prevent an AI agent from using any keys, but a user will be able to use all keys.\n.inputHistory\nA list of number pairs that represent changes in key presses. The first value in the pair is the key value, the second is the clock value when input changed to that value.\n.paused\nA control flag set to True if the display is paused.\n.pyclock\nThe pygame clock used to keep track of time between steps when using the Chip-Gr8 display.\n.record\nA control flag set to True if inputHistory is being recorded.\n.ROM\nThe path to the currently loaded game ROM.\n.sampleRate\nThe number of steps that are performed when an AI calls act.\n.smooth\nA control flag for the experimental smooth rendering mode. This mode is slow on most machines.\n.VM\nA direct reference to the CHIP-8 C-struct. This provides direct memory access (eg. VM.RAM[0x200]) as well as register reference (eg. VM.PC). Use these fields with caution as inappropriate usage can result in a segmentation fault. Direct references to VM should not be maintained (no aliasing).\n.addBreakpoint(addr)\nAdd a breakpoint at addr. When the VM steps to this address (when PC is equal to addr) the Chip-Gr8 display will automatically pause.\nremoveBreakpoint(addr)\nRemove a breakpoint at addr.\nclearBreakpoints()\nClear all current breakpoints.\n.act(action)\nAllows an AI agent to perform action (action is an input key value) and steps the CHIP-8 emulator forward sampleRate clock cycles.\n.ctx()\nReturns an instance of the CHIP-8’s VRAM in a NumPy compliant format (Lazyarray). Pixel values can be addressed directly. (eg. a pixel at position (16, 8) can be retrieved with ctx()[16, 8]). This method is safe to call repeatedly.\n.done()\nReturns True if the VM is done and has NOT been reset.\n.doneIf(done)\nSignals to the VM that it is done.\n.go()\nStarts the VM in an until done() loop, calling act(0) repeatedly. This is ideal for user interaction without an AI agent.\n.input(keys)\nSend an input key value to the CHIP-8 emulator. Input keys are masked by aiInputMask.\n.loadROM(nameOrPath, reset=True)\nLoads a ROM from the provided path or searches for the name in the set of provided ROM files. If reset is True then VM will be reset prior to loading the ROM.\n.loadState(path=None, tag=None)\nLoad a CHIP-8 emulator state from a path or by associated tag, restoring a previous state of VM.\n.saveState(path=None, tag=None)\nSave the current CHIP-8 emulator state to a path or tag.\n.reset()\nReset the VM with the current ROM still loaded.\n.step()\nStep the VM forward 1 clock cycle.\nChip8VMs (Class)\nRepresents a collection of CHIP-8 virtual machines. Provides an interface for dealing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT done().\n.done()\nReturns True if all VM instances are done.\n.find(predicate)\nFind a specific VM using a function predicate that takes a VM as an argument and returns True or False. Returns the first VM for which the predicate was True. Searches done and not done VMs.\n.inParallel(do)\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream\nPerforms a function do on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes.\nPerforms a function do on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external VM references can become out of date due to pickling across processes. \nStashed changes\n\n\n\n\n\n\n\n.maxBy(projection)\nReturns the VM with the maximum value by the given projection, a function that takes a VM as its argument and returns a comparable value.\n.minBy(projection)\nReturns the VM with the minimum value by the given projection, a function that takes a VM as its argument and returns a comparable value.\n.reset()\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream\nResets all the vms.\nResets all the VMs.\nStashed changes\n\n\n\n\n\n\n\nGame (Class)\nA generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).\n.actions\nA list of valid actions (key values) for the given game.\n.ROM\nThe name of the ROM file for this game.\n.observe(vm)\nReturns a set of game specific observations given a VM.\nNamedList (Class)\nA list-like structure that allows elements to be accessed by named properties. Behaves like a Python list, can be iterated, indexed, spliced, and measured with len().\n.names\nA list of keys for the list in order.\n.values\nA list of values for the list in order.\n.append(name, value)\nAppend a name and value to the list.\n.nparray()\nRetrieve the values of the list as a NumPy ndarray.\n.tensor()\nRetrieve the values of the list as a TensorFlow tensor.\nObserver (Class)\nRepresents a collection of queries that can be applied to a VM acquiring a set of observations.\n.addQuery(name, query)\nAdd a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations (NamedList) as the first argument and a vm instance as its second argument. This function argument can be used to create compound queries.\n.observe(vm)\nRetrieve a set of observations as a NamedList given a vm instance.\nQuery (Class)\nUsed to find a specific memory address. When using a query to search for a memory address, several predicates can be used to filter the query.\n.done\nTrue if the query has found 0 or 1 addresses.\n.success\nTrue if the query has found 1 address.\n.dec()\nFilter queried memory addresses by values that have decreased since the last query.\n.eq(value)\nFilter queried memory addresses by values that equal value.\n.gt(value)\nFilter queried memory addresses by values that are greater than value.\n.gte(value)\nFilter queried memory addresses by values that are greater than or equal to value.\n.inc()\nFilter queried memory addresses by values that have increased since the last query.\n.lt(value)\nFilter queried memory addresses by values that are less than value.\n.lte(value)\nFilter queried memory addresses by values that are less than or equal to value.\n.observe(vm)\nIf a query is finished this method returns the value at the VM instance&#39;s RAM corresponding to this query, otherwise it raises an Excception.\n.unknown()\nRefresh the previous values of all currently queried memory addresses.\n',
+    route: '/docs',
+    layout: '../layouts/API',
+    title: 'chip-gr8 | API',
+    place: 'api'
+  }),
   'index': new _Page__WEBPACK_IMPORTED_MODULE_0__["default"]({
     name: 'index',
-    content: '# Introduction\n\nProject page dedicated to the demonstration and information of fourth year design project.\n\n~~We are currently in project planning phase so stay tuned for future updates!~~\n\n<Insert some text explaining how we\'re fourth year engineering students making our capstone project and decided to create Chip-Gr8>\n\n# About\n(Might want to move this section either to the About Page or just have this as a brief summary?)\n\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\n\n# Timeline\n\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\n\n**Early May**\n\n> Started brainstorming ideas for the course project\n\n**Mid May**\n\n> Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started \n>\n> Project is named "CHIP-GR8" (pronounced Chip-Great)\n\n**Late May**\n\n> Design documentation is filled out via team discussions\n>\n> Prototyping work begins\n\n**Early June**\n\n> Python wrapper and C-based emulator programming begins\n>\n> Work is focused on the C-based emulator and the CTypes integration\n\n**Mid June**\n\n> Visualization is completed; CHIP-8 ROMs can be visualized with no input\n>\n> Emulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux\n\n**Late June**\n\n> C-based emulator is completed, therefore project milestone 1 is completed\n>\n> Python integration is completed, therefore project milestone 2 is completed\n>\n> Support for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule\n>\n> Memory visualization milestone is started\n>\n> Final bugs are squashed from previous milestones\n\n**Early July**\n\n> Development on AI tools has begun; these will be used when developing  AIs\n>\n> Memory visualization is working minimally, progress still being made and bugs being fixed\n\n**Mid July**\n\n> Memory visualization module is completed, therefore concluding milestone 4\n>\n> AI tools have been completed, therefore completing milestone 5\n>\n> Development on example AIs begins\n\n**Late July**\n\n> Example AIs are worked on to provide demonstration-worthy agents\n>\n> Final bugs are wrapped up if time permits\n\nProject set to be completed by August 9th, 2019.\n',
-    plainTxt: 'Introduction\nProject page dedicated to the demonstration and information of fourth year design project.\n~~We are currently in project planning phase so stay tuned for future updates!~~\n&lt;Insert some text explaining how we&#39;re fourth year engineering students making our capstone project and decided to create Chip-Gr8&gt;\nAbout\n(Might want to move this section either to the About Page or just have this as a brief summary?)\nThe project pertains to the design and implementation of a Chip-8 emulator and AI research environment. We hope to design a high performance emulation engine with a Python API for integration with modern Machine Learning and AI libraries. Future work would be to add more architectures to the emulator.\nTimeline\nBelow is a general timeline describing how the project evolved from the beginning, May 2019, of the course until its final stages of development, August 2019. Intimate technical details are omitted in this timeline; it is only focused on the general technical achievements and project milestones.  Additionally, no project details are included in this timeline that do not pertain to the Chip-Gr8 application (i.e. no report details, etc.).\nEarly May\nStarted brainstorming ideas for the course project\n\nMid May\nIdea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started \nProject is named &quot;CHIP-GR8&quot; (pronounced Chip-Great)\n\nLate May\nDesign documentation is filled out via team discussions\nPrototyping work begins\n\nEarly June\nPython wrapper and C-based emulator programming begins\nWork is focused on the C-based emulator and the CTypes integration\n\nMid June\nVisualization is completed; CHIP-8 ROMs can be visualized with no input\nEmulator bugs are fixed en masse to ensure it runs in Windows, Mac, and Linux\n\nLate June\nC-based emulator is completed, therefore project milestone 1 is completed\nPython integration is completed, therefore project milestone 2 is completed\nSupport for keyboard input is operational, therefore project milestone 3 is completed ahead of schedule\nMemory visualization milestone is started\nFinal bugs are squashed from previous milestones\n\nEarly July\nDevelopment on AI tools has begun; these will be used when developing  AIs\nMemory visualization is working minimally, progress still being made and bugs being fixed\n\nMid July\nMemory visualization module is completed, therefore concluding milestone 4\nAI tools have been completed, therefore completing milestone 5\nDevelopment on example AIs begins\n\nLate July\nExample AIs are worked on to provide demonstration-worthy agents\nFinal bugs are wrapped up if time permits\n\nProject set to be completed by August 9th, 2019.\n',
+    content: "Chip-Gr8 is a sandbox for creating artificial intelligence agents for retro video games like Pong, Breakout, and Space Invaders \\[1\\]. Chip-Gr8 lets you interactively program AI agents, easily record their behaviour, collect data, pause and play their actions, and even play against them! If you have never programmed an AI before, Chip-Gr8 is a great place to start!\n\n# Installing\n\nChip-Gr8 is a Python package. Use pip to install it!\n\n```readonly-nolines\npip install chipgr8\n```\n\n# Getting Started\n\nIf you want to play a game using Chip-Gr8, all you have to do is start it on the command line! For example, to play Breakout you would run\n\n```readonly-nolines\npython -m chipgr8 -r breakout\n```\n\nYou will be greeted by the Chip-Gr8 display and can start playing!\n\n![Alt Text](../static/img/breakout.gif)\n\nCreating an AI agent is just as straightforward, just drop the following code into your favorite text editor and you are ready to go!\n\n```lang:python-readonly\nimport chipgr8\nfrom chipgr8.games import Breakout\n\nvm = chipgr8.init(display=True, ROM=Breakout.ROM)\nwhile not vm.done():\n    vm.act(Breakout.actions.left)\n```\n\nTo find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](../static/Chip-Gr8-Reference-Manual.pdf), or head over to the [docs](../docs)!\n\n## Themes\nThe Chip-Gr8 UI harkens back to the retro games it houses, but modern conveniences are not all gone. You can play and watch your AI agent play in style with customizable themes, here are some of our favorites!\n\n![ThemeGrid](../static/img/themes/Grid.png)\n\n# The Project\nChip-Gr8 is the capstone project for six Engineering students at the University of Victoria. Chip-Gr8's goal is to provide a high performance CHIP-8 emulator and a user friendly Python API that seamlessly integrates with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the [SNES](https://www.youtube.com/watch?v=qv6UVOQ0F44) \\[2\\] and [Atari](https://arxiv.org/pdf/1312.5602v1.pdf) \\[3\\] systems.\n\n## What is Chip-Gr8?\nAt its core, Chip-Gr8 is an emulator of the CHIP-8 system. Developed in the 1970's by [Joseph Weisbecker](https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems) \\[4\\], CHIP-8 was meant to be a simple system that programmers could use for beginner video game development. Many simple games, including Pong, Space Invaders, and Breakout, were programmed for the CHIP-8 throughout the 70s and 80s.\n\nWhat seperates Chip-Gr8 from similar CHIP-8 emulation projects is its focus on enabling AI agents. Chip-Gr8 provides pre-built memory maps that translate the CHIP-8's 4K RAM into relevant game data like player position, lives, and game time. Included with this data are the tools used to gather it, meaning new features can easily be added using a similar querying model used by popular gaming memory tools like [Cheat Engine](https://www.cheatengine.org/) \\[5\\]. The CHIP-8 emulator itself is implemented in C and designed to be run in parallel, making it easy to train many AI agents at once.\n\nChip-Gr8 aims to scale with a user's development goals, from procedural AIs that follow the ball in pong, to a decision tree that makes a decision based off environmental features, to a neural network trained on the pixel buffer of games.\n\n## Technology Stack\nThe Chip-Gr8 API is written in Python to ensure that it can interact with the best open source AI libraries available, like [scikit-learn](https://scikit-learn.org/stable/) \\[6\\], [PyTorch](https://pytorch.org/) \\[7\\], and [TensorFlow](https://www.tensorflow.org/) library \\[8\\]. Chip-Gr8 is built enitrely on top of open source software. Chip-Gr8 depends on\n\n- [NumPy](https://numpy.org/) for presenting numeric data \\[9\\],\n- [pygame](https://www.pygame.org/news) for rendering a cross platform display \\[10\\],\n- and [Lazyarray](https://lazyarray.readthedocs.io/en/latest/) for sparse data accesses \\[11\\].\n\n# Project Timeline\n\nPrimary development of Chip-Gr8 occurred over the Summer of 2019, the timeline below outlines Chip-Gr8's progress.\n",
+    plainTxt: 'Chip-Gr8 is a sandbox for creating artificial intelligence agents for retro video games like Pong, Breakout, and Space Invaders [1]. Chip-Gr8 lets you interactively program AI agents, easily record their behaviour, collect data, pause and play their actions, and even play against them! If you have never programmed an AI before, Chip-Gr8 is a great place to start!\nInstalling\nChip-Gr8 is a Python package. Use pip to install it!\nreadonly-nolines\npip install chipgr8\nGetting Started\nIf you want to play a game using Chip-Gr8, all you have to do is start it on the command line! For example, to play Breakout you would run\nreadonly-nolines\npython -m chipgr8 -r breakout\nYou will be greeted by the Chip-Gr8 display and can start playing!\nAlt Text\nCreating an AI agent is just as straightforward, just drop the following code into your favorite text editor and you are ready to go!\n```lang:python-readonly\nimport chipgr8\nfrom chipgr8.games import Breakout\nvm = chipgr8.init(display=True, ROM=Breakout.ROM)\nwhile not vm.done():\n    vm.act(Breakout.actions.left)\n```\nTo find out more about Chip-Gr8, its API, included games, and more examples, download the Reference Manual, or head over to the docs!\nThemes\nThe Chip-Gr8 UI harkens back to the retro games it houses, but modern conveniences are not all gone. You can play and watch your AI agent play in style with customizable themes, here are some of our favorites!\nThemeGrid\nThe Project\nChip-Gr8 is the capstone project for six Engineering students at the University of Victoria. Chip-Gr8&#39;s goal is to provide a high performance CHIP-8 emulator and a user friendly Python API that seamlessly integrates with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the SNES [2] and Atari [3] systems.\nWhat is Chip-Gr8?\nAt its core, Chip-Gr8 is an emulator of the CHIP-8 system. Developed in the 1970&#39;s by Joseph Weisbecker [4], CHIP-8 was meant to be a simple system that programmers could use for beginner video game development. Many simple games, including Pong, Space Invaders, and Breakout, were programmed for the CHIP-8 throughout the 70s and 80s.\nWhat seperates Chip-Gr8 from similar CHIP-8 emulation projects is its focus on enabling AI agents. Chip-Gr8 provides pre-built memory maps that translate the CHIP-8&#39;s 4K RAM into relevant game data like player position, lives, and game time. Included with this data are the tools used to gather it, meaning new features can easily be added using a similar querying model used by popular gaming memory tools like Cheat Engine [5]. The CHIP-8 emulator itself is implemented in C and designed to be run in parallel, making it easy to train many AI agents at once.\nChip-Gr8 aims to scale with a user&#39;s development goals, from procedural AIs that follow the ball in pong, to a decision tree that makes a decision based off environmental features, to a neural network trained on the pixel buffer of games.\nTechnology Stack\nThe Chip-Gr8 API is written in Python to ensure that it can interact with the best open source AI libraries available, like scikit-learn [6], PyTorch [7], and TensorFlow library [8]. Chip-Gr8 is built enitrely on top of open source software. Chip-Gr8 depends on\nNumPy for presenting numeric data [9],\npygame for rendering a cross platform display [10],\nand Lazyarray for sparse data accesses [11].\n\nProject Timeline\nPrimary development of Chip-Gr8 occurred over the Summer of 2019, the timeline below outlines Chip-Gr8&#39;s progress.\n',
     route: '/index',
     layout: '../layouts/Docs',
     title: 'chip-gr8',
-    subtitle: 'Chip 8 Emulation for AI',
-    place: 'home'
-  }),
-  'reference': new _Page__WEBPACK_IMPORTED_MODULE_0__["default"]({
-    name: 'reference',
-    content: '# References\nResearch for this project was a continuous process that took course over several months.\n\n< List research references here>  \n\n### Faculty Supervisor\n\n#### Rich Little\n<Picture>\n\nWe chose Rich Little as our faculty supervisor for his ?\n\n\n### Supporters  \n\n#### Dr. Ilamparithi\nThank you to Dr. Ilamparithi for being the course supervisor this term.\n\n#### <Insert TAs Name>\nThank you to the TA for his help with the course.\n',
-    plainTxt: 'References\nResearch for this project was a continuous process that took course over several months.\n&lt; List research references here&gt;  \nFaculty Supervisor\nRich Little\nWe chose Rich Little as our faculty supervisor for his ?\nSupporters\nDr. Ilamparithi\nThank you to Dr. Ilamparithi for being the course supervisor this term.\n<Insert TAs Name>\nThank you to the TA for his help with the course.\n',
-    route: '/reference',
-    layout: '../layouts/API',
-    title: 'chip-gr8 | Reference',
-    place: 'reference'
+    subtitle: 'Chip-Gr8 – Emulation for AI',
+    place: 'home',
+    version: 'v0.1.0',
+    timeline: [{
+      title: 'Early May',
+      content: "Started brainstorming ideas for the University of Victoria's SENG 499 course project."
+    }, {
+      title: 'Mid May',
+      content: 'Idea to develop a CHIP-8 emulator with AI teaching capabilities solidified; documentation is started. Project is named "Chip-Gr8" (pronounced Chip-Great).'
+    }, {
+      title: 'Late May',
+      content: 'Design documentation is filled out via team discussions. Prototyping work begins.'
+    }, {
+      title: 'Early June',
+      content: 'Python wrapper and C-based emulator programming begins. Work is focused on the C-based emulator and the CTypes integration.'
+    }, {
+      title: 'Mid June',
+      content: 'Visualization is completed; CHIP-8 ROMs can be visualized with no input. Emulator bugs are fixed en masse to ensure it runs on Windows, Mac, and Linux.'
+    }, {
+      title: 'Late June',
+      content: 'C-based emulator is completed. Python integration is completed. Support for keyboard input is operational. Memory visualization milestone is started. More bugs are squashed.'
+    }, {
+      title: 'Early July',
+      content: 'Development on AI tools has begun; these will be used when developing example AIs. Memory visualization is working minimally, progress still being made and bugs being fixed.'
+    }, {
+      title: 'Mid July',
+      content: 'Memory visualization module is completed. AI tools have been completed. Development on example AIs begins.'
+    }, {
+      title: 'Late July',
+      content: 'Example AIs are worked on to provide demonstration-worthy agents. UI upgrades are implemented. Bugs are found and squashed.'
+    }],
+    bibliography: ['Den of Geek. (2011). The story of Breakout. \\[online\\] Available at: https://www.denofgeek.com/us/games/12171/the-story-of-breakout [Accessed Jul. 2019].', '"MarI/O - Machine Learning for Video Games", *YouTube*, 2019. \\[online\\]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. [Accessed: 22- Jul- 2019]', 'V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou, D. Wierstra and M. Riedmiller, Playing Atari with Deep Reinforcement Learning. *DeepMind Technologies*, 2013.', '"Joseph Weisbecker", *En.wikipedia.org*, 2018. \\[online\\]. Available: https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems. [Accessed: 22- Jul- 2019]', 'Cheatengine.org. (2019). *Cheat Engine*. \\[online\\] Available at: https://www.cheatengine.org/ [Accessed Jul. 2019].', 'Scikit-learn.org. (2019). *scikit-learn: machine learning in Python*. \\[online\\] Available at: https://scikit-learn.org [Accessed Jul. 2019].', 'Pytorch.org. (2019). *PyTorch*. \\[online\\] Available at: https://pytorch.org/ [Accessed Jul. 2019].', 'TensorFlow. (2019). *TensorFlow*. \\[online\\] Available at: https://www.tensorflow.org/ [Accessed Jul. 2019].', '"NumPy — NumPy", *Numpy.org*, 2019. \\[online\\]. Available: https://numpy.org/. [Accessed: 22- Jul- 2019]', '"pygame", *Pygame.org*, 2019. \\[online\\]. Available: https://www.pygame.org/news. [Accessed: 22- Jul- 2019]', '"lazyarray — lazyarray 0.3.2 documentation", *Lazyarray.readthedocs.io*, 2019. \\[online\\]. Available: https://lazyarray.readthedocs.io/en/latest/. [Accessed: 22- Jul- 2019]']
   })
 });
 
@@ -31507,7 +32053,7 @@ function wordCharacter(character) {
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -31518,7 +32064,7 @@ function wordCharacter(character) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.14';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -34177,16 +34723,10 @@ function wordCharacter(character) {
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -35110,8 +35650,8 @@ function wordCharacter(character) {
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -36928,7 +37468,7 @@ function wordCharacter(character) {
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -38111,7 +38651,7 @@ function wordCharacter(character) {
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -38119,6 +38659,10 @@ function wordCharacter(character) {
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -41919,6 +42463,7 @@ function wordCharacter(character) {
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -46305,9 +46850,12 @@ function wordCharacter(character) {
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -46340,7 +46888,9 @@ function wordCharacter(character) {
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -48545,10 +49095,11 @@ function wordCharacter(character) {
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -51364,12 +51915,12 @@ module.exports = __webpack_require__(/*! ./dist/lib/router */ "./node_modules/ne
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -52777,12 +53328,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -53390,12 +53941,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -55490,12 +56041,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -64053,12 +64604,12 @@ function info() {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -64189,13 +64740,13 @@ function extend() {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _layouts_API__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/API */ "./layouts/API.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/pages/about.js";
+/* harmony import */ var _layouts_About__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/About */ "./layouts/About.js");
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/pages/about.js";
 
 // Generated by Page Builder
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_API__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_About__WEBPACK_IMPORTED_MODULE_1__["default"], {
     pageName: "about",
     __source: {
       fileName: _jsxFileName,
@@ -64240,14 +64791,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_84cc4fe3fc17a4546c27":
+/***/ "dll-reference dll_c7268871b5d23a759f52":
 /*!*******************************************!*\
-  !*** external "dll_84cc4fe3fc17a4546c27" ***!
+  !*** external "dll_c7268871b5d23a759f52" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_84cc4fe3fc17a4546c27;
+module.exports = dll_c7268871b5d23a759f52;
 
 /***/ })
 

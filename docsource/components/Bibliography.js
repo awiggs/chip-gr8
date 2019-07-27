@@ -1,3 +1,5 @@
+import EjrbussMarkdown from './EjrbussMarkdown';
+
 export default ({ content }) => (
     <div className='bibliography'>
         <h1>References</h1>
@@ -8,6 +10,6 @@ export default ({ content }) => (
 const BibliographyItem = ({ index, content }) => (
     <div className='bibliography-item'>
         <div className='index'>[{index + 1}]</div>
-        <div className='text'>{content}</div>
+        <div className='text'><EjrbussMarkdown source={content} /></div>
     </div>
 );

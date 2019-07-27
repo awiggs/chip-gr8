@@ -420,6 +420,16 @@ body .text-light {
 body .text-bold {
   font-weight: 400;
 }
+body .bibliography .bibliography-item .index {
+  display: inline;
+  margin-right: 16px;
+  vertical-align: top;
+}
+body .bibliography .bibliography-item .text {
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 16px;
+}
 body .editor {
   color: inherit;
   margin-top: 1em;
@@ -512,8 +522,8 @@ body .logo {
   width: 100%;
 }
 body .logo img {
-  width: 55vh;
-  height: 55vh;
+  width: 50vh;
+  height: 50vh;
   max-width: 100%;
   max-height: 100%;
   display: block;
@@ -646,6 +656,40 @@ body .navbar .center input.open {
 }
 body .navbar .center input:focus {
   outline: none;
+}
+body .home .text {
+  padding-left: 70px;
+}
+body .home img {
+  width: 60px;
+  position: absolute;
+  top: 16px;
+}
+body .profile img {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 32px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: calc(100% - calc(2 * 32px));
+  transition: all 0.3s ease;
+}
+body .profile img.left {
+  float: left;
+}
+body .profile img.right {
+  float: right;
+}
+body .profile .profile-name {
+  font-size: 24px;
+}
+body .profile .profile-position {
+  font-size: 14px;
+  color: #6f6f6f;
+}
+body .profile .profile-content {
+  margin-top: 1em;
 }
 body .scroll-marker {
   background: #00ca83;
@@ -811,8 +855,44 @@ body .tani svg .tile {
 body .tani svg .tile.hover {
   transform: translate(-2px, -2px);
 }
+body .timeline .timeline-item .timeline-left .timeline-icon {
+  background: #00ca83;
+  transition: all 0.3s ease;
+}
+body .timeline .timeline-item .timeline-left .timeline-icon:hover {
+  transform: scale(1.2);
+}
+body .timeline .timeline-item .timeline-content .timeline-title {
+  margin-top: -8px;
+  font-weight: 400;
+  font-size: 24px;
+}
+body .timeline .timeline-item::before {
+  background: #d9d9d9;
+  width: 1px;
+}
+body .timeline .timeline-item:last-child::before {
+  opacity: 0;
+}
 body .docs .subtitle {
   font-size: 36px;
+}
+body .docs img[src='../static/img/breakout.gif'] {
+  display: block;
+  width: 70%;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0px 0px 60px 4px rgba(0, 0, 0, 0.32);
+}
+body p img {
+  width: 100%;
+}
+body li img {
+  width: 30%;
+}
+body li img li {
+  list-style: none;
 }
 
 
