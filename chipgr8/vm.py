@@ -219,7 +219,7 @@ class Chip8VM(object):
         self.__breakpoints.append(addr)
         if self._window:
             self._window.render(force=True, breakpoints=self.__breakpoints)
-        return 'Breakpoint added. ({:x})'.format(addr)
+        return 'Breakpoint added. (0x{:x})'.format(addr)
 
     def removeBreakpoint(self, addr):
         '''
@@ -228,7 +228,16 @@ class Chip8VM(object):
         self.__breakpoints.remove(addr)
         if self._window:
             self._window.render(force=True, breakpoints=self.__breakpoints)
-        return 'Breakpoint removed. ({:x})'.format(addr)
+        return 'Breakpoint removed. (0x{:x})'.format(addr)
+
+    def toggleBreakpoint(self, addr):
+        '''
+        Toggles a breakpoint at addr.
+        '''
+        if addr in self.__breakpoints:
+            return self.removeBreakpoint(addr)
+        else:
+            return self.addBreakpoint(addr)
 
     def clearBreakpoints(self):
         '''
