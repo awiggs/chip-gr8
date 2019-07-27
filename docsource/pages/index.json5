@@ -43,16 +43,16 @@
         }
     ],
     bibliography: [
-        'Den of Geek. (2011). The story of Breakout. \\[online\\] Available at: https://www.denofgeek.com/us/games/12171/the-story-of-breakout [Accessed Jul. 2019].',
-        '"MarI/O - Machine Learning for Video Games", *YouTube*, 2019. \\[online\\]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. [Accessed: 22- Jul- 2019]',        
+        'Den of Geek. (2011). The story of Breakout. \\[online\\] Available at: https://www.denofgeek.com/us/games/12171/the-story-of-breakout \\[Accessed Jul. 2019\\].',
+        '"MarI/O - Machine Learning for Video Games", *YouTube*, 2019. \\[online\\]. Available: https://www.youtube.com/watch?v=qv6UVOQ0F44. \\[Accessed: 22- Jul- 2019\\]',        
         'V. Mnih, K. Kavukcuoglu, D. Silver, A. Graves, I. Antonoglou, D. Wierstra and M. Riedmiller, Playing Atari with Deep Reinforcement Learning. *DeepMind Technologies*, 2013.',
-        '"Joseph Weisbecker", *En.wikipedia.org*, 2018. \\[online\\]. Available: https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems. [Accessed: 22- Jul- 2019]',
-        'Cheatengine.org. (2019). *Cheat Engine*. \\[online\\] Available at: https://www.cheatengine.org/ [Accessed Jul. 2019].',
-        'Scikit-learn.org. (2019). *scikit-learn: machine learning in Python*. \\[online\\] Available at: https://scikit-learn.org [Accessed Jul. 2019].',
-        'Pytorch.org. (2019). *PyTorch*. \\[online\\] Available at: https://pytorch.org/ [Accessed Jul. 2019].',
-        'TensorFlow. (2019). *TensorFlow*. \\[online\\] Available at: https://www.tensorflow.org/ [Accessed Jul. 2019].',
-        '"NumPy — NumPy", *Numpy.org*, 2019. \\[online\\]. Available: https://numpy.org/. [Accessed: 22- Jul- 2019]',
-        '"pygame", *Pygame.org*, 2019. \\[online\\]. Available: https://www.pygame.org/news. [Accessed: 22- Jul- 2019]',
-        '"lazyarray — lazyarray 0.3.2 documentation", *Lazyarray.readthedocs.io*, 2019. \\[online\\]. Available: https://lazyarray.readthedocs.io/en/latest/. [Accessed: 22- Jul- 2019]',
+        '"Joseph Weisbecker", *En.wikipedia.org*, 2018. \\[online\\]. Available: https://en.wikipedia.org/wiki/Joseph_Weisbecker#Small_systems. \\[Accessed: 22- Jul- 2019\\]',
+        'Cheatengine.org. (2019). *Cheat Engine*. \\[online\\] Available at: https://www.cheatengine.org/ \\[Accessed Jul. 2019\\].',
+        'Scikit-learn.org. (2019). *scikit-learn: machine learning in Python*. \\[online\\] Available at: https://scikit-learn.org \\[Accessed Jul. 2019\\].',
+        'Pytorch.org. (2019). *PyTorch*. \\[online\\] Available at: https://pytorch.org/ \\[Accessed Jul. 2019\\].',
+        'TensorFlow. (2019). *TensorFlow*. \\[online\\] Available at: https://www.tensorflow.org/ \\[Accessed Jul. 2019\\].',
+        '"NumPy — NumPy", *Numpy.org*, 2019. \\[online\\]. Available: https://numpy.org/. \\[Accessed: 22- Jul- 2019\\]',
+        '"pygame", *Pygame.org*, 2019. \\[online\\]. Available: https://www.pygame.org/news. \\[Accessed: 22- Jul- 2019\\]',
+        '"lazyarray — lazyarray 0.3.2 documentation", *Lazyarray.readthedocs.io*, 2019. \\[online\\]. Available: https://lazyarray.readthedocs.io/en/latest/. \\[Accessed: 22- Jul- 2019\\]',
     ]
 }

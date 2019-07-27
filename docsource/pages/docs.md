@@ -8,7 +8,7 @@ pip install chipgr8
 
 Currently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations: Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.
 
-For additional documentation see the [Chip-Gr8 User Manual](/static/Chip-Gr8-Reference-Manual.pdf).
+For additional documentation see the [Chip-Gr8 Reference Manual](../static/Chip-Gr8-Reference-Manual.pdf).
 
 # Writing Your First Agent
 
@@ -359,11 +359,7 @@ Returns True if all VM instances are done.
 Find a specific VM using a function `predicate` that takes a VM as an argument and returns True or False. Returns the first VM for which the `predicate` was True. Searches done and not done VMs.
 
 #### `.inParallel(do)`
-<<<<<<< Updated upstream
-Performs a function `do` on all not done vms in parallel. The function is expected to take the vm as an argument. When using this method external vm references can become out of date due to pickling across processes.
-=======
-Performs a function `do` on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external VM references can become out of date due to pickling across processes. 
->>>>>>> Stashed changes
+Performs a function `do` on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external vm references can become out of date due to pickling across processes.
 
 #### `.maxBy(projection)`
 Returns the VM with the maximum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.
@@ -372,11 +368,7 @@ Returns the VM with the maximum value by the given `projection`, a function that
 Returns the VM with the minimum value by the given `projection`, a function that takes a VM as its argument and returns a comparable value.
 
 #### `.reset()`
-<<<<<<< Updated upstream
-Resets all the vms.
-=======
 Resets all the VMs.
->>>>>>> Stashed changes
 
 ## Game (Class)
 A generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).
