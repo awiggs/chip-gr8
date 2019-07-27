@@ -1,4 +1,4 @@
-[![logo](/docsource/static/img/flat-logo.png)](https://awiggs.github.io/chip-gr8/)
+[![logo](/docsource/static/img/logo.png)](https://awiggs.github.io/chip-gr8/)
 
 # Chip-Gr8 – Emulation for AI
 
