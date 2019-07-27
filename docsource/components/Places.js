@@ -3,9 +3,8 @@ import Vars  from '../Vars';
 
 export default ({ home, about, project, api }) => (
     <>
-        <Link href={Vars.sitePrefix + '/index'}><a className={`m-md ${home ? 'active' : ''}`}><i className='fas fa-home' />Home</a></Link>
-        <Link href={Vars.sitePrefix + '/project'}><a className={`m-md ${project ? 'active' : ''}`}>Project</a></Link>
-        <Link href={Vars.sitePrefix + '/api'}><a className={`m-md ${api ? 'active' : ''}`}>API</a></Link>
-        <Link href={Vars.sitePrefix + '/about'}><a className={`m-md ${about ? 'active' : ''}`}>About</a></Link>
+        <Link href={Vars.sitePrefix + '/index'}><a className={`m-md home ${home ? 'active' : ''}`}><i className='fas fa-home'/>Home</a></Link>
+        <Link href={Vars.sitePrefix + '/about'}><a className={`m-md ${about ? 'active' : ''}`}><i className='fas fa-info'/>About</a></Link>
+        <Link href={Vars.sitePrefix + '/docs'}><a className={`m-md ${api ? 'active' : ''}`}><i className="fas fa-book"></i>Docs</a></Link>
     </>
 );

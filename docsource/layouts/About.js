@@ -36,10 +36,10 @@ export default ({ pageName }) => {
 {`
 # Meet Our Team
 
-We are a group of Software and Electrical Engineering students from the University of Victoria. With passions for programming, artificial intelligence, and gaming, we came together to deliver an artificial intelligence tool that will enable future generations to share in our love for technology and creating something new.
+We are a group of Software and Electrical Engineering students from the University of Victoria. We combined our passions for programming, artificial intelligence, and gaming to deliver an artificial intelligence tool to help newcomers discover a love for technology and creating something new.
 `}
                     />
-                    <Profile src='../static/img/Eric.png' name='Eric' position='Team Lead / Developer'>
+                    <Profile src='../static/img/Eric.png' name='Eric Buss' position='Team Lead / Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -48,7 +48,7 @@ Eric is a fourth-year Software Engineering student graduating in August 2019. He
                         <a href='https://www.linkedin.com/in/ejrbuss/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/ejrbuss' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/Torrey.png' right name='Torrey' position='Developer'>
+                    <Profile src='../static/img/Torrey.png' right name='Torrey Randolph' position='Low Level Architect'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -57,7 +57,7 @@ Torrey plans to graduate UVic with a Bachelor of Software Engineering degree in 
                         <a href='https://www.linkedin.com/in/torrey-randolph/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://github.com/torreyr' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/Jon.png' name='Jon' position='Artist / Developer'>
+                    <Profile src='../static/img/Jon.png' name='Jonathan Bezeau' position='Artist / Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -66,7 +66,7 @@ Jon is a fourth year Software Engineering student aiming to graduate in 2020. He
                         {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
                         <a href='https://github.com/UltravioletVoodoo' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/James.png' right name='James' position='Developer'>
+                    <Profile src='../static/img/James.png' right name='James Barlow' position='UI Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -76,7 +76,7 @@ James is graduating from UVic with a Software Engineering degree and Business mi
                         {/* <a href='#' className='subtle mr-md'><i className='fab fa-linkedin' /></a> */}
                         <a href='https://github.com/jbarlo' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/Andrew.png' name='Andrew' position='Developer'>
+                    <Profile src='../static/img/Andrew.png' name='Andrew Wiggins' position='Web Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -86,7 +86,7 @@ Andrew is a fourth year Software Engineering student who plans on graduating in 
                         <a href='https://www.linkedin.com/in/awiggs96/' className='subtle mr-md'><i className='fab fa-linkedin' /></a>
                         <a href='https://www.github.com/awiggs' className='subtle'><i className='fab fa-github' /></a>
                     </Profile>
-                    <Profile src='../static/img/John.png' right name='Forrest' position='Developer'>
+                    <Profile src='../static/img/John.png' right name='Forrest Curry' position='AI Developer'>
                         <EjrbussMarkdown 
                             source=
 {`
@@ -99,7 +99,7 @@ Forrest is a fourth year Bachelor of Electrical Engineering student with a Minor
                     <EjrbussMarkdown source=
 {`
 # Acknowledgements
-Several people made this project possible and we would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.
+Chip-Gr8 would not have been possible without the help of several individuals. We would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.
 
 ## Faculty Supervisor
 `}
@@ -117,14 +117,11 @@ We chose Rich Little as our faculty supervisor for his background in algorithms 
 {`
 ## Supporters
 
-#### Dr. Xiaodai Dong
 Thank you to Dr. Xiaodai Dong for being the primary instructor this semester.
 
-#### Dr. T. Ilamparithi
 Thank you to Dr. Ilamparithi for being the course coordinator this semester.
 
-#### Sai Prakash Reddy Konda
-Thank you to the TA for their help with the course.
+Thank you to Sai Prakash Reddy Konda, our TA, for their help with the course.
 `}
                     />
                 </div>

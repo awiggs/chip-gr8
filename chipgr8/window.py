@@ -21,7 +21,8 @@ class Window():
         foreground = (255, 255, 255),
         background = (0, 0, 0),
         antialias  = True,
-        tone       = os.path.realpath(os.path.join(__file__, "../data/sound/pureTone.mp3")),
+        tone       = os.path.realpath(os.path.join(__file__, '../data/sound/pureTone.mp3')),
+        icon       = os.path.realpath(os.path.join(__file__, '../data/icon.png'))
     ):
         pygame.init()
         pygame.font.init()
@@ -39,6 +40,7 @@ class Window():
         self.screen     = pygame.display.set_mode(self.screenSize)
         self.font       = pygame.font.Font(pygame.font.match_font('monospace'), 16)
         pygame.display.set_caption(chipgr8.DESCRIPTION)
+        pygame.display.set_icon(pygame.image.load(icon))
 
         self.controlModule = ControlModule()
         self.gameModule = GameModule(

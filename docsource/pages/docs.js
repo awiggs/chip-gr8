@@ -3,4 +3,4 @@
 import Layout from '../layouts/API';
 
 export default () =>
-    <Layout pageName='api' />;
+    <Layout pageName='docs' />;

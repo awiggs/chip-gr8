@@ -1,15 +1,15 @@
 .profile {
     
     img {
-        box-shadow: @shadow;
+        box-shadow: @shadow;       
         display: inline-block;
         border-radius: 50%;
         margin-left: @xlg;
         margin-left: @xlg;
         margin-top: @lg;
         margin-bottom: @lg;
-    
         width: calc(100% - calc(2 * @xlg));
+        transition: all 0.3s ease;
 
         &.left {
             float:left;
@@ -18,6 +18,7 @@
         &.right {
             float:right;
         }
+
     }
 
     .profile-name {

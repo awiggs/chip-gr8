@@ -7,6 +7,8 @@ import SearchResults   from '../components/SearchResults';
 import EjrbussMarkdown from '../components/EjrbussMarkdown';
 import Places          from '../components/Places';
 import Logo            from '../components/Logo';
+import Timeline        from '../components/Timeline';
+import Bibliography    from '../components/Bibliography';
 
 
 // Libraries
@@ -39,6 +41,8 @@ export default ({ pageName }) => {
                         <EjrbussMarkdown source={page.subtitle} />
                     </div>
                     <EjrbussMarkdown source={page.content} />
+                    <Timeline timeline={page.timeline} />
+                    <Bibliography content={page.bibliography} />
                 </div>
             </div>
             <Footer />
