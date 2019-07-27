@@ -1,90 +1,38 @@
+[![logo](/docsource/static/img/flat-logo.png)](https://awiggs.github.io/chip-gr8/)
 
-# Chip-Gr8
+# Chip-Gr8 – Emulation for AI
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ks0u7056qu3r8lsk?svg=true)](https://ci.appveyor.com/project/ejrbuss/chip-gr8)
+Chip-Gr8 is a sandbox for creating AI Agents for retro video games like Pong, Breakout, and Space Invaders. Chip-Gr8 lets you interactively program AI agents, easily record their behaviour, collect data, pause and play their actions, and even play against them! If you have never programmed an AI before, Chip-Gr8 is a great place to start!
 
-## Run
-To run the python module (make sure you use some version of python 3, preferably 3.6 or later):
-
-```
-python -m chipgr8
-```
-
-To load a ROM and run it (where ROM is either a path to a ROM or the start of a name)
+## Installing
+Chip-Gr8 is a Python package. Use pip to install it!
 
 ```
-python -m chipgr8 -r ROM
- # eg.
-python -m chipgr8 -r pong 
+pip isntall chipgr8
 ```
 
-To disassemble a ROM
+## Getting Started
+If you want to play a game using Chip-Gr8, all you have to do is start it on the command line! For example, to play breakout you would run
 
 ```
-python -m chipgr8 -d ROM -o OUTFILE
+python -m chipgr8 -r breakout
 ```
 
-To assemble a ROM
+You will be greated by the Chip-Gr8 display and can start playing!
 
-```
-python -m chipgr8 -a SRC -o OUTFILE
-```
+Creating an AI Agent is just as straightforward, just dropping the following code into your favorite text editor and you are ready to go!
 
-For more commandline options see
+```python
+import chipgr8
+from chipgr8.games import Breakout
 
-```
-python -m chipgr8 -h
-```
-
-# Requirements
-
-To install run
-
-```
-python setupy.py install
+vm = chipgr8.init(display=True, ROM=Breakout.ROM)
+while not vm.done():
+    vm.act(Breakout.actions.left)
 ```
 
-# Changing the VM Struct
+To find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](https://awiggs.github.io/chip-gr8/static/Chip-Gr8-Reference-Manual), or head over to the [docs](https://awiggs.github.io/chip-gr8/docs)!
 
-To update the VM struct used in the C and python code modify `defineChip8VMStruct.py` and then run 
+## Contact
 
-```
-python ./defineChip8VMStruct.py
-```
-
-# Build Using mekpie
-
-To build the c code you will need to have mekpie installed
-
-```
-pip install mekpie
-```
-
-To build the shared library prior to running the python script:
-
-```
-mekpie build
-```
-
-To run the c tests run
-
-```
-mekpie test
-```
-
-# Build Using Make
-
-```
-make
-```
-
-# Performance Problems on Mac
-
-From [StackOverflow](https://stackoverflow.com/questions/31685936/pygame-application-runs-slower-on-mac-than-on-pc)
-
-1. Run your pygame program
-2. In the dock you will see a snake with controllers in his mouth. Right click him.
-3. Go to Options and click "Show in Finder"
-4. Finder will open and you will see a the python application.(Mine was in the shape of rocket with the idle symbol on it.)
-5. Right click the python application and click "Get Info".
-6. Check the box "Open in Low Resolution" and it should now run at around 60fps.
+Feel free to contact us with questions, bug reports, or feature requests at chipgr8.contact@gmail.com.

@@ -6,7 +6,7 @@ Chip-Gr8 is distributed through [pip](https://pypi.org/project/pip/)! To install
 pip install chipgr8
 ```
 
-Currently Chip-Gr8 only supports supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.
+Currently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8's backend for Windows users with the following configurations Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users `pip install` should build the backend binaries using your system's compiler.
 
 For additional documentation see the [Chip-Gr8 User Manual](/static/Chip-Gr8-Reference-Manual.pdf).
 
@@ -158,7 +158,6 @@ o.addQuery('done',  lambda o, vm : o.lives == 0)
 
 ## Games
 Games provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8. 
-
 
 # API Reference
 
