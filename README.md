@@ -31,7 +31,7 @@ while not vm.done():
     vm.act(Breakout.actions.left)
 ```
 
-To find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](https://awiggs.github.io/chip-gr8/static/Chip-Gr8-Reference-Manual), or head over to the [docs](https://awiggs.github.io/chip-gr8/docs)!
+To find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](https://awiggs.github.io/chip-gr8/static/Chip-Gr8-Reference-Manual.pdf), or head over to the [docs](https://awiggs.github.io/chip-gr8/docs)!
 
 ## Contact
 
