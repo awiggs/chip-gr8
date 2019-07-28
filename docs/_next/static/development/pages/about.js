@@ -1,4 +1,4 @@
-((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/docs.js"],{
+((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/about.js"],{
 
 /***/ "./Vars.js":
 /*!*****************!*\
@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Boot.less */ "./components/Boot.less");
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Boot_less__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
 
 
  // Load Less styles
@@ -183,7 +183,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Copyright.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Copyright.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/string-util */ "./lib/string-util.js");
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_string_util__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Editor.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Editor.js";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -445,7 +445,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor */ "./components/Editor.js");
 /* harmony import */ var _lib_no_space_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/no-space-lang */ "./lib/no-space-lang.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -705,7 +705,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocialMedia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMedia */ "./components/SocialMedia.js");
 /* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Copyright */ "./components/Copyright.js");
 /* harmony import */ var _Love__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Love */ "./components/Love.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Footer.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Footer.js";
 
 
 
@@ -793,7 +793,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Footer.j
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Love.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Love.js";
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -854,7 +854,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ScrollMarker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollMarker */ "./components/ScrollMarker.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Navbar.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Navbar.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -962,7 +962,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Places.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js";
 
 
 
@@ -1039,6 +1039,215 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Places.j
 
 /***/ }),
 
+/***/ "./components/Profile.js":
+/*!*******************************!*\
+  !*** ./components/Profile.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Profile.js";
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var src = _ref.src,
+      name = _ref.name,
+      position = _ref.position,
+      _ref$right = _ref.right,
+      right = _ref$right === void 0 ? false : _ref$right,
+      children = _ref.children;
+  return !src ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, children)))) : right ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-8 col-sm-12 hide-sm",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, children)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-4 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: src,
+    className: right ? 'right' : 'left',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12 show-sm",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }, children)))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-4 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: src,
+    className: right ? 'right' : 'left',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-8 col-sm-12",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: this
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-position",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
+  }, position), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }, children))));
+});
+
+/***/ }),
+
 /***/ "./components/ScrollMarker.js":
 /*!************************************!*\
   !*** ./components/ScrollMarker.js ***!
@@ -1051,7 +1260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1084,7 +1293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SearchResults.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SearchResults.js";
 
 
 
@@ -1212,7 +1421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SideNav.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SideNav.js";
 
 
 
@@ -1310,7 +1519,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SocialMedia.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SocialMedia.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1336,10 +1545,10 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SocialMe
 
 /***/ }),
 
-/***/ "./layouts/API.js":
-/*!************************!*\
-  !*** ./layouts/API.js ***!
-  \************************/
+/***/ "./layouts/About.js":
+/*!**************************!*\
+  !*** ./layouts/About.js ***!
+  \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1354,11 +1563,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SearchResults__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SearchResults */ "./components/SearchResults.js");
 /* harmony import */ var _components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
 /* harmony import */ var _components_Places__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Places */ "./components/Places.js");
-/* harmony import */ var _lib_Pages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../lib/Pages */ "./lib/Pages.js");
-/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
-/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/layouts/API.js";
+/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Profile */ "./components/Profile.js");
+/* harmony import */ var _lib_Pages__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/Pages */ "./lib/Pages.js");
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/layouts/About.js";
 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1372,6 +1582,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
  // Libraries
 
 
@@ -1379,19 +1590,19 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var pageName = _ref.pageName;
-  var page = _lib_Pages__WEBPACK_IMPORTED_MODULE_8__["default"][pageName];
-  var searchCtx = Object(_lib_hooks__WEBPACK_IMPORTED_MODULE_10__["useSearch"])();
+  var page = _lib_Pages__WEBPACK_IMPORTED_MODULE_9__["default"][pageName];
+  var searchCtx = Object(_lib_hooks__WEBPACK_IMPORTED_MODULE_11__["useSearch"])();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "page",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 21
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Boot__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, page, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 22
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1401,63 +1612,354 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
     leftLinks: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Places__WEBPACK_IMPORTED_MODULE_7__["default"], _extends({}, _defineProperty({}, page.place, true), {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 27
       },
       __self: this
     })),
     rightLinks: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       target: "_blank",
-      href: _Vars__WEBPACK_IMPORTED_MODULE_9___default.a.github,
+      href: _Vars__WEBPACK_IMPORTED_MODULE_10___default.a.github,
       className: "p-md subtle-accent",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 28
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fab fa-github fa-lg",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 29
       },
       __self: this
     })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 23
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SearchResults__WEBPACK_IMPORTED_MODULE_5__["default"], {
     searchCtx: searchCtx,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 33
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "content container grid-md",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    source: page.content,
+    source: "\n# Meet Our Team\n\nWe are a group of Software and Electrical Engineering students from the University of Victoria. We combined our passions for programming, artificial intelligence, and gaming to deliver an artificial intelligence tool to help newcomers discover a love for technology and creating something new.\n",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Eric.png",
+    name: "Eric Buss",
+    position: "Team Lead / Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nEric is a fourth-year Software Engineering student graduating in August 2019. He is a Canadian through-and-through having already lived and worked in 5 Canadian provinces. His love for creative projects and problem-solving led him to his studies at UVic. Eric brings his passion for code and design to all his projects both in and out of school.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/ejrbuss/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/ejrbuss",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Torrey.png",
+    right: true,
+    name: "Torrey Randolph",
+    position: "Low Level Architect",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nTorrey plans to graduate from UVic with a Bachelor of Software Engineering in 2019. Come October, she will be starting her career as a Firmware Developer at Reliable Controls in the beautiful city of Victoria. She hopes to one day follow her dream of working for NASA.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/torrey-randolph/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/torreyr",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Jon.png",
+    name: "Jonathan Bezeau",
+    position: "Artist / Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nJon is a fourth year Software Engineering student aiming to graduate in 2020. He hails from Prince George BC, and moved to Victoria to study general engineering at UVic in 2014. Jon spends his time writing Dungeons and Dragons campaigns and working on his personal coding projects. After graduation he hopes to remain in Victoria.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/UltravioletVoodoo",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/James.png",
+    right: true,
+    name: "James Barlow",
+    position: "UI Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nJames is graduating from UVic with a Software Engineering degree and Business minor in August 2019. He wants to try his hand at running a business someday, but until then he hopes to work on technologies that help people. Further education is still a possibility for the future, but right now he is excited to start his career.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/jbarlo",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/Andrew.png",
+    name: "Andrew Wiggins",
+    position: "Web Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nAndrew is a fourth year Software Engineering student who plans on graduating in April 2020. He started his University career in the Faculty of Science, but transitioned into Software Engineering after discovering a fondness for programming. After graduation he plans on moving to Vancouver to pursue a career as a developer.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/awiggs96/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.github.com/awiggs",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/John.png",
+    right: true,
+    name: "Forrest Curry",
+    position: "AI Developer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nForrest is a fourth year Bachelor of Electrical Engineering student with a Minor in Computer Science. He has experience working both high level technologies such as web development and low level technologies such as integrated circuit design as well as software designed to target embedded systems. As for computer support, he has worked as an IT profession for both desktop and remote system administration. Personally, he loves a good sci-fi book and has been playing guitar since he was 17.",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/john-curry/",
+    className: "subtle mr-md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/john-curry",
+    className: "subtle",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\n# Acknowledgements\nChip-Gr8 would not have been possible without the help of several individuals. We would like to acknowledge their involvement in Chip-Gr8's development journey, and extend to them our deepest thanks.\n\n## Faculty Supervisor\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Profile__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    src: "../static/img/RichLittle.jpg",
+    name: "Rich Little",
+    position: "Faculty Supervisor",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\nWe chose Rich Little as our faculty supervisor for his background in algorithms and based on our positive experiences with him in CSC 225 and 226 courses. He was responsible for supervising the project during its development cycle and for marking all of the milestones. Thank you to Rich Little for the help he provided along the way.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    source: "\n## Supporters\n\nThank you to Dr. Xiaodai Dong for being the primary instructor this semester.\n\nThank you to Dr. Ilamparithi for being the course coordinator this semester.\n\nThank you to Sai Prakash Reddy Konda, our TA, for their help with the course.\n",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
     },
     __self: this
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 129
     },
     __self: this
   }));
@@ -1479,7 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/lib/Page.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/lib/Page.js";
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -31552,7 +32054,7 @@ function wordCharacter(character) {
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+ * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -31563,7 +32065,7 @@ function wordCharacter(character) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.14';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -34222,10 +34724,16 @@ function wordCharacter(character) {
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-      } else if (isMap(value)) {
+
+        return result;
+      }
+
+      if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
+
+        return result;
       }
 
       var keysFunc = isFull
@@ -35149,8 +35657,8 @@ function wordCharacter(character) {
         return;
       }
       baseFor(source, function(srcValue, key) {
-        stack || (stack = new Stack);
         if (isObject(srcValue)) {
+          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -36967,7 +37475,7 @@ function wordCharacter(character) {
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision && nativeIsFinite(number)) {
+        if (precision) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -38150,7 +38658,7 @@ function wordCharacter(character) {
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+     * Gets the value at `key`, unless `key` is "__proto__".
      *
      * @private
      * @param {Object} object The object to query.
@@ -38158,10 +38666,6 @@ function wordCharacter(character) {
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
-      if (key === 'constructor' && typeof object[key] === 'function') {
-        return;
-      }
-
       if (key == '__proto__') {
         return;
       }
@@ -41962,7 +42466,6 @@ function wordCharacter(character) {
           }
           if (maxing) {
             // Handle invocations in a tight loop.
-            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -46349,12 +46852,9 @@ function wordCharacter(character) {
       , 'g');
 
       // Use a sourceURL for easier debugging.
-      // The sourceURL gets injected into the source that's eval-ed, so be careful
-      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        (hasOwnProperty.call(options, 'sourceURL')
-          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
+        ('sourceURL' in options
+          ? options.sourceURL
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -46387,9 +46887,7 @@ function wordCharacter(character) {
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      // Like with sourceURL, we take care to not check the option's prototype,
-      // as this configuration is a code injection vector.
-      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
+      var variable = options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -48594,11 +49092,10 @@ function wordCharacter(character) {
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = lodashFunc.name + '';
-        if (!hasOwnProperty.call(realNames, key)) {
-          realNames[key] = [];
-        }
-        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
+        var key = (lodashFunc.name + ''),
+            names = realNames[key] || (realNames[key] = []);
+
+        names.push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -51414,12 +51911,12 @@ module.exports = __webpack_require__(/*! ./dist/lib/router */ "./node_modules/ne
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -52827,12 +53324,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -53440,12 +53937,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -55540,12 +56037,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -64103,12 +64600,12 @@ function info() {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -64228,10 +64725,10 @@ function extend() {
 
 /***/ }),
 
-/***/ "./pages/docs.js":
-/*!***********************!*\
-  !*** ./pages/docs.js ***!
-  \***********************/
+/***/ "./pages/about.js":
+/*!************************!*\
+  !*** ./pages/about.js ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -64239,14 +64736,14 @@ function extend() {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _layouts_API__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/API */ "./layouts/API.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/pages/docs.js";
+/* harmony import */ var _layouts_About__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/About */ "./layouts/About.js");
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/pages/about.js";
 
 // Generated by Page Builder
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_API__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    pageName: "docs",
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_About__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    pageName: "about",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
@@ -64270,36 +64767,36 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/pages/docs.js";
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/docs")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/about")
   
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
 /***/ 5:
-/*!*****************************!*\
-  !*** multi ./pages/docs.js ***!
-  \*****************************/
+/*!******************************!*\
+  !*** multi ./pages/about.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__NEXT_REGISTER_PAGE('/docs', function() {
-module.exports = __webpack_require__(/*! ./pages/docs.js */"./pages/docs.js");
+__NEXT_REGISTER_PAGE('/about', function() {
+module.exports = __webpack_require__(/*! ./pages/about.js */"./pages/about.js");
 
 return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_c7268871b5d23a759f52":
+/***/ "dll-reference dll_84cc4fe3fc17a4546c27":
 /*!*******************************************!*\
-  !*** external "dll_c7268871b5d23a759f52" ***!
+  !*** external "dll_84cc4fe3fc17a4546c27" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_c7268871b5d23a759f52;
+module.exports = dll_84cc4fe3fc17a4546c27;
 
 /***/ })
 
 },[[5,"static/runtime/webpack.js","styles"]]]));;
-//# sourceMappingURL=docs.js.map
+//# sourceMappingURL=about.js.map

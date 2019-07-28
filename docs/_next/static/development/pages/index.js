@@ -26,7 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Bibliography.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Bibliography.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Boot.less */ "./components/Boot.less");
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Boot_less__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
 
 
  // Load Less styles
@@ -263,7 +263,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Copyright.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Copyright.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -297,7 +297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/string-util */ "./lib/string-util.js");
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_string_util__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Editor.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Editor.js";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -525,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor */ "./components/Editor.js");
 /* harmony import */ var _lib_no_space_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/no-space-lang */ "./lib/no-space-lang.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -785,7 +785,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocialMedia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMedia */ "./components/SocialMedia.js");
 /* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Copyright */ "./components/Copyright.js");
 /* harmony import */ var _Love__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Love */ "./components/Love.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Footer.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Footer.js";
 
 
 
@@ -875,7 +875,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Logo.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Logo.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -909,7 +909,7 @@ var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Logo.js"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Love.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Love.js";
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -970,7 +970,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ScrollMarker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollMarker */ "./components/ScrollMarker.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Navbar.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Navbar.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1078,7 +1078,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Places.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js";
 
 
 
@@ -1167,7 +1167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1200,7 +1200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SearchResults.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SearchResults.js";
 
 
 
@@ -1328,7 +1328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SideNav.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SideNav.js";
 
 
 
@@ -1426,7 +1426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SocialMedia.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SocialMedia.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1464,7 +1464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Timeline.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Timeline.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1566,7 +1566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/layouts/Docs.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/layouts/Docs.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1736,7 +1736,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/lib/Page.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/lib/Page.js";
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -31809,7 +31809,7 @@ function wordCharacter(character) {
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+ * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -31820,7 +31820,7 @@ function wordCharacter(character) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.14';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -34479,10 +34479,16 @@ function wordCharacter(character) {
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-      } else if (isMap(value)) {
+
+        return result;
+      }
+
+      if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
+
+        return result;
       }
 
       var keysFunc = isFull
@@ -35406,8 +35412,8 @@ function wordCharacter(character) {
         return;
       }
       baseFor(source, function(srcValue, key) {
-        stack || (stack = new Stack);
         if (isObject(srcValue)) {
+          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -37224,7 +37230,7 @@ function wordCharacter(character) {
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision && nativeIsFinite(number)) {
+        if (precision) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -38407,7 +38413,7 @@ function wordCharacter(character) {
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+     * Gets the value at `key`, unless `key` is "__proto__".
      *
      * @private
      * @param {Object} object The object to query.
@@ -38415,10 +38421,6 @@ function wordCharacter(character) {
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
-      if (key === 'constructor' && typeof object[key] === 'function') {
-        return;
-      }
-
       if (key == '__proto__') {
         return;
       }
@@ -42219,7 +42221,6 @@ function wordCharacter(character) {
           }
           if (maxing) {
             // Handle invocations in a tight loop.
-            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -46606,12 +46607,9 @@ function wordCharacter(character) {
       , 'g');
 
       // Use a sourceURL for easier debugging.
-      // The sourceURL gets injected into the source that's eval-ed, so be careful
-      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        (hasOwnProperty.call(options, 'sourceURL')
-          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
+        ('sourceURL' in options
+          ? options.sourceURL
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -46644,9 +46642,7 @@ function wordCharacter(character) {
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      // Like with sourceURL, we take care to not check the option's prototype,
-      // as this configuration is a code injection vector.
-      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
+      var variable = options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -48851,11 +48847,10 @@ function wordCharacter(character) {
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = lodashFunc.name + '';
-        if (!hasOwnProperty.call(realNames, key)) {
-          realNames[key] = [];
-        }
-        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
+        var key = (lodashFunc.name + ''),
+            names = realNames[key] || (realNames[key] = []);
+
+        names.push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -51671,12 +51666,12 @@ module.exports = __webpack_require__(/*! ./dist/lib/router */ "./node_modules/ne
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -53084,12 +53079,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -53697,12 +53692,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -55797,12 +55792,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -64360,12 +64355,12 @@ function info() {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_c7268871b5d23a759f52 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -64497,7 +64492,7 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layouts_Docs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/Docs */ "./layouts/Docs.js");
-var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/pages/index.js";
+var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/pages/index.js";
 
 // Generated by Page Builder
 
@@ -64547,14 +64542,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_c7268871b5d23a759f52":
+/***/ "dll-reference dll_84cc4fe3fc17a4546c27":
 /*!*******************************************!*\
-  !*** external "dll_c7268871b5d23a759f52" ***!
+  !*** external "dll_84cc4fe3fc17a4546c27" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_c7268871b5d23a759f52;
+module.exports = dll_84cc4fe3fc17a4546c27;
 
 /***/ })
 
