@@ -10,6 +10,7 @@ import Logo            from '../components/Logo';
 import Timeline        from '../components/Timeline';
 import Bibliography    from '../components/Bibliography';
 
+import { useEffect } from 'react';
 
 // Libraries
 import Pages from '../lib/Pages';
@@ -17,6 +18,12 @@ import Vars  from '../Vars';
 import { useSearch } from '../lib/hooks';
 
 export default ({ pageName }) => {
+    useEffect(() => {
+        // The worst of hacks
+        if (!location.href.endsWith('index')) {
+            location.href = '/index';
+        }
+    });
     const page      = Pages[pageName];
     const searchCtx = useSearch();
     return (

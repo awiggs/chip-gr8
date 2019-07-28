@@ -18,7 +18,7 @@ python -m chipgr8 -r breakout
 
 You will be greeted by the Chip-Gr8 display and can start playing!
 
-![Alt Text](../static/img/breakout.gif)
+![Alt Text](./static/img/breakout.gif)
 
 Creating an AI agent is just as straightforward, just drop the following code into your favorite text editor and you are ready to go!
 
@@ -31,12 +31,12 @@ while not vm.done():
     vm.act(Breakout.actions.left)
 ```
 
-To find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](../static/Chip-Gr8-Reference-Manual.pdf), or head over to the [docs](../docs)!
+To find out more about Chip-Gr8, its API, included games, and more examples, download the [Reference Manual](./static/Chip-Gr8-Reference-Manual.pdf), or head over to the [docs](./docs)!
 
 ## Themes
 The Chip-Gr8 UI harkens back to the retro games it houses, but modern conveniences are not all gone. You can play and watch your AI agent play in style with customizable themes, here are some of our favorites!
 
-![ThemeGrid](../static/img/themes/Grid.png)
+![ThemeGrid](./static/img/themes/Grid.png)
 
 # The Project
 Chip-Gr8 is the capstone project for six Engineering students at the University of Victoria. Chip-Gr8's goal is to provide a high performance CHIP-8 emulator and a user friendly Python API that seamlessly integrates with modern machine learning and AI libraries. Inspiration for the Chip-Gr8 project came from similar emulation + AI combinations of the [SNES](https://www.youtube.com/watch?v=qv6UVOQ0F44) \[2\] and [Atari](https://arxiv.org/pdf/1312.5602v1.pdf) \[3\] systems.
