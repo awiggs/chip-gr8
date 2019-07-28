@@ -104,7 +104,7 @@ Chip-Gr8 would not have been possible without the help of several individuals. W
 ## Faculty Supervisor
 `}
                     />
-                    <Profile name='Rich Little' position='Faculty Supervisor'>
+                    <Profile src='../static/img/RichLittle.jpg' name='Rich Little' position='Faculty Supervisor'>
                         <EjrbussMarkdown
                             source=
 {`
