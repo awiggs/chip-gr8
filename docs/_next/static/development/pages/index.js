@@ -1591,8 +1591,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
   var pageName = _ref.pageName;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // The worst of hacks
-    if (!location.href.endsWith('index')) {
-      location.href = '/index';
+    if (!location.href.endsWith(_Vars__WEBPACK_IMPORTED_MODULE_12___default.a.sitePrefix + '/index')) {
+      location.href = _Vars__WEBPACK_IMPORTED_MODULE_12___default.a.sitePrefix + '/index';
     }
   });
   var page = _lib_Pages__WEBPACK_IMPORTED_MODULE_11__["default"][pageName];

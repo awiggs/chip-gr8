@@ -20,8 +20,8 @@ import { useSearch } from '../lib/hooks';
 export default ({ pageName }) => {
     useEffect(() => {
         // The worst of hacks
-        if (!location.href.endsWith('index')) {
-            location.href = '/index';
+        if (!location.href.endsWith(Vars.sitePrefix + '/index')) {
+            location.href = Vars.sitePrefix + '/index';
         }
     });
     const page      = Pages[pageName];
