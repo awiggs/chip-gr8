@@ -17,13 +17,14 @@ from chipgr8.games import Cave
 
 
 # Global Variables
-vm = chipgr8.init(display=True, ROM=Cave.ROM, sampleRate=1, speed=4)
+vm = None
 position = (0,0)
 direction = 'down'
 
 # Solves the Cave game
 def caveAgent():
-    global position
+    global vm, position
+    vm = chipgr8.init(display=True, ROM=Cave.ROM, sampleRate=1)
 
     # wait for the title screen to load
     waitToLoad(1000)
@@ -83,7 +84,8 @@ def positionChanged(vm):
     '''
     Check if the player's position has changed
     '''
-    return position != getPosition(Cave.observe(vm))
+    obs = Cave.observe(vm)
+    return position != getPosition(obs) or obs.done
 
 def moveForward():
     '''

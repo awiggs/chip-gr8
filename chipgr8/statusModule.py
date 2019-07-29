@@ -26,9 +26,9 @@ class StatusModule(Module):
             return super().render()
 
     def update(self, vm, events):
-        newStatus = '{}    SPS: {:<4d}   ROM: {}'.format(
+        newStatus = '{}    SPS: {:<4.0f}   ROM: {}'.format(
             'PAUSED ' if vm.paused else 'PLAYING',
-            0 if vm.paused else int(vm.pyclock.get_fps()),
+            0 if vm.paused else vm.pyclock.get_fps(),
             os.path.basename(vm.ROM) if vm.ROM else 'None',
         )
         if newStatus != self.status:

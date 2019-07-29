@@ -13,25 +13,30 @@
 # Imports
 import os, sys
 sys.path.append(os.path.expanduser('C:/Users/jonbe/Desktop/SENG499/chip-gr8'))
+import random
 import chipgr8
 from chipgr8.games import Breakout
 
 
 # Global Variables
 rate = 1
-vm = chipgr8.init(display=True, ROM=Breakout.ROM, sampleRate=rate)
+vm = None 
 paddleX = 0
 ballPos = (0,0)
 
 
 # Runs the AI algorithm for the Breakout game 
-def start():
+def breakoutAgent():
+    global vm
+    vm = chipgr8.init(display=True, ROM=Breakout.ROM, sampleRate=rate)
+    vm.VM.seed = random.randint(0, 255)
 
     # wait for the game to load
     waitToLoad(1000)
 
     # Perform AI logic
     while not vm.done():
+        vm.doneIf(Breakout.observe(vm).done)
         # Get the position of the paddle and the ball
         setPositions()
 
@@ -93,8 +98,9 @@ def stayStill():
 # Checks if the paddle has moved yet
 def paddleMoved(vm):
     observations = Breakout.observe(vm)
-    return paddleX != observations.myX
+    return paddleX != observations.myX or observations.done
 
 
 # Start the algorithm
-start()
+if __name__ == '__main__':
+    breakoutAgent()

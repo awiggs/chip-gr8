@@ -26,7 +26,7 @@ class Window():
     ):
         pygame.init()
         pygame.font.init()
-        pygame.mixer.music.load(tone)
+        # pygame.mixer.music.load(tone)
 
         self.scale      = scale
         self.foreground = foreground
@@ -38,7 +38,7 @@ class Window():
         self.gameSize   = gameWidth * self.scale, gameHeight * self.scale
         self.screenSize = (w + 300, h + 290)
         self.screen     = pygame.display.set_mode(self.screenSize)
-        self.font       = pygame.font.Font(pygame.font.match_font('monospace'), 16)
+        self.font       = pygame.font.Font(pygame.font.match_font('monospace') , 16)
         pygame.display.set_caption(chipgr8.DESCRIPTION)
         pygame.display.set_icon(pygame.image.load(icon))
 
@@ -67,9 +67,9 @@ class Window():
 
     def sound(self, play):
         if play:
-            pygame.mixer.music.play()
+            pass # pygame.mixer.music.play()
         else: 
-            pygame.mixer.music.stop()
+            pass # ygame.mixer.music.stop()
 
     def refresh(self, vm):
         self.update(vm)

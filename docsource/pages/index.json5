@@ -3,7 +3,7 @@
     title: 'chip-gr8',
     subtitle: 'Chip-Gr8 – Emulation for AI',
     place: 'home',
-    version: 'v0.1.0',
+    version: 'v0.1.1',
     timeline: [
         {
             title: 'Early May',

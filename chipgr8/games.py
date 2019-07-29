@@ -124,10 +124,11 @@ Blinky = Game(
 Breakout = Game(
     ROM      = 'Breakout',
     observer = Observer()
-        .addQuery("ballX", Query(addr=374))
-        .addQuery("ballY", Query(addr=375))
-        .addQuery("myX", Query(addr=380))
-        .addQuery("score", Query(addr=373)),
+        .addQuery('ballX', Query(addr=374))
+        .addQuery('ballY', Query(addr=375))
+        .addQuery('myX', Query(addr=380))
+        .addQuery('score', Query(addr=373))
+        .addQuery('done', lambda o, vm : vm.VM.PC == 0x2DE),
     actions  = NamedList(
         ['none', 'left', 'right'],
         [ K_NONE, K_4,    K_6   ],
