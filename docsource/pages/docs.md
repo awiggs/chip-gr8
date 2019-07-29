@@ -313,6 +313,9 @@ Add a breakpoint at `addr`. When the VM steps to this address (when PC is equal 
 #### `removeBreakpoint(addr)`
 Remove a breakpoint at `addr`.
 
+#### `toggleBreakpoint(addr)`
+Toggles a breakpoint at `addr`.
+
 #### `clearBreakpoints()`
 Clear all current breakpoints.
 
