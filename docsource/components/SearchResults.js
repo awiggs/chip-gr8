@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import Vars from '../Vars';
 
 const SearchResult = ({ title, previews, href }) => 
     <div className='search-result' onClick={() => {Router.push(href)}}>
@@ -20,7 +21,7 @@ export default ({ searchCtx }) =>
             {searchCtx.search.length && !searchCtx.results.length
                 ? <NoResults />
                 : searchCtx.results.map(({ title, previews, href }, key) => 
-                    <SearchResult key={key} title={title} previews={previews} href={href} />
+                    <SearchResult key={key} title={title} previews={previews} href={Vars.sitePrefix + href} />
                 )
             }
         </div>
