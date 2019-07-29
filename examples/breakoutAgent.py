@@ -11,8 +11,6 @@
 
 
 # Imports
-import os, sys
-sys.path.append(os.path.expanduser('C:/Users/jonbe/Desktop/SENG499/chip-gr8'))
 import random
 import chipgr8
 from chipgr8.games import Breakout

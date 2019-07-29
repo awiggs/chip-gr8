@@ -6,15 +6,9 @@
 # escape.                                 #
 ###########################################
 
-
-# TODO remove once pip install is working
-import sys, os
-sys.path.append(os.path.expanduser('C:/Users/jonbe/Desktop/SENG499/chip-gr8'))
-
 # Imports
 import chipgr8
 from chipgr8.games import Cave
-
 
 # Global Variables
 vm = None
