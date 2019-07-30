@@ -310,13 +310,13 @@ A direct reference to the CHIP-8 C-struct. This provides direct memory access (e
 #### `.addBreakpoint(addr)`
 Add a breakpoint at `addr`. When the VM steps to this address (when PC is equal to `addr`) the Chip-Gr8 display will automatically pause.
 
-#### `removeBreakpoint(addr)`
+#### `.removeBreakpoint(addr)`
 Remove a breakpoint at `addr`.
 
-#### `toggleBreakpoint(addr)`
+#### `.toggleBreakpoint(addr)`
 Toggles a breakpoint at `addr`.
 
-#### `clearBreakpoints()`
+#### `.clearBreakpoints()`
 Clear all current breakpoints.
 
 #### `.act(action)`
