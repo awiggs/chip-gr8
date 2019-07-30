@@ -5706,7 +5706,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\James\\Documents\\School\\SENG499\\chip-gr8\\docsource\\.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/Andrew/GitHub/chip-gr8/docsource/.next");
       return error;
     }
   };
@@ -17960,7 +17960,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\James\Documents\School\SENG499\chip-gr8\docsource\node_modules\next\dist\client\next-dev */"./node_modules/next/dist/client/next-dev.js");
+module.exports = __webpack_require__(/*! /Users/Andrew/GitHub/chip-gr8/docsource/node_modules/next/dist/client/next-dev */"./node_modules/next/dist/client/next-dev.js");
 
 
 /***/ }),
