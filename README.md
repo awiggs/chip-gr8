@@ -8,7 +8,7 @@ Chip-Gr8 is a sandbox for creating AI Agents for retro video games like Pong, Br
 Chip-Gr8 is a Python package. Use pip to install it!
 
 ```
-pip isntall chipgr8
+pip install chipgr8
 ```
 
 ## Getting Started
