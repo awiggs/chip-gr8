@@ -284,8 +284,8 @@ void opJPV0(Chip8VM_t* vm, u16 addr) {
  */
 void opRND(Chip8VM_t* vm, u8 reg, u8 value) {
     srand(vm->seed);
-    u8 n = rand() % 255;
-    vm->seed = n;
+    u8 n = rand() & 0xFF;
+    vm->seed = (n + vm->clock) & 0xFF;
     vm->V[reg] = n & value;
 }
 
