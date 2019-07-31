@@ -877,7 +877,7 @@ body .timeline .timeline-item:last-child::before {
 body .docs .subtitle {
   font-size: 36px;
 }
-body .docs img[src='../static/img/breakout.gif'] {
+body .docs img[src='./static/img/breakout.gif'] {
   display: block;
   width: 70%;
   margin: auto;

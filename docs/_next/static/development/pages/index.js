@@ -26,7 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Bibliography.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Bibliography.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Boot.less */ "./components/Boot.less");
 /* harmony import */ var _Boot_less__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Boot_less__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Boot.js";
 
 
  // Load Less styles
@@ -263,7 +263,7 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Boot.js";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Copyright.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Copyright.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -297,7 +297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/string-util */ "./lib/string-util.js");
 /* harmony import */ var _lib_string_util__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lib_string_util__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Editor.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Editor.js";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -525,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor */ "./components/Editor.js");
 /* harmony import */ var _lib_no_space_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/no-space-lang */ "./lib/no-space-lang.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/EjrbussMarkdown.js";
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -785,7 +785,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocialMedia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMedia */ "./components/SocialMedia.js");
 /* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Copyright */ "./components/Copyright.js");
 /* harmony import */ var _Love__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Love */ "./components/Love.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Footer.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Footer.js";
 
 
 
@@ -875,7 +875,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Logo.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Logo.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -909,7 +909,7 @@ var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Logo.js";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Love.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Love.js";
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -970,7 +970,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ScrollMarker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollMarker */ "./components/ScrollMarker.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Navbar.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Navbar.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1078,7 +1078,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Places.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Places.js";
 
 
 
@@ -1167,7 +1167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/ScrollMarker.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -1200,7 +1200,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SearchResults.js";
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
+/* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SearchResults.js";
+
 
 
 
@@ -1215,21 +1218,21 @@ var SearchResult = function SearchResult(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 5
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 6
     },
     __self: this
   }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 7
     },
     __self: this
   }, previews.map(function (preview, key) {
@@ -1237,7 +1240,7 @@ var SearchResult = function SearchResult(_ref) {
       key: key,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 8
       },
       __self: this
     }, preview);
@@ -1249,25 +1252,25 @@ var NoResults = function NoResults() {
     className: "no-results",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 13
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 14
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 14
     },
     __self: this
   }, 'nil')), "Oops! There's nothing but ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("code", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 15
     },
     __self: this
   }, "nil"), " here. Try searching something else.");
@@ -1280,20 +1283,20 @@ var NoResults = function NoResults() {
     className: searchCtx.open ? 'search-results open' : 'search-results',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 19
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container grid-md",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 20
     },
     __self: this
   }, searchCtx.search.length && !searchCtx.results.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NoResults, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 22
     },
     __self: this
   }) : searchCtx.results.map(function (_ref3, key) {
@@ -1304,10 +1307,10 @@ var NoResults = function NoResults() {
       key: key,
       title: title,
       previews: previews,
-      href: href,
+      href: _Vars__WEBPACK_IMPORTED_MODULE_2___default.a.sitePrefix + href,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 24
       },
       __self: this
     });
@@ -1328,7 +1331,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SideNav.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SideNav.js";
 
 
 
@@ -1426,7 +1429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/SocialMedia.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/SocialMedia.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -1464,7 +1467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EjrbussMarkdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EjrbussMarkdown */ "./components/EjrbussMarkdown.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/components/Timeline.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/components/Timeline.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1566,7 +1569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Vars */ "./Vars.js");
 /* harmony import */ var _Vars__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_Vars__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _lib_hooks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/hooks */ "./lib/hooks.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/layouts/Docs.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/layouts/Docs.js";
 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1736,7 +1739,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/lib/Page.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/lib/Page.js";
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -1988,7 +1991,7 @@ __webpack_require__.r(__webpack_exports__);
     plainTxt: 'Overview\nChip-Gr8 is distributed through pip! To install run\nreadonly-nolines\npip install chipgr8\nCurrently Chip-Gr8 only supports python 3.6 and 3.7. We provide binaries for Chip-Gr8&#39;s backend for Windows users with the following configurations: Python36 (32 and 64 bit) and Python37 (32 and 64 bit). For Mac and Linux users pip install should build the backend binaries using your system&#39;s compiler.\nFor additional documentation see the Chip-Gr8 Reference Manual.\nWriting Your First Agent\nThis example will help you write your first AI agent. An AI agent performs two key tasks, observations and actions. To get started import the Chip-Gr8 API, and a game object. The game objects provide useful defaults for observations, actions, as well as the correct ROM name. For this example we will use the game Squash. Squash is a single player Pong. We will also import random for later.\nlang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\nAI agents are trained and run in loops. This is typically done with a while loop where you wait for a CHIP-8 VM instance to be done. For our first agent let&#39;s just pick a random action. In order to run this agent we will need to create a VM instance to run it on and load the Squash ROM.\nlang:python-readonly\nvm = chipgr8.init(ROM=Squash.ROM)\nBy default the API returns a VM appropriate for running a single AI. We will now create a loop where we repeatedly choose a random action. Squash.actions provides a list of all the valid Squash game actions. We also need to indicate when the VM instance should be considered done. The Squash object also provides this in its set of observations, so we will observe the VM and check to see if the VM is done.\nlang:python-readonly\nwhile not vm.done():\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nOur AI will now run, but we will not be able to see it perform any of its actions. We can watch a replay using the .inputHistory of our VM. The .go() method will loop the VM instance for us.\nlang:python-readonly\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\nWe can now iterate over the vms and run each one like we did before.\nlang:python-readonly\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=vm.inputHistory,\n    display=True\n).go()\nOur AI is not very good, but we can easily make it better just by running multiple random AI agents and picking the best one. Let’s start by creating 100 VM instances.\nlang:python-readonly\nwhile not vms.done():\n    for vm in vms:\n        vm.act(random.choice(Squash.actions))\n        observations = Squash.observe(vm)\n        vm.doneIf(observations.done)\nThis approach is a little slow though since we have to run every VM instance as part of the same process. We can take advantage of a machine&#39;s multiple cores by using the VMs .inParallel() method. This method requires us to refactor our code a little bit. This method expects a function which will be called repeatedly until the vm instance is done. We can do this by taking our inner section of the loop and turning it into a function.\n```lang:python-readonly\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nvms.inParallel(action)\n```\nWe can now just pick the best vm of the bunch. The Squash object thankfully has another observation that can help us: score. We can use the VMs .maxBy() function to get the best VM.\nlang:python-readonly\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\nWe can now watch this VM like we did before using its inputHistory. Congratulations on writing your first Chip-Gr8 AI agent! You can find the final code altogether below.\n```lang:python-readonly\nimport random\nimport chipgr8\nfrom chipgr8.games import Squash\nThis action is performed repeatedly until the VM is done\ndef action(vm):\n    vm.act(random.choice(Squash.actions))\n    observations = Squash.observe(vm)\n    vm.doneIf(observations.done)\nCreate 100 CHIP-8 VM instances\nvms = chipgr8.init(ROM=Squash.ROM, instances=100)\nRun all our random agents\nvms.inParallel(action)\nPick the best one\nbest = vms.maxBy(lambda vm : Squash.observe(vm).score)\nShow a replay of the best\nchipgr8.init(\n    ROM=Squash.ROM,\n    inputHistory=best.inputHistory,\n    display=True\n).go()\n```\nQuerying Memory\nIn order to support more games, or find additional values from CHIP-8 RAM for games already included with Chip-Gr8, components are provided for querying memory. These components are meant to be used in a workflow like the following:\nStart the Chip-Gr8 display with the ROM you want to query.\nPut the VM into a state you understand.\nCreate a Query object and use a predicate to limit the number of matching memory addresses.\nChange the VM to a new state and use a new predicate to further filter the results.\nRepeat step 4 until there is only a single address that matches.\nCopy the Query out to a file.\n\nSeveral steps are made easier by the fact that Query and Observer objects will print their own source code in the REPL. You can easily write these to a file using the write function.\nQueries\nQueries provide several predicates to limit matched memory addresses, like .eq(), .dec(), .lte(), etc. A list of all memory addresses, along with their previously queried values can be found using the .previous field. For example:\nlang:python-readonly\nq = Query(vm)\nq.eq(0x04)\nprint(q.previous)\nYou can instantiate a finished Query by providing an address instead of a VM instance. For example, to create a query that looks at address 0x200:\nlang:python-readonly\nq = Query(0x200)\nThis Query can now be used to retrieve the value in CHIP-8 RAM at 0x200 of any VM instance with:\nlang:python-readonly\nq.observe(vm)\nObservers\nQueries can be combined using an Observer. An Observer is just a collection of queries and functions that provides one method, observe, which applies all these queries and functions to a provided VM instance and returns the result as a NamedList. A NamedList is a data structure that behaves like a Python list, but can be accessed by attributes and keys. For example, to create a list of one element, y, with a key, key\n```lang:python-readonly\nmyNamedList = NamedList([&#39;key&#39;], [7])\nTo access the element you can use the following ways:\nmyNameList[0]     # By index\nmyNameList.key    # By attribute\nmyNameList[&#39;key&#39;] # By key\n```\nTo add queries to an Observer you can call .addQuery(). This method also accepts as the query a function that takes two arguments. The first argument is a collection of all non-function observations. The second is the VM instance. This allows you to create combinational queries. For example\nlang:python-readonly\no = Observer()\no.addQuery(&#39;lives&#39;, Query(0x115))\no.addQuery(&#39;done&#39;,  lambda o, vm : o.lives == 0)\nGames\nGames provide actions, observations, and a ROM all in one package. Several games are provided out of the box, but you can also create your own game objects for ROMs not included with Chip-Gr8.\nAPI Reference\nConstants\ndefaultBindings\nDefault key bindings for the Chip-Gr8 display as a Python dictionary.\nthemes\nA Python dictionary of the builtin Chip-Gr8 themes.\nFunctions\nassemble(source=None, inPath=None, outPath=None)\nConverts assembly source code, or source code contained in inPath into binary data (a ROM). This ROM may optionally be written to file with the outPath argument.\ndisassemble((Parameters))\nConverts a binary ROM into an assembly source file. Returns the source. Provides option for disassembling with labels and special format.\nParameters\nbuffer=None\nThe binary ROM to disassemble as a set of bytes. Optional if inPath is provided.\ninPath=None\nThe path to a binary ROM to disassemble. Optional if buffer is provided.\noutPath=None\nIf the path is provided, the source code is written to that file.\nlabels={}\nA dictionary used to generate labels. If None is passed, labels will not be generated in the source.\ndecargs=True\nIf True, instruction numerical operands will be output in decimal rather than hexadecimal.\nsrcFormat=&#39;{label}{labelSep}{prefix}{instruction}\\n&#39;\nA format string for lines of source code. Can contain the following variables label, labelSep, prefix, instruction, addr, and dump. For example for hexdump with address use:\nlang:python-readonly\nsrcFormat=&#39;{addr} {dump}&#39;\nlabelSep = &#39;\\n  &#39;\nThe string used to separate labels from instructions.\nprefix=&#39; &#39;\nThe string used to prefix all instructions.\naddrTable={}\nA table that will have addresses as keys and instructions as values.\nfindROM(rom)\nReturns the path to rom if it is one of the included ROMs.\nhexdump(buffer=None, inPath=None, outPath=None)\nDumps a buffer or file at inPath as a set of 16-bit hexadecimal values on each line (the number of bits that correspond to a CHIP-8 instruction). Writes the data to outPath if provided.\ninit((Parameters))\nReturns an instance of Chip8VM or Chip8VMs. Used to configure the virtual machines for a user or a given AI agent.\nParameters\nROM=None\nIf provided will load a ROM into the VM instance or instances.\nfrequency=600\nThe starting frequency of the VM instance or instances. Will automatically be set to the closest multiple of 60 less than or equal to the provided frequency.\nloadState=None\nA path or tag to a VM save state that will be loaded into each VM instance or instances.\ninputHistory=None\nIf provided user and AI input will be ignored and the history will be used to reproduce the same events.\nsampleRate=1\nThe number of steps that are performed when an AI calls act.\ninstances=1\nThe number of VM instances to create.\ndisplay=False\nIf True, the VM will create a Chip-Gr8 display. Cannot be True if instances does not equal 1.\nsmooth=False\nIf True, enables the experimental smooth rendering mode. This mode is slow on most machines.\nstartPaused=False\nIf True, the VM instance will start paused.\naiInputMask=0xFFFF\nThe keys usable to the AI agent as a bitmask. The keys available to the user are the bitwise inverse of this mask.\nforeground=(255, 255, 255)\nThe foreground color of the Chip-Gr8 display as an RGB tuple or hex code.\nbackground=(0, 0, 0)\nThe background color of the Chip-Gr8 display as an RGB tuple or hex code.\ntheme=None\nThe foreground/background color provided as a tuple.\nautoScroll=True\nIf True, this disassembly source will automatically scroll when the Chip-Gr8 display is open and a ROM is running.\nspeed\nThe speed at which the UI is tied to the CHIP-8 frequency. When speed is 1, games will appear to run at the provided frequency, but when speed is 2, games will appear to run twice as fast. Must be provided as an integer.\nreadableInputHistory(inputHistory, names)\nGiven an inputHistory and a set of actions, names, as a NamedList, produces a human readable version of the inputHistory.\nChip8VM (Class)\nRepresents a CHIP-8 virtual machine. Provides interface and controls for display and input. Rather than initializing directly, an instance of this class or its sister class Chip8VMs should always be instantiated using init.\n.aiInputMask\nA number that controls what keys are usable by AI agents calling act and what keys are usable by a user on their keyboard. For example, an aiInputMask of 0x0000 will prevent an AI agent from using any keys, but a user will be able to use all keys.\n.inputHistory\nA list of number pairs that represent changes in key presses. The first value in the pair is the key value, the second is the clock value when input changed to that value.\n.paused\nA control flag set to True if the display is paused.\n.pyclock\nThe pygame clock used to keep track of time between steps when using the Chip-Gr8 display.\n.record\nA control flag set to True if inputHistory is being recorded.\n.ROM\nThe path to the currently loaded game ROM.\n.sampleRate\nThe number of steps that are performed when an AI calls act.\n.smooth\nA control flag for the experimental smooth rendering mode. This mode is slow on most machines.\n.VM\nA direct reference to the CHIP-8 C-struct. This provides direct memory access (eg. VM.RAM[0x200]) as well as register reference (eg. VM.PC). Use these fields with caution as inappropriate usage can result in a segmentation fault. Direct references to VM should not be maintained (no aliasing).\n.addBreakpoint(addr)\nAdd a breakpoint at addr. When the VM steps to this address (when PC is equal to addr) the Chip-Gr8 display will automatically pause.\nremoveBreakpoint(addr)\nRemove a breakpoint at addr.\nclearBreakpoints()\nClear all current breakpoints.\n.act(action)\nAllows an AI agent to perform action (action is an input key value) and steps the CHIP-8 emulator forward sampleRate clock cycles.\n.ctx()\nReturns an instance of the CHIP-8’s VRAM in a NumPy compliant format (Lazyarray). Pixel values can be addressed directly. (eg. a pixel at position (16, 8) can be retrieved with ctx()[16, 8]). This method is safe to call repeatedly.\n.done()\nReturns True if the VM is done and has NOT been reset.\n.doneIf(done)\nSignals to the VM that it is done.\n.go()\nStarts the VM in an until done() loop, calling act(0) repeatedly. This is ideal for user interaction without an AI agent.\n.input(keys)\nSend an input key value to the CHIP-8 emulator. Input keys are masked by aiInputMask.\n.loadROM(nameOrPath, reset=True)\nLoads a ROM from the provided path or searches for the name in the set of provided ROM files. If reset is True then VM will be reset prior to loading the ROM.\n.loadState(path=None, tag=None)\nLoad a CHIP-8 emulator state from a path or by associated tag, restoring a previous state of VM.\n.saveState(path=None, tag=None)\nSave the current CHIP-8 emulator state to a path or tag.\n.reset()\nReset the VM with the current ROM still loaded.\n.step()\nStep the VM forward 1 clock cycle.\nChip8VMs (Class)\nRepresents a collection of CHIP-8 virtual machines. Provides an interface for dealing with and filtering several virtual machines at the same time. This class is iterable, and will iterate over all vms that are NOT done().\n.done()\nReturns True if all VM instances are done.\n.find(predicate)\nFind a specific VM using a function predicate that takes a VM as an argument and returns True or False. Returns the first VM for which the predicate was True. Searches done and not done VMs.\n.inParallel(do)\nPerforms a function do on all not done VMs in parallel. The function is expected to take the VM as an argument. When using this method external vm references can become out of date due to pickling across processes.\n.maxBy(projection)\nReturns the VM with the maximum value by the given projection, a function that takes a VM as its argument and returns a comparable value.\n.minBy(projection)\nReturns the VM with the minimum value by the given projection, a function that takes a VM as its argument and returns a comparable value.\n.reset()\nResets all the VMs.\nGame (Class)\nA generic class for game specific data. Game specific instances of this class exist for each included ROM (Cave, Pong, Worm, etc.).\n.actions\nA list of valid actions (key values) for the given game.\n.ROM\nThe name of the ROM file for this game.\n.observe(vm)\nReturns a set of game specific observations given a VM.\nNamedList (Class)\nA list-like structure that allows elements to be accessed by named properties. Behaves like a Python list, can be iterated, indexed, spliced, and measured with len().\n.names\nA list of keys for the list in order.\n.values\nA list of values for the list in order.\n.append(name, value)\nAppend a name and value to the list.\n.nparray()\nRetrieve the values of the list as a NumPy ndarray.\n.tensor()\nRetrieve the values of the list as a TensorFlow tensor.\nObserver (Class)\nRepresents a collection of queries that can be applied to a VM acquiring a set of observations.\n.addQuery(name, query)\nAdd a query with an associated name to an observer. Accepts either a finalized query or a function that accepts a set of observations (NamedList) as the first argument and a vm instance as its second argument. This function argument can be used to create compound queries.\n.observe(vm)\nRetrieve a set of observations as a NamedList given a vm instance.\nQuery (Class)\nUsed to find a specific memory address. When using a query to search for a memory address, several predicates can be used to filter the query.\n.done\nTrue if the query has found 0 or 1 addresses.\n.success\nTrue if the query has found 1 address.\n.dec()\nFilter queried memory addresses by values that have decreased since the last query.\n.eq(value)\nFilter queried memory addresses by values that equal value.\n.gt(value)\nFilter queried memory addresses by values that are greater than value.\n.gte(value)\nFilter queried memory addresses by values that are greater than or equal to value.\n.inc()\nFilter queried memory addresses by values that have increased since the last query.\n.lt(value)\nFilter queried memory addresses by values that are less than value.\n.lte(value)\nFilter queried memory addresses by values that are less than or equal to value.\n.observe(vm)\nIf a query is finished this method returns the value at the VM instance&#39;s RAM corresponding to this query, otherwise it raises an Excception.\n.unknown()\nRefresh the previous values of all currently queried memory addresses.\n',
     route: '/docs',
     layout: '../layouts/API',
-    title: 'chip-gr8 | API',
+    title: 'chip-gr8 | Docs',
     place: 'api'
   }),
   'index': new _Page__WEBPACK_IMPORTED_MODULE_0__["default"]({
@@ -31809,7 +31812,7 @@ function wordCharacter(character) {
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -31820,7 +31823,7 @@ function wordCharacter(character) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.14';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -34479,16 +34482,10 @@ function wordCharacter(character) {
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -35412,8 +35409,8 @@ function wordCharacter(character) {
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -37230,7 +37227,7 @@ function wordCharacter(character) {
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -38413,7 +38410,7 @@ function wordCharacter(character) {
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -38421,6 +38418,10 @@ function wordCharacter(character) {
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -42221,6 +42222,7 @@ function wordCharacter(character) {
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -46607,9 +46609,12 @@ function wordCharacter(character) {
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -46642,7 +46647,9 @@ function wordCharacter(character) {
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -48847,10 +48854,11 @@ function wordCharacter(character) {
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -51666,12 +51674,12 @@ module.exports = __webpack_require__(/*! ./dist/lib/router */ "./node_modules/ne
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -53079,12 +53087,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -53692,12 +53700,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -55792,12 +55800,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -64355,12 +64363,12 @@ function info() {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_84cc4fe3fc17a4546c27 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_c7268871b5d23a759f52 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_84cc4fe3fc17a4546c27 */ "dll-reference dll_84cc4fe3fc17a4546c27"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_c7268871b5d23a759f52 */ "dll-reference dll_c7268871b5d23a759f52"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -64492,7 +64500,7 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layouts_Docs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layouts/Docs */ "./layouts/Docs.js");
-var _jsxFileName = "/Users/Andrew/GitHub/chip-gr8/docsource/pages/index.js";
+var _jsxFileName = "/Users/ejrbuss/GitHub/chip-gr8/docsource/pages/index.js";
 
 // Generated by Page Builder
 
@@ -64542,14 +64550,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_84cc4fe3fc17a4546c27":
+/***/ "dll-reference dll_c7268871b5d23a759f52":
 /*!*******************************************!*\
-  !*** external "dll_84cc4fe3fc17a4546c27" ***!
+  !*** external "dll_c7268871b5d23a759f52" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_84cc4fe3fc17a4546c27;
+module.exports = dll_c7268871b5d23a759f52;
 
 /***/ })
 
