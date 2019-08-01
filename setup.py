@@ -26,7 +26,7 @@ setup(
     url                           = 'https://awiggs.github.io/chip-gr8/',
     include_package_data          = True,
     packages                      = find_packages(),
-    package_data                  = { 'chipgr8': ['data/*/*', 'data/*', 'VERSION'] },
+    package_data                  = { 'chipgr8': ['data/*/*', 'VERSION'] },
     ext_modules                   = [libchip_gr8],
     install_requires              = [
         'lazyarray',
