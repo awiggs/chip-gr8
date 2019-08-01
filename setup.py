@@ -2,7 +2,7 @@ from os.path    import join
 from os         import listdir
 from setuptools import setup, Extension, find_packages
 
-with open('./chipgr8/VERSION') as f:
+with open('./chipgr8/VERSION.txt') as f:
     VERSION = f.read()
 
 with open('./README.md') as f:
@@ -24,9 +24,8 @@ setup(
     author_email                  = 'root@ejrbuss.net',
     license                       = 'MIT',
     url                           = 'https://awiggs.github.io/chip-gr8/',
-    include_package_data          = True,
     packages                      = find_packages(),
-    package_data                  = { 'chipgr8': ['data/*/*', 'VERSION'] },
+    package_data                  = { 'chipgr8': ['*.txt', 'data/*/*'] },
     ext_modules                   = [libchip_gr8],
     install_requires              = [
         'lazyarray',
