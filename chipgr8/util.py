@@ -79,4 +79,4 @@ def findROM(rom):
     raise Exception('`{}` is not a valid ROM!'.format(rom))
 
 def findVersion():
-    return read(os.path.realpath(os.path.join(__file__, '../VERSION')))
+    return read(os.path.realpath(os.path.join(__file__, '../VERSION.txt')))
