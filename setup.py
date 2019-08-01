@@ -10,8 +10,9 @@ with open('./README.md') as f:
 
 libchip_gr8 = Extension(
     name         = 'chipgr8.libchip_gr8',
-    include_dirs = ['./includes'],
-    sources      = ['./src/chip8.c', './src/ops.c'],
+    language     = 'c',
+    include_dirs = ['includes'],
+    sources      = ['src/chip8.c', 'src/ops.c'],
 )
 
 setup(
