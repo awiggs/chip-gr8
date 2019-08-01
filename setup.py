@@ -26,7 +26,7 @@ setup(
     license                       = 'MIT',
     url                           = 'https://awiggs.github.io/chip-gr8/',
     packages                      = find_packages(),
-    package_data                  = { 'chipgr8': ['*.txt', 'data/*/*'] },
+    package_data                  = { 'chipgr8': ['*.txt', 'data/*/*', 'data/*'] },
     ext_modules                   = [libchip_gr8],
     install_requires              = [
         'lazyarray',
